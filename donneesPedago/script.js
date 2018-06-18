@@ -185,6 +185,7 @@ d3.json("https://lucziss.github.io/donneesPedago/pedago.json").then(function(dat
     node
         .on("mouseover", function(d, i) {
             tip.transition()
+                .delay(500)
                 .duration(200)
                 .style("opacity", .8);
             var projetDescription = (d.projet == "true") ? "Cette UE comporte un projet" : "Cette UE ne comporte pas de projet";
@@ -193,20 +194,11 @@ d3.json("https://lucziss.github.io/donneesPedago/pedago.json").then(function(dat
                     projetDescription)
                 .style("left", (d3.event.pageX + 10) + "px")
                 .style("top", (d3.event.pageY - 10) + "px");
-
-            if (currentSelection.length != 2) {
-                link.style("opacity", "0.2");
-                node.style("opacity", "0.2");
-                valoriseAdjacentLinks(link, d).style("opacity", "0.8");
-                valoriseAdjacentNodes(node, link, d, currentFilters).style("opacity", "0.8");
-            }
         })
         .on("mouseout", function(d, i) {
-            if (currentSelection.length != 2)
-                applyDefaultOpacity(node, link);
 
             tip.transition()
-                .duration(500)
+                .duration(100)
                 .style("opacity", 0);
         })
         .on("contextmenu", function(d, i) {
@@ -221,6 +213,16 @@ d3.json("https://lucziss.github.io/donneesPedago/pedago.json").then(function(dat
                 return !currentSelection.includes(d);
             }).selectAll("rect").style("fill", applyColours);
 
+            if (currentSelection.length == 0)
+                applyDefaultOpacity(node, link);
+
+            if (currentSelection.length == 1) {
+                link.style("opacity", "0.2");
+                node.style("opacity", "0.2");
+                valoriseAdjacentLinks(link, currentSelection[0]).style("opacity", "0.8");
+                valoriseAdjacentNodes(node, link, currentSelection[0], currentFilters).style("opacity", "0.8");
+            }
+
         });
 
     var SkillList = getSkillList(graph.nodes);
@@ -229,31 +231,31 @@ d3.json("https://lucziss.github.io/donneesPedago/pedago.json").then(function(dat
     setSkillDescription(SkillList);
     checkboxLabelColor(SkillList);
 
-    link
-        .on("mouseover", function(d, i) {
-            tip.transition()
-                .duration(200)
-                .style("opacity", .8);
-            tip.html(d.source.name + " → " + d.target.name + "<br/>" + d.linktype)
-                .style("left", (d3.event.pageX + 25) + "px")
-                .style("top", (d3.event.pageY - 25) + "px");
-
-            if (currentSelection.length != 2) {
-                var currentLink = d3.select(this);
-                link.style("opacity", "0.2");
-                node.style("opacity", "0.2");
-                currentLink.style("opacity", "0.8");
-                valoriseNodesOnLinkHover(node, currentLink).style("opacity", "0.8");
-            }
-        })
-        .on("mouseout", function(d, i) {
-            if (currentSelection.length != 2)
-                applyDefaultOpacity(node, link);
-
-            tip.transition()
-                .duration(500)
-                .style("opacity", 0);
-        });
+    // link
+    //     .on("mouseover", function(d, i) {
+    //         tip.transition()
+    //             .duration(200)
+    //             .style("opacity", .8);
+    //         tip.html(d.source.name + " → " + d.target.name + "<br/>" + d.linktype)
+    //             .style("left", (d3.event.pageX + 25) + "px")
+    //             .style("top", (d3.event.pageY - 25) + "px");
+    //
+    //         if (currentSelection.length != 2) {
+    //             var currentLink = d3.select(this);
+    //             link.style("opacity", "0.2");
+    //             node.style("opacity", "0.2");
+    //             currentLink.style("opacity", "0.8");
+    //             valoriseNodesOnLinkHover(node, currentLink).style("opacity", "0.8");
+    //         }
+    //     })
+    //     .on("mouseout", function(d, i) {
+    //         if (currentSelection.length != 2)
+    //             applyDefaultOpacity(node, link);
+    //
+    //         tip.transition()
+    //             .duration(500)
+    //             .style("opacity", 0);
+    //     });
 
     function dragmove(d) {
         d3.select(this)
@@ -612,6 +614,7 @@ function filterDisplayManager(SkillList, link, node, currentFilters, graph, svg,
 
     var selectAllLabel = filterDiv.append("label")
         .attr("for", "selectallcheckbox")
+        .attr("id", "selectalllabel")
         .append("p")
         .style("display", "inline")
         .style("font-family", "Verdana")
@@ -630,6 +633,11 @@ function filterDisplayManager(SkillList, link, node, currentFilters, graph, svg,
             }
         }
     })
+
+    document.getElementById("selectalllabel").addEventListener("mousedown", function(e) {
+        e.preventDefault();
+    }, false);
+
 
     var resetViewButton = filterDiv.append("button")
         .attr("class", "selectionButtons")
@@ -778,12 +786,12 @@ function selectNode(d, links, nodes) {
 // Cache les noeuds et liens ne faisant parti d'aucun chemin et change l'opacite des noeuds affiches
 function displaySelection(pathArray, links, nodes) {
     hideLinks(links);
-    hideNodes(nodes);
+    nodes.style("opacity", 0.2);
 
     if (!pathArray.length) {
-        displayNodes(nodes.filter(function(d, i) {
+        nodes.filter(function(d, i) {
             return (d.ueid === currentSelection[0].ueid || d.ueid === currentSelection[1].ueid);
-        }).style("opacity", "1"));
+        }).style("opacity", "1");
     }
 
     pathArray.forEach(function(path) {
@@ -794,9 +802,9 @@ function displaySelection(pathArray, links, nodes) {
                 }).style("opacity", "1"));
             }
 
-            displayNodes(nodes.filter(function(d, i) {
+            nodes.filter(function(d, i) {
                 return (d.ueid === path[k].ueid && checkNodeDisplay(d, currentFilters));
-            }).style("opacity", "1"));
+            }).style("opacity", "1");
         }
     })
 }
@@ -804,10 +812,10 @@ function displaySelection(pathArray, links, nodes) {
 // RETURN : tableau des compétences impliquées par l'UE [node]
 function getSkillsOfUE(node) {
     var skills = [];
-    if(node.dependances){
-    	node.dependances.forEach(function(d, i) {
-        	skills.push(d[0]);
-    	})
+    if (node.dependances) {
+        node.dependances.forEach(function(d, i) {
+            skills.push(d[0]);
+        })
     }
     return skills;
 }
@@ -826,7 +834,7 @@ function hasActiveLinkBetweenNodes(nodeA, nodeB, links) {
     return returnVal;
 }
 
-// PARAM : [d]: Tableau des donnees rattachees au noeud [currentFilters]: tableau des filtres courants
+// PARAM : [node]: Tableau des donnees rattachees au noeud [currentFilters]: tableau des filtres courants
 // RETURN : Boolean => True si node fait travailler une des competences actuellement affichees, false sinon
 function checkNodeDisplay(node, currentFilters) {
     var flag = false;
@@ -838,4 +846,18 @@ function checkNodeDisplay(node, currentFilters) {
     }
 
     return flag;
+}
+
+
+// PARAM : [node]: Tableau des donnees rattachees au noeud
+// RETURN : Tableau de toutes les compétences travaillées par l'UE mais sans lien (dans le JSON, compétence représentée sous la forme ["Appliquer"])
+function getIgnoredSkills(node)
+{
+    var ignoredSkills = []
+    node.dependances.forEach(function (skill) {
+        if(skill.length == 1)
+            ignoredSkills.push(skill[0]);
+    })
+
+    return ignoredSkills;
 }

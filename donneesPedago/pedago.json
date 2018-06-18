@@ -347,7 +347,7 @@
 }, {
     "ueid": "41",
     "name": "Algèbre linéaire appliquée",
-    "abreviation": "Algèbre linéaire",
+    "abreviation": "ALINEA",
     "coefficient": "3",
     "semestre": "4",
     "value": 1,
@@ -358,7 +358,7 @@
     "option": "false"
 }, {
     "ueid": "42",
-    "name": "Graphes",
+    "name": "Théorie des Graphes",
     "abreviation": "Graphes",
     "coefficient": "3",
     "semestre": "4",
@@ -505,7 +505,9 @@
     "coefficient": "3",
     "semestre": "4",
     "value": 1,
-    "dependances": [],
+    "dependances": [
+        ["Professionnaliser"]
+    ],
     "projet": "false",
     "option": "true"
 }, {

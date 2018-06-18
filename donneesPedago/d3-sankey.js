@@ -196,10 +196,8 @@ d3.sankey = function() {
           // node.dy = ky * getSkillsOfUE(node).length;
           node.dy = (ky / 5) * skillList.length * node.coefficient;
 
-          console.log(node);
-
-          // if(node.dy <= 15)
-          //   node.dy = 15;
+          if(node.dy <= 15)
+            node.dy = 15;
         });
       });
 
@@ -284,11 +282,9 @@ d3.sankey = function() {
 
     // nodes.forEach(function(node) {
     //   var sy = 0, ty = 0;
-    //   console.log(node.name);
     //   node.sourceLinks.forEach(function(link) {
     //     link.sy = sy;
     //     sy += link.dy;
-    //     console.log(link);
     //   });
     //   node.targetLinks.forEach(function(link) {
     //     link.ty = ty;
@@ -297,14 +293,17 @@ d3.sankey = function() {
     // });
 
     var skillList;
+    var ignoredSkills;
 
     nodes.forEach(function (node) {
+      ignoredSkills = getIgnoredSkills(node);
       skillList = getSkillsOfUE(node);
+
       node.sourceLinks.forEach(function (link) {
-        link.sy = link.dy * skillList.indexOf(link.linktype);
+        link.sy = (node.dy/2 - (link.dy/2 * (skillList.length-ignoredSkills.length))) + link.dy * skillList.indexOf(link.linktype);
       })
       node.targetLinks.forEach(function(link) {
-        link.ty = link.dy * skillList.indexOf(link.linktype);
+        link.ty = (node.dy/2 - (link.dy/2 * skillList.length)) + link.dy * skillList.indexOf(link.linktype);
       });
     })
 
