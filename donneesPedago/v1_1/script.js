@@ -22,8 +22,6 @@ var currentSelection = [];
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-
-// NOTE: On pourrait mettre les couleurs directement dans le .json
 var skillColors = {
     "Realiser": color(0.16),
     "Appliquer": color(0.32),
@@ -34,9 +32,9 @@ var skillColors = {
 };
 
 var groupColors = {
-    "Mathématiques": "#b3ccff",
+    "Mathematiques": "#b3ccff",
     "Informatique": "#ed7676",
-    "Informatique théorique": "#bf79ea",
+    "Informatique theorique": "#bf79ea",
     "Ouverture": "lightgrey",
     "Langues": "#2aaf33"
 };
@@ -142,7 +140,7 @@ d3.json("pedago.json").then(function(data) {
     var graph = {
         "nodes": data,
         "links": getLinks(data)
-    };
+    }
 
     d3.select("#chart").on("contextmenu", function() {
         d3.event.preventDefault();
@@ -242,7 +240,7 @@ d3.json("pedago.json").then(function(data) {
         .on("contextmenu", function(d, i) {
 
             // selection en mode compétence uniquement
-            if (getDisplayMode() !== "skillDisplay") {
+            if (getMode() !== "skillDisplay") {
                 return;
             }
             selectNode(d);
@@ -253,7 +251,7 @@ d3.json("pedago.json").then(function(data) {
 
             node.filter(function(d, i) {
                 return !currentSelection.includes(d);
-            }).selectAll("rect").style("fill", applyColours(getDisplayMode()));
+            }).selectAll("rect").style("fill", applyColours(getMode()));
 
             if (currentSelection.length == 0)
                 applyDefaultOpacity(node, link);
@@ -332,11 +330,11 @@ function adaptLabelFontSize() {
     return (labelAvailableWidth / labelWidth) + "em";
 }
 
-// PARAM : un tableau de noeuds représentants les UEs [UEArray]
+// PARAM : un tableau de noeuds représentants les UEs [arrayCourse]
 // et une compétence pour filtrer les UEs [skill]
 // RETURN : renvoie un tableau comportant les UEs en lien avec la compétence
-function getUEBySkill(UEArray, skill) {
-    return UEArray.filter(function(d, i) {
+function getCourseBySkill(arrayCourse, skill) {
+    return arrayCourse.filter(function(d, i) {
 
         var skillArray = d.dependances,
             bool = false;
@@ -345,18 +343,18 @@ function getUEBySkill(UEArray, skill) {
             if (d[0] === skill) {
                 bool = true;
             }
-        });
+        })
 
         return bool;
-    });
+    })
 }
 
-// PARAM : un tableau de noeuds représentants les UEs [UEArray]
+// PARAM : un tableau de noeuds représentants les UEs [arrayCourse]
 // RETURN : renvoie un tableau de liens de dépendances entre UEs
-function getLinks(UEArray) {
+function getLinks(arrayCourse) {
     var links = [];
 
-    UEArray.forEach(function(d, i) {
+    arrayCourse.forEach(function(d, i) {
         d.dependances.forEach(function(din) {
             for (var j = 1; j < din.length; j++) {
                 links.push({
@@ -366,30 +364,30 @@ function getLinks(UEArray) {
                     "value": d.value
                 });
             }
-        });
-    });
+        })
+    })
 
     return links;
 }
 
-// PARAM : un tableau de noeuds représentants les UEs [UEArray]
-// et un entier représentant un id d'UE [UEId]
-// RETURN : renvoie l'UE correspondant à l'id [UEId]
-function getUEById(UEArray, UEId) {
-    var UEs = UEArray.filter(function(d) {
-        return +d.ueid === UEId;
-    });
+// PARAM : un tableau de noeuds représentants les UEs [courseArray]
+// et un entier représentant un id d'UE [courseId]
+// RETURN : renvoie l'UE correspondant à l'id [courseId]
+function getCourseById(courseArray, courseId) {
+    var course = courseArray.filter(function(d) {
+        return +d.ueid === courseId;
+    })
 
-    if (UEs.length && UEs[0])
-        return UEs[0];
+    if (course.length && course[0])
+        return course[0];
 }
 
-// PARAM : tableau d'UEs [UEArray]
+// PARAM : tableau d'UEs [arrayCourse]
 // RETURN : tableau [min,max] des valeurs de semestre (ex pour la licence : [1,6])
-function getMinMaxSemester(UEArray) {
-    return d3.extent(UEArray, function(d) {
+function getMinMaxSemester(arrayCourse) {
+    return d3.extent(arrayCourse, function(d) {
         return +d.semestre;
-    });
+    })
 }
 
 // PARAM : element considéré pour le zoom [tagToTransform1][tagToTransform2],
@@ -426,7 +424,7 @@ function zoomHandler(tagToTransform1, tagToTransform2, maxZoom, reset) {
 // compétence mise en jeu
 function displayLinks(links) {
 
-    if (getDisplayMode() !== "skillDisplay") {
+    if(getMode() !== "skillDisplay") {
         return;
     }
     links.filter(function(d, i) {
@@ -472,7 +470,7 @@ function filterSkill(skill) {
             d3.select(this).classed("ondisplaylinks", false);
         }
         return containsFilter;
-    });
+    })
     hideLinks(links);
     displayLinks(displayedLinks);
 
@@ -491,8 +489,7 @@ function filterSkill(skill) {
     });
     hideNodes(nodes);
     displayNodes(displayedNodes);
-    // nodes.style("opacity", 0.2);
-    // applyDefaultOpacity(displayedNodes);
+
     return skill;
 }
 
@@ -511,7 +508,7 @@ function valoriseAdjacentLinks(node) {
                     containsFilter = true;
                 }
             }
-        );
+        )
 
         node.sourceLinks.forEach(
             function(din) {
@@ -519,7 +516,7 @@ function valoriseAdjacentLinks(node) {
                     containsFilter2 = true;
                 }
             }
-        );
+        )
         return containsFilter || containsFilter2;
     });
 }
@@ -545,17 +542,15 @@ function valoriseAdjacentNodes(node, currentFilters) {
         })
 
         return containsFilter;
-    });
+    })
 
 }
 
 // PARAM : selection d3 des liens [links], des noeuds [nodes]
 // RETURN : void, remet l'opacité des liens et des noeuds par défaut
 function applyDefaultOpacity(nodes, links) {
-    if(nodes)
-        nodes.style("opacity", "0.8");
-    if(links)
-        links.style("opacity", "0.8");
+    nodes.style("opacity", "0.8");
+    links.style("opacity", "0.8");
 }
 
 // PARAM : selection d3 des liens des noeuds [nodes] et lien courant qui est
@@ -567,7 +562,7 @@ function valoriseNodesOnLinkHover(link) {
 
     return nodes.filter(function(d) {
         return (link.datum().source === d || link.datum().target === d);
-    });
+    })
 }
 
 //RETURN : Applique une couleur de fons aux noeuds
@@ -580,17 +575,17 @@ function applyColours(mode) {
             } else if (mode == "skillDisplay") {
                 return d.color = "#b3ccff";
             }
-        });
-    });
+        })
+    })
 }
 
-// PARAM : tableau d'UEs [UEArray]
+// PARAM : tableau d'UEs [courseArray]
 // Met en place l'affichage des semestres sous le graphe
-function displaySemesters(UEArray) {
-    var tab = getMinMaxSemester(UEArray);
+function displaySemesters(arrayCourse) {
+    var tab = getMinMaxSemester(arrayCourse);
 
     var semesterScale = d3.scaleLinear()
-        .domain(getMinMaxSemester(UEArray))
+        .domain(getMinMaxSemester(arrayCourse))
         .range([svgPadding.left + (sankey.nodeWidth() / 2), width - (sankey.nodeWidth() / 2) - (svgPadding.left / 2)]);
 
     for (var i = tab[0]; i <= tab[1]; i++) {
@@ -605,18 +600,18 @@ function displaySemesters(UEArray) {
     }
 }
 
-// PARAM : tableau d'UEs [UEArray]
-// RETURN : tableau d'intitulés de compétences concernées par les UEs [UEArray]
+// PARAM : tableau d'UEs [courseArray]
+// RETURN : tableau d'intitulés de compétences concernées par les UEs [courseArray]
 // EX : ["Appliquer","Programmer"]
-function getSkillList(UEArray) {
+function getSkillList(courseArray) {
     var SkillList = [];
-    UEArray.forEach(function(d, i) {
+    courseArray.forEach(function(d, i) {
         for (var j = 0; j < d.dependances.length; j++) {
             if (!SkillList.includes(d.dependances[j][0])) {
                 SkillList.push(d.dependances[j][0]);
             }
         }
-    });
+    })
     return SkillList;
 }
 
@@ -681,8 +676,9 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
 
     displayLegendDiv.append("h2")
         .text("Blocs");
-    for (var i = 0, sortedKeys = Object.keys(groupColors).sort(); i < Object.keys(groupColors).length; i++) {
-        if (!groupColors.hasOwnProperty(sortedKeys[i])) {
+
+    for (var key in groupColors) {
+        if (!groupColors.hasOwnProperty(key)) {
             continue;
         }
         var displDiv = displayLegendDiv.append("div").append("p")
@@ -690,10 +686,10 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
             .style("margin", 0)
             .style("padding", "2px")
             .style("color", "white")
-            .style("background", "linear-gradient(to right, " + groupColors[sortedKeys[i]] + ", #cce6ff)")
-            .text(function(d) {
-                return sortedKeys[i];
-            });
+            .style("background", "linear-gradient(to right, " + groupColors[key] + ", #cce6ff)")
+            .text(function(d, i) {
+                return key;
+            })
     }
     //=====
 
@@ -722,7 +718,7 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
                 document.getElementById("checkbox" + i).dispatchEvent(new Event("change"));
             }
         }
-    });
+    })
 
     document.getElementById("selectalllabel").addEventListener("mousedown", function(e) {
         e.preventDefault();
@@ -748,12 +744,12 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
         links.attr("d", path);
         nodes.attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
-        });
+        })
 
         svg.attr("transform",
             "translate(" + svgPadding.left + "," + svgPadding.top + ") scale(1)");
         zoomHandler(svg, semesterLayout, 3, "resetScale");
-    });
+    })
 
     var radios = document.getElementsByName("displayMode");
     radios.forEach(function(button) {
@@ -767,7 +763,6 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
                     break;
                 case "groupDisplay":
                     resetSelection();
-                    setInitialFilter(graph.nodes);
                     applyColours(this.value);
                     skillDiv.style("display", "none");
                     displayLegendDiv.style("display", "block");
@@ -779,22 +774,12 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
                     break;
 
             }
-        });
+        })
         // initialise l'affichage
         if (button.checked) {
             button.dispatchEvent(new Event("change"));
         }
     })
-}
-
-function setInitialFilter(data) {
-    currentFilters = getSkillList(data);
-    filterSkill(currentFilters);
-    if(document.getElementById("selectallcheckbox").checked = true) {
-        document.getElementById("selectallcheckbox").dispatchEvent(new Event("change"));
-    } else {
-        document.getElementById("selectallcheckbox").checked = true;
-    }
 }
 
 function updateSelectAllCheckbox() {
@@ -806,8 +791,8 @@ function resetSelection() {
     var nodes = d3.selectAll(".node");
     var links = d3.selectAll(".link");
     currentSelection = [];
-    nodes.selectAll("rect").style("fill", applyColours(getDisplayMode()));
-    applyDefaultOpacity(nodes, links);
+    nodes.selectAll("rect").style("fill", applyColours(getMode()));
+    applyDefaultOpacity(nodes,links);
 }
 // PARAM : tableau de compétences [SkillList]
 // RETURN : void, gère l'affichage des descriptions de chaque compétence onmouseover
@@ -820,6 +805,7 @@ function setSkillDescription(SkillList) {
         .style("font-family", "Verdana")
         .style("font-size", "14px");
 
+
     var descriptions = {
         "Appliquer": "Ceci est la compétence appliquer",
         "Realiser": "2",
@@ -828,11 +814,10 @@ function setSkillDescription(SkillList) {
         "Formaliser": "5",
         "Construire": "6",
     };
-
     for (var total = 0; total < SkillList.length; total++) {
         document.getElementById("checkdiv" + total).addEventListener("mouseover", function() {
             document.getElementById("description-area").innerHTML = descriptions[this.firstChild.value];
-        });
+        })
     }
 }
 
@@ -851,6 +836,7 @@ function checkboxLabelColor(SkillList) {
 // PARAM : Nombre d'ECTS d'une UE
 // RETURN : void, applique la mise en forme ci-dessous pour affichage
 function printECTS(ects) {
+
     return "ECTS : " + ects;
 }
 
@@ -859,6 +845,7 @@ function printECTS(ects) {
 // [nodeB]
 function getAllPathsBetween(nodeA, nodeB) {
     var links = d3.selectAll(".link");
+
 
     var currentpath = [nodeA];
     var pathlist = [];
@@ -893,7 +880,7 @@ function getChildren(node) {
         if (children.indexOf(d.target) == -1) {
             children.push(d.target);
         }
-    });
+    })
     return children;
 }
 
@@ -905,6 +892,7 @@ function selectNode(d) {
 
     var links = d3.selectAll(".link");
     var nodes = d3.selectAll(".node");
+
 
     var exist = currentSelection.indexOf(d);
     if (exist >= 0) {
@@ -962,7 +950,7 @@ function getSkillsOfUE(node) {
     if (node.dependances) {
         node.dependances.forEach(function(d, i) {
             skills.push(d[0]);
-        });
+        })
     }
     return skills;
 }
@@ -999,34 +987,20 @@ function checkNodeDisplay(node, currentFilters) {
 // PARAM : [node]: Tableau des donnees rattachees au noeud
 // RETURN : Tableau de toutes les compétences travaillées par l'UE mais sans lien (dans le JSON, compétence représentée sous la forme ["Appliquer"])
 function getIgnoredSkills(node) {
-    var ignoredSkills = [];
+    var ignoredSkills = []
     node.dependances.forEach(function(skill) {
         if (skill.length == 1)
             ignoredSkills.push(skill[0]);
-    });
+    })
 
     return ignoredSkills;
 }
-
 // RETURN : renvoie le mode d'affichage courant
-function getDisplayMode() {
+function getMode() {
     var modes = document.getElementsByName("displayMode");
     for (i in modes) {
         if (modes[i].checked) {
             return modes[i].value;
         }
     }
-}
-
-function getOptionsBySemester(UEArray,sem) {
-    return UEArray.filter(function(d) {
-        return +d.semestre === sem && d.option === "true";
-    });
-}
-
-// peut se combiner avev getOptionsBySemester
-function getUENameList(options) {
-    return options.map(function(d) {
-        return d.name;
-    });
 }

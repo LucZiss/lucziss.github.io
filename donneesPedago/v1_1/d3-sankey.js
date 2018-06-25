@@ -61,25 +61,6 @@ d3.sankey = function() {
           x3 = xi(1 - curvature),
           y0 = d.source.y + d.sy + d.dy / 2,
           y1 = d.target.y + d.ty + d.dy / 2;
-
-      if(d.source.semestre == d.target.semestre)
-      {
-        var x0prim = x0 + 10,
-            y0prim = y0-10,
-            x1prim = x1-10,
-            y1prim = y1+10,
-            ctrPt1 = y1 + 60,
-            ctrPt2 = y1 + 50;
-
-        return "M" + x0 + "," + y0prim
-           + "L" + x0prim + "," + y0prim
-           + "L" + x0prim + "," + y1
-           + "C" + x0prim + "," + ctrPt1
-           + " " + x1prim + "," + ctrPt2
-           + " " + x1prim + "," + y1
-           + "L" + x1 + "," + y1;
-      }
-
       return "M" + x0 + "," + y0
            + "C" + x2 + "," + y0
            + " " + x3 + "," + y1
@@ -105,8 +86,8 @@ d3.sankey = function() {
     links.forEach(function(link) {
       var source = link.source,
           target = link.target;
-      if (typeof source === "number") source = link.source = getUEById(nodes,link.source);
-      if (typeof target === "number") target = link.target = getUEById(nodes,link.target);
+      if (typeof source === "number") source = link.source = getCourseById(nodes,link.source);
+      if (typeof target === "number") target = link.target = getCourseById(nodes,link.target);
       source.sourceLinks.push(link);
       target.targetLinks.push(link);
     });
@@ -154,7 +135,7 @@ d3.sankey = function() {
       node.x = scale(+node.semestre);
       node.dx = nodeWidth;
     })
-
+    
 
     //
     // moveSinksRight(x);
@@ -225,13 +206,10 @@ d3.sankey = function() {
 
         nodes.forEach(function(node, i) {
           // node.y = i;
-
+          
           if(lastNode == null)
             node.y = -48;
-          else if (node.option == "true" && lastNode.option == "true"){
-            node.y = lastNode.y + lastNode.dy;
-          }
-          else 
+          else
             node.y = lastNode.y + lastNode.dy + nodePadding;
 
           // node.dy = node.value * ky;
