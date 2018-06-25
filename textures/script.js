@@ -96,13 +96,13 @@ d3.json("flowered_wall_1k.json").then(function(json) {
     node.on("mouseover", function(d, i) {
             node.style("opacity", 0.2);
             link.style("opacity", 0.2);
-            imageVisualization.attr("xlink:href", "https://lucziss.github.io/textures//flowered_wall/" + d.image.slice(0, -4) + "_full.png");
+            imageVisualization.attr("xlink:href", "https://lucziss.github.io/textures/flowered_wall/" + d.image.slice(0, -4) + "_full.png");
             valoriseParents(root, d);
             valoriseChildren(d);
         })
         .on("mouseout", function(d, i) {
             applyDefaultStyle();
-            imageVisualization.attr("xlink:href", "https://lucziss.github.io/textures//flowered_wall/flowered_wall_1k.png");
+            imageVisualization.attr("xlink:href", "https://lucziss.github.io/textures/flowered_wall/flowered_wall_1k.png");
         });
 
     var nodeRects = node.append("rect")
