@@ -172,13 +172,13 @@ d3.sankey = function() {
         .map(function(d) { return d.values; });
 
     initializeNodeDepth();
-    // resolveCollisions();
-    // for (var alpha = 1; iterations > 0; --iterations) {
-    //   relaxRightToLeft(alpha *= .99);
-    //   resolveCollisions();
-    //   relaxLeftToRight(alpha);
-    //   resolveCollisions();
-    // }
+    resolveCollisions();
+    for (var alpha = 1; iterations > 0; --iterations) {
+      relaxRightToLeft(alpha *= .99);
+      resolveCollisions();
+      relaxLeftToRight(alpha);
+      resolveCollisions();
+    }
 
     function initializeNodeDepth() {
       // var ky = d3.min(nodesByBreadth, function(nodes) {
@@ -186,40 +186,18 @@ d3.sankey = function() {
       // });
       var ky = 10;
       var skillList = getSkillList(nodes);
-      var lastNode = null;
 
-      nodesByBreadth.forEach(function(_nodes) {
-        lastNode = null;
 
-        var nodes = [];
-        var nodesArray = d3.nest()
-          .key(function(d) { return d.categorie; })
-          .sortKeys(d3.ascending)
-          .entries(_nodes)
-          .map(function(d) { return d.values; });
-
-        nodesArray.forEach(function (arr) {
-          arr.forEach(function (elem) {
-            nodes.push(elem);
-          })
-        })
-
+      nodesByBreadth.forEach(function(nodes) {
         nodes.forEach(function(node, i) {
-          // node.y = i;
+          node.y = i;
           
-          if(lastNode == null)
-            node.y = -48;
-          else
-            node.y = lastNode.y + lastNode.dy + nodePadding;
-
           // node.dy = node.value * ky;
           // node.dy = ky * getSkillsOfUE(node).length;
           node.dy = (ky / 5) * skillList.length * node.coefficient;
 
           if(node.dy <= 15)
             node.dy = 15;
-
-          lastNode = node;
         });
       });
 
@@ -228,68 +206,68 @@ d3.sankey = function() {
       });
     }
 
-    // function relaxLeftToRight(alpha) {
-    //   nodesByBreadth.forEach(function(nodes, breadth) {
-    //     nodes.forEach(function(node) {
-    //       if (node.targetLinks.length) {
-    //         var y = d3.sum(node.targetLinks, weightedSource) / d3.sum(node.targetLinks, value);
-    //         node.y += (y - center(node)) * alpha;
-    //       }
-    //     });
-    //   });
+    function relaxLeftToRight(alpha) {
+      nodesByBreadth.forEach(function(nodes, breadth) {
+        nodes.forEach(function(node) {
+          if (node.targetLinks.length) {
+            var y = d3.sum(node.targetLinks, weightedSource) / d3.sum(node.targetLinks, value);
+            node.y += (y - center(node)) * alpha;
+          }
+        });
+      });
 
-    //   function weightedSource(link) {
-    //     return center(link.source) * link.value;
-    //   }
-    // }
+      function weightedSource(link) {
+        return center(link.source) * link.value;
+      }
+    }
 
-    // function relaxRightToLeft(alpha) {
-    //   nodesByBreadth.slice().reverse().forEach(function(nodes) {
-    //     nodes.forEach(function(node) {
-    //       if (node.sourceLinks.length) {
-    //         var y = d3.sum(node.sourceLinks, weightedTarget) / d3.sum(node.sourceLinks, value);
-    //         node.y += (y - center(node)) * alpha;
-    //       }
-    //     });
-    //   });
+    function relaxRightToLeft(alpha) {
+      nodesByBreadth.slice().reverse().forEach(function(nodes) {
+        nodes.forEach(function(node) {
+          if (node.sourceLinks.length) {
+            var y = d3.sum(node.sourceLinks, weightedTarget) / d3.sum(node.sourceLinks, value);
+            node.y += (y - center(node)) * alpha;
+          }
+        });
+      });
 
-    //   function weightedTarget(link) {
-    //     return center(link.target) * link.value;
-    //   }
-    // }
+      function weightedTarget(link) {
+        return center(link.target) * link.value;
+      }
+    }
 
-    // function resolveCollisions() {
-    //   nodesByBreadth.forEach(function(nodes) {
-    //     var node,
-    //         dy,
-    //         y0 = 0,
-    //         n = nodes.length,
-    //         i;
+    function resolveCollisions() {
+      nodesByBreadth.forEach(function(nodes) {
+        var node,
+            dy,
+            y0 = 0,
+            n = nodes.length,
+            i;
 
-    //     // Push any overlapping nodes down.
-    //     nodes.sort(ascendingDepth);
-    //     for (i = 0; i < n; ++i) {
-    //       node = nodes[i];
-    //       dy = y0 - node.y;
-    //       if (dy > 0) node.y += dy;
-    //       y0 = node.y + node.dy + nodePadding;
-    //     }
+        // Push any overlapping nodes down.
+        nodes.sort(ascendingDepth);
+        for (i = 0; i < n; ++i) {
+          node = nodes[i];
+          dy = y0 - node.y;
+          if (dy > 0) node.y += dy;
+          y0 = node.y + node.dy + nodePadding;
+        }
 
-    //     // If the bottommost node goes outside the bounds, push it back up.
-    //     dy = y0 - nodePadding - size[1];
-    //     if (dy > 0) {
-    //       y0 = node.y -= dy;
+        // If the bottommost node goes outside the bounds, push it back up.
+        dy = y0 - nodePadding - size[1];
+        if (dy > 0) {
+          y0 = node.y -= dy;
 
-    //       // Push any overlapping nodes back up.
-    //       for (i = n - 2; i >= 0; --i) {
-    //         node = nodes[i];
-    //         dy = node.y + node.dy + nodePadding - y0;
-    //         if (dy > 0) node.y -= dy;
-    //         y0 = node.y;
-    //       }
-    //     }
-    //   });
-    // }
+          // Push any overlapping nodes back up.
+          for (i = n - 2; i >= 0; --i) {
+            node = nodes[i];
+            dy = node.y + node.dy + nodePadding - y0;
+            if (dy > 0) node.y -= dy;
+            y0 = node.y;
+          }
+        }
+      });
+    }
 
     function ascendingDepth(a, b) {
       return a.y - b.y;
