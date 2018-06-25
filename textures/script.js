@@ -27,7 +27,7 @@ var svg = d3.select("body").append("svg")
 
 var imageVisualization = d3.select("svg").append("image")
     .attr("width", "350px")
-    .attr("xlink:href", "flowered_wall/flowered_wall_1k.png");
+    .attr("xlink:href", "./flowered_wall/flowered_wall_1k.png");
 
 var sankey = d3.sankey()
     .nodeWidth(100)
@@ -96,13 +96,13 @@ d3.json("flowered_wall_1k.json").then(function(json) {
     node.on("mouseover", function(d, i) {
             node.style("opacity", 0.2);
             link.style("opacity", 0.2);
-            imageVisualization.attr("xlink:href", "https://lucziss.github.io/textures/flowered_wall/" + d.image.slice(0, -4) + "_full.png");
+            imageVisualization.attr("xlink:href", "./flowered_wall/" + d.image.slice(0, -4) + "_full.png");
             valoriseParents(root, d);
             valoriseChildren(d);
         })
         .on("mouseout", function(d, i) {
             applyDefaultStyle();
-            imageVisualization.attr("xlink:href", "https://lucziss.github.io/textures/flowered_wall/flowered_wall_1k.png");
+            imageVisualization.attr("xlink:href", "./flowered_wall/flowered_wall_1k.png");
         });
 
     var nodeRects = node.append("rect")
@@ -127,7 +127,7 @@ d3.json("flowered_wall_1k.json").then(function(json) {
         .attr("rx", 2)
         .attr("ry", 2)
         .attr("xlink:href", function(d) {
-            return '/flowered_wall/' + d.image;
+            return './flowered_wall/' + d.image;
         });
 
 
