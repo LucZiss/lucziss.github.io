@@ -1,14 +1,14 @@
-var units = "dependance(s)";
-
+// Marges et taille du SVG
 var margin = {
         top: 20,
         right: 300,
-        bottom: 20,
+        bottom: 50,
         left: 20
     },
     width = window.innerWidth - margin.left - margin.right,
     height = window.innerHeight - margin.top - margin.bottom;
 
+// Padding du SVG
 var svgPadding = {
     top: 55,
     right: 35,
@@ -16,14 +16,25 @@ var svgPadding = {
     left: 15
 };
 
-
+// Création de la selection clic droit et du filtre de compétences (Appliquer,Programmation,etc...)
+// exemple : currentFilters = ["Appliquer","Réaliser"] affiche les UE concernées par
+// les compétences Appliquer et Realiser
+// currentSelection comporte les noeuds sélectionnés au clic droit (0 à 2 noeuds)
 var currentFilters = [];
 var currentSelection = [];
 
+
+// Echelle d3 de couleurs
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-
 // NOTE: On pourrait mettre les couleurs directement dans le .json
+// Il est aussi possible de remplacer SkillList simplement par sa longueur
+// dans certains appels de fonctions
+// NOTE : Il est possible de refactorer le code de certaines fonctions en créant
+// une fonction de parcours des source/targetLinks et peut etre aussi
+// en utilisant includes()
+
+// Couleurs attribuées à chaque compétence
 var skillColors = {
     "Realiser": color(0.16),
     "Appliquer": color(0.32),
@@ -33,6 +44,7 @@ var skillColors = {
     "Professionnaliser": color(1)
 };
 
+// Couleurs attribuées à chaque bloc
 var groupColors = {
     "Mathématiques": "#b3ccff",
     "Informatique": "#ed7676",
@@ -41,6 +53,7 @@ var groupColors = {
     "Langues": "#2aaf33"
 };
 
+// sélection d3 du g dans le svg
 var svg = d3.select("body").append("svg")
     .attr("id", "chart")
     .attr("width", width)
@@ -82,81 +95,67 @@ var infoWindowText = infoWindow.append("p")
     .style("text-align", "justify")
     .html("<u>Pré-requis</u><br/><br/> Programme de TS toutes spécialités confondues. <br/><br/><u>Contenu</u><br/><br/> Arithmétique dans Z. Division euclidienne. Diviseurs communs à deux entiers, pgcd, ppcm, lemme de Gauss. Théorème de Bézout. Algorithme dEuclide de calcul de pgcd. Nombres premiers. Existence et unicité de la décomposition en produit de facteurs premiers. Congruences : additions et multiplications. Systèmes de congruences, théorème chinois. Polynômes, somme, produit, fonctions polynômiales. Annulation en un point et factorisation par X -a.<br/><br/>Algèbre linéaire. Systèmes linéaires dans R^n, résolution par méthode du pivot. Matrices, produit de matrices, traduction des opérations de lignes et de colonnes. Calculs de noyaux et d'images. <br/><br/><u>Objectifs : savoir-faire et compétences</u><br/><br/> Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.")
 */
+
+// Division à droite du svg représentant les compétences,blocs,boutons d'interaction
 var filterDiv = d3.select("body").append("div")
     .attr("id", "filterDiv")
-    .style("width", (margin.right - 10) + "px");
+    .style("width", margin.right + "px");
 
-filterDiv.append("h2").text("Affichage");
-
-filterDiv.append("div")
-    .attr("id", "displayRadio")
-    .attr("width", "100%")
-    .style("font-family", "Verdana")
-    .append("label")
-    .attr("for", "skillDisplay")
-    .style("font-family", "Verdana")
-    .html("Compétences")
-    .append("input")
-    .attr("id", "skillDisplay")
-    .attr("class", "radioInput")
-    .attr("type", "radio")
-    .attr("name", "displayMode")
-    .attr("value", "skillDisplay")
-    .attr("checked", "true");
-
-filterDiv.select("#displayRadio")
-    .append("label")
-    .attr("for", "groupDisplay")
-    .style("margin-left", "5px")
-    .html("Blocs")
-    .append("input")
-    .attr("id", "groupDisplay")
-    .attr("class", "radioInput")
-    .attr("type", "radio")
-    .attr("name", "displayMode")
-    .attr("value", "groupDisplay");
-
-
+// Création du layout d3 sankey
+// Il va calculer la position de chaque noeud du graphe
+// nodeWidth : largeur du noeud, nodePadding : espacement entre noeud, size : taille du sankey
 var sankey = d3.sankey()
     .nodeWidth(100)
     .nodePadding(8)
     .size([width - svgPadding.right - svgPadding.left, height - svgPadding.bottom]);
 
+// Paths svg pour les liens entre noeuds
 var path = sankey.link();
 
+// SVG représentant l'axe des semestres sous le graphe (Semestre 1,Semestre 2,etc...)
 var semesterLayout = d3.select("body").append("svg")
     .attr("id", "semesterLayout")
     .attr("width", width)
-    .attr("height", 50)
+    .attr("height", 45)
     .style("background-color", "#cce6ff")
     .append("g");
 
+// création de la tooltip (infobulle)
 var tip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
+// Gestion du zoom sur la zone du SVG (zoom Max x3)
 zoomHandler(svg, semesterLayout, 3);
 
+// Parsing du json
 d3.json("pedago.json").then(function(data) {
 
+    // Création de l'objet graphe
+    // On y insère les données parsées du json
     var graph = {
         "nodes": data,
         "links": getLinks(data)
     };
 
+    // Désactiver le menu contextuel au clic droit lorsque la souris est sur le SVG
     d3.select("#chart").on("contextmenu", function() {
         d3.event.preventDefault();
     });
 
+    // Initialisation des filtres (= toutes les compétences existantes ici)
     currentFilters = getSkillList(graph.nodes);
 
+    // Calcul de la dispoition des noeuds et liens du diagramme de sankey
     sankey
         .nodes(graph.nodes)
         .links(graph.links)
         .layout(32);
 
+    //Mise en place de l'affichage des semestres sous le SVG du graphe
     displaySemesters(graph.nodes);
 
+    // selection d3 des liens avec les données du sankey bindées
     var link = svg.append("g").selectAll(".link")
         .data(graph.links)
         .enter().append("path")
@@ -169,8 +168,10 @@ d3.json("pedago.json").then(function(data) {
             return b.dy - a.dy;
         });
 
+    // Initialisation de l'affichage des liens
     displayLinks(link);
 
+    // selection d3 des noeuds avec les données du sankey bindées
     var node = svg.append("g").selectAll(".node")
         .data(graph.nodes)
         .enter().append("g")
@@ -182,12 +183,14 @@ d3.json("pedago.json").then(function(data) {
         .on("click", function() {
             // alert("click");
             /* d3.select("#infoWindow").style("display","block");*/
-        })
+        }) // Gestion du drag des noeuds
         .call(d3.drag()
             .clickDistance(5)
             .on("drag", dragmove)
         );
 
+    // selection d3 des rects du svg (= les rectangles de chaque noeud avec
+    // couleur d'arrière plan )
     var nodeRects = node.append("rect")
         .attr("height", function(d) {
             return d.dy;
@@ -203,8 +206,11 @@ d3.json("pedago.json").then(function(data) {
             return d3.rgb(d.color).darker(2);
         });
 
+    // Initialisation de l'affichage des liens
     displayNodes(nodeRects);
 
+
+    // sélection d3 des textes au niveau des noeuds
     var nodeTexts = node.append("text")
         .attr("y", function(d) {
             return d.dy / 2;
@@ -220,8 +226,10 @@ d3.json("pedago.json").then(function(data) {
             return d.x < width / 2;
         });
 
+    // gestion des évenements liés aux noeuds
     node
         .on("mouseover", function(d, i) {
+            // Affichage de l'infobulle et mise à jour de ses informations
             tip.transition()
                 .delay(500)
                 .duration(200)
@@ -234,30 +242,35 @@ d3.json("pedago.json").then(function(data) {
                 .style("top", (d3.event.pageY - 10) + "px");
         })
         .on("mouseout", function(d, i) {
-
+            // Disparition de l'infobulle
             tip.transition()
                 .duration(100)
                 .style("opacity", 0);
         })
         .on("contextmenu", function(d, i) {
 
-            // selection en mode compétence uniquement
+            // sélection en mode compétence uniquement
             if (getDisplayMode() !== "skillDisplay") {
                 return;
             }
+            // Ajoute le noeud "d" cliqué s'il n'est pas deja dans currentSelection
             selectNode(d);
 
+            // style noeuds sélectionnés
             node.filter(function(d, i) {
                 return currentSelection.includes(d);
             }).selectAll("rect").style("fill", "orange");
 
+            // style noeuds non sélectionnés
             node.filter(function(d, i) {
                 return !currentSelection.includes(d);
             }).selectAll("rect").style("fill", applyColours(getDisplayMode()));
 
+            // Affichage par défaut quand rien n'est sélectionné
             if (currentSelection.length == 0)
                 applyDefaultOpacity(node, link);
 
+            // Mise en valeur quand un seul noeud est sélectionné
             if (currentSelection.length == 1) {
                 link.style("opacity", "0.2");
                 node.style("opacity", "0.2");
@@ -273,32 +286,7 @@ d3.json("pedago.json").then(function(data) {
     setSkillDescription(SkillList);
     checkboxLabelColor(SkillList);
 
-    // link
-    //     .on("mouseover", function(d, i) {
-    //         tip.transition()
-    //             .duration(200)
-    //             .style("opacity", .8);
-    //         tip.html(d.source.name + " → " + d.target.name + "<br/>" + d.linktype)
-    //             .style("left", (d3.event.pageX + 25) + "px")
-    //             .style("top", (d3.event.pageY - 25) + "px");
-    //
-    //         if (currentSelection.length != 2) {
-    //             var currentLink = d3.select(this);
-    //             link.style("opacity", "0.2");
-    //             node.style("opacity", "0.2");
-    //             currentLink.style("opacity", "0.8");
-    //             valoriseNodesOnLinkHover(node, currentLink).style("opacity", "0.8");
-    //         }
-    //     })
-    //     .on("mouseout", function(d, i) {
-    //         if (currentSelection.length != 2)
-    //             applyDefaultOpacity(node, link);
-    //
-    //         tip.transition()
-    //             .duration(500)
-    //             .style("opacity", 0);
-    //     });
-
+    // fonction gérant le drag
     function dragmove(d) {
         d3.select(this)
             .attr("transform",
@@ -312,9 +300,8 @@ d3.json("pedago.json").then(function(data) {
 });
 
 
-// NOTE : Il est possible de refactorer le code de certaines fonctions en créant
-// une fonction de parcours des source/targetLinks et peut etre aussi
-// en utilisant includes()
+// ------ FONCTIONS ------ //
+
 
 // RETURN : renvoie une chaine de caractere representant la taille de police
 // adaptee de sorte que le label tienne dans la largeur du noeud
@@ -627,16 +614,66 @@ function getSkillList(UEArray) {
 // Doit être appelée une seule fois
 function filterDisplayManager(SkillList, currentFilters, graph) {
 
-    var svg = d3.select("#chart").select("g");
-    var semesterLayout = d3.select("#semesterLayout").select("g");
-
-    var links = d3.selectAll(".link");
-    var nodes = d3.selectAll(".node");
+    radioDisplaySetup();
 
     var skillDiv = filterDiv.append("div");
-    skillDiv.append("h2").text("Compétences");
+    skillDiv.append("h2")
+        .text("Compétences");
+    displaySkills(SkillList, skillDiv, currentFilters);
 
-    //===== DIV COMPETENCES
+    var displayLegendDiv = filterDiv.append("div");
+    displayLegendDiv.append("h2")
+        .text("Blocs");
+    displayBlocks(displayLegendDiv);
+
+    selectAllSetup(SkillList);
+
+    buttonsSetup(graph);
+
+    changeMode(graph, skillDiv, displayLegendDiv);
+}
+
+// RETURN : void, initialise l'affichage du bouton radio permettant de choisir le mode d'affichage
+function radioDisplaySetup () {
+    // titre
+    filterDiv.append("h2").text("Affichage");
+
+    //
+    filterDiv.append("div")
+        .attr("id", "displayRadio")
+        .attr("width", "100%")
+        .style("font-family", "Verdana")
+        .append("label")
+        .attr("for", "skillDisplay")
+        .style("font-family", "Verdana")
+        .html("Compétences")
+        .append("input")
+        .attr("id", "skillDisplay")
+        .attr("class", "radioInput")
+        .attr("type", "radio")
+        .attr("name", "displayMode")
+        .attr("value", "skillDisplay")
+        .attr("checked", "true");
+
+
+    //
+    filterDiv.select("#displayRadio")
+        .append("label")
+        .attr("for", "groupDisplay")
+        .style("margin-left", "5px")
+        .html("Blocs")
+        .append("input")
+        .attr("id", "groupDisplay")
+        .attr("class", "radioInput")
+        .attr("type", "radio")
+        .attr("name", "displayMode")
+        .attr("value", "groupDisplay");
+}
+
+// PARAM : tableau comportant toutes les compétences [SkillList], tableau des filtres actuellement
+// appliqués [currentFilters], selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [skillDiv]
+// RETURN : void, gere l'affichage en mode "competences" ainsi que la disposition des checkbox de ce mode d'affichage
+function displaySkills(SkillList, skillDiv, currentFilters) {
     for (var total = 0; total < SkillList.length; total++) {
         var checkDiv = skillDiv.append("div")
             .style("color", "white")
@@ -675,12 +712,16 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
         });
 
     }
-    //=====
-    //===== DIV BLOCK
-    var displayLegendDiv = filterDiv.append("div");
+}
 
-    displayLegendDiv.append("h2")
-        .text("Blocs");
+// RETURN : void, coche, la checkbox "(De)Selectionner tout"
+function updateSelectAllCheckbox() {
+    document.getElementById("selectallcheckbox").checked = true;
+}
+
+// PARAM : selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [displayLegendDiv]
+// RETURN : void, gere l'affichage en mode "blocs" ainsi que la legende de ce mode d'affichage
+function displayBlocks(displayLegendDiv) {
     for (var i = 0, sortedKeys = Object.keys(groupColors).sort(); i < Object.keys(groupColors).length; i++) {
         if (!groupColors.hasOwnProperty(sortedKeys[i])) {
             continue;
@@ -695,39 +736,16 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
                 return sortedKeys[i];
             });
     }
-    //=====
+}
 
-    var selectAllCheckbox = filterDiv.append("input")
-        .attr("type", "checkbox")
-        .attr("id", "selectallcheckbox")
-        .attr("checked", "true");
+// PARAM : Tableau des donnees des noeuds et des liens [graph]
+// RETURN : void, gere l'affichage du bouton de reinitialisation ainsi que la legende (UE en option)
+function buttonsSetup(graph) {
+    var svg = d3.select("#chart").select("g");
+    var semesterLayout = d3.select("#semesterLayout").select("g");
 
-    var selectAllLabel = filterDiv.append("label")
-        .attr("for", "selectallcheckbox")
-        .attr("id", "selectalllabel")
-        .append("p")
-        .style("display", "inline")
-        .style("font-family", "Verdana")
-        .html("(Dé)sélectionner tout");
-
-    document.getElementById("selectallcheckbox").addEventListener("change", function() {
-        if (this.checked) {
-            for (var i = 0; i < SkillList.length; i++) {
-                document.getElementById("checkbox" + i).checked = true;
-                document.getElementById("checkbox" + i).dispatchEvent(new Event("change"));
-            }
-        } else {
-            for (var i = 0; i < SkillList.length; i++) {
-                document.getElementById("checkbox" + i).checked = false;
-                document.getElementById("checkbox" + i).dispatchEvent(new Event("change"));
-            }
-        }
-    });
-
-    document.getElementById("selectalllabel").addEventListener("mousedown", function(e) {
-        e.preventDefault();
-    }, false);
-
+    var links = d3.selectAll(".link");
+    var nodes = d3.selectAll(".node");
 
     var resetViewButton = filterDiv.append("button")
         .attr("class", "selectionButtons")
@@ -754,6 +772,13 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
             "translate(" + svgPadding.left + "," + svgPadding.top + ") scale(1)");
         zoomHandler(svg, semesterLayout, 3, "resetScale");
     });
+}
+
+// PARAM : Tableau des donnees des noeuds et des liens [graph], selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [skillDiv],
+// et selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [displayLegendDiv]
+// RETURN : void, gere les changements d'affichage du diagramme lors d'un changement de mode
+function changeMode(graph, skillDiv, displayLegendDiv) {
+    var links = d3.selectAll(".link");
 
     var radios = document.getElementsByName("displayMode");
     radios.forEach(function(button) {
@@ -787,6 +812,43 @@ function filterDisplayManager(SkillList, currentFilters, graph) {
     })
 }
 
+// PARAM : tableau comportant toutes les compétences [SkillList]
+// RETURN : void, initialise la checkbox "(De)Selectionner tout"
+function selectAllSetup(SkillList) {
+    var selectAllCheckbox = filterDiv.append("input")
+        .attr("type", "checkbox")
+        .attr("id", "selectallcheckbox")
+        .attr("checked", "true");
+
+    var selectAllLabel = filterDiv.append("label")
+        .attr("for", "selectallcheckbox")
+        .attr("id", "selectalllabel")
+        .append("p")
+        .style("display", "inline")
+        .style("font-family", "Verdana")
+        .html("(Dé)sélectionner tout");
+
+    document.getElementById("selectallcheckbox").addEventListener("change", function() {
+        if (this.checked) {
+            for (var i = 0; i < SkillList.length; i++) {
+                document.getElementById("checkbox" + i).checked = true;
+                document.getElementById("checkbox" + i).dispatchEvent(new Event("change"));
+            }
+        } else {
+            for (var i = 0; i < SkillList.length; i++) {
+                document.getElementById("checkbox" + i).checked = false;
+                document.getElementById("checkbox" + i).dispatchEvent(new Event("change"));
+            }
+        }
+    });
+
+    document.getElementById("selectalllabel").addEventListener("mousedown", function(e) {
+        e.preventDefault();
+    }, false);
+}
+
+// PARAM : tableau representant les donnees du sankey [data]
+// RETURN : void, initialise l'affichage initial avec toutes les competences
 function setInitialFilter(data) {
     currentFilters = getSkillList(data);
     filterSkill(currentFilters);
@@ -797,10 +859,6 @@ function setInitialFilter(data) {
     }
 }
 
-function updateSelectAllCheckbox() {
-    document.getElementById("selectallcheckbox").checked = true;
-}
-
 // BRIEF : vide la selection de noeuds courante, et met à jour les styles en conséquence
 function resetSelection() {
     var nodes = d3.selectAll(".node");
@@ -809,6 +867,7 @@ function resetSelection() {
     nodes.selectAll("rect").style("fill", applyColours(getDisplayMode()));
     applyDefaultOpacity(nodes, links);
 }
+
 // PARAM : tableau de compétences [SkillList]
 // RETURN : void, gère l'affichage des descriptions de chaque compétence onmouseover
 // dans la zone prévue à cet effet
@@ -914,9 +973,20 @@ function selectNode(d) {
         displayNodes(nodes);
     } else if (currentSelection.length < 2) {
         currentSelection.push(d);
-        currentSelection.sort(function(a, b) {
-            return a.semestre - b.semestre;
-        });
+        if(currentSelection.length == 2 && currentSelection[0].semestre != currentSelection[1].semestre){
+            currentSelection.sort(function(a, b) {
+                return a.semestre - b.semestre;
+            });
+        }
+        else if(currentSelection.length == 2 && currentSelection[0].semestre == currentSelection[1].semestre){
+            currentSelection[0].targetLinks.forEach(function(link) {
+                if(link.source.ueid == currentSelection[1].ueid){
+                    var tmp = currentSelection[0];
+                    currentSelection[0] = currentSelection[1];
+                    currentSelection[1] = tmp;
+                }
+            })
+        }
     }
 
     if (currentSelection.length == 2) {
@@ -1018,13 +1088,16 @@ function getDisplayMode() {
     }
 }
 
+// PARAM : un tableau de donnees représentants les UEs [UEArray], numero de semestre [sem]
+// RETURN : les UE de UEArray pour lesquelles "option" vaut "true" et appartenant au semestre "sem"
 function getOptionsBySemester(UEArray,sem) {
     return UEArray.filter(function(d) {
         return +d.semestre === sem && d.option === "true";
     });
 }
 
-// peut se combiner avev getOptionsBySemester
+// PARAM : tableau de donnes d'UE [options]
+// RETURN : nom des UE (peut se combiner avev getOptionsBySemester)
 function getUENameList(options) {
     return options.map(function(d) {
         return d.name;
