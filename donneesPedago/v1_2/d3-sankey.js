@@ -65,13 +65,14 @@ d3.sankey = function() {
       if(d.source.semestre == d.target.semestre)
       {
         var x0prim = x0 + 10,
+            y0prim = y0-10,
             x1prim = x1-10,
             y1prim = y1+10,
             ctrPt1 = y1 + 60,
             ctrPt2 = y1 + 50;
 
-        return "M" + x0 + "," + y0
-           + "L" + x0prim + "," + y0
+        return "M" + x0 + "," + y0prim
+           + "L" + x0prim + "," + y0prim
            + "L" + x0prim + "," + y1
            + "C" + x0prim + "," + ctrPt1
            + " " + x1prim + "," + ctrPt2
@@ -343,12 +344,10 @@ d3.sankey = function() {
       skillList = getSkillsOfUE(node);
 
       node.sourceLinks.forEach(function (link) {
-        // link.sy = (node.dy/2 - (link.dy/2 * (skillList.length-ignoredSkills.length))) + link.dy * skillList.indexOf(link.linktype);
-        link.sy = node.dy/2 - link.dy/2;
+        link.sy = (node.dy/2 - (link.dy/2 * (skillList.length-ignoredSkills.length))) + link.dy * skillList.indexOf(link.linktype);
       })
       node.targetLinks.forEach(function(link) {
-        // link.ty = (node.dy/2 - (link.dy/2 * skillList.length)) + link.dy * skillList.indexOf(link.linktype);
-        link.ty = node.dy/2 - link.dy/2;
+        link.ty = (node.dy/2 - (link.dy/2 * skillList.length)) + link.dy * skillList.indexOf(link.linktype);
       });
     })
 
