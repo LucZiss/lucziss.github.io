@@ -16,17 +16,13 @@ var svgPadding = {
     left: 15
 };
 
-escapeEvents();
-
-// Création de la selection clic droit et du
-// filtre de compétences (Appliquer,Programmation,etc...)
-// exemple : currentFilters = ["Appliquer","Réaliser"] affiche
-// les UE concernées par les compétences Appliquer et Realiser
+// Création de la selection clic droit et du filtre de compétences (Appliquer,Programmation,etc...)
+// exemple : currentFilters = ["Appliquer","Réaliser"] affiche les UE concernées par
+// les compétences Appliquer et Realiser
 // currentSelection comporte les noeuds sélectionnés au clic droit (0 à 2 noeuds)
 var currentFilters = [];
 var currentSelection = [];
-var currentSelectedOptions = [];
-var lastClickedOptionNode;
+
 
 // Echelle d3 de couleurs
 var color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -39,11 +35,23 @@ var color = d3.scaleOrdinal(d3.schemeCategory10);
 // en utilisant includes()
 
 // Couleurs attribuées à chaque compétence
-var skillColors = {};
-var skillDescriptions = {};
+var skillColors = {
+    "Realiser": color(0.16),
+    "Appliquer": color(0.32),
+    "Formaliser": color(0.50),
+    "Construire": color(0.66),
+    "Programmer": color(0.83),
+    "Professionnaliser": color(1)
+};
 
 // Couleurs attribuées à chaque bloc
-var groupColors = {};
+var groupColors = {
+    "Mathématiques": "#b3ccff",
+    "Informatique": "#ed7676",
+    "Informatique théorique": "#bf79ea",
+    "Ouverture": "lightgrey",
+    "Langues": "#2aaf33"
+};
 
 // sélection d3 du g dans le svg
 var svg = d3.select("body").append("svg")
@@ -55,8 +63,38 @@ var svg = d3.select("body").append("svg")
     .attr("transform",
         "translate(" + svgPadding.left + "," + svgPadding.top + ")");
 
+/*
+var infoWindow = d3.select("body").append("div")
+    .style("width", width + "px")
+    .style("height", height + "px")
+    .style("position", "absolute")
+    .style("left", 8 + "px")
+    .style("top", 8 + "px")
+    .style("opacity", "0.9")
+    .style("height", height + "px")
+    .attr("id", "infoWindow")
+    .style("background-color", "#333333");
 
-initInfoWindow();
+var closeInfoWindow = infoWindow.append("div")
+    .style("width", "50px")
+    .style("height", "50px")
+    .style("opacity", "0.7")
+    .style("float", "right")
+    .style("color", "white")
+    .style("text-align", "center")
+    .style("background-color", "black")
+    .html("X")
+    .on("click", function(d, i) {
+        d3.select("#infoWindow").style("display", "none");
+    });
+
+var infoWindowText = infoWindow.append("p")
+    .style("color", "white")
+    .style("padding", "150px")
+    .style("font-family", "Verdana")
+    .style("text-align", "justify")
+    .html("<u>Pré-requis</u><br/><br/> Programme de TS toutes spécialités confondues. <br/><br/><u>Contenu</u><br/><br/> Arithmétique dans Z. Division euclidienne. Diviseurs communs à deux entiers, pgcd, ppcm, lemme de Gauss. Théorème de Bézout. Algorithme dEuclide de calcul de pgcd. Nombres premiers. Existence et unicité de la décomposition en produit de facteurs premiers. Congruences : additions et multiplications. Systèmes de congruences, théorème chinois. Polynômes, somme, produit, fonctions polynômiales. Annulation en un point et factorisation par X -a.<br/><br/>Algèbre linéaire. Systèmes linéaires dans R^n, résolution par méthode du pivot. Matrices, produit de matrices, traduction des opérations de lignes et de colonnes. Calculs de noyaux et d'images. <br/><br/><u>Objectifs : savoir-faire et compétences</u><br/><br/> Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.")
+*/
 
 // Division à droite du svg représentant les compétences,blocs,boutons d'interaction
 var filterDiv = d3.select("body").append("div")
@@ -65,11 +103,11 @@ var filterDiv = d3.select("body").append("div")
 
 // Création du layout d3 sankey
 // Il va calculer la position de chaque noeud du graphe
-// nodeWidth : largeur du noeud, nodePadding : espacement entre noeud,
-// size : taille du sankey
+// nodeWidth : largeur du noeud, nodePadding : espacement entre noeud, size : taille du sankey
 var sankey = d3.sankey()
-    .nodePadding(4)
-    .size([width - svgPadding.right, height - svgPadding.bottom]);
+    .nodeWidth(100)
+    .nodePadding(8)
+    .size([width - svgPadding.right - svgPadding.left, height - svgPadding.bottom]);
 
 // Paths svg pour les liens entre noeuds
 var path = sankey.link();
@@ -77,7 +115,7 @@ var path = sankey.link();
 // SVG représentant l'axe des semestres sous le graphe (Semestre 1,Semestre 2,etc...)
 var semesterLayout = d3.select("body").append("svg")
     .attr("id", "semesterLayout")
-    .attr("width", "100%")
+    .attr("width", width)
     .attr("height", 45)
     .style("background-color", "#cce6ff")
     .append("g");
@@ -88,42 +126,17 @@ var tip = d3.select("body").append("div")
     .style("opacity", 0);
 
 // Gestion du zoom sur la zone du SVG (zoom Max x3)
-// zoomHandler(svg, semesterLayout, 3);
-
-var graph;
-
-//gestion du click en arrière plan
-var backgroundClick = true;
-d3.select("html").on('click', function() {
-    if (backgroundClick) {
-        d3.select("#dropdown").remove();
-    }
-    backgroundClick = true;
-});
+zoomHandler(svg, semesterLayout, 3);
 
 // Parsing du json
-d3.json("pedagoLicenceInfo17.json").then(function(data) {
+d3.json("pedago.json").then(function(data) {
 
     // Création de l'objet graphe
     // On y insère les données parsées du json
-    graph = {
-        "nodes": data.ue,
-        "options": data.options,
-        "links": getLinks(data.ue),
-        "categories": [],
-        "competences": []
+    var graph = {
+        "nodes": data,
+        "links": getLinks(data)
     };
-
-    data.categories.forEach(function(cat) {
-        graph.categories.push(cat.name);
-        groupColors[cat.name] = cat.color;
-    })
-
-    data.competences.forEach(function(comp) {
-        graph.competences.push(comp);
-        skillColors[comp.name] = comp.color;
-        skillDescriptions[comp.name] = comp.description;
-    })
 
     // Désactiver le menu contextuel au clic droit lorsque la souris est sur le SVG
     d3.select("#chart").on("contextmenu", function() {
@@ -134,29 +147,10 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
     // currentFilters = getSkillList(graph.nodes);
 
     // Calcul de la dispoition des noeuds et liens du diagramme de sankey
-    var nodeW = function() {
-        var sem = getMinMaxSemester(graph.nodes);
-        var res = 30 * 10 / (0.5 * sem[1]);
-        if (res < 70)
-            res = 70;
-        else if (res > 150)
-            res = 150;
-
-        return res;
-    }
-
     sankey
-        .nodeWidth(nodeW())
         .nodes(graph.nodes)
-        .options(graph.options)
         .links(graph.links)
-        .categories(graph.categories)
-        .competences(graph.competences)
-        .layout();
-
-    // Setup ligne de separation zone d'option
-    var separatorYPos = sankey.highestOptionY() + 20;
-    setupAreaSeparator(separatorYPos);
+        .layout(32);
 
     //Mise en place de l'affichage des semestres sous le SVG du graphe
     displaySemesters(graph.nodes);
@@ -181,49 +175,19 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
     var node = svg.append("g").selectAll(".node")
         .data(graph.nodes)
         .enter().append("g")
-        .attr("class", "node noderesize")
+        .attr("class", "node")
         .attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
         })
         .attr("width", sankey.nodeWidth())
-        // Gestion du drag des noeuds
+        .on("click", function() {
+            // alert("click");
+            /* d3.select("#infoWindow").style("display","block");*/
+        }) // Gestion du drag des noeuds
         .call(d3.drag()
             .clickDistance(5)
             .on("drag", dragmove)
         );
-
-    var option = svg.append("g").selectAll(".option")
-        .data(graph.options)
-        .enter().append("g")
-        .attr("class", "clickable option noderesize")
-        .attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-        })
-        .attr("width", sankey.nodeWidth());
-
-
-    option.on("click", function(d) {
-        backgroundClick = false;
-        initDropdown(graph.nodes, d, data);
-        disableTooltip();
-
-    }).on("mouseover", function(d) {
-        d3.select(this).select("rect").style("fill", "#e6e6ff");
-        if (lastClickedOptionNode !== d || d3.select("#dropdown").empty()) {
-            enableTooltip("Cliquer pour choisir une option" + "<br/>" +
-                printECTS(d.coefficient));
-        }
-
-    }).on("mouseout", function(d, i) {
-        d3.select(this).select("rect").style("fill", "white");
-
-        // Disparition de l'infobulle
-        disableTooltip();
-    });
-
-
-    initOptionDeleteButton(data, node, option);
-
 
     // selection d3 des rects du svg (= les rectangles de chaque noeud avec
     // couleur d'arrière plan )
@@ -238,27 +202,10 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
         .classed("option", function(d) {
             return (d.option == "true");
         })
-        .classed("facultatif", function(d) {
-            return (d.facultatif == "true");
-        })
         .style("stroke", function(d) {
+            console.log(d.color);
             return d3.rgb("#b3ccff").darker(2);
-        })
-        .on("click", function() {
-            d3.select("#infoWindow").style("display", "block");
         });
-
-    var optionRects = option.append("rect")
-        .attr("height", function(d) {
-            return d.dy;
-        })
-        .attr("width", sankey.nodeWidth())
-        .attr("rx", 2)
-        .attr("ry", 2)
-        .style("stroke", function(d) {
-            return d3.rgb("#b3ccff").darker(2);
-        })
-        .style("fill", "white");
 
     // Initialisation de l'affichage des liens
     displayNodes(nodeRects);
@@ -280,44 +227,31 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
             return d.x < width / 2;
         });
 
-    var optionTexts = option.append("text")
-        .attr("y", function(d) {
-            return d.dy / 2;
-        })
-        .attr("dy", ".35em")
-        .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
-        .style("text-anchor", "middle")
-        .text(function(d) {
-            return "Option S" + d.semestre;
-        })
-        .style("font-size", adaptLabelFontSize)
-        .filter(function(d) {
-            return d.x < width / 2;
-        });
-
     // gestion des évenements liés aux noeuds
     node
         .on("mouseover", function(d, i) {
             // Affichage de l'infobulle et mise à jour de ses informations
-            var projetDescription = (d.projet == "true") ?
-                "Cette UE comporte un projet" :
-                "Cette UE ne comporte pas de projet";
-
-            enableTooltip(d.name + "<br/>" +
-                printECTS(d.coefficient) + "<br/>" +
-                projetDescription);
+            tip.transition()
+                .delay(500)
+                .duration(200)
+                .style("opacity", .8);
+            var projetDescription = (d.projet == "true") ? "Cette UE comporte un projet" : "Cette UE ne comporte pas de projet";
+            tip.html(d.name + "<br/>" +
+                    printECTS(d.coefficient) + "<br/>" +
+                    projetDescription)
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 10) + "px");
         })
         .on("mouseout", function(d, i) {
             // Disparition de l'infobulle
-            disableTooltip();
-
+            tip.transition()
+                .duration(100)
+                .style("opacity", 0);
         })
         .on("contextmenu", function(d, i) {
 
-            // sélection en mode compétence uniquement et
-            // lorsqu'une compétence est sélectionnée
-            if (getDisplayMode() !== "skillDisplay" ||
-                document.getElementById("radiodef").checked) {
+            // sélection en mode compétence uniquement et lorsqu'une compétence est sélectionnée
+            if (getDisplayMode() !== "skillDisplay" || document.getElementById("radiodef").checked) {
                 return;
             }
             // Ajoute le noeud "d" cliqué s'il n'est pas deja dans currentSelection
@@ -325,16 +259,13 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
 
             // style noeuds sélectionnés
             node.filter(function(d, i) {
-                    return currentSelection.includes(d);
-                }).selectAll("rect")
-                .style("stroke", "black")
-                .style("stroke-width", "4px");
+                return currentSelection.includes(d);
+            }).selectAll("rect").style("stroke", "black").style("stroke-width", "4px");
 
             // style noeuds non sélectionnés
             node.filter(function(d, i) {
-                    return !currentSelection.includes(d);
-                }).selectAll("rect")
-                .style("stroke", d3.rgb("#b3ccff").darker(2)).style("stroke-width", "2px");
+                return !currentSelection.includes(d);
+            }).selectAll("rect").style("stroke", d3.rgb("#b3ccff").darker(2)).style("stroke-width", "2px");
 
             // Affichage par défaut quand rien n'est sélectionné
             if (currentSelection.length == 0)
@@ -345,26 +276,24 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
                 link.style("opacity", "0.2");
                 node.style("opacity", "0.2");
                 valoriseAdjacentLinks(currentSelection[0]).style("opacity", "1");
-                valoriseAdjacentNodes(currentSelection[0], currentFilters)
-                    .style("opacity", "1");
+                valoriseAdjacentNodes(currentSelection[0], currentFilters).style("opacity", "1");
             }
 
         });
 
-    var SkillList = getSkillList(graph.competences);
+    var SkillList = getSkillList(graph.nodes);
     filterSkill(currentFilters);
-    filterDisplayManager(data, SkillList, graph);
-    setSkillDescription(SkillList, skillDescriptions);
-    RadioLabelColor(SkillList);
+    filterDisplayManager(SkillList, graph);
+    setSkillDescription(SkillList);
+    checkboxLabelColor(SkillList);
 
     // fonction gérant le drag
     function dragmove(d) {
-        d3.select("#dropdown").remove();
         d3.select(this)
             .attr("transform",
                 "translate(" +
                 d.x + "," +
-                (d.y = Math.max(-48, Math.min(height - d.dy - svgPadding.bottom, d3.event.y))) + ")");
+                (d.y = Math.max(-margin.top - svgPadding.top, Math.min(height - d.dy, d3.event.y))) + ")");
         sankey.relayout();
         link.attr("d", path);
     }
@@ -372,204 +301,8 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
 });
 
 
-// -------------------------------- FONCTIONS -------------------------------- //
+// ------ FONCTIONS ------ //
 
-// PARAM : données .json [data], sélections d3 de noeuds-UE [nodes] et de noeuds
-// option [options]
-// RETURN : void, initialise les mécaniques  et l'apparence des boutons de
-// suppression d'option préalablement choisie
-function initOptionDeleteButton(data, nodes, options) {
-
-    var nodeCircles = nodes.filter(function(d) {
-            return d.option === "true";
-        }).append("circle")
-        .style("fill", "#d1000a")
-        .attr("class", "clickable")
-        .attr("cx", function(d) {
-            return sankey.nodeWidth() + 7;
-        })
-        .attr("cy", function(d) {
-            return 0 + 7;
-        }).attr("r", 7)
-        .style("display", "none");
-
-    nodeCircles.on("click", function(d, i) {
-
-        hideCircleAndMoveToInitPos(d);
-        showUEAndDuplicates(data, +d.ueid);
-        sankey.relayout();
-        d3.selectAll(".link").attr("d", path);
-        removeOptionFromSelection(options, d);
-    })
-
-    var nodeCircleTexts = nodes.filter(function(d) {
-            return d.option === "true";
-        }).append("text")
-        .attr("x", function(d) {
-            return sankey.nodeWidth() + 2;
-        })
-        .attr("y", function(d) {
-            return 0 + 11;
-        })
-        .style("fill", "white")
-        .text("x");
-}
-
-// PARAM : noeud [node] concerné par l'action de réinitilisation de position
-// après déselection
-// RETURN : void, renvoie le noeud à sa position initiale après déselection et
-// cache la croix de déselection.
-function hideCircleAndMoveToInitPos(node) {
-    var node = d3.selectAll(".node").filter(function(dnode) {
-        return node === dnode;
-    }).attr("transform",
-        "translate(" +
-        (node.x = node.initialX) + "," +
-        (node.y = node.initialY) + ")");
-    node.select("circle").style("display", "none")
-    node.select("text").style("display", "none");
-}
-
-// PARAM : données .json [data], id du noeud à afficher [id]
-// RETURN : void, affiche le noeud d'id [id] ainsi que ses doublons
-function showUEAndDuplicates(data, id) {
-    var showUEAndDuplicates = getDuplicatesOfUE(data, +id);
-    var nodesToShow = d3.selectAll(".node").filter(function(dnodes) {
-        return showUEAndDuplicates.includes(+dnodes.ueid);
-    });
-
-    nodesToShow.style("display", "block");
-
-    nodesToShow.each(function(d) {
-        var linksToShow = d3.selectAll(".link").filter(function(link) {
-            return d.sourceLinks.includes(link) ||
-                d.targetLinks.includes(link);
-        });
-        linksToShow.classed("dupsLinksToHide", false);
-        displayLinks(linksToShow);
-    })
-}
-
-// PARAM : noeuds options [options] et noeud [node] à retirer de la sélection
-// d'option
-// RETURN : void, retire le noeud de la sélection et réaffiche le slot d'option
-function removeOptionFromSelection(options, node) {
-    options.each(function(dopt) {
-        if (dopt.selectedUE === node) {
-            var idx = currentSelectedOptions.indexOf(+node.ueid);
-            currentSelectedOptions.splice(idx, 1);
-            d3.select(this).style("display", "block");
-        }
-    });
-}
-
-
-// PARAM : tableau d'UE [UEArray], noeud option cliqué [optionNode], données
-// .json [data]
-// RETURN : void, initialise les mécaniques de dropdown ainsi que son contenu
-function initDropdown(UEArray, optionNode, data) {
-
-    if (dropdownManager(optionNode)) return;
-    lastClickedOptionNode = optionNode;
-
-    var dropdown = d3.select("body").append("div")
-        .attr("id", "dropdown")
-        .style("opacity", "0.8")
-        .style("background-color", "#b8c4d8")
-        .style("position", "absolute")
-        .style("top", optionNode.y + margin.top + "px")
-        .style("left", optionNode.x + margin.left + sankey.nodeWidth() + "px")
-        .style("width", sankey.nodeWidth() + "px");
-
-    for (var i = 0; i < filterUESelection(data, optionNode.ueList).length; i++) {
-
-        dropdown.append("div")
-            .datum(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]))
-            .attr("class", "clickable items")
-            .style("border-top", "1px solid #a4afc1")
-            .style("border-bottom", "1px solid #a4afc1")
-            .on("click", function(doption) {
-
-                var choosenUE = d3.selectAll(".node").filter(function(dnode) {
-                    return doption === dnode;
-                });
-
-                optionNode.selectedUE = (choosenUE.data()[0]) ? choosenUE.data()[0] : {};
-                addOptionToSelection(data, UEArray, choosenUE);
-
-                choosenUE.attr("transform",
-                    "translate(" +
-                    (doption.x = optionNode.x) + "," +
-                    (doption.y = optionNode.y) + ")");
-
-                choosenUE.select("circle").style("display", "block");
-                choosenUE.select("text").style("display", "block");
-
-                sankey.relayout();
-                d3.selectAll(".link").attr("d", path);
-
-                d3.selectAll(".option").filter(function(doption) {
-                    return doption === optionNode;
-                }).style("display", "none");
-
-                d3.select("#dropdown").remove();
-            })
-            .append("p")
-            .style("opacity", "1")
-            .style("font-size", "10px")
-            .style("text-align", "center")
-            .text(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]).name);
-    }
-
-    // items de dropdown onmouseover
-    d3.selectAll(".items").on("mouseover", function() {
-        d3.select(this).style("background-color", "#8e9cb2");
-    }).on("mouseout", function() {
-        d3.select(this).style("background-color", "#b8c4d8");
-    });
-}
-
-
-// PARAM : données .json [data], tableau d'UE [UEArray] et UE-option choisie
-// [UEChoice]
-// RETURN : void, ajoute l'option choisie à la sélection (currentSelectedOptions)
-// et fait disparaitre les doublons (comme Droit S4 doublon de Droit S6) ainsi
-// que leurs liens
-function addOptionToSelection(data, UEArray, UEChoice) {
-
-    currentSelectedOptions.push(+UEChoice.data()[0].ueid);
-
-    var duplicatesToHide = hideDuplicatesOfUE(data, +UEChoice.data()[0].ueid);
-    var linksFromDuplicatesToHide = d3.selectAll(".link").filter(function(link) {
-        var boolean = false;
-        duplicatesToHide.forEach(function(node) {
-            if (getUEById(UEArray, node).sourceLinks.includes(link) ||
-                getUEById(UEArray, node).targetLinks.includes(link)) {
-                boolean = true;
-            }
-        });
-        return boolean;
-    })
-    linksFromDuplicatesToHide.classed("dupsLinksToHide", true);
-    hideLinks(linksFromDuplicatesToHide);
-
-    d3.selectAll(".node").filter(function(d) {
-        return duplicatesToHide.includes(+d.ueid);
-    }).style("display", "none");
-}
-
-// PARAM : noeud option [nodeopt] où le dropdown doit apparaitre/disparaitre
-// RETURN : true si c'est la même option qui est recliqué, false sinon. Fait
-// disparaitre le dropdown quand il le faut
-function dropdownManager(nodeopt) {
-    if (!d3.select("#dropdown").empty() && lastClickedOptionNode === nodeopt) {
-        d3.select("#dropdown").remove();
-        return true;
-    } else if (!d3.select("#dropdown").empty()) {
-        d3.select("#dropdown").remove();
-    }
-    return false;
-}
 
 // RETURN : renvoie une chaine de caractere representant la taille de police
 // adaptee de sorte que le label tienne dans la largeur du noeud
@@ -648,8 +381,7 @@ function getMinMaxSemester(UEArray) {
 }
 
 // PARAM : element considéré pour le zoom [tagToTransform1][tagToTransform2],
-// multiplicateur max du zoom [maxZoom] et argument à indiquer
-// si l'on souhaite réinitialiser l'échelle
+// multiplicateur max du zoom [maxZoom] et argument à indiquer si l'on souhaite réinitialiser l'échelle
 function zoomHandler(tagToTransform1, tagToTransform2, maxZoom, reset) {
 
     d3.select("#chart")
@@ -672,7 +404,6 @@ function zoomHandler(tagToTransform1, tagToTransform2, maxZoom, reset) {
     }
 
     function zoomingDoc() {
-        d3.select("#dropdown").remove();
         tagToTransform1.attr("transform", d3.event.transform);
         tagToTransform2.attr("transform", "translate(" + (d3.event.transform.x - svgPadding.left) + ", 0) scale(" + d3.event.transform.k + ")");
     }
@@ -687,22 +418,21 @@ function displayLinks(links) {
         return;
     }
     links.filter(function(d, i) {
-        return d3.select(this).classed("ondisplaylinks") &&
-            !d3.select(this).classed("dupsLinksToHide");
+        return d3.select(this).classed("ondisplaylinks");
     }).style("stroke", function(d) {
         return skillColors[d.linktype];
     });
 }
 
 // PARAM : selection d3 de liens [links] entre UEs
-// RETURN : void, fait disparaitre les liens [links] à l'affichage
+// RETURN : void, fait disparaitre les liens links à l'affichage
 function hideLinks(links) {
 
     links.style("stroke", "none");
 }
 
 // PARAM : selection d3 de noeuds-UEs [nodes] à afficher
-// RETURN : void, affiche les noeuds [nodes] avec une opacité par défaut
+// RETURN : void, affiche les noeuds [nodes]
 function displayNodes(nodes) {
     nodes.filter(function(d, i) {
         return d3.select(this).classed("ondisplaynodes");
@@ -710,7 +440,7 @@ function displayNodes(nodes) {
 }
 
 // PARAM : selection d3 de noeuds-UEs [nodes] à cacher
-// RETURN : void, réduit l'opacité des noeuds [nodes] à l'affichage
+// RETURN : void, fait disparaitre les liens noeuds-UEs à l'affichage
 function hideNodes(nodes) {
 
     nodes.style("opacity", "0.2");
@@ -760,14 +490,13 @@ function filterSkill(skill) {
         links.style("opacity", "0.2");
         nodes.style("opacity", "0.2");
         valoriseAdjacentLinks(currentSelection[0]).style("opacity", "1");
-        valoriseAdjacentNodes(currentSelection[0], currentFilters)
-            .style("opacity", "1");
+        valoriseAdjacentNodes(currentSelection[0], currentFilters).style("opacity", "1");
     }
 
     return skill;
 }
 
-// PARAM : noeud [node] servant à mettre en valeur
+// PARAM : selection d3 des liens [links] et du noeud [node] à mettre en valeur
 // RETURN : selection d3 comportant tous les liens dont le noeud [node] est la
 // source ou la destination
 function valoriseAdjacentLinks(node) {
@@ -795,7 +524,8 @@ function valoriseAdjacentLinks(node) {
     });
 }
 
-// PARAM : noeud [node] servant à mettre en valeur
+// PARAM : selection d3 des liens [links], des noeuds [nodes]
+// et du noeud [node] à mettre en valeur
 // RETURN : void, gere l'affichage en fonction du filtrage
 function valoriseAdjacentNodes(node, currentFilters) {
     var links = d3.selectAll(".link");
@@ -828,8 +558,9 @@ function applyDefaultOpacity(nodes, links) {
         links.style("opacity", "1");
 }
 
-// PARAM : selection d3 du lien courant qui est onmouseover [link]
-// RETURN : selection d3 des noeuds qui sont de part et d'autre du lien [link]
+// PARAM : selection d3 des liens des noeuds [nodes] et lien courant qui est
+// onmouseover [link]
+// RETURN : selection d3 des noeuds qui sont aux extrémités du lien [link]
 function valoriseNodesOnLinkHover(link) {
     var nodes = d3.selectAll(".node");
 
@@ -839,8 +570,7 @@ function valoriseNodesOnLinkHover(link) {
     });
 }
 
-// PARAM : mode d'affichage actuel [mode] (string)
-//RETURN : Applique une couleur de fond aux noeuds
+//RETURN : Applique une couleur de fons aux noeuds
 function applyColours(mode) {
     // return d.color = "#b3ccff";
     d3.selectAll(".node").each(function(d, i) {
@@ -849,9 +579,7 @@ function applyColours(mode) {
             if (mode == "groupDisplay") {
                 return d.color = groupColors[d.categorie];
             } else if (mode == "skillDisplay") {
-                return d.color = (ondisplay) ?
-                    skillColors[currentFilters[0]] :
-                    "#b3ccff";
+                return d.color = (ondisplay) ? skillColors[currentFilters[0]] : "#b3ccff";
             }
         });
     });
@@ -864,7 +592,7 @@ function displaySemesters(UEArray) {
 
     var semesterScale = d3.scaleLinear()
         .domain(getMinMaxSemester(UEArray))
-        .range([svgPadding.left + (sankey.nodeWidth() / 2), width - (sankey.nodeWidth() / 2) - (svgPadding.right / 2)]);
+        .range([svgPadding.left + (sankey.nodeWidth() / 2), width - (sankey.nodeWidth() / 2) - (svgPadding.left / 2)]);
 
     for (var i = tab[0]; i <= tab[1]; i++) {
         d3.select("#semesterLayout g").append("text")
@@ -873,6 +601,7 @@ function displaySemesters(UEArray) {
             .attr("y", 15)
             .attr("x", semesterScale(i))
             .text("Semestre " + i)
+            .style("font-family", "Verdana")
             .style("font-size", 14);
     }
 }
@@ -880,19 +609,24 @@ function displaySemesters(UEArray) {
 // PARAM : tableau d'UEs [UEArray]
 // RETURN : tableau d'intitulés de compétences concernées par les UEs [UEArray]
 // EX : ["Appliquer","Programmer"]
-function getSkillList(competences) {
+function getSkillList(UEArray) {
     var SkillList = [];
-    competences.forEach(function(comp) {
-        SkillList.push(comp.name);
-    })
+    UEArray.forEach(function(d, i) {
+        for (var j = 0; j < d.dependances.length; j++) {
+            if (!SkillList.includes(d.dependances[j][0])) {
+                SkillList.push(d.dependances[j][0]);
+            }
+        }
+    });
     return SkillList;
 }
 
-// PARAM : tableau comportant toutes les compétences [SkillList], graphe [graph], donnees du fichier .json [data]
+// PARAM : tableau comportant toutes les compétences [SkillList], tableau des filtres actuellement
+// appliqués [currentFilters]
 // RETURN : void, gère les filtres en fonction des checkbox générées par
 // cette fonction ainsi que les boutons d'interaction
 // Doit être appelée une seule fois
-function filterDisplayManager(data, SkillList, graph) {
+function filterDisplayManager(SkillList, graph) {
 
     radioDisplaySetup();
 
@@ -908,13 +642,12 @@ function filterDisplayManager(data, SkillList, graph) {
 
     // selectAllSetup(SkillList);
 
-    buttonsSetup(data, graph);
+    buttonsSetup(graph);
 
     changeMode(graph, skillDiv, displayLegendDiv);
 }
 
-// RETURN : void, initialise l'affichage des boutons radios permettant
-// de choisir le mode d'affichage
+// RETURN : void, initialise l'affichage du bouton radio permettant de choisir le mode d'affichage
 function radioDisplaySetup() {
     // titre
     filterDiv.append("h2").text("Affichage");
@@ -923,14 +656,14 @@ function radioDisplaySetup() {
     filterDiv.append("div")
         .attr("id", "displayRadio")
         .attr("width", "100%")
+        .style("font-family", "Verdana")
         .append("label")
-        .classed("clickable", true)
         .attr("for", "groupDisplay")
         .style("margin-left", "5px")
         .html("Blocs")
         .append("input")
-        .classed("clickable radioInput", true)
         .attr("id", "groupDisplay")
+        .attr("class", "radioInput")
         .attr("type", "radio")
         .attr("name", "displayMode")
         .attr("value", "groupDisplay")
@@ -940,22 +673,20 @@ function radioDisplaySetup() {
     //
     filterDiv.select("#displayRadio")
         .append("label")
-        .classed("clickable", true)
         .attr("for", "skillDisplay")
+        .style("font-family", "Verdana")
         .html("Compétences")
         .append("input")
-        .classed("clickable radioInput", true)
         .attr("id", "skillDisplay")
+        .attr("class", "radioInput")
         .attr("type", "radio")
         .attr("name", "displayMode")
         .attr("value", "skillDisplay");
 }
 
-// PARAM : tableau comportant toutes les compétences [SkillList],
-// selection d3 de l'element "div" du DOM contenant les radios
-// de l'affichage par competences [skillDiv]
-// RETURN : void, gere l'affichage en mode "competences" ainsi que
-//la disposition des checkbox de ce mode d'affichage
+// PARAM : tableau comportant toutes les compétences [SkillList], tableau des filtres actuellement
+// appliqués [currentFilters], selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [skillDiv]
+// RETURN : void, gere l'affichage en mode "competences" ainsi que la disposition des checkbox de ce mode d'affichage
 function displaySkills(SkillList, skillDiv) {
 
     initDefaultRadio(skillDiv);
@@ -964,18 +695,17 @@ function displaySkills(SkillList, skillDiv) {
         var checkDiv = skillDiv.append("div")
             .style("color", "white")
             .attr("id", "checkdiv" + total)
-            .attr("class", "radio-area");
+            .attr("class", "checkbox-area");
         checkDiv.append("input")
             .attr("type", "radio")
-            .classed("clickable", true)
             .attr("name", "skillRadio")
             .attr("id", "radio" + total)
             .attr("value", SkillList[total]);
         checkDiv.append("label")
-            .classed("clickable", true)
             .attr("for", "radio" + total)
             .append("p")
             .style("display", "inline")
+            .style("font-family", "Verdana")
             .html(SkillList[total]);
 
         var currentRadio = document.getElementById("radio" + total);
@@ -998,16 +728,12 @@ function displaySkills(SkillList, skillDiv) {
     }
 }
 
-// PARAM : sélection d3 [skillDiv] permettant d'accueillir
-// les infos de compétences
-// RETURN : void, remplit [skillDiv] avec les compétences
 function initDefaultRadio(skillDiv) {
     var checkDivDef = skillDiv.append("div")
         .style("color", "white")
         .attr("id", "checkdivdef")
-        .attr("class", "radio-area");
+        .attr("class", "checkbox-area");
     checkDivDef.append("input")
-        .classed("clickable", true)
         .attr("type", "radio")
         .attr("name", "skillRadio")
         .attr("checked", "true")
@@ -1016,8 +742,8 @@ function initDefaultRadio(skillDiv) {
     checkDivDef.append("label")
         .attr("for", "radiodef")
         .append("p")
-        .classed("clickable", true)
         .style("display", "inline")
+        .style("font-family", "Verdana")
         .html("Défaut");
 
     document.getElementById("radiodef").addEventListener("change", function() {
@@ -1031,18 +757,17 @@ function initDefaultRadio(skillDiv) {
     });
 }
 
-// PARAM : selection d3 de l'element "div" du DOM contenant
-// la légende des blocs [displayLegendDiv]
-// RETURN : void, gere l'affichage en mode "blocs" ainsi que
-// la légende de ce mode d'affichage
+
+
+// PARAM : selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [displayLegendDiv]
+// RETURN : void, gere l'affichage en mode "blocs" ainsi que la legende de ce mode d'affichage
 function displayBlocks(displayLegendDiv) {
     for (var i = 0, sortedKeys = Object.keys(groupColors).sort(); i < Object.keys(groupColors).length; i++) {
         if (!groupColors.hasOwnProperty(sortedKeys[i])) {
             continue;
         }
-        var displDiv = displayLegendDiv.append("div")
-            .classed("bloc-divs", true)
-            .append("p")
+        var displDiv = displayLegendDiv.append("div").append("p")
+            .style("font-family", "Verdana")
             .style("margin", 0)
             .style("padding", "2px")
             .style("color", "white")
@@ -1053,26 +778,24 @@ function displayBlocks(displayLegendDiv) {
     }
 }
 
-// PARAM : Tableau des donnees des noeuds et des liens [graph], donnees du fichier .json [data]
-// RETURN : void, gere l'affichage du bouton de reinitialisation ainsi
-// que la legende (UE en option)
-function buttonsSetup(data, graph) {
+// PARAM : Tableau des donnees des noeuds et des liens [graph]
+// RETURN : void, gere l'affichage du bouton de reinitialisation ainsi que la legende (UE en option)
+function buttonsSetup(graph) {
     var svg = d3.select("#chart").select("g");
     var semesterLayout = d3.select("#semesterLayout").select("g");
 
     var links = d3.selectAll(".link");
     var nodes = d3.selectAll(".node");
-    var options = d3.selectAll(".option")
 
     var resetViewButton = filterDiv.append("button")
-        .classed("selectionButtons clickable", true)
-        .text("Réinitialiser tout");
+        .attr("class", "selectionButtons")
+        .text("Réinitialiser la position");
 
     var optionLegend = filterDiv.append("div")
         .style("width", "100%");
     optionLegend.append("div")
         .attr("id", "optionImage");
-    optionLegend.append("p").text("UE facultative")
+    optionLegend.append("p").text("UE en option")
         .attr("id", "optionText");
 
     resetViewButton.on("click", function(d) {
@@ -1085,33 +808,15 @@ function buttonsSetup(data, graph) {
             return "translate(" + d.x + "," + d.y + ")";
         });
 
-        nodes.filter(function(node) {
-            return currentSelectedOptions.indexOf(+node.ueid) != -1;
-        }).each(function(node) {
-
-            hideCircleAndMoveToInitPos(node);
-
-            showUEAndDuplicates(data, +node.ueid);
-
-            sankey.relayout();
-            d3.selectAll(".link").attr("d", path);
-
-            removeOptionFromSelection(options, node);
-        });
-
-        // svg.attr("transform",
-        //     "translate(" + svgPadding.left + "," + svgPadding.top + ") scale(1)");
-        // zoomHandler(svg, semesterLayout, 3, "resetScale");
+        svg.attr("transform",
+            "translate(" + svgPadding.left + "," + svgPadding.top + ") scale(1)");
+        zoomHandler(svg, semesterLayout, 3, "resetScale");
     });
 }
 
-// PARAM : Tableau des donnees des noeuds et des liens [graph], selection d3
-// de l'element "div" du DOM contenant les radios
-// de l'affichage par competences [skillDiv],
-// selection d3 de l'element "div" du DOM contenant
-// la légende des blocs [displayLegendDiv]
-// RETURN : void, gere les changements d'affichage
-// du diagramme lors d'un changement de mode
+// PARAM : Tableau des donnees des noeuds et des liens [graph], selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [skillDiv],
+// et selection d3 de l'element "div" du DOM contenant les checkbox de l'affichage par competences [displayLegendDiv]
+// RETURN : void, gere les changements d'affichage du diagramme lors d'un changement de mode
 function changeMode(graph, skillDiv, displayLegendDiv) {
     var links = d3.selectAll(".link");
 
@@ -1128,7 +833,7 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
                     break;
                 case "groupDisplay":
                     resetSelection();
-                    filterSkill(getSkillList(graph.competences));
+                    filterSkill(getSkillList(graph.nodes));
                     applyColours(this.value);
                     skillDiv.style("display", "none");
                     displayLegendDiv.style("display", "block");
@@ -1149,7 +854,7 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
 }
 
 // PARAM : tableau comportant toutes les compétences [SkillList]
-// RETURN : void, initialise la checkbox "(De)Sélectionner tout"
+// RETURN : void, initialise la checkbox "(De)Selectionner tout"
 function selectAllSetup(SkillList) {
     var selectAllCheckbox = filterDiv.append("input")
         .attr("type", "checkbox")
@@ -1161,6 +866,7 @@ function selectAllSetup(SkillList) {
         .attr("id", "selectalllabel")
         .append("p")
         .style("display", "inline")
+        .style("font-family", "Verdana")
         .html("(Dé)sélectionner tout");
 
     document.getElementById("selectallcheckbox").addEventListener("change", function() {
@@ -1182,8 +888,7 @@ function selectAllSetup(SkillList) {
     }, false);
 }
 
-// BRIEF : vide la sélection de noeuds courante,
-// et met à jour les styles en conséquence
+// BRIEF : vide la selection de noeuds courante, et met à jour les styles en conséquence
 function resetSelection() {
     var nodes = d3.selectAll(".node");
     var links = d3.selectAll(".link");
@@ -1193,14 +898,24 @@ function resetSelection() {
 }
 
 // PARAM : tableau de compétences [SkillList]
-// RETURN : void, gère l'affichage des descriptions
-// de chaque compétence onmouseover dans la zone prévue à cet effet
-function setSkillDescription(SkillList, descriptions) {
+// RETURN : void, gère l'affichage des descriptions de chaque compétence onmouseover
+// dans la zone prévue à cet effet
+function setSkillDescription(SkillList) {
     var descriptionDiv = filterDiv.append("div");
     var descriptionTitle = descriptionDiv.append("h2").text("Description");
     var descriptionContent = descriptionDiv.append("p")
         .attr("id", "description-area")
+        .style("font-family", "Verdana")
         .style("font-size", "14px");
+
+    var descriptions = {
+        "Appliquer": "Ceci est la compétence appliquer",
+        "Realiser": "Ceci est la compétence réaliser",
+        "Programmer": "Ceci est la compétence programmer",
+        "Professionnaliser": "Ceci est la compétence professionnaliser",
+        "Formaliser": "Ceci est la compétence formaliser",
+        "Construire": "Ceci est la compétence construire",
+    };
 
     for (var total = 0; total < SkillList.length; total++) {
         document.getElementById("checkdiv" + total).addEventListener("mouseover", function() {
@@ -1210,9 +925,8 @@ function setSkillDescription(SkillList, descriptions) {
 }
 
 // PARAM : tableau de compétences [SkillList]
-// RETURN : void, applique la couleur de fond de
-// chaque compétence au niveau des radios
-function RadioLabelColor(SkillList) {
+// RETURN : void, applique la couleur de fond de chaque compétence au niveau des checkboxes
+function checkboxLabelColor(SkillList) {
     for (var total = 0; total < SkillList.length; total++) {
         var checkdiv = document.getElementById("checkdiv" + total);
         var currentColor = skillColors[checkdiv.firstChild.value];
@@ -1220,6 +934,7 @@ function RadioLabelColor(SkillList) {
         checkdiv.style.background = "linear-gradient(to right, " + currentColor + ", #cce6ff)";
     }
 }
+
 
 // PARAM : Nombre d'ECTS d'une UE
 // RETURN : void, applique la mise en forme ci-dessous pour affichage
@@ -1239,6 +954,7 @@ function getAllPathsBetween(nodeA, nodeB) {
 
     return pathlist;
 }
+
 
 // BRIEF : recursion de la fonction getAllPathsBetween
 function getAllPathsBetweenRec(nodeA, nodeB, currentpath, pathlist, links) {
@@ -1269,11 +985,10 @@ function getChildren(node) {
     return children;
 }
 
-// PARAM : [d]: Données rattachées au noeud à sélectionner
+// PARAM : [d]: Donnees rattachees au noeud a selectionner
 // RETURN : void
-// Ajoute le noeud considéré à la liste des noeuds sélectionnés
-// (currentSelection) si la liste contient moins de deux éléments
-// ou retire le noeud de la liste si il était déjà dedans
+// Ajoute le noeud considere a la liste des noeuds selectionnes (currentSelection) si la liste contient moins de deux elements
+// ou retire le noeud de la liste si il etait deja dedans
 function selectNode(d) {
 
     var links = d3.selectAll(".link");
@@ -1310,8 +1025,7 @@ function selectNode(d) {
 
 // PARAM : [pathArray]: tableau de tableaux des chemins a afficher
 // RETURN : void
-// Cache les noeuds et liens ne faisant parti d'aucun chemin
-// et change l'opacite des noeuds affichés
+// Cache les noeuds et liens ne faisant parti d'aucun chemin et change l'opacite des noeuds affiches
 function displaySelection(pathArray) {
 
     var links = d3.selectAll(".link");
@@ -1322,8 +1036,7 @@ function displaySelection(pathArray) {
 
     if (!pathArray.length) {
         nodes.filter(function(d, i) {
-            return (d.ueid === currentSelection[0].ueid ||
-                d.ueid === currentSelection[1].ueid);
+            return (d.ueid === currentSelection[0].ueid || d.ueid === currentSelection[1].ueid);
         }).style("opacity", "1");
     }
 
@@ -1331,20 +1044,16 @@ function displaySelection(pathArray) {
         for (var k = 0; k < path.length; k++) {
             if (k != path.length - 1) {
                 displayLinks(links.filter(function(d, i) {
-                    return (d.source === path[k] &&
-                        d.target === path[k + 1] &&
-                        currentFilters.includes(d.linktype));
+                    return (d.source === path[k] && d.target === path[k + 1] && currentFilters.includes(d.linktype));
                 }).style("opacity", "1"));
             }
 
             nodes.filter(function(d, i) {
-                return (d.ueid === path[k].ueid &&
-                    checkNodeDisplay(d, currentFilters));
+                return (d.ueid === path[k].ueid && checkNodeDisplay(d, currentFilters));
             }).style("opacity", "1");
         }
     })
 }
-
 // PARAM : Noeud UE concerné [node]
 // RETURN : tableau des compétences impliquées par l'UE [node]
 function getSkillsOfUE(node) {
@@ -1364,19 +1073,15 @@ function getSkillsOfUE(node) {
 function hasActiveLinkBetweenNodes(nodeA, nodeB, links) {
     var returnVal = false;
     links.forEach(function(d, i) {
-        if (currentFilters.includes(d.linktype) &&
-            d.source == nodeA &&
-            d.target == nodeB) {
+        if (currentFilters.includes(d.linktype) && d.source == nodeA && d.target == nodeB) {
             returnVal = true;
         }
     })
     return returnVal;
 }
 
-// PARAM : [node]: Tableau des donnees rattachées au noeud
-// [currentFilters]: tableau des filtres courants
-// RETURN : Boolean => True si node fait travailler une des
-// competences actuellement affichees, false sinon
+// PARAM : [node]: Tableau des donnees rattachees au noeud [currentFilters]: tableau des filtres courants
+// RETURN : Boolean => True si node fait travailler une des competences actuellement affichees, false sinon
 function checkNodeDisplay(node, currentFilters) {
     var flag = false;
 
@@ -1389,10 +1094,9 @@ function checkNodeDisplay(node, currentFilters) {
     return flag;
 }
 
-// PARAM : [node]: Tableau des donnees rattachées au noeud
-// RETURN : Tableau de toutes les compétences travaillées par l'UE
-// mais sans lien
-// (dans le JSON, compétence représentée sous la forme ["Appliquer"])
+
+// PARAM : [node]: Tableau des donnees rattachees au noeud
+// RETURN : Tableau de toutes les compétences travaillées par l'UE mais sans lien (dans le JSON, compétence représentée sous la forme ["Appliquer"])
 function getIgnoredSkills(node) {
     var ignoredSkills = [];
     node.dependances.forEach(function(skill) {
@@ -1406,17 +1110,15 @@ function getIgnoredSkills(node) {
 // RETURN : renvoie le mode d'affichage courant
 function getDisplayMode() {
     var modes = document.getElementsByName("displayMode");
-    for (var i in modes) {
+    for (i in modes) {
         if (modes[i].checked) {
             return modes[i].value;
         }
     }
 }
 
-// PARAM : un tableau de donnees représentants les UEs [UEArray],
-// numero de semestre [sem]
-// RETURN : les UE de UEArray pour lesquelles "option" vaut "true"
-// et appartenant au semestre "sem"
+// PARAM : un tableau de donnees représentants les UEs [UEArray], numero de semestre [sem]
+// RETURN : les UE de UEArray pour lesquelles "option" vaut "true" et appartenant au semestre "sem"
 function getOptionsBySemester(UEArray, sem) {
     return UEArray.filter(function(d) {
         return +d.semestre === sem && d.option === "true";
@@ -1424,248 +1126,9 @@ function getOptionsBySemester(UEArray, sem) {
 }
 
 // PARAM : tableau de donnes d'UE [options]
-// RETURN : nom des UE (peut se combiner avec getOptionsBySemester)
+// RETURN : nom des UE (peut se combiner avev getOptionsBySemester)
 function getUENameList(options) {
     return options.map(function(d) {
         return d.name;
     });
-}
-
-// PARAM : données json [data]
-// RETURN : tableau de listes de choix pour chaque slot d'option
-function getOptionsToSelectArray(data) {
-    var options = data.options;
-    var optionsArray = [];
-
-    options.forEach(function(d, i) {
-        for (var i = 0; i < +d.nbChoix; i++) {
-            optionsArray.push(d.ueList);
-        }
-    })
-
-    return optionsArray;
-}
-
-// PARAM : données json [data], tableau des choix possible
-// pour une option [selectionArray]
-// RETURN : tableau de choix filtré ou les choix déjà pris sont retirés (peu
-// importe le semestre ou l'UE est choisie)
-function filterUESelection(data, selectionArray) {
-    var filteredArray = [];
-    selectionArray.forEach(function(d, i) {
-        if (!currentSelectedOptions.includes(d) &&
-            !arrayInter(currentSelectedOptions, getDuplicatesOfUE(data, d)).length) {
-            filteredArray.push(d);
-        }
-    })
-    return filteredArray;
-}
-
-// PARAM : deux tableaux [arrA] et [arrB]
-// RETURN : tableau intersection des deux tableaux
-function arrayInter(arrA, arrB) {
-    return arrA.filter(function(d) {
-        return arrB.indexOf(d) > -1;
-    })
-}
-
-// PARAM : données json [data], ID d'ue [id]
-// RETURN : tableau comportant l'ue avec l'id [id] ainsi que ses doublons
-//dans les autres semestres
-function getDuplicatesOfUE(data, id) {
-    var duplicates = data.ueDoublons;
-    var duplicatesOfUE = [id];
-    duplicates.forEach(function(d, i) {
-        if (d.includes(id)) {
-            duplicatesOfUE = d;
-        }
-    })
-    return duplicatesOfUE;
-}
-
-// PARAM : données json [data], ID d'ue [id]
-// RETURN : tableau comportant les doublons de l'UE d'id [id] sans l'ue elle
-// même. Cela sert à cacher les doublons une fois l'UE sélectionnée
-function hideDuplicatesOfUE(data, id) {
-    var duplicates = data.ueDoublons;
-    var duplicatesOfUE = [];
-    duplicates.forEach(function(d, i) {
-        if (d.includes(id)) {
-            d.forEach(function(d) {
-                if (d !== id) {
-                    duplicatesOfUE.push(+d);
-                }
-            })
-        }
-    })
-    return duplicatesOfUE;
-}
-
-// PARAM : données json [data], ID d'ue [id]
-// RETURN : bool, true si l'UE a des doublons dans d'autres semestres, false sinon
-// exemple : Droit S4 et S6 sont doublons chacun l'un de l'autre, c'est le même
-// contenu d'UE mais à un semestre différent
-function isUEDuplicated(data, id) {
-    var duplicates = data.ueDoublons;
-    var ret = false;
-    duplicates.forEach(function(d, i) {
-        if (d.includes(id)) {
-            ret = true;
-        }
-    })
-
-    return ret;
-}
-
-// PARAM : données json [data], ID d'ue [id]
-// RETURN : l'objet option du .json avec l'id [id] correspondant
-function getOptionById(data, id) {
-    var option;
-    var options = data.options;
-    options.forEach(function(d, i) {
-        if (+d.id === +id) {
-            option = d;
-        }
-    })
-    return d;
-}
-
-// RETURN : void, gere l'affichage de la ligne de separation entre
-// la zone d'options et celle des UEs
-function setupAreaSeparator(yPos) {
-    var chartCenter = (margin.left + svgPadding.left + width) / 2;
-    d3.select("#chart")
-        .append("g")
-        .attr("id", "areaSeparator")
-        .append("line")
-        .attr("x1", 0)
-        .attr("x2", margin.left + svgPadding.left + width)
-        .attr("y1", yPos)
-        .attr("y2", yPos)
-        .style("stroke", "black")
-        .style("stroke-width", "2px");
-
-    d3.select("#areaSeparator")
-        .append("g")
-        .attr("class", "separator")
-        .attr("transform", "translate(" + (chartCenter - sankey.nodeWidth() / 2) + "," + yPos + ")")
-        .attr("width", sankey.nodeWidth())
-        .append("rect")
-        .attr("height", 25)
-        .attr("width", sankey.nodeWidth())
-        .attr("rx", 2)
-        .attr("ry", 2)
-        .style("fill", "white")
-        .style("stroke", "black")
-        .style("stroke-width", "2px");
-
-    d3.select(".separator")
-        .append("text")
-        .attr("y", 13)
-        .attr("dy", ".35em")
-        .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
-        .style("text-anchor", "middle")
-        .text("Options")
-        .style("font-size", adaptLabelFontSize);
-}
-
-// RETURN : void, la fenetre d'info d'UE
-function initInfoWindow() {
-
-    var infoWindow = d3.select("body").append("div")
-        .style("width", width + "px")
-        .style("height", height + "px")
-        .style("position", "absolute")
-        .style("left", 8 + "px")
-        .style("top", 8 + "px")
-        .style("opacity", "0.9")
-        .style("height", height + "px")
-        .style("display", "none")
-        .attr("id", "infoWindow")
-        .style("background-color", "#333333");
-
-    var closeInfoWindow = infoWindow.append("div")
-        .classed("clickable", true)
-        .style("width", "50px")
-        .style("height", "50px")
-        .style("opacity", "0.7")
-        .style("float", "right")
-        .style("color", "white")
-        .style("text-align", "center")
-        .style("background-color", "black")
-        .on("click", function(d, i) {
-            d3.select("#infoWindow").style("display", "none");
-        }).append("p")
-        .html("X");
-
-    var infoWindowText = infoWindow.append("p")
-        .style("color", "white")
-        .style("padding", "150px")
-        .style("text-align", "justify")
-        .html("<u>Pré-requis</u><br/><br/> Programme de TS toutes spécialités confondues. <br/><br/><u>Contenu</u><br/><br/> Arithmétique dans Z. Division euclidienne. Diviseurs communs à deux entiers, pgcd, ppcm, lemme de Gauss. Théorème de Bézout. Algorithme dEuclide de calcul de pgcd. Nombres premiers. Existence et unicité de la décomposition en produit de facteurs premiers. Congruences : additions et multiplications. Systèmes de congruences, théorème chinois. Polynômes, somme, produit, fonctions polynômiales. Annulation en un point et factorisation par X -a.<br/><br/>Algèbre linéaire. Systèmes linéaires dans R^n, résolution par méthode du pivot. Matrices, produit de matrices, traduction des opérations de lignes et de colonnes. Calculs de noyaux et d'images. <br/><br/><u>Objectifs : savoir-faire et compétences</u><br/><br/> Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.")
-}
-
-// RETURN : void, gère la taille du svg au redimensionnement de fenetre
-function resize() {
-    window.addEventListener("resize", function() {
-        width = window.innerWidth - margin.left - margin.right;
-        sankey
-            .nodes(graph.nodes)
-            .links(graph.links)
-            .options(graph.options)
-            .layout(32);
-        d3.selectAll(".link").attr("d", path);
-        d3.selectAll(".noderesize").attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-        });
-        svg.attr("transform",
-            "translate(" + svgPadding.left + "," + svgPadding.top + ") scale(1)");
-        // zoomHandler(svg, semesterLayout, 3, "resetScale");
-        d3.selectAll("svg").style("width", width);
-        d3.select("#semesterLayout").style("width", width);
-
-    });
-}
-
-// PARAM : contenu de la tooltip [content]
-// RETURN : void, gère l'apparition et le contenu de tooltip
-function enableTooltip(content) {
-    tip.transition()
-        .delay(500)
-        .duration(200)
-        .style("opacity", .8);
-
-    tip.html(content)
-        .style("left", (d3.event.pageX + 10) + "px")
-        .style("top", (d3.event.pageY - 10) + "px");
-}
-
-// RETURN : void, gère la disparition de tooltip
-function disableTooltip() {
-    tip.transition()
-        .duration(100)
-        .style("opacity", 0);
-}
-
-
-// BRIEF : gère les fermetures de fenetre/dropdown à la pression de "échap"
-function escapeEvents() {
-    document.addEventListener("keydown", function(event) {
-        const keyName = event.key;
-        if (keyName === "Escape") {
-            d3.select("#dropdown").remove();
-            d3.select("#infoWindow").style("display", "none");
-        }
-    });
-
-}
-
-function getAllCategories(UEdata) {
-    var categories = [];
-    UEdata.forEach(function(d) {
-        if (!categories.includes(d.categorie)) {
-            categories.push(d.categorie);
-        }
-    });
-    return categories;
 }

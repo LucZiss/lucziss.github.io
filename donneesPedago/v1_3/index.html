@@ -8,15 +8,6 @@
         body {
             background-color: #cce6ff;
             overflow: hidden;
-            font-family: "Verdana", "Arial", "sans-serif";
-        }
-
-
-        svg text {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         svg {
@@ -34,18 +25,11 @@
             stroke-width: 2px;
         }
 
-        .option rect {
-            fill-opacity: .9;
-            shape-rendering: crispEdges;
-            stroke-width: 2px;
-        }
-
-        .facultatif {
+        .option {
             stroke-dasharray: 5, 3;
         }
 
-        .node text,
-        .option text {
+        .node text {
             pointer-events: none;
             font-family: "Verdana";
             /*font-size: 10px;*/
@@ -81,30 +65,17 @@
             position: absolute;
             top: 0px;
             right: 0px;
-
-        }
-
-        .radio-area,
-        .bloc-divs {
-            text-shadow: 1px 0 0 black,
-            0 1px 0 black,
-            0 -1px 0 black,
-            -1px 0 0 black,
-            1px 1px 0 black,
-            1px -1px 0 black,
-            -1px 1px 0 black,
-            -1px -1px 0 black;
         }
 
         .selectionButtons {
             color: white;
             background-color: #4286f4;
-            width: 90%;
-            height: 25px;
+            width: 85px;
+            height: 50px;
             vertical-align: middle;
             border: 1px solid #224884;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-            margin: 10px auto;
+            margin: 5px 10px;
             padding: 0;
             font-size: 12px;
             font-family: "Verdana", "Arial", "sans-serif";
@@ -112,10 +83,6 @@
 
         #selectallcheckbox {
             margin: 5px 0;
-        }
-
-        .clickable:hover {
-            cursor: pointer;
         }
 
         .selectionButtons:hover {
@@ -153,6 +120,7 @@
             color: rgb(88, 100, 125);
             vertical-align: middle;
         }
+
     </style>
 
 </head>
