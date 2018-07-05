@@ -28,6 +28,7 @@ var parentLinksOnNodeMouseOverColor = "#005bef";
 var childLinksOnNodeMouseOverColor = "#b200ff";
 
 var text = d3.select("body").append("p").style("margin","0")
+    .style("font-family","Verdana")
     .text("Touche N : affichage \"normal\" | Touche R : affichage par rapport à la racine");
 
 // groupe "g" du SVG
@@ -521,7 +522,8 @@ function keyboardEventsManager(hierarchy) {
         if (keyName === "r") { // Affichage des proportions par rap. à la racine
 
             computeLinksFromRoot(hierarchy);
-            imageVisualization.transition().style("opacity", "0");
+                imageVisualization.style("opacity", "0");
+                imageVisualization.style("display", "none");
             sankey
                 .nodes(graph.nodes)
                 .links(graph.links)
@@ -539,6 +541,7 @@ function keyboardEventsManager(hierarchy) {
 
             computeLinks(hierarchy);
             normalizeLinkValues(graph.links);
+            imageVisualization.style("display", "block");
             imageVisualization.transition().style("opacity", "1");
             sankey
                 .nodes(graph.nodes)
@@ -603,6 +606,27 @@ function disableTooltip() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
 // Anciennes fonctions qui ne sont plus utilisées pour le moment
 
 
@@ -772,3 +796,7 @@ function getLinkFromTo(links, nodeA, nodeB) {
     })
     return link;
 }
+
+
+
+// PAS METTRE DE FONCTIONS ICI ! ! ! !
