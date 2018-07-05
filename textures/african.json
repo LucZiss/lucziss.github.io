@@ -1,0 +1,2592 @@
+{
+  "id": "00000000",
+  "color": "000000",
+  "image": "african4586558197_ac2693ec55_o.png",
+  "value": 1,
+  "children": [
+  {
+    "id": "01501E35",
+    "color": "501E35",
+    "image": "african4586558197_ac2693ec55_o_cl_1_01501E35.png",
+    "value": 0.313159,
+    "children": [
+    {
+      "id": "02201910",
+      "color": "201910",
+      "image": "african4586558197_ac2693ec55_o_cl_2_02201910.png",
+      "value": 0.150416,
+      "children": [
+      {
+        "id": "03201910",
+        "color": "201910",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03201910.png",
+        "value": 1,
+        "children": [
+        {
+          "id": "0418170C",
+          "color": "18170C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0418170C.png",
+          "value": 0.802065,
+          "children": [
+          {
+            "id": "0516150B",
+            "color": "16150B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0516150B.png",
+            "value": 0.903734
+          },
+          {
+            "id": "051F270D",
+            "color": "1F270D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051F270D.png",
+            "value": 0.0727582
+          },
+          {
+            "id": "054C192A",
+            "color": "4C192A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054C192A.png",
+            "value": 0.0218062
+          },
+          {
+            "id": "056C7347",
+            "color": "6C7347",
+            "image": "african4586558197_ac2693ec55_o_cl_5_056C7347.png",
+            "value": 0.00170195
+          }
+          ]
+        },
+        {
+          "id": "0434240F",
+          "color": "34240F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0434240F.png",
+          "value": 0.0800273,
+          "children": [
+          {
+            "id": "0522190D",
+            "color": "22190D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0522190D.png",
+            "value": 0.299041
+          },
+          {
+            "id": "053B2811",
+            "color": "3B2811",
+            "image": "african4586558197_ac2693ec55_o_cl_5_053B2811.png",
+            "value": 0.70096
+          }
+          ]
+        },
+        {
+          "id": "0446212F",
+          "color": "46212F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0446212F.png",
+          "value": 0.117908,
+          "children": [
+          {
+            "id": "051D1312",
+            "color": "1D1312",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051D1312.png",
+            "value": 0.418596
+          },
+          {
+            "id": "0551162E",
+            "color": "51162E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0551162E.png",
+            "value": 0.495297
+          },
+          {
+            "id": "05AB6396",
+            "color": "AB6396",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05AB6396.png",
+            "value": 0.0166425
+          },
+          {
+            "id": "05D588BC",
+            "color": "D588BC",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D588BC.png",
+            "value": 0.0224313
+          },
+          {
+            "id": "05DDBCD1",
+            "color": "DDBCD1",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DDBCD1.png",
+            "value": 0.0470333
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    },
+    {
+      "id": "02581F3B",
+      "color": "581F3B",
+      "image": "african4586558197_ac2693ec55_o_cl_2_02581F3B.png",
+      "value": 0.849584,
+      "children": [
+      {
+        "id": "03301916",
+        "color": "301916",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03301916.png",
+        "value": 0.066636,
+        "children": [
+        {
+          "id": "041B170D",
+          "color": "1B170D",
+          "image": "african4586558197_ac2693ec55_o_cl_4_041B170D.png",
+          "value": 0.479429,
+          "children": [
+          {
+            "id": "051A160C",
+            "color": "1A160C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051A160C.png",
+            "value": 0.918913
+          },
+          {
+            "id": "05212811",
+            "color": "212811",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05212811.png",
+            "value": 0.0723404
+          },
+          {
+            "id": "052A0915",
+            "color": "2A0915",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052A0915.png",
+            "value": 0.00874704
+          }
+          ]
+        },
+        {
+          "id": "043D2B18",
+          "color": "3D2B18",
+          "image": "african4586558197_ac2693ec55_o_cl_4_043D2B18.png",
+          "value": 0.223847,
+          "children": [
+          {
+            "id": "052C1910",
+            "color": "2C1910",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052C1910.png",
+            "value": 0.286582
+          },
+          {
+            "id": "052C2914",
+            "color": "2C2914",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052C2914.png",
+            "value": 0.161519
+          },
+          {
+            "id": "054A351D",
+            "color": "4A351D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054A351D.png",
+            "value": 0.551899
+          }
+          ]
+        },
+        {
+          "id": "04481025",
+          "color": "481025",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04481025.png",
+          "value": 0.296724,
+          "children": [
+          {
+            "id": "051A110C",
+            "color": "1A110C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051A110C.png",
+            "value": 0.286478
+          },
+          {
+            "id": "05480920",
+            "color": "480920",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05480920.png",
+            "value": 0.538961
+          },
+          {
+            "id": "0585144D",
+            "color": "85144D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0585144D.png",
+            "value": 0.127196
+          },
+          {
+            "id": "059E8165",
+            "color": "9E8165",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059E8165.png",
+            "value": 0.0164248
+          },
+          {
+            "id": "05C7288A",
+            "color": "C7288A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C7288A.png",
+            "value": 0.0309396
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "0349192D",
+        "color": "49192D",
+        "image": "african4586558197_ac2693ec55_o_cl_3_0349192D.png",
+        "value": 0.491609,
+        "children": [
+        {
+          "id": "041C190E",
+          "color": "1C190E",
+          "image": "african4586558197_ac2693ec55_o_cl_4_041C190E.png",
+          "value": 0.290696,
+          "children": [
+          {
+            "id": "0519180D",
+            "color": "19180D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0519180D.png",
+            "value": 0.905718
+          },
+          {
+            "id": "052A3016",
+            "color": "2A3016",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052A3016.png",
+            "value": 0.0403763
+          },
+          {
+            "id": "05401024",
+            "color": "401024",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05401024.png",
+            "value": 0.0495191
+          },
+          {
+            "id": "056A6B49",
+            "color": "6A6B49",
+            "image": "african4586558197_ac2693ec55_o_cl_5_056A6B49.png",
+            "value": 0.00438643
+          }
+          ]
+        },
+        {
+          "id": "04322F1C",
+          "color": "322F1C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04322F1C.png",
+          "value": 0.0293277,
+          "children": [
+          {
+            "id": "052E2419",
+            "color": "2E2419",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052E2419.png",
+            "value": 0.374018
+          },
+          {
+            "id": "05303819",
+            "color": "303819",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05303819.png",
+            "value": 0.462022
+          },
+          {
+            "id": "05402E29",
+            "color": "402E29",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05402E29.png",
+            "value": 0.16396
+          }
+          ]
+        },
+        {
+          "id": "04521832",
+          "color": "521832",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04521832.png",
+          "value": 0.54234,
+          "children": [
+          {
+            "id": "051F1511",
+            "color": "1F1511",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051F1511.png",
+            "value": 0.269616
+          },
+          {
+            "id": "05222910",
+            "color": "222910",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05222910.png",
+            "value": 0.0372783
+          },
+          {
+            "id": "054C102B",
+            "color": "4C102B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054C102B.png",
+            "value": 0.438559
+          },
+          {
+            "id": "05532C1C",
+            "color": "532C1C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05532C1C.png",
+            "value": 0.0052405
+          },
+          {
+            "id": "05841853",
+            "color": "841853",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05841853.png",
+            "value": 0.153079
+          },
+          {
+            "id": "05876F59",
+            "color": "876F59",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05876F59.png",
+            "value": 0.00396578
+          },
+          {
+            "id": "05B29489",
+            "color": "B29489",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B29489.png",
+            "value": 0.0064019
+          },
+          {
+            "id": "05BD2C8C",
+            "color": "BD2C8C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BD2C8C.png",
+            "value": 0.0830548
+          },
+          {
+            "id": "05D2A5C4",
+            "color": "D2A5C4",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D2A5C4.png",
+            "value": 0.00141635
+          },
+          {
+            "id": "05D7C7B0",
+            "color": "D7C7B0",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D7C7B0.png",
+            "value": 0.00138802
+          }
+          ]
+        },
+        {
+          "id": "048C1E5F",
+          "color": "8C1E5F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_048C1E5F.png",
+          "value": 0.137636,
+          "children": [
+          {
+            "id": "05250911",
+            "color": "250911",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05250911.png",
+            "value": 0.0239982
+          },
+          {
+            "id": "05571032",
+            "color": "571032",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05571032.png",
+            "value": 0.228374
+          },
+          {
+            "id": "05831753",
+            "color": "831753",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05831753.png",
+            "value": 0.389776
+          },
+          {
+            "id": "05BF2F8E",
+            "color": "BF2F8E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BF2F8E.png",
+            "value": 0.357852
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "036D224D",
+        "color": "6D224D",
+        "image": "african4586558197_ac2693ec55_o_cl_3_036D224D.png",
+        "value": 0.384915,
+        "children": [
+        {
+          "id": "041F1B10",
+          "color": "1F1B10",
+          "image": "african4586558197_ac2693ec55_o_cl_4_041F1B10.png",
+          "value": 0.122535,
+          "children": [
+          {
+            "id": "051B1B0D",
+            "color": "1B1B0D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051B1B0D.png",
+            "value": 0.758367
+          },
+          {
+            "id": "05262C15",
+            "color": "262C15",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05262C15.png",
+            "value": 0.110649
+          },
+          {
+            "id": "05330E1A",
+            "color": "330E1A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05330E1A.png",
+            "value": 0.130985
+          }
+          ]
+        },
+        {
+          "id": "0430271A",
+          "color": "30271A",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0430271A.png",
+          "value": 0.0256058,
+          "children": [
+          {
+            "id": "051F1611",
+            "color": "1F1611",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051F1611.png",
+            "value": 0.432184
+          },
+          {
+            "id": "0532321B",
+            "color": "32321B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0532321B.png",
+            "value": 0.424521
+          },
+          {
+            "id": "05493D22",
+            "color": "493D22",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05493D22.png",
+            "value": 0.0904215
+          },
+          {
+            "id": "055B1133",
+            "color": "5B1133",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055B1133.png",
+            "value": 0.0199234
+          },
+          {
+            "id": "05883754",
+            "color": "883754",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05883754.png",
+            "value": 0.0329502
+          }
+          ]
+        },
+        {
+          "id": "04661F46",
+          "color": "661F46",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04661F46.png",
+          "value": 0.545472,
+          "children": [
+          {
+            "id": "052B1A18",
+            "color": "2B1A18",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052B1A18.png",
+            "value": 0.199101
+          },
+          {
+            "id": "052C2C16",
+            "color": "2C2C16",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052C2C16.png",
+            "value": 0.0202878
+          },
+          {
+            "id": "05501431",
+            "color": "501431",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05501431.png",
+            "value": 0.411115
+          },
+          {
+            "id": "058D2463",
+            "color": "8D2463",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058D2463.png",
+            "value": 0.220935
+          },
+          {
+            "id": "05B7A688",
+            "color": "B7A688",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B7A688.png",
+            "value": 0.00251799
+          },
+          {
+            "id": "05C13898",
+            "color": "C13898",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C13898.png",
+            "value": 0.144532
+          },
+          {
+            "id": "05CB9DBC",
+            "color": "CB9DBC",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CB9DBC.png",
+            "value": 0.00151079
+          }
+          ]
+        },
+        {
+          "id": "049C2573",
+          "color": "9C2573",
+          "image": "african4586558197_ac2693ec55_o_cl_4_049C2573.png",
+          "value": 0.289277,
+          "children": [
+          {
+            "id": "05321B1B",
+            "color": "321B1B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05321B1B.png",
+            "value": 0.00929255
+          },
+          {
+            "id": "05551035",
+            "color": "551035",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05551035.png",
+            "value": 0.136811
+          },
+          {
+            "id": "058C1D60",
+            "color": "8C1D60",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058C1D60.png",
+            "value": 0.394357
+          },
+          {
+            "id": "05C13397",
+            "color": "C13397",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C13397.png",
+            "value": 0.452893
+          },
+          {
+            "id": "05D672BC",
+            "color": "D672BC",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D672BC.png",
+            "value": 0.00664722
+          }
+          ]
+        },
+        {
+          "id": "04BA6EA2",
+          "color": "BA6EA2",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04BA6EA2.png",
+          "value": 0.0171098,
+          "children": [
+          {
+            "id": "05390C21",
+            "color": "390C21",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05390C21.png",
+            "value": 0.0733945
+          },
+          {
+            "id": "05A74684",
+            "color": "A74684",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05A74684.png",
+            "value": 0.470183
+          },
+          {
+            "id": "05E3A8D7",
+            "color": "E3A8D7",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E3A8D7.png",
+            "value": 0.456422
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "037A4464",
+        "color": "7A4464",
+        "image": "african4586558197_ac2693ec55_o_cl_3_037A4464.png",
+        "value": 0.0568403,
+        "children": [
+        {
+          "id": "0417140C",
+          "color": "17140C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0417140C.png",
+          "value": 0.132208,
+          "children": [
+          {
+            "id": "0517140C",
+            "color": "17140C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0517140C.png",
+            "value": 1
+          }
+          ]
+        },
+        {
+          "id": "04493937",
+          "color": "493937",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04493937.png",
+          "value": 0.0787935,
+          "children": [
+          {
+            "id": "05303119",
+            "color": "303119",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05303119.png",
+            "value": 0.428331
+          },
+          {
+            "id": "05442933",
+            "color": "442933",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05442933.png",
+            "value": 0.490725
+          },
+          {
+            "id": "05EDC8E8",
+            "color": "EDC8E8",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05EDC8E8.png",
+            "value": 0.0809444
+          }
+          ]
+        },
+        {
+          "id": "047B3961",
+          "color": "7B3961",
+          "image": "african4586558197_ac2693ec55_o_cl_4_047B3961.png",
+          "value": 0.425193,
+          "children": [
+          {
+            "id": "0525181D",
+            "color": "25181D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0525181D.png",
+            "value": 0.133125
+          },
+          {
+            "id": "0533121F",
+            "color": "33121F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0533121F.png",
+            "value": 0.20875
+          },
+          {
+            "id": "05782351",
+            "color": "782351",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05782351.png",
+            "value": 0.334688
+          },
+          {
+            "id": "05CE6FB3",
+            "color": "CE6FB3",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CE6FB3.png",
+            "value": 0.271875
+          },
+          {
+            "id": "05DB9ACF",
+            "color": "DB9ACF",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DB9ACF.png",
+            "value": 0.0515625
+          }
+          ]
+        },
+        {
+          "id": "04A86591",
+          "color": "A86591",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04A86591.png",
+          "value": 0.363805,
+          "children": [
+          {
+            "id": "05451D30",
+            "color": "451D30",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05451D30.png",
+            "value": 0.186267
+          },
+          {
+            "id": "05863061",
+            "color": "863061",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05863061.png",
+            "value": 0.327611
+          },
+          {
+            "id": "05DB82C5",
+            "color": "DB82C5",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DB82C5.png",
+            "value": 0.186267
+          },
+          {
+            "id": "05EBBAE2",
+            "color": "EBBAE2",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05EBBAE2.png",
+            "value": 0.299854
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    }
+    ]
+  },
+  {
+    "id": "01886C51",
+    "color": "886C51",
+    "image": "african4586558197_ac2693ec55_o_cl_1_01886C51.png",
+    "value": 0.599111,
+    "children": [
+    {
+      "id": "02433216",
+      "color": "433216",
+      "image": "african4586558197_ac2693ec55_o_cl_2_02433216.png",
+      "value": 0.111928,
+      "children": [
+      {
+        "id": "032C280E",
+        "color": "2C280E",
+        "image": "african4586558197_ac2693ec55_o_cl_3_032C280E.png",
+        "value": 0.352152,
+        "children": [
+        {
+          "id": "041B2009",
+          "color": "1B2009",
+          "image": "african4586558197_ac2693ec55_o_cl_4_041B2009.png",
+          "value": 0.480939,
+          "children": [
+          {
+            "id": "051A1D08",
+            "color": "1A1D08",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051A1D08.png",
+            "value": 0.780962
+          },
+          {
+            "id": "0522290B",
+            "color": "22290B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0522290B.png",
+            "value": 0.219038
+          }
+          ]
+        },
+        {
+          "id": "043B2F12",
+          "color": "3B2F12",
+          "image": "african4586558197_ac2693ec55_o_cl_4_043B2F12.png",
+          "value": 0.519061,
+          "children": [
+          {
+            "id": "05201708",
+            "color": "201708",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05201708.png",
+            "value": 0.0580328
+          },
+          {
+            "id": "0530330E",
+            "color": "30330E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0530330E.png",
+            "value": 0.305082
+          },
+          {
+            "id": "05423015",
+            "color": "423015",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05423015.png",
+            "value": 0.636885
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "0350371A",
+        "color": "50371A",
+        "image": "african4586558197_ac2693ec55_o_cl_3_0350371A.png",
+        "value": 0.647848,
+        "children": [
+        {
+          "id": "0450371A",
+          "color": "50371A",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0450371A.png",
+          "value": 1,
+          "children": [
+          {
+            "id": "05261A09",
+            "color": "261A09",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05261A09.png",
+            "value": 0.029926
+          },
+          {
+            "id": "05461F23",
+            "color": "461F23",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05461F23.png",
+            "value": 0.00522664
+          },
+          {
+            "id": "0551371A",
+            "color": "51371A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0551371A.png",
+            "value": 0.938714
+          },
+          {
+            "id": "05705939",
+            "color": "705939",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05705939.png",
+            "value": 0.0261332
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    },
+    {
+      "id": "026E513A",
+      "color": "6E513A",
+      "image": "african4586558197_ac2693ec55_o_cl_2_026E513A.png",
+      "value": 0.244959,
+      "children": [
+      {
+        "id": "035E462A",
+        "color": "5E462A",
+        "image": "african4586558197_ac2693ec55_o_cl_3_035E462A.png",
+        "value": 0.638233,
+        "children": [
+        {
+          "id": "04231A10",
+          "color": "231A10",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04231A10.png",
+          "value": 0.0444931,
+          "children": [
+          {
+            "id": "051D150C",
+            "color": "1D150C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051D150C.png",
+            "value": 0.920444
+          },
+          {
+            "id": "05645542",
+            "color": "645542",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05645542.png",
+            "value": 0.0795564
+          }
+          ]
+        },
+        {
+          "id": "0447331D",
+          "color": "47331D",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0447331D.png",
+          "value": 0.490153,
+          "children": [
+          {
+            "id": "052A1D11",
+            "color": "2A1D11",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052A1D11.png",
+            "value": 0.4059
+          },
+          {
+            "id": "05353619",
+            "color": "353619",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05353619.png",
+            "value": 0.0241597
+          },
+          {
+            "id": "0551322E",
+            "color": "51322E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0551322E.png",
+            "value": 0.00271359
+          },
+          {
+            "id": "05573D21",
+            "color": "573D21",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05573D21.png",
+            "value": 0.482887
+          },
+          {
+            "id": "057C6040",
+            "color": "7C6040",
+            "image": "african4586558197_ac2693ec55_o_cl_5_057C6040.png",
+            "value": 0.08434
+          }
+          ]
+        },
+        {
+          "id": "04755735",
+          "color": "755735",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04755735.png",
+          "value": 0.407238,
+          "children": [
+          {
+            "id": "052F1E13",
+            "color": "2F1E13",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052F1E13.png",
+            "value": 0.0171733
+          },
+          {
+            "id": "05634526",
+            "color": "634526",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05634526.png",
+            "value": 0.42064
+          },
+          {
+            "id": "0580613D",
+            "color": "80613D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0580613D.png",
+            "value": 0.523205
+          },
+          {
+            "id": "05BA9B71",
+            "color": "BA9B71",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BA9B71.png",
+            "value": 0.0309224
+          },
+          {
+            "id": "05E0CBA4",
+            "color": "E0CBA4",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E0CBA4.png",
+            "value": 0.00805984
+          }
+          ]
+        },
+        {
+          "id": "04AE895F",
+          "color": "AE895F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04AE895F.png",
+          "value": 0.0544901,
+          "children": [
+          {
+            "id": "059E764C",
+            "color": "9E764C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059E764C.png",
+            "value": 0.670079
+          },
+          {
+            "id": "05C9A57A",
+            "color": "C9A57A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C9A57A.png",
+            "value": 0.227165
+          },
+          {
+            "id": "05D4C3A1",
+            "color": "D4C3A1",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D4C3A1.png",
+            "value": 0.102756
+          }
+          ]
+        },
+        {
+          "id": "04C5A983",
+          "color": "C5A983",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04C5A983.png",
+          "value": 0.00362552,
+          "children": [
+          {
+            "id": "05C5A983",
+            "color": "C5A983",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C5A983.png",
+            "value": 1
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03866151",
+        "color": "866151",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03866151.png",
+        "value": 0.268854,
+        "children": [
+        {
+          "id": "0426170E",
+          "color": "26170E",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0426170E.png",
+          "value": 0.0284172,
+          "children": [
+          {
+            "id": "0526170E",
+            "color": "26170E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0526170E.png",
+            "value": 1
+          }
+          ]
+        },
+        {
+          "id": "0442341B",
+          "color": "42341B",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0442341B.png",
+          "value": 0.196476,
+          "children": [
+          {
+            "id": "052F180E",
+            "color": "2F180E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052F180E.png",
+            "value": 0.396579
+          },
+          {
+            "id": "053A431E",
+            "color": "3A431E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_053A431E.png",
+            "value": 0.355106
+          },
+          {
+            "id": "055A3619",
+            "color": "5A3619",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055A3619.png",
+            "value": 0.196734
+          },
+          {
+            "id": "05704F2B",
+            "color": "704F2B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05704F2B.png",
+            "value": 0.0222913
+          },
+          {
+            "id": "05EDD5AF",
+            "color": "EDD5AF",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05EDD5AF.png",
+            "value": 0.0292898
+          }
+          ]
+        },
+        {
+          "id": "0480644A",
+          "color": "80644A",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0480644A.png",
+          "value": 0.179314,
+          "children": [
+          {
+            "id": "05472628",
+            "color": "472628",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05472628.png",
+            "value": 0.0474297
+          },
+          {
+            "id": "055F4A31",
+            "color": "5F4A31",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055F4A31.png",
+            "value": 0.21244
+          },
+          {
+            "id": "057F6044",
+            "color": "7F6044",
+            "image": "african4586558197_ac2693ec55_o_cl_5_057F6044.png",
+            "value": 0.54956
+          },
+          {
+            "id": "05B9A081",
+            "color": "B9A081",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B9A081.png",
+            "value": 0.178074
+          },
+          {
+            "id": "05BB357C",
+            "color": "BB357C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BB357C.png",
+            "value": 0.0124964
+          }
+          ]
+        },
+        {
+          "id": "04813758",
+          "color": "813758",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04813758.png",
+          "value": 0.07033,
+          "children": [
+          {
+            "id": "0560323E",
+            "color": "60323E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0560323E.png",
+            "value": 0.404779
+          },
+          {
+            "id": "0587385B",
+            "color": "87385B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0587385B.png",
+            "value": 0.395366
+          },
+          {
+            "id": "05998163",
+            "color": "998163",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05998163.png",
+            "value": 0.0347574
+          },
+          {
+            "id": "05BE338C",
+            "color": "BE338C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BE338C.png",
+            "value": 0.165098
+          }
+          ]
+        },
+        {
+          "id": "049A7853",
+          "color": "9A7853",
+          "image": "african4586558197_ac2693ec55_o_cl_4_049A7853.png",
+          "value": 0.286464,
+          "children": [
+          {
+            "id": "055D3B22",
+            "color": "5D3B22",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055D3B22.png",
+            "value": 0.0401778
+          },
+          {
+            "id": "058E6C47",
+            "color": "8E6C47",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058E6C47.png",
+            "value": 0.691733
+          },
+          {
+            "id": "05C19E78",
+            "color": "C19E78",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C19E78.png",
+            "value": 0.256
+          },
+          {
+            "id": "05E3C79D",
+            "color": "E3C79D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E3C79D.png",
+            "value": 0.0120889
+          }
+          ]
+        },
+        {
+          "id": "049E206A",
+          "color": "9E206A",
+          "image": "african4586558197_ac2693ec55_o_cl_4_049E206A.png",
+          "value": 0.0211347,
+          "children": [
+          {
+            "id": "05570C2D",
+            "color": "570C2D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05570C2D.png",
+            "value": 0.0795181
+          },
+          {
+            "id": "0585204D",
+            "color": "85204D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0585204D.png",
+            "value": 0.185542
+          },
+          {
+            "id": "05AC2278",
+            "color": "AC2278",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05AC2278.png",
+            "value": 0.73494
+          }
+          ]
+        },
+        {
+          "id": "04AC7087",
+          "color": "AC7087",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04AC7087.png",
+          "value": 0.137706,
+          "children": [
+          {
+            "id": "05514025",
+            "color": "514025",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05514025.png",
+            "value": 0.0214497
+          },
+          {
+            "id": "05563135",
+            "color": "563135",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05563135.png",
+            "value": 0.0613905
+          },
+          {
+            "id": "05815E44",
+            "color": "815E44",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05815E44.png",
+            "value": 0.22966
+          },
+          {
+            "id": "0597557B",
+            "color": "97557B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0597557B.png",
+            "value": 0.0695266
+          },
+          {
+            "id": "05B1237B",
+            "color": "B1237B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B1237B.png",
+            "value": 0.079142
+          },
+          {
+            "id": "05C1A98A",
+            "color": "C1A98A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C1A98A.png",
+            "value": 0.0769231
+          },
+          {
+            "id": "05CD92B9",
+            "color": "CD92B9",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CD92B9.png",
+            "value": 0.288092
+          },
+          {
+            "id": "05D681BF",
+            "color": "D681BF",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D681BF.png",
+            "value": 0.173817
+          }
+          ]
+        },
+        {
+          "id": "04C6A885",
+          "color": "C6A885",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04C6A885.png",
+          "value": 0.0547973,
+          "children": [
+          {
+            "id": "059E7E60",
+            "color": "9E7E60",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059E7E60.png",
+            "value": 0.260223
+          },
+          {
+            "id": "05D0B694",
+            "color": "D0B694",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D0B694.png",
+            "value": 0.356877
+          },
+          {
+            "id": "05D7B790",
+            "color": "D7B790",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D7B790.png",
+            "value": 0.3829
+          }
+          ]
+        },
+        {
+          "id": "04E3C69C",
+          "color": "E3C69C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04E3C69C.png",
+          "value": 0.0253616,
+          "children": [
+          {
+            "id": "05E3C69C",
+            "color": "E3C69C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E3C69C.png",
+            "value": 1
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03966573",
+        "color": "966573",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03966573.png",
+        "value": 0.0409524,
+        "children": [
+        {
+          "id": "04563326",
+          "color": "563326",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04563326.png",
+          "value": 0.0832497,
+          "children": [
+          {
+            "id": "05563326",
+            "color": "563326",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05563326.png",
+            "value": 1
+          }
+          ]
+        },
+        {
+          "id": "04775D4C",
+          "color": "775D4C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04775D4C.png",
+          "value": 0.149448,
+          "children": [
+          {
+            "id": "052B1410",
+            "color": "2B1410",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052B1410.png",
+            "value": 0.409396
+          },
+          {
+            "id": "05644529",
+            "color": "644529",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05644529.png",
+            "value": 0.272931
+          },
+          {
+            "id": "05EAD0B7",
+            "color": "EAD0B7",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05EAD0B7.png",
+            "value": 0.317673
+          }
+          ]
+        },
+        {
+          "id": "04834456",
+          "color": "834456",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04834456.png",
+          "value": 0.249415,
+          "children": [
+          {
+            "id": "0563293E",
+            "color": "63293E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0563293E.png",
+            "value": 0.509383
+          },
+          {
+            "id": "058B2B51",
+            "color": "8B2B51",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058B2B51.png",
+            "value": 0.281501
+          },
+          {
+            "id": "05B7977A",
+            "color": "B7977A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B7977A.png",
+            "value": 0.146113
+          },
+          {
+            "id": "05F0C7E1",
+            "color": "F0C7E1",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05F0C7E1.png",
+            "value": 0.0630027
+          }
+          ]
+        },
+        {
+          "id": "04B37F98",
+          "color": "B37F98",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04B37F98.png",
+          "value": 0.517887,
+          "children": [
+          {
+            "id": "05452023",
+            "color": "452023",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05452023.png",
+            "value": 0.216269
+          },
+          {
+            "id": "05B59074",
+            "color": "B59074",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B59074.png",
+            "value": 0.120077
+          },
+          {
+            "id": "05D49CC1",
+            "color": "D49CC1",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D49CC1.png",
+            "value": 0.434474
+          },
+          {
+            "id": "05DA98CC",
+            "color": "DA98CC",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DA98CC.png",
+            "value": 0.22918
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03967D5D",
+        "color": "967D5D",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03967D5D.png",
+        "value": 0.0519607,
+        "children": [
+        {
+          "id": "04756048",
+          "color": "756048",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04756048.png",
+          "value": 0.442951,
+          "children": [
+          {
+            "id": "0522150B",
+            "color": "22150B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0522150B.png",
+            "value": 0.211184
+          },
+          {
+            "id": "05664F36",
+            "color": "664F36",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05664F36.png",
+            "value": 0.209399
+          },
+          {
+            "id": "05795F43",
+            "color": "795F43",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05795F43.png",
+            "value": 0.389054
+          },
+          {
+            "id": "05DBC9AB",
+            "color": "DBC9AB",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DBC9AB.png",
+            "value": 0.190363
+          }
+          ]
+        },
+        {
+          "id": "04B0946F",
+          "color": "B0946F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04B0946F.png",
+          "value": 0.557049,
+          "children": [
+          {
+            "id": "059A7B55",
+            "color": "9A7B55",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059A7B55.png",
+            "value": 0.589404
+          },
+          {
+            "id": "05BB9D75",
+            "color": "BB9D75",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BB9D75.png",
+            "value": 0.19631
+          },
+          {
+            "id": "05E3CFAD",
+            "color": "E3CFAD",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E3CFAD.png",
+            "value": 0.214286
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    },
+    {
+      "id": "02957C5C",
+      "color": "957C5C",
+      "image": "african4586558197_ac2693ec55_o_cl_2_02957C5C.png",
+      "value": 0.423168,
+      "children": [
+      {
+        "id": "0352422F",
+        "color": "52422F",
+        "image": "african4586558197_ac2693ec55_o_cl_3_0352422F.png",
+        "value": 0.0465562,
+        "children": [
+        {
+          "id": "0452422F",
+          "color": "52422F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0452422F.png",
+          "value": 1,
+          "children": [
+          {
+            "id": "0524170E",
+            "color": "24170E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0524170E.png",
+            "value": 0.252809
+          },
+          {
+            "id": "054E3D2A",
+            "color": "4E3D2A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054E3D2A.png",
+            "value": 0.470718
+          },
+          {
+            "id": "0579664B",
+            "color": "79664B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0579664B.png",
+            "value": 0.234082
+          },
+          {
+            "id": "05B9A685",
+            "color": "B9A685",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B9A685.png",
+            "value": 0.0423902
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03937A5A",
+        "color": "937A5A",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03937A5A.png",
+        "value": 0.849592,
+        "children": [
+        {
+          "id": "0423170F",
+          "color": "23170F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0423170F.png",
+          "value": 0.0164563,
+          "children": [
+          {
+            "id": "051D130C",
+            "color": "1D130C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051D130C.png",
+            "value": 0.848639
+          },
+          {
+            "id": "05453120",
+            "color": "453120",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05453120.png",
+            "value": 0.151361
+          }
+          ]
+        },
+        {
+          "id": "04463424",
+          "color": "463424",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04463424.png",
+          "value": 0.0519717,
+          "children": [
+          {
+            "id": "0527190E",
+            "color": "27190E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0527190E.png",
+            "value": 0.549094
+          },
+          {
+            "id": "054D3B2A",
+            "color": "4D3B2A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054D3B2A.png",
+            "value": 0.200682
+          },
+          {
+            "id": "057A6145",
+            "color": "7A6145",
+            "image": "african4586558197_ac2693ec55_o_cl_5_057A6145.png",
+            "value": 0.223658
+          },
+          {
+            "id": "05D8C6A7",
+            "color": "D8C6A7",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D8C6A7.png",
+            "value": 0.0265661
+          }
+          ]
+        },
+        {
+          "id": "04795F41",
+          "color": "795F41",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04795F41.png",
+          "value": 0.287621,
+          "children": [
+          {
+            "id": "052C1C10",
+            "color": "2C1C10",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052C1C10.png",
+            "value": 0.110052
+          },
+          {
+            "id": "0560472C",
+            "color": "60472C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0560472C.png",
+            "value": 0.207454
+          },
+          {
+            "id": "05846745",
+            "color": "846745",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05846745.png",
+            "value": 0.572897
+          },
+          {
+            "id": "05AE9573",
+            "color": "AE9573",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05AE9573.png",
+            "value": 0.0704486
+          },
+          {
+            "id": "05DBC8A9",
+            "color": "DBC8A9",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DBC8A9.png",
+            "value": 0.0391489
+          }
+          ]
+        },
+        {
+          "id": "049B7F5B",
+          "color": "9B7F5B",
+          "image": "african4586558197_ac2693ec55_o_cl_4_049B7F5B.png",
+          "value": 0.364539,
+          "children": [
+          {
+            "id": "052A1B10",
+            "color": "2A1B10",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052A1B10.png",
+            "value": 0.0443495
+          },
+          {
+            "id": "055E4429",
+            "color": "5E4429",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055E4429.png",
+            "value": 0.0635428
+          },
+          {
+            "id": "0591714A",
+            "color": "91714A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0591714A.png",
+            "value": 0.542993
+          },
+          {
+            "id": "05BCA07A",
+            "color": "BCA07A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BCA07A.png",
+            "value": 0.247774
+          },
+          {
+            "id": "05D7C6A8",
+            "color": "D7C6A8",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D7C6A8.png",
+            "value": 0.101341
+          }
+          ]
+        },
+        {
+          "id": "04B6A07E",
+          "color": "B6A07E",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04B6A07E.png",
+          "value": 0.258403,
+          "children": [
+          {
+            "id": "052D1B0E",
+            "color": "2D1B0E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052D1B0E.png",
+            "value": 0.0244774
+          },
+          {
+            "id": "05665134",
+            "color": "665134",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05665134.png",
+            "value": 0.00855627
+          },
+          {
+            "id": "05907756",
+            "color": "907756",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05907756.png",
+            "value": 0.247626
+          },
+          {
+            "id": "05BDA582",
+            "color": "BDA582",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BDA582.png",
+            "value": 0.394021
+          },
+          {
+            "id": "05D7C4A3",
+            "color": "D7C4A3",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D7C4A3.png",
+            "value": 0.325319
+          }
+          ]
+        },
+        {
+          "id": "04D4C3A5",
+          "color": "D4C3A5",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04D4C3A5.png",
+          "value": 0.0210088,
+          "children": [
+          {
+            "id": "05957D5D",
+            "color": "957D5D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05957D5D.png",
+            "value": 0.0834813
+          },
+          {
+            "id": "05C7B393",
+            "color": "C7B393",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C7B393.png",
+            "value": 0.12833
+          },
+          {
+            "id": "05DDCDB0",
+            "color": "DDCDB0",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DDCDB0.png",
+            "value": 0.788188
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03C1AA85",
+        "color": "C1AA85",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03C1AA85.png",
+        "value": 0.103852,
+        "children": [
+        {
+          "id": "045D5C36",
+          "color": "5D5C36",
+          "image": "african4586558197_ac2693ec55_o_cl_4_045D5C36.png",
+          "value": 0.0251851,
+          "children": [
+          {
+            "id": "052F2C12",
+            "color": "2F2C12",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052F2C12.png",
+            "value": 0.354545
+          },
+          {
+            "id": "05767649",
+            "color": "767649",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05767649.png",
+            "value": 0.645455
+          }
+          ]
+        },
+        {
+          "id": "048C714B",
+          "color": "8C714B",
+          "image": "african4586558197_ac2693ec55_o_cl_4_048C714B.png",
+          "value": 0.0682286,
+          "children": [
+          {
+            "id": "058C714B",
+            "color": "8C714B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058C714B.png",
+            "value": 1
+          }
+          ]
+        },
+        {
+          "id": "04BFA681",
+          "color": "BFA681",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04BFA681.png",
+          "value": 0.696787,
+          "children": [
+          {
+            "id": "05694D32",
+            "color": "694D32",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05694D32.png",
+            "value": 0.00460022
+          },
+          {
+            "id": "05937550",
+            "color": "937550",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05937550.png",
+            "value": 0.221139
+          },
+          {
+            "id": "05C0A881",
+            "color": "C0A881",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C0A881.png",
+            "value": 0.415553
+          },
+          {
+            "id": "05D9C5A0",
+            "color": "D9C5A0",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D9C5A0.png",
+            "value": 0.358708
+          }
+          ]
+        },
+        {
+          "id": "04E3D1AF",
+          "color": "E3D1AF",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04E3D1AF.png",
+          "value": 0.209799,
+          "children": [
+          {
+            "id": "05A58659",
+            "color": "A58659",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05A58659.png",
+            "value": 0.0334667
+          },
+          {
+            "id": "05E5D4B2",
+            "color": "E5D4B2",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E5D4B2.png",
+            "value": 0.966533
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    },
+    {
+      "id": "029B5F60",
+      "color": "9B5F60",
+      "image": "african4586558197_ac2693ec55_o_cl_2_029B5F60.png",
+      "value": 0.0652712,
+      "children": [
+      {
+        "id": "03914967",
+        "color": "914967",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03914967.png",
+        "value": 0.520323,
+        "children": [
+        {
+          "id": "044E2E1F",
+          "color": "4E2E1F",
+          "image": "african4586558197_ac2693ec55_o_cl_4_044E2E1F.png",
+          "value": 0.0442425,
+          "children": [
+          {
+            "id": "05271314",
+            "color": "271314",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05271314.png",
+            "value": 0.236607
+          },
+          {
+            "id": "055A3722",
+            "color": "5A3722",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055A3722.png",
+            "value": 0.763393
+          }
+          ]
+        },
+        {
+          "id": "04764053",
+          "color": "764053",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04764053.png",
+          "value": 0.316117,
+          "children": [
+          {
+            "id": "052F211D",
+            "color": "2F211D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052F211D.png",
+            "value": 0.0137457
+          },
+          {
+            "id": "05563036",
+            "color": "563036",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05563036.png",
+            "value": 0.295533
+          },
+          {
+            "id": "05564D37",
+            "color": "564D37",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05564D37.png",
+            "value": 0.226804
+          },
+          {
+            "id": "058B3962",
+            "color": "8B3962",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058B3962.png",
+            "value": 0.293033
+          },
+          {
+            "id": "058B6C58",
+            "color": "8B6C58",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058B6C58.png",
+            "value": 0.0149953
+          },
+          {
+            "id": "05B63C91",
+            "color": "B63C91",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B63C91.png",
+            "value": 0.110278
+          },
+          {
+            "id": "05CF8DB5",
+            "color": "CF8DB5",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CF8DB5.png",
+            "value": 0.0456107
+          }
+          ]
+        },
+        {
+          "id": "0487745B",
+          "color": "87745B",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0487745B.png",
+          "value": 0.0657713,
+          "children": [
+          {
+            "id": "054C2A35",
+            "color": "4C2A35",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054C2A35.png",
+            "value": 0.0960961
+          },
+          {
+            "id": "055A4D3E",
+            "color": "5A4D3E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055A4D3E.png",
+            "value": 0.351351
+          },
+          {
+            "id": "05AE9974",
+            "color": "AE9974",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05AE9974.png",
+            "value": 0.552553
+          }
+          ]
+        },
+        {
+          "id": "049A2E70",
+          "color": "9A2E70",
+          "image": "african4586558197_ac2693ec55_o_cl_4_049A2E70.png",
+          "value": 0.374086,
+          "children": [
+          {
+            "id": "051D0714",
+            "color": "1D0714",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051D0714.png",
+            "value": 0.00818374
+          },
+          {
+            "id": "055B1F3B",
+            "color": "5B1F3B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055B1F3B.png",
+            "value": 0.168691
+          },
+          {
+            "id": "05952A67",
+            "color": "952A67",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05952A67.png",
+            "value": 0.476241
+          },
+          {
+            "id": "05C23999",
+            "color": "C23999",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C23999.png",
+            "value": 0.333685
+          },
+          {
+            "id": "05CE9B9D",
+            "color": "CE9B9D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CE9B9D.png",
+            "value": 0.0131996
+          }
+          ]
+        },
+        {
+          "id": "04B26980",
+          "color": "B26980",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04B26980.png",
+          "value": 0.129172,
+          "children": [
+          {
+            "id": "052D1611",
+            "color": "2D1611",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052D1611.png",
+            "value": 0.030581
+          },
+          {
+            "id": "056A1947",
+            "color": "6A1947",
+            "image": "african4586558197_ac2693ec55_o_cl_5_056A1947.png",
+            "value": 0.0565749
+          },
+          {
+            "id": "059F396B",
+            "color": "9F396B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059F396B.png",
+            "value": 0.208716
+          },
+          {
+            "id": "05A37B57",
+            "color": "A37B57",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05A37B57.png",
+            "value": 0.0642202
+          },
+          {
+            "id": "05BF3F97",
+            "color": "BF3F97",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BF3F97.png",
+            "value": 0.246942
+          },
+          {
+            "id": "05CAAD95",
+            "color": "CAAD95",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CAAD95.png",
+            "value": 0.392966
+          }
+          ]
+        },
+        {
+          "id": "04D6B298",
+          "color": "D6B298",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04D6B298.png",
+          "value": 0.0706103,
+          "children": [
+          {
+            "id": "05D6B298",
+            "color": "D6B298",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D6B298.png",
+            "value": 1
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03A27266",
+        "color": "A27266",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03A27266.png",
+        "value": 0.236319,
+        "children": [
+        {
+          "id": "04775030",
+          "color": "775030",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04775030.png",
+          "value": 0.27506,
+          "children": [
+          {
+            "id": "052D1A13",
+            "color": "2D1A13",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052D1A13.png",
+            "value": 0.0750988
+          },
+          {
+            "id": "055A3119",
+            "color": "5A3119",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055A3119.png",
+            "value": 0.341502
+          },
+          {
+            "id": "058C613B",
+            "color": "8C613B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058C613B.png",
+            "value": 0.516996
+          },
+          {
+            "id": "05B69B76",
+            "color": "B69B76",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B69B76.png",
+            "value": 0.0664032
+          }
+          ]
+        },
+        {
+          "id": "04A7507A",
+          "color": "A7507A",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04A7507A.png",
+          "value": 0.299413,
+          "children": [
+          {
+            "id": "0561263F",
+            "color": "61263F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0561263F.png",
+            "value": 0.238199
+          },
+          {
+            "id": "059A2765",
+            "color": "9A2765",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059A2765.png",
+            "value": 0.158315
+          },
+          {
+            "id": "05C33B93",
+            "color": "C33B93",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C33B93.png",
+            "value": 0.351489
+          },
+          {
+            "id": "05CCAF9C",
+            "color": "CCAF9C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CCAF9C.png",
+            "value": 0.251997
+          }
+          ]
+        },
+        {
+          "id": "04AF8458",
+          "color": "AF8458",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04AF8458.png",
+          "value": 0.117199,
+          "children": [
+          {
+            "id": "058E6441",
+            "color": "8E6441",
+            "image": "african4586558197_ac2693ec55_o_cl_5_058E6441.png",
+            "value": 0.38961
+          },
+          {
+            "id": "05BF925E",
+            "color": "BF925E",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05BF925E.png",
+            "value": 0.534323
+          },
+          {
+            "id": "05E5C49D",
+            "color": "E5C49D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E5C49D.png",
+            "value": 0.0760668
+          }
+          ]
+        },
+        {
+          "id": "04BFAA88",
+          "color": "BFAA88",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04BFAA88.png",
+          "value": 0.308328,
+          "children": [
+          {
+            "id": "05907455",
+            "color": "907455",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05907455.png",
+            "value": 0.0550071
+          },
+          {
+            "id": "05B9A480",
+            "color": "B9A480",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B9A480.png",
+            "value": 0.711566
+          },
+          {
+            "id": "05DDCAAA",
+            "color": "DDCAAA",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DDCAAA.png",
+            "value": 0.233427
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03AB7B4C",
+        "color": "AB7B4C",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03AB7B4C.png",
+        "value": 0.243359,
+        "children": [
+        {
+          "id": "047F5A38",
+          "color": "7F5A38",
+          "image": "african4586558197_ac2693ec55_o_cl_4_047F5A38.png",
+          "value": 0.239865,
+          "children": [
+          {
+            "id": "0565492B",
+            "color": "65492B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0565492B.png",
+            "value": 0.272887
+          },
+          {
+            "id": "05825A35",
+            "color": "825A35",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05825A35.png",
+            "value": 0.65669
+          },
+          {
+            "id": "05CBA37C",
+            "color": "CBA37C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05CBA37C.png",
+            "value": 0.0704225
+          }
+          ]
+        },
+        {
+          "id": "04B0733D",
+          "color": "B0733D",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04B0733D.png",
+          "value": 0.50739,
+          "children": [
+          {
+            "id": "05AE6E38",
+            "color": "AE6E38",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05AE6E38.png",
+            "value": 0.943404
+          },
+          {
+            "id": "05D8BA93",
+            "color": "D8BA93",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D8BA93.png",
+            "value": 0.0565959
+          }
+          ]
+        },
+        {
+          "id": "04C9AA7C",
+          "color": "C9AA7C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04C9AA7C.png",
+          "value": 0.252745,
+          "children": [
+          {
+            "id": "05C3A274",
+            "color": "C3A274",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C3A274.png",
+            "value": 0.760234
+          },
+          {
+            "id": "05DFC195",
+            "color": "DFC195",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DFC195.png",
+            "value": 0.239766
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    },
+    {
+      "id": "02B79C78",
+      "color": "B79C78",
+      "image": "african4586558197_ac2693ec55_o_cl_2_02B79C78.png",
+      "value": 0.154674,
+      "children": [
+      {
+        "id": "039B7F5D",
+        "color": "9B7F5D",
+        "image": "african4586558197_ac2693ec55_o_cl_3_039B7F5D.png",
+        "value": 0.321378,
+        "children": [
+        {
+          "id": "041B0F08",
+          "color": "1B0F08",
+          "image": "african4586558197_ac2693ec55_o_cl_4_041B0F08.png",
+          "value": 0.0246947,
+          "children": [
+          {
+            "id": "051B0F08",
+            "color": "1B0F08",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051B0F08.png",
+            "value": 1
+          }
+          ]
+        },
+        {
+          "id": "04422D1B",
+          "color": "422D1B",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04422D1B.png",
+          "value": 0.139869,
+          "children": [
+          {
+            "id": "0527170D",
+            "color": "27170D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0527170D.png",
+            "value": 0.748191
+          },
+          {
+            "id": "0563421F",
+            "color": "63421F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0563421F.png",
+            "value": 0.024602
+          },
+          {
+            "id": "05815C38",
+            "color": "815C38",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05815C38.png",
+            "value": 0.12494
+          },
+          {
+            "id": "05B28B60",
+            "color": "B28B60",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B28B60.png",
+            "value": 0.102267
+          }
+          ]
+        },
+        {
+          "id": "04704C2D",
+          "color": "704C2D",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04704C2D.png",
+          "value": 0.114567,
+          "children": [
+          {
+            "id": "051E0D05",
+            "color": "1E0D05",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051E0D05.png",
+            "value": 0.104829
+          },
+          {
+            "id": "05633F22",
+            "color": "633F22",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05633F22.png",
+            "value": 0.319199
+          },
+          {
+            "id": "05855D38",
+            "color": "855D38",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05855D38.png",
+            "value": 0.56066
+          },
+          {
+            "id": "05B99F7C",
+            "color": "B99F7C",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B99F7C.png",
+            "value": 0.0153121
+          }
+          ]
+        },
+        {
+          "id": "04A07E55",
+          "color": "A07E55",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04A07E55.png",
+          "value": 0.422846,
+          "children": [
+          {
+            "id": "051C110A",
+            "color": "1C110A",
+            "image": "african4586558197_ac2693ec55_o_cl_5_051C110A.png",
+            "value": 0.0186692
+          },
+          {
+            "id": "05684D2F",
+            "color": "684D2F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05684D2F.png",
+            "value": 0.0395724
+          },
+          {
+            "id": "05906E47",
+            "color": "906E47",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05906E47.png",
+            "value": 0.561991
+          },
+          {
+            "id": "05C29F72",
+            "color": "C29F72",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C29F72.png",
+            "value": 0.379767
+          }
+          ]
+        },
+        {
+          "id": "04CEB38C",
+          "color": "CEB38C",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04CEB38C.png",
+          "value": 0.0770528,
+          "children": [
+          {
+            "id": "05A27342",
+            "color": "A27342",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05A27342.png",
+            "value": 0.0936953
+          },
+          {
+            "id": "05C1A681",
+            "color": "C1A681",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C1A681.png",
+            "value": 0.446585
+          },
+          {
+            "id": "05E3CCA6",
+            "color": "E3CCA6",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E3CCA6.png",
+            "value": 0.45972
+          }
+          ]
+        },
+        {
+          "id": "04DEC9A8",
+          "color": "DEC9A8",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04DEC9A8.png",
+          "value": 0.22097,
+          "children": [
+          {
+            "id": "05735230",
+            "color": "735230",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05735230.png",
+            "value": 0.0112977
+          },
+          {
+            "id": "05DFCAA9",
+            "color": "DFCAA9",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DFCAA9.png",
+            "value": 0.988702
+          }
+          ]
+        }
+        ]
+      },
+      {
+        "id": "03C4A985",
+        "color": "C4A985",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03C4A985.png",
+        "value": 0.678622,
+        "children": [
+        {
+          "id": "04764E2A",
+          "color": "764E2A",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04764E2A.png",
+          "value": 0.0206097,
+          "children": [
+          {
+            "id": "053F1F0D",
+            "color": "3F1F0D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_053F1F0D.png",
+            "value": 0.234109
+          },
+          {
+            "id": "05875C33",
+            "color": "875C33",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05875C33.png",
+            "value": 0.765891
+          }
+          ]
+        },
+        {
+          "id": "04C1A47D",
+          "color": "C1A47D",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04C1A47D.png",
+          "value": 0.793264,
+          "children": [
+          {
+            "id": "0528160D",
+            "color": "28160D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0528160D.png",
+            "value": 0.0187706
+          },
+          {
+            "id": "055A3921",
+            "color": "5A3921",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055A3921.png",
+            "value": 0.0202207
+          },
+          {
+            "id": "0596734D",
+            "color": "96734D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_0596734D.png",
+            "value": 0.169621
+          },
+          {
+            "id": "05C7A97F",
+            "color": "C7A97F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05C7A97F.png",
+            "value": 0.447192
+          },
+          {
+            "id": "05DCC39D",
+            "color": "DCC39D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DCC39D.png",
+            "value": 0.344196
+          }
+          ]
+        },
+        {
+          "id": "04DBCBAE",
+          "color": "DBCBAE",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04DBCBAE.png",
+          "value": 0.186126,
+          "children": [
+          {
+            "id": "059A7A57",
+            "color": "9A7A57",
+            "image": "african4586558197_ac2693ec55_o_cl_5_059A7A57.png",
+            "value": 0.0109871
+          },
+          {
+            "id": "05AE9B83",
+            "color": "AE9B83",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05AE9B83.png",
+            "value": 0.0382833
+          },
+          {
+            "id": "05DECEB1",
+            "color": "DECEB1",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05DECEB1.png",
+            "value": 0.95073
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    }
+    ]
+  },
+  {
+    "id": "01A3688E",
+    "color": "A3688E",
+    "image": "african4586558197_ac2693ec55_o_cl_1_01A3688E.png",
+    "value": 0.0877299,
+    "children": [
+    {
+      "id": "02A3688E",
+      "color": "A3688E",
+      "image": "african4586558197_ac2693ec55_o_cl_2_02A3688E.png",
+      "value": 1,
+      "children": [
+      {
+        "id": "03A3688E",
+        "color": "A3688E",
+        "image": "african4586558197_ac2693ec55_o_cl_3_03A3688E.png",
+        "value": 1,
+        "children": [
+        {
+          "id": "04211E11",
+          "color": "211E11",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04211E11.png",
+          "value": 0.0164911,
+          "children": [
+          {
+            "id": "05211E11",
+            "color": "211E11",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05211E11.png",
+            "value": 1
+          }
+          ]
+        },
+        {
+          "id": "0437201D",
+          "color": "37201D",
+          "image": "african4586558197_ac2693ec55_o_cl_4_0437201D.png",
+          "value": 0.0210261,
+          "children": [
+          {
+            "id": "052F2118",
+            "color": "2F2118",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052F2118.png",
+            "value": 0.72658
+          },
+          {
+            "id": "054E1D29",
+            "color": "4E1D29",
+            "image": "african4586558197_ac2693ec55_o_cl_5_054E1D29.png",
+            "value": 0.27342
+          }
+          ]
+        },
+        {
+          "id": "04723D59",
+          "color": "723D59",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04723D59.png",
+          "value": 0.182455,
+          "children": [
+          {
+            "id": "052C1A1B",
+            "color": "2C1A1B",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052C1A1B.png",
+            "value": 0.273789
+          },
+          {
+            "id": "05562438",
+            "color": "562438",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05562438.png",
+            "value": 0.308812
+          },
+          {
+            "id": "05963E6F",
+            "color": "963E6F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05963E6F.png",
+            "value": 0.214537
+          },
+          {
+            "id": "05D277BB",
+            "color": "D277BB",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D277BB.png",
+            "value": 0.0725584
+          },
+          {
+            "id": "05D7A0CC",
+            "color": "D7A0CC",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D7A0CC.png",
+            "value": 0.130304
+          }
+          ]
+        },
+        {
+          "id": "04B476A0",
+          "color": "B476A0",
+          "image": "african4586558197_ac2693ec55_o_cl_4_04B476A0.png",
+          "value": 0.780028,
+          "children": [
+          {
+            "id": "052F1E24",
+            "color": "2F1E24",
+            "image": "african4586558197_ac2693ec55_o_cl_5_052F1E24.png",
+            "value": 0.00795748
+          },
+          {
+            "id": "055B2B40",
+            "color": "5B2B40",
+            "image": "african4586558197_ac2693ec55_o_cl_5_055B2B40.png",
+            "value": 0.233733
+          },
+          {
+            "id": "05604639",
+            "color": "604639",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05604639.png",
+            "value": 0.00355297
+          },
+          {
+            "id": "05906D50",
+            "color": "906D50",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05906D50.png",
+            "value": 0.00443387
+          },
+          {
+            "id": "05963A6F",
+            "color": "963A6F",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05963A6F.png",
+            "value": 0.10518
+          },
+          {
+            "id": "05B69970",
+            "color": "B69970",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B69970.png",
+            "value": 0.00599013
+          },
+          {
+            "id": "05B82F8D",
+            "color": "B82F8D",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05B82F8D.png",
+            "value": 0.0106883
+          },
+          {
+            "id": "05D481C0",
+            "color": "D481C0",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05D481C0.png",
+            "value": 0.218141
+          },
+          {
+            "id": "05E1AED7",
+            "color": "E1AED7",
+            "image": "african4586558197_ac2693ec55_o_cl_5_05E1AED7.png",
+            "value": 0.410324
+          }
+          ]
+        }
+        ]
+      }
+      ]
+    }
+    ]
+  }
+  ]
+}
