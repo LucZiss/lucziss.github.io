@@ -1,0 +1,784 @@
+{
+    "ue" : [{
+        "ueid": "11",
+        "name": " Mathématiques élémentaires",
+        "abreviation": "Math. élém.",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "12",
+        "name": "Algèbre 1",
+        "abreviation": "Algèbre 1",
+        "categorie": "Mathématiques",
+        "coefficient": "4",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "13",
+        "name": "Analyse 1",
+        "abreviation": "Analyse 1",
+        "categorie": "Mathématiques",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "14",
+        "name": "Culture et Pratique de l'Informatique",
+        "abreviation": "CPI",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "15",
+        "name": "Algorithmique et Programmation 1",
+        "abreviation": "AlgoProg 1",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "16",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "17",
+        "name": "MTU & C2I",
+        "abreviation": "MTU & C2I",
+        "categorie": "Ouverture",
+        "coefficient": "2",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "101",
+        "name": "Bases de l'archi info",
+        "abreviation": "Bases de l'archi info",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "102",
+        "name": "Physique S1",
+        "abreviation": "Physique S1",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "21",
+        "name": "Fondements du calcul et du raisonnement",
+        "abreviation": "FCR",
+        "categorie": "Mathématiques",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "22",
+        "name": "Algèbre 2",
+        "abreviation": "Algèbre 2",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "23",
+        "name": "Bases de données 1",
+        "abreviation": "BDD 1",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "24",
+        "name": "Algorithmique et Programmation 2",
+        "abreviation": "AlgoProg 2",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "25",
+        "name": "Programmation Fonctionnelle",
+        "abreviation": "PF",
+        "categorie": "Informatique",
+        "coefficient": "4",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "26",
+        "name": "Programmation Web 1",
+        "abreviation": "Prog. Web 1",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "27",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "28",
+        "name": "Projet Professionnel Encadré",
+        "abreviation": "PPE",
+        "categorie": "Ouverture",
+        "coefficient": "2",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "29",
+        "name": "Modèles de Calcul",
+        "abreviation": "Modèles de Calcul",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }, {
+        "ueid": "31",
+        "name": "Analyse 2",
+        "abreviation": "Analyse 2",
+        "categorie": "Mathématiques",
+        "coefficient": "4",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "32",
+        "name": "Logique et Programmation Logique",
+        "abreviation": "LPL",
+        "categorie": "Informatique théorique",
+        "coefficient": "5",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "33",
+        "name": "Architecture",
+        "abreviation": "Architecture",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "34",
+        "name": "Structures de Données et Algorithmes 1",
+        "abreviation": "SDA 1",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "35",
+        "name": "Programmation Orientée Objets 1",
+        "abreviation": "POO 1",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "36",
+        "name": "Techniques de développement",
+        "abreviation": "Tech. Dev.",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "37",
+        "name": "Anglais pour l'Informatique",
+        "abreviation": "Anglais pour l'Info",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "301",
+        "name": "Arithmétique et Cryptographie",
+        "abreviation": "Ary&Cry",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "302",
+        "name": "Introduction aux Grandes Catégories de Problèmes",
+        "abreviation": "IGCP",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "303",
+        "name": "Traitement Signal",
+        "abreviation": "Traitement Signal",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "41",
+        "name": "Probabilités Statistiques et Combinatoire",
+        "abreviation": "Proba. Stat. & Combi.",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "42",
+        "name": "Programmation Système",
+        "abreviation": "Prog. Système",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "43",
+        "name": "Réseaux IP",
+        "abreviation": "Réseaux IP",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "44",
+        "name": "Structures de Données et Algorithmes 2",
+        "abreviation": "SDA 2",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "45",
+        "name": "Programmation Orientée Objets 2",
+        "abreviation": "POO 2",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "46",
+        "name": "Programmation Web 2",
+        "abreviation": "Prog. Web 2",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "47",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "48",
+        "name": "Stage",
+        "abreviation": "Stage",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }, {
+        "ueid": "401",
+        "name": "Communication",
+        "abreviation": "Communication",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "402",
+        "name": "Droit",
+        "abreviation": "Droit",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "403",
+        "name": "Economie et Gestion",
+        "abreviation": "Eco-Gestion",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "51",
+        "name": "Analyse Numérique Appliquée",
+        "abreviation": "ANA",
+        "categorie": "Informatique théorique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "52",
+        "name": "Graphes",
+        "abreviation": "Graphes",
+        "categorie": "Informatique théorique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "53",
+        "name": "Architecture des Systèmes d'Exploitation",
+        "abreviation": "Archi. SE",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "54",
+        "name": "Algorithmes des Réseaux",
+        "abreviation": "Algo. Réseaux",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "55",
+        "name": "Bases de Données 2",
+        "abreviation": "BDD 2",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "56",
+        "name": "Interaction Homme-Machine",
+        "abreviation": "IHM",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "57",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "58",
+        "name": "Projet Professionnel Encadré 2",
+        "abreviation": "PPE 2",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "501",
+        "name": "Arithmétique et Cryptographie",
+        "abreviation": "Ary&Cry",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "502",
+        "name": "Introduction aux Grandes Catégories de Problèmes",
+        "abreviation": "IGCP",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "503",
+        "name": "Traitement Signal",
+        "abreviation": "Traitement Signal",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "61",
+        "name": "Théorie des Langages",
+        "abreviation": "TDL",
+        "categorie": "Informatique théorique",
+        "coefficient": "6",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "62",
+        "name": "Génie Logiciel",
+        "abreviation": "GL",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "63",
+        "name": "Projet Intégrateur",
+        "abreviation": "Projet Intégrateur",
+        "categorie": "Projet Intégrateur",
+        "coefficient": "6",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "64",
+        "name": "Anglais pour l'Informatique",
+        "abreviation": "Anglais pour l'Info.",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "65",
+        "name": "Stage",
+        "abreviation": "Stage",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }, {
+        "ueid": "601",
+        "name": "Géométrie 3D",
+        "abreviation": "G3D",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "602",
+        "name": "Intelligence Artificielle",
+        "abreviation": "IA",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "603",
+        "name": "Réseaux Locaux",
+        "abreviation": "RL",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "604",
+        "name": "Programmation Parallèle",
+        "abreviation": "Prog. Parallèle",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "605",
+        "name": "Communication",
+        "abreviation": "Communication",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "606",
+        "name": "Droit",
+        "abreviation": "Droit",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "607",
+        "name": "Economie et Gestion",
+        "abreviation": "Eco-Gestion",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "608",
+        "name": "Introduction à la Recherche",
+        "abreviation": "Intro. Recherche",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }],
+
+    "ueDoublons" : [
+        [301, 501],[302, 502],[303, 503],[405, 605],[406, 606],[407, 607]
+    ],
+
+    "options" : [{
+        "semestre" : 1,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [101,102]
+    }, {
+        "semestre" : 3,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [301,302,303]
+    }, {
+        "semestre" : 4,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [401,402,403]
+    }, {
+        "semestre" : 5,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [501,502,503]
+    }, {
+        "semestre" : 6,
+        "coefficient" : 3,
+        "nbChoix" : 3,
+        "ueList" : [601,602,603,604]
+    }, {
+        "semestre" : 6,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [605,606,607,608]
+    }],
+
+    "competences" : [{
+        "name" : "Appliquer",
+        "description" : "Ceci est la compétence \"Appliquer\"",
+        "color" : "#ff7f0e"
+    }, {
+        "name" : "Construire",
+        "description" : "Ceci est la compétence \"Construire\"",
+        "color" : "#d62728"
+    }, {
+        "name" : "Formaliser",
+        "description" : "Ceci est la compétence \"Formaliser\"",
+        "color" : "#2ca02c"
+    }, {
+        "name" : "Professionnaliser",
+        "description" : "Ceci est la compétence \"Professionnaliser\"",
+        "color" : "#8c564b"
+    }, {
+        "name" : "Programmer",
+        "description" : "Ceci est la compétence \"Programmer\"",
+        "color" : "#9467bd"
+    }, {
+        "name" : "Realiser",
+        "description" : "Ceci est la compétence \"Realiser\"",
+        "color" : "#1f77b4"
+    }],
+
+    "categories" : [{
+        "name" : "Mathématiques",
+        "description" : "",
+        "color" : "#b3ccff"
+    }, {
+        "name" : "Informatique",
+        "description" : "",
+        "color" : "#ed7676"
+    }, {
+        "name" : "Informatique théorique",
+        "description" : "",
+        "color" : "#bf79ea"
+    }, {
+        "name" : "Langues",
+        "description" : "",
+        "color" : "#2aaf33"
+    }, {
+        "name" : "Ouverture",
+        "description" : "",
+        "color" : "lightgrey"
+    }, {
+        "name" : "Projet Intégrateur",
+        "description" : "",
+        "color" : "yellow"
+    }]
+}

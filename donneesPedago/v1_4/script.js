@@ -22,68 +22,31 @@ escapeEvents();
 // filtre de compétences (Appliquer,Programmation,etc...)
 // exemple : currentFilters = ["Appliquer","Réaliser"] affiche
 // les UE concernées par les compétences Appliquer et Realiser
-
-// NOTE: currentFilters est sous la forme d'un tableau pour la simple est bonne
-// raison que l'on pouvait choisir plusieurs compétences en même temps dans une
-// ancienne version du code. Nous avons alors préféré garder cette forme en cas
-// de modifications futures.
-
 // currentSelection comporte les noeuds sélectionnés au clic droit (0 à 2 noeuds)
 var currentFilters = [];
 var currentSelection = [];
 var currentSelectedOptions = [];
-
-// dernier noeud option cliqué
 var lastClickedOptionNode;
 
 // Echelle d3 de couleurs
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-// Palette de couleurs UFR-INFO
-var rougeClair = "rgb(252, 54, 107)";
-var rouge = "rgb(192, 16, 63)";
-var rougeBordeaux = "rgb(116, 2, 51)";
-var orange = "rgb(255, 130, 77)";
-var jaunePale = "rgb(245, 255, 87)";
-// var jaune = "rgb(255, 255, 0)";
-
-// NOTE:  Il est possible de remplacer SkillList simplement par sa longueur
+// NOTE: On pourrait mettre les couleurs directement dans le .json
+// Il est aussi possible de remplacer SkillList simplement par sa longueur
 // dans certains appels de fonctions
 // NOTE : Il est possible de refactorer le code de certaines fonctions en créant
-// une fonction de parcours des source/targetLinks
+// une fonction de parcours des source/targetLinks et peut etre aussi
+// en utilisant includes()
 
-
-// Objets ou l'on va récuperer les descriptions de compétences plus loin dans le
-// code
-var skillDescriptions = {};
-
-// =========================== Gestion des couleurs ===========================
+// Couleurs attribuées à chaque compétence
 var skillColors = {};
-
+var skillDescriptions = {};
 
 // Couleurs attribuées à chaque bloc
 var groupColors = {};
 
-var defaultBackgroundColor = "#eeeeee"; // "#cce6ff"
-
-var defaultSkillDisplayColor = "#cccccc"; // "#b3ccff"
-var nodeTextColor = "#000000";
-
-var optionNodeColor = "white";
-var optionNodeMouseOverColor = d3.rgb(optionNodeColor).darker(1);
-var optionBorderColor = "black";
-
-var defaultBackgroundDropdownColor = "#b8c4d8";
-var dropdownMouseOverColor = orange;
-var dropdownItemBorderColor = orange;
-
-// =============================================================================
-
-
 // sélection d3 du g dans le svg
-var svg = d3.select("body")
-    .style("background-color", defaultBackgroundColor)
-    .append("svg")
+var svg = d3.select("body").append("svg")
     .attr("id", "chart")
     .attr("width", width)
     .attr("height", height)
@@ -116,7 +79,7 @@ var semesterLayout = d3.select("body").append("svg")
     .attr("id", "semesterLayout")
     .attr("width", "100%")
     .attr("height", 45)
-    .style("background-color", defaultBackgroundColor)
+    .style("background-color", "#cce6ff")
     .append("g");
 
 // création de la tooltip (infobulle)
@@ -124,23 +87,21 @@ var tip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-
 // Gestion du zoom sur la zone du SVG (zoom Max x3)
 // zoomHandler(svg, semesterLayout, 3);
 
 var graph;
 
-//gestion du clic en arrière plan
+//gestion du click en arrière plan
 var backgroundClick = true;
-d3.select("html").on("click", function() {
+d3.select("html").on('click', function() {
     if (backgroundClick) {
         d3.select("#dropdown").remove();
     }
     backgroundClick = true;
 });
 
-// Parsing du json, necessite un serveur web (local ou non) pour fonctionner !!!
-// Le fichier peut être remplacé par un autre fichier valide.
+// Parsing du json
 d3.json("pedagoLicenceInfo17.json").then(function(data) {
 
     // Création de l'objet graphe
@@ -153,19 +114,16 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
         "competences": []
     };
 
-
-    // récupération des catégories renseignées dans le fichier json
     data.categories.forEach(function(cat) {
         graph.categories.push(cat.name);
         groupColors[cat.name] = cat.color;
-    });
+    })
 
-    // récupération des compétences renseignées dans le fichier json
     data.competences.forEach(function(comp) {
         graph.competences.push(comp);
         skillColors[comp.name] = comp.color;
         skillDescriptions[comp.name] = comp.description;
-    });
+    })
 
     // Désactiver le menu contextuel au clic droit lorsque la souris est sur le SVG
     d3.select("#chart").on("contextmenu", function() {
@@ -179,15 +137,16 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
     var nodeW = function() {
         var sem = getMinMaxSemester(graph.nodes);
         var res = 30 * 10 / (0.5 * sem[1]);
-        if (res < 70) {
+        if (res < 70)
             res = 70;
-        } else if (res > 150) {
+        else if (res > 150)
             res = 150;
-        }
+
         return res;
     }
 
-    sankey.nodeWidth(nodeW())
+    sankey
+        .nodeWidth(nodeW())
         .nodes(graph.nodes)
         .options(graph.options)
         .links(graph.links)
@@ -233,7 +192,6 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
             .on("drag", dragmove)
         );
 
-    // Noeuds d'options
     var option = svg.append("g").selectAll(".option")
         .data(graph.options)
         .enter().append("g")
@@ -250,21 +208,20 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
         disableTooltip();
 
     }).on("mouseover", function(d) {
-        d3.select(this).select("rect").style("fill", optionNodeMouseOverColor); //option node mouseover color
+        d3.select(this).select("rect").style("fill", "#e6e6ff");
         if (lastClickedOptionNode !== d || d3.select("#dropdown").empty()) {
             enableTooltip("Cliquer pour choisir une option" + "<br/>" +
                 printECTS(d.coefficient));
         }
 
     }).on("mouseout", function(d, i) {
-        d3.select(this).select("rect").style("fill", optionNodeColor);
+        d3.select(this).select("rect").style("fill", "white");
 
         // Disparition de l'infobulle
         disableTooltip();
     });
 
-    // Boutons de suppression d'option qui apparait lorsqu'une ue est choisie
-    // en option
+
     initOptionDeleteButton(data, node, option);
 
 
@@ -285,7 +242,7 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
             return (d.facultatif == "true");
         })
         .style("stroke", function(d) {
-            return applyBorderColours(getDisplayMode());
+            return d3.rgb("#b3ccff").darker(2);
         })
         .on("click", function() {
             d3.select("#infoWindow").style("display", "block");
@@ -299,11 +256,11 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
         .attr("rx", 2)
         .attr("ry", 2)
         .style("stroke", function(d) {
-            return optionBorderColor;
+            return d3.rgb("#b3ccff").darker(2);
         })
-        .style("fill", optionNodeColor);
+        .style("fill", "white");
 
-    // Initialisation de l'affichage des noeuds
+    // Initialisation de l'affichage des liens
     displayNodes(nodeRects);
 
 
@@ -315,7 +272,6 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
         .attr("dy", ".35em")
         .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
         .style("text-anchor", "middle")
-        .style("fill", nodeTextColor)
         .text(function(d) {
             return d.abreviation;
         })
@@ -340,11 +296,12 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
         });
 
     // gestion des évenements liés aux noeuds
-    node.on("mouseover", function(d, i) {
+    node
+        .on("mouseover", function(d, i) {
             // Affichage de l'infobulle et mise à jour de ses informations
             var projetDescription = (d.projet == "true") ?
                 "Cette UE comporte un projet" :
-                "";
+                "Cette UE ne comporte pas de projet";
 
             enableTooltip(d.name + "<br/>" +
                 printECTS(d.coefficient) + "<br/>" +
@@ -377,7 +334,7 @@ d3.json("pedagoLicenceInfo17.json").then(function(data) {
             node.filter(function(d, i) {
                     return !currentSelection.includes(d);
                 }).selectAll("rect")
-                .style("stroke", applyBorderColours(getDisplayMode())).style("stroke-width", "2px");
+                .style("stroke", d3.rgb("#b3ccff").darker(2)).style("stroke-width", "2px");
 
             // Affichage par défaut quand rien n'est sélectionné
             if (currentSelection.length == 0)
@@ -426,12 +383,13 @@ function initOptionDeleteButton(data, nodes, options) {
     var nodeCircles = nodes.filter(function(d) {
             return d.option === "true";
         }).append("circle")
+        .style("fill", "#d1000a")
         .attr("class", "clickable")
         .attr("cx", function(d) {
             return sankey.nodeWidth() + 7;
         })
         .attr("cy", function(d) {
-            return 7;
+            return 0 + 7;
         }).attr("r", 7)
         .style("display", "none");
 
@@ -447,13 +405,11 @@ function initOptionDeleteButton(data, nodes, options) {
     var nodeCircleTexts = nodes.filter(function(d) {
             return d.option === "true";
         }).append("text")
-        .classed("opt-text",true)
-        .style("display","none")
         .attr("x", function(d) {
             return sankey.nodeWidth() + 2;
         })
         .attr("y", function(d) {
-            return 11;
+            return 0 + 11;
         })
         .style("fill", "white")
         .text("x");
@@ -470,7 +426,7 @@ function hideCircleAndMoveToInitPos(node) {
         "translate(" +
         (node.x = node.initialX) + "," +
         (node.y = node.initialY) + ")");
-    node.select("circle").style("display", "none");
+    node.select("circle").style("display", "none")
     node.select("text").style("display", "none");
 }
 
@@ -491,7 +447,7 @@ function showUEAndDuplicates(data, id) {
         });
         linksToShow.classed("dupsLinksToHide", false);
         displayLinks(linksToShow);
-    });
+    })
 }
 
 // PARAM : noeuds options [options] et noeud [node] à retirer de la sélection
@@ -519,7 +475,7 @@ function initDropdown(UEArray, optionNode, data) {
     var dropdown = d3.select("body").append("div")
         .attr("id", "dropdown")
         .style("opacity", "0.8")
-        .style("background-color", defaultBackgroundDropdownColor)
+        .style("background-color", "#b8c4d8")
         .style("position", "absolute")
         .style("top", optionNode.y + margin.top + "px")
         .style("left", optionNode.x + margin.left + sankey.nodeWidth() + "px")
@@ -530,8 +486,8 @@ function initDropdown(UEArray, optionNode, data) {
         dropdown.append("div")
             .datum(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]))
             .attr("class", "clickable items")
-            .style("border-top", "1px solid " + dropdownItemBorderColor)
-            .style("border-bottom", "1px solid " + dropdownItemBorderColor)
+            .style("border-top", "1px solid #a4afc1")
+            .style("border-bottom", "1px solid #a4afc1")
             .on("click", function(doption) {
 
                 var choosenUE = d3.selectAll(".node").filter(function(dnode) {
@@ -567,9 +523,9 @@ function initDropdown(UEArray, optionNode, data) {
 
     // items de dropdown onmouseover
     d3.selectAll(".items").on("mouseover", function() {
-        d3.select(this).style("background-color", dropdownMouseOverColor); //dropdown mouseover color
+        d3.select(this).style("background-color", "#8e9cb2");
     }).on("mouseout", function() {
-        d3.select(this).style("background-color", defaultBackgroundDropdownColor);
+        d3.select(this).style("background-color", "#b8c4d8");
     });
 }
 
@@ -662,7 +618,7 @@ function getLinks(UEArray) {
                     "source": +d.ueid,
                     "linktype": din[0],
                     "target": +din[j],
-                    "value": 1
+                    "value": d.value
                 });
             }
         });
@@ -676,12 +632,11 @@ function getLinks(UEArray) {
 // RETURN : renvoie l'UE correspondant à l'id [UEId]
 function getUEById(UEArray, UEId) {
     var UEs = UEArray.filter(function(d) {
-        return +d.ueid === +UEId;
+        return +d.ueid === UEId;
     });
 
-    if (UEs.length && UEs[0]) {
+    if (UEs.length && UEs[0])
         return UEs[0];
-    }
 }
 
 // PARAM : tableau d'UEs [UEArray]
@@ -857,7 +812,7 @@ function valoriseAdjacentNodes(node, currentFilters) {
                 currentFilters.includes(d.linktype)) {
                 containsFilter = true;
             }
-        });
+        })
 
         return containsFilter;
     });
@@ -887,34 +842,20 @@ function valoriseNodesOnLinkHover(link) {
 // PARAM : mode d'affichage actuel [mode] (string)
 //RETURN : Applique une couleur de fond aux noeuds
 function applyColours(mode) {
-    // return d.color = defaultSkillDisplayColor;
+    // return d.color = "#b3ccff";
     d3.selectAll(".node").each(function(d, i) {
         var ondisplay = d3.select(this).classed("ondisplaynodes");
         d3.select(this).select("rect").attr("fill", function() {
             if (mode == "groupDisplay") {
-                return "#eeeeee";
-            } else if (mode == "skillDisplay") {
-                return "#eeeeee" ;
-            }
-        });
-    });
-
-    applyBorderColours(mode);
-}
-
-function applyBorderColours(mode) {
-    d3.selectAll(".node").each(function(d, i) {
-        var ondisplay = d3.select(this).classed("ondisplaynodes");
-        d3.select(this).select("rect").attr("stroke", function() {
-            if (mode == "groupDisplay") {
-                return groupColors[d.categorie];
+                return d.color = groupColors[d.categorie];
             } else if (mode == "skillDisplay") {
                 return d.color = (ondisplay) ?
                     skillColors[currentFilters[0]] :
-                    defaultSkillDisplayColor;
+                    "#b3ccff";
             }
         });
-    });}
+    });
+}
 
 // PARAM : tableau d'UEs [UEArray]
 // Met en place l'affichage des semestres sous le graphe
@@ -928,9 +869,11 @@ function displaySemesters(UEArray) {
     for (var i = tab[0]; i <= tab[1]; i++) {
         d3.select("#semesterLayout g").append("text")
             .style("text-anchor", "middle")
+            .style("fill", "steelblue")
             .attr("y", 15)
             .attr("x", semesterScale(i))
-            .text("Semestre " + i);
+            .text("Semestre " + i)
+            .style("font-size", 14);
     }
 }
 
@@ -976,12 +919,12 @@ function radioDisplaySetup() {
     // titre
     filterDiv.append("h2").text("Affichage");
 
-    // choix mode bloc
+    //
     filterDiv.append("div")
         .attr("id", "displayRadio")
         .attr("width", "100%")
         .append("label")
-        .classed("clickable displRadiosText", true)
+        .classed("clickable", true)
         .attr("for", "groupDisplay")
         .style("margin-left", "5px")
         .html("Blocs")
@@ -994,10 +937,10 @@ function radioDisplaySetup() {
         .attr("checked", "true");
 
 
-    //  choix mode bloc compétence
+    //
     filterDiv.select("#displayRadio")
         .append("label")
-        .classed("clickable displRadiosText", true)
+        .classed("clickable", true)
         .attr("for", "skillDisplay")
         .html("Compétences")
         .append("input")
@@ -1012,13 +955,14 @@ function radioDisplaySetup() {
 // selection d3 de l'element "div" du DOM contenant les radios
 // de l'affichage par competences [skillDiv]
 // RETURN : void, gere l'affichage en mode "competences" ainsi que
-// la disposition des checkbox/radios de ce mode d'affichage
+//la disposition des checkbox de ce mode d'affichage
 function displaySkills(SkillList, skillDiv) {
 
     initDefaultRadio(skillDiv);
 
     for (var total = 0; total < SkillList.length; total++) {
         var checkDiv = skillDiv.append("div")
+            .style("color", "white")
             .attr("id", "checkdiv" + total)
             .attr("class", "radio-area");
         checkDiv.append("input")
@@ -1059,6 +1003,7 @@ function displaySkills(SkillList, skillDiv) {
 // RETURN : void, remplit [skillDiv] avec les compétences
 function initDefaultRadio(skillDiv) {
     var checkDivDef = skillDiv.append("div")
+        .style("color", "white")
         .attr("id", "checkdivdef")
         .attr("class", "radio-area");
     checkDivDef.append("input")
@@ -1100,7 +1045,8 @@ function displayBlocks(displayLegendDiv) {
             .append("p")
             .style("margin", 0)
             .style("padding", "2px")
-            .style("background", "linear-gradient(to right, " + groupColors[sortedKeys[i]] + ", " + defaultBackgroundColor + ")")
+            .style("color", "white")
+            .style("background", "linear-gradient(to right, " + groupColors[sortedKeys[i]] + ", #cce6ff)")
             .text(function(d) {
                 return sortedKeys[i];
             });
@@ -1116,7 +1062,7 @@ function buttonsSetup(data, graph) {
 
     var links = d3.selectAll(".link");
     var nodes = d3.selectAll(".node");
-    var options = d3.selectAll(".option");
+    var options = d3.selectAll(".option")
 
     var resetViewButton = filterDiv.append("button")
         .classed("selectionButtons clickable", true)
@@ -1125,11 +1071,7 @@ function buttonsSetup(data, graph) {
     var optionLegend = filterDiv.append("div")
         .style("width", "100%");
     optionLegend.append("div")
-        .attr("id", "optionImage")
-        .style("border", function() {
-            return "2px dashed " + defaultSkillDisplayColor + "";
-        });
-
+        .attr("id", "optionImage");
     optionLegend.append("p").text("UE facultative")
         .attr("id", "optionText");
 
@@ -1138,7 +1080,6 @@ function buttonsSetup(data, graph) {
             .nodes(graph.nodes)
             .links(graph.links)
             .layout(32);
-
         links.attr("d", path);
         nodes.attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
@@ -1195,7 +1136,7 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
                     break;
 
                 default:
-                    console.log("erreur");
+                    alert("erreur");
                     break;
 
             }
@@ -1209,7 +1150,6 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
 
 // PARAM : tableau comportant toutes les compétences [SkillList]
 // RETURN : void, initialise la checkbox "(De)Sélectionner tout"
-// UTILISEE DANS UNE ANCIENNE VERSION AVEC SELECTION MULTIPLE DE COMPETENCES
 function selectAllSetup(SkillList) {
     var selectAllCheckbox = filterDiv.append("input")
         .attr("type", "checkbox")
@@ -1248,18 +1188,19 @@ function resetSelection() {
     var nodes = d3.selectAll(".node");
     var links = d3.selectAll(".link");
     currentSelection = [];
-    nodes.selectAll("rect").style("stroke", applyBorderColours(getDisplayMode())).style("stroke-width", "2px");
+    nodes.selectAll("rect").style("stroke", d3.rgb("#b3ccff").darker(2)).style("stroke-width", "2px");
     applyDefaultOpacity(nodes, links);
 }
 
-// PARAM : tableau de compétences [SkillList] et leurs descriptions [descriptions]
+// PARAM : tableau de compétences [SkillList]
 // RETURN : void, gère l'affichage des descriptions
 // de chaque compétence onmouseover dans la zone prévue à cet effet
 function setSkillDescription(SkillList, descriptions) {
     var descriptionDiv = filterDiv.append("div");
     var descriptionTitle = descriptionDiv.append("h2").text("Description");
     var descriptionContent = descriptionDiv.append("p")
-        .attr("id", "description-area");
+        .attr("id", "description-area")
+        .style("font-size", "14px");
 
     for (var total = 0; total < SkillList.length; total++) {
         document.getElementById("checkdiv" + total).addEventListener("mouseover", function() {
@@ -1276,7 +1217,7 @@ function RadioLabelColor(SkillList) {
         var checkdiv = document.getElementById("checkdiv" + total);
         var currentColor = skillColors[checkdiv.firstChild.value];
         checkdiv.style.backgroundColor = currentColor;
-        checkdiv.style.background = "linear-gradient(to right, " + currentColor + ", " + defaultBackgroundColor + ")";
+        checkdiv.style.background = "linear-gradient(to right, " + currentColor + ", #cce6ff)";
     }
 }
 
@@ -1302,7 +1243,7 @@ function getAllPathsBetween(nodeA, nodeB) {
 // BRIEF : recursion de la fonction getAllPathsBetween
 function getAllPathsBetweenRec(nodeA, nodeB, currentpath, pathlist, links) {
 
-    if (+nodeA.ueid === +nodeB.ueid) {
+    if (nodeA.ueid === nodeB.ueid) {
         pathlist.push(currentpath.slice());
     }
 
@@ -1347,18 +1288,18 @@ function selectNode(d) {
         filterSkill(currentFilters);
     } else if (currentSelection.length < 2) {
         currentSelection.push(d);
-        if (currentSelection.length == 2 && +currentSelection[0].semestre != +currentSelection[1].semestre) {
+        if (currentSelection.length == 2 && currentSelection[0].semestre != currentSelection[1].semestre) {
             currentSelection.sort(function(a, b) {
                 return a.semestre - b.semestre;
             });
-        } else if (currentSelection.length == 2 && +currentSelection[0].semestre == +currentSelection[1].semestre) {
+        } else if (currentSelection.length == 2 && currentSelection[0].semestre == currentSelection[1].semestre) {
             currentSelection[0].targetLinks.forEach(function(link) {
-                if (+link.source.ueid == +currentSelection[1].ueid) {
+                if (link.source.ueid == currentSelection[1].ueid) {
                     var tmp = currentSelection[0];
                     currentSelection[0] = currentSelection[1];
                     currentSelection[1] = tmp;
                 }
-            });
+            })
         }
     }
 
@@ -1381,8 +1322,8 @@ function displaySelection(pathArray) {
 
     if (!pathArray.length) {
         nodes.filter(function(d, i) {
-            return (+d.ueid === +currentSelection[0].ueid ||
-                +d.ueid === +currentSelection[1].ueid);
+            return (d.ueid === currentSelection[0].ueid ||
+                d.ueid === currentSelection[1].ueid);
         }).style("opacity", "1");
     }
 
@@ -1397,11 +1338,11 @@ function displaySelection(pathArray) {
             }
 
             nodes.filter(function(d, i) {
-                return (+d.ueid === +path[k].ueid &&
+                return (d.ueid === path[k].ueid &&
                     checkNodeDisplay(d, currentFilters));
             }).style("opacity", "1");
         }
-    });
+    })
 }
 
 // PARAM : Noeud UE concerné [node]
@@ -1428,7 +1369,7 @@ function hasActiveLinkBetweenNodes(nodeA, nodeB, links) {
             d.target == nodeB) {
             returnVal = true;
         }
-    });
+    })
     return returnVal;
 }
 
@@ -1472,18 +1413,51 @@ function getDisplayMode() {
     }
 }
 
-// PARAM : données json [data], tableau des choix possibles
+// PARAM : un tableau de donnees représentants les UEs [UEArray],
+// numero de semestre [sem]
+// RETURN : les UE de UEArray pour lesquelles "option" vaut "true"
+// et appartenant au semestre "sem"
+function getOptionsBySemester(UEArray, sem) {
+    return UEArray.filter(function(d) {
+        return +d.semestre === sem && d.option === "true";
+    });
+}
+
+// PARAM : tableau de donnes d'UE [options]
+// RETURN : nom des UE (peut se combiner avec getOptionsBySemester)
+function getUENameList(options) {
+    return options.map(function(d) {
+        return d.name;
+    });
+}
+
+// PARAM : données json [data]
+// RETURN : tableau de listes de choix pour chaque slot d'option
+function getOptionsToSelectArray(data) {
+    var options = data.options;
+    var optionsArray = [];
+
+    options.forEach(function(d, i) {
+        for (var i = 0; i < +d.nbChoix; i++) {
+            optionsArray.push(d.ueList);
+        }
+    })
+
+    return optionsArray;
+}
+
+// PARAM : données json [data], tableau des choix possible
 // pour une option [selectionArray]
-// RETURN : tableau de choix filtré où les choix déjà pris sont retirés (peu
-// importe le semestre où l'UE est choisie)
+// RETURN : tableau de choix filtré ou les choix déjà pris sont retirés (peu
+// importe le semestre ou l'UE est choisie)
 function filterUESelection(data, selectionArray) {
     var filteredArray = [];
     selectionArray.forEach(function(d, i) {
-        if (!currentSelectedOptions.includes(+d) &&
-            !arrayInter(currentSelectedOptions, getDuplicatesOfUE(data, +d)).length) {
-            filteredArray.push(+d);
+        if (!currentSelectedOptions.includes(d) &&
+            !arrayInter(currentSelectedOptions, getDuplicatesOfUE(data, d)).length) {
+            filteredArray.push(d);
         }
-    });
+    })
     return filteredArray;
 }
 
@@ -1492,7 +1466,7 @@ function filterUESelection(data, selectionArray) {
 function arrayInter(arrA, arrB) {
     return arrA.filter(function(d) {
         return arrB.indexOf(d) > -1;
-    });
+    })
 }
 
 // PARAM : données json [data], ID d'ue [id]
@@ -1500,19 +1474,12 @@ function arrayInter(arrA, arrB) {
 //dans les autres semestres
 function getDuplicatesOfUE(data, id) {
     var duplicates = data.ueDoublons;
-
-    duplicates.forEach(function (d) {
-        d.forEach(function (d1,i1,arr1) {
-            return arr1[i1] = +d1;
-        });
-    });
-
     var duplicatesOfUE = [id];
     duplicates.forEach(function(d, i) {
         if (d.includes(id)) {
             duplicatesOfUE = d;
         }
-    });
+    })
     return duplicatesOfUE;
 }
 
@@ -1525,12 +1492,12 @@ function hideDuplicatesOfUE(data, id) {
     duplicates.forEach(function(d, i) {
         if (d.includes(id)) {
             d.forEach(function(d) {
-                if (+d !== +id) {
+                if (d !== id) {
                     duplicatesOfUE.push(+d);
                 }
-            });
+            })
         }
-    });
+    })
     return duplicatesOfUE;
 }
 
@@ -1542,10 +1509,10 @@ function isUEDuplicated(data, id) {
     var duplicates = data.ueDoublons;
     var ret = false;
     duplicates.forEach(function(d, i) {
-        if (d.includes(+id)) {
+        if (d.includes(id)) {
             ret = true;
         }
-    });
+    })
 
     return ret;
 }
@@ -1559,7 +1526,7 @@ function getOptionById(data, id) {
         if (+d.id === +id) {
             option = d;
         }
-    });
+    })
     return d;
 }
 
@@ -1574,7 +1541,9 @@ function setupAreaSeparator(yPos) {
         .attr("x1", 0)
         .attr("x2", margin.left + svgPadding.left + width)
         .attr("y1", yPos)
-        .attr("y2", yPos);
+        .attr("y2", yPos)
+        .style("stroke", "black")
+        .style("stroke-width", "2px");
 
     d3.select("#areaSeparator")
         .append("g")
@@ -1585,7 +1554,10 @@ function setupAreaSeparator(yPos) {
         .attr("height", 25)
         .attr("width", sankey.nodeWidth())
         .attr("rx", 2)
-        .attr("ry", 2);
+        .attr("ry", 2)
+        .style("fill", "white")
+        .style("stroke", "black")
+        .style("stroke-width", "2px");
 
     d3.select(".separator")
         .append("text")
@@ -1609,7 +1581,8 @@ function initInfoWindow() {
         .style("opacity", "0.9")
         .style("height", height + "px")
         .style("display", "none")
-        .attr("id", "infoWindow");
+        .attr("id", "infoWindow")
+        .style("background-color", "#333333");
 
     var closeInfoWindow = infoWindow.append("div")
         .classed("clickable", true)
@@ -1629,7 +1602,7 @@ function initInfoWindow() {
         .style("color", "white")
         .style("padding", "150px")
         .style("text-align", "justify")
-        .html("<u>Pré-requis</u><br/><br/> Programme de TS toutes spécialités confondues. <br/><br/><u>Contenu</u><br/><br/> Arithmétique dans Z. Division euclidienne. Diviseurs communs à deux entiers, pgcd, ppcm, lemme de Gauss. Théorème de Bézout. Algorithme dEuclide de calcul de pgcd. Nombres premiers. Existence et unicité de la décomposition en produit de facteurs premiers. Congruences : additions et multiplications. Systèmes de congruences, théorème chinois. Polynômes, somme, produit, fonctions polynômiales. Annulation en un point et factorisation par X -a.<br/><br/>Algèbre linéaire. Systèmes linéaires dans R^n, résolution par méthode du pivot. Matrices, produit de matrices, traduction des opérations de lignes et de colonnes. Calculs de noyaux et d'images. <br/><br/><u>Objectifs : savoir-faire et compétences</u><br/><br/> Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.");
+        .html("<u>Pré-requis</u><br/><br/> Programme de TS toutes spécialités confondues. <br/><br/><u>Contenu</u><br/><br/> Arithmétique dans Z. Division euclidienne. Diviseurs communs à deux entiers, pgcd, ppcm, lemme de Gauss. Théorème de Bézout. Algorithme dEuclide de calcul de pgcd. Nombres premiers. Existence et unicité de la décomposition en produit de facteurs premiers. Congruences : additions et multiplications. Systèmes de congruences, théorème chinois. Polynômes, somme, produit, fonctions polynômiales. Annulation en un point et factorisation par X -a.<br/><br/>Algèbre linéaire. Systèmes linéaires dans R^n, résolution par méthode du pivot. Matrices, produit de matrices, traduction des opérations de lignes et de colonnes. Calculs de noyaux et d'images. <br/><br/><u>Objectifs : savoir-faire et compétences</u><br/><br/> Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.")
 }
 
 // RETURN : void, gère la taille du svg au redimensionnement de fenetre
@@ -1641,7 +1614,6 @@ function resize() {
             .links(graph.links)
             .options(graph.options)
             .layout(32);
-
         d3.selectAll(".link").attr("d", path);
         d3.selectAll(".noderesize").attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
@@ -1686,4 +1658,14 @@ function escapeEvents() {
         }
     });
 
+}
+
+function getAllCategories(UEdata) {
+    var categories = [];
+    UEdata.forEach(function(d) {
+        if (!categories.includes(d.categorie)) {
+            categories.push(d.categorie);
+        }
+    });
+    return categories;
 }

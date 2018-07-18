@@ -6,6 +6,7 @@
         "categorie": "Mathématiques",
         "coefficient": "6",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Appliquer", 21, 301, 41, 401]
         ],
@@ -19,6 +20,7 @@
         "categorie":"Informatique",
         "coefficient": "6",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Formaliser", 22, 35],
             ["Programmer", 22, 35],
@@ -34,6 +36,7 @@
         "categorie": "Mathématiques",
         "coefficient": "6",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Appliquer", 23, 24]
         ],
@@ -47,6 +50,7 @@
         "categorie": "Mathématiques",
         "coefficient": "3",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Programmer"]
         ],
@@ -60,6 +64,7 @@
         "categorie": "Mathématiques",
         "coefficient": "3",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Appliquer"]
@@ -74,6 +79,7 @@
         "categorie": "Ouverture",
         "coefficient": "2",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Programmer", 22],
             ["Appliquer"],
@@ -89,6 +95,7 @@
         "categorie": "Ouverture",
         "coefficient": "1",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -102,6 +109,7 @@
         "categorie": "Langues",
         "coefficient": "3",
         "semestre": "1",
+        "value": 1,
         "dependances": [
             ["Professionnaliser", 26]
         ],
@@ -115,6 +123,7 @@
         "categorie": "Mathématiques",
         "coefficient": "6",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Appliquer"]
         ],
@@ -128,6 +137,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Formaliser", 37, 45, 56, 64],
             ["Programmer", 37, 38, 45, 51, 601],
@@ -143,6 +153,7 @@
         "categorie": "Mathématiques",
         "coefficient": "6",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Appliquer"]
         ],
@@ -156,6 +167,7 @@
         "categorie": "Mathématiques",
         "coefficient": "2",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Appliquer"]
@@ -170,6 +182,7 @@
         "categorie": "Ouverture",
         "coefficient": "1",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Professionnaliser", 36]
         ],
@@ -183,6 +196,7 @@
         "categorie": "Langues",
         "coefficient": "3",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Professionnaliser", 43]
         ],
@@ -196,6 +210,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Programmer"],
             ["Construire", 34],
@@ -211,6 +226,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Programmer"]
         ],
@@ -224,6 +240,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "2",
+        "value": 1,
         "dependances": [
             ["Appliquer"]
         ],
@@ -237,6 +254,7 @@
         "categorie": "Langues",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -250,6 +268,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Programmer"],
             ["Construire", 47, 55]
@@ -264,6 +283,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer", 51],
@@ -279,6 +299,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Programmer", 47],
             ["Construire", 47]
@@ -293,6 +314,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer"],
@@ -308,6 +330,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -321,6 +344,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Formaliser", 46],
             ["Programmer", 46, 47],
@@ -337,6 +361,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Programmer", 47, 62],
             ["Construire", 62],
@@ -352,6 +377,7 @@
         "categorie": "Mathématiques",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Appliquer"]
         ],
@@ -365,6 +391,7 @@
         "categorie": "Informatique théorique",
         "coefficient": "3",
         "semestre": "3",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Appliquer"]
@@ -379,6 +406,7 @@
         "categorie": "Informatique théorique",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Appliquer"]
         ],
@@ -392,6 +420,7 @@
         "categorie": "Informatique théorique",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer"],
@@ -407,6 +436,7 @@
         "categorie": "Langues",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Professionnaliser", 52]
         ],
@@ -420,6 +450,7 @@
         "categorie": "Informatique théorique",
         "coefficient": "6",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer"],
@@ -435,6 +466,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Formaliser", 54],
             ["Programmer", 54, 64]
@@ -449,6 +481,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer", 601],
@@ -465,6 +498,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Programmer", 55, 56, 64],
             ["Construire", 55, 56]
@@ -479,6 +513,7 @@
         "categorie": "Mathématiques",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Appliquer"]
         ],
@@ -492,6 +527,7 @@
         "categorie": "Informatique théorique",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Appliquer"]
@@ -506,6 +542,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -519,6 +556,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -532,6 +570,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -545,6 +584,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -558,6 +598,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "4",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Realiser"],
@@ -573,6 +614,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Programmer"],
             ["Construire"]
@@ -587,6 +629,7 @@
         "categorie": "Langues",
         "coefficient": "3",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -600,6 +643,7 @@
         "categorie": "Mathématiques",
         "coefficient": "6",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Appliquer", 65]
@@ -614,6 +658,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer", 63]
@@ -628,6 +673,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Programmer"],
             ["Construire", 64, 603]
@@ -642,6 +688,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer"],
@@ -657,6 +704,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "5",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Realiser"],
@@ -672,6 +720,7 @@
         "categorie": "Langues",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -685,6 +734,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Programmer"],
             ["Construire"],
@@ -700,6 +750,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Programmer"]
         ],
@@ -713,6 +764,7 @@
         "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer"],
@@ -728,6 +780,7 @@
         "categorie": "Informatique théorique",
         "coefficient": "6",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Appliquer"]
@@ -742,6 +795,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Appliquer"],
             ["Programmer"]
@@ -756,6 +810,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Programmer"]
@@ -770,6 +825,7 @@
         "categorie": "Informatique",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Construire"]
         ],
@@ -783,6 +839,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -796,6 +853,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -809,6 +867,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -822,6 +881,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Professionnaliser"]
         ],
@@ -835,6 +895,7 @@
         "categorie": "Ouverture",
         "coefficient": "3",
         "semestre": "6",
+        "value": 1,
         "dependances": [
             ["Formaliser"],
             ["Realiser"],
@@ -879,48 +940,48 @@
     "competences" : [{
         "name" : "Appliquer",
         "description" : "Ceci est la compétence \"Appliquer\"",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#ff7f0e"
     }, {
         "name" : "Construire",
         "description" : "Ceci est la compétence \"Construire\"",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#d62728"
     }, {
         "name" : "Formaliser",
         "description" : "Ceci est la compétence \"Formaliser\"",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#2ca02c"
     }, {
         "name" : "Professionnaliser",
         "description" : "Ceci est la compétence \"Professionnaliser\"",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#8c564b"
     }, {
         "name" : "Programmer",
         "description" : "Ceci est la compétence \"Programmer\"",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#9467bd"
     }, {
         "name" : "Realiser",
         "description" : "Ceci est la compétence \"Realiser\"",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#1f77b4"
     }],
 
     "categories" : [{
         "name" : "Mathématiques",
         "description" : "",
-        "color" : "rgb(252, 54, 107)"
+        "color" : "#b3ccff"
     }, {
         "name" : "Informatique",
         "description" : "",
-        "color" : "rgb(192, 16, 63)"
+        "color" : "#ed7676"
     }, {
         "name" : "Informatique théorique",
         "description" : "",
-        "color" : "rgb(116, 2, 51)"
+        "color" : "#bf79ea"
     }, {
         "name" : "Langues",
         "description" : "",
-        "color" : "rgb(255, 130, 77)"
+        "color" : "#2aaf33"
     }, {
         "name" : "Ouverture",
         "description" : "",
-        "color" : "rgb(245, 255, 87)"
+        "color" : "lightgrey"
     }]
 }

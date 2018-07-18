@@ -93,7 +93,7 @@ d3.sankey = function() {
                 y0 = d.source.y + d.sy + d.dy / 2,
                 y1 = d.target.y + d.ty + d.dy / 2;
 
-            if (+d.source.semestre == +d.target.semestre) {
+            if (d.source.semestre == d.target.semestre) {
                 var x0prim = x0 + 10,
                     x1prim = x1 - 10,
                     y1prim = y1 + 10,
@@ -221,7 +221,7 @@ d3.sankey = function() {
             nodes = sortNodes(nodes, _nodes, firstBlocks);
 
             nodes.forEach(function(node, i) {
-                node.dy = ky * +node.coefficient;
+                node.dy = ky * node.coefficient;
                 if (node.dy <= minNodeHeight)
                     node.dy = minNodeHeight;
 
@@ -251,8 +251,8 @@ d3.sankey = function() {
 
             var firstSlotPlaced = true;
             options.forEach(function(opt, i) {
-                if (+lastNode.semestre == +opt.semestre) {
-                    opt.dy = 0.8 * (ky / 5) * skillList.length * +opt.coefficient;
+                if (lastNode.semestre == opt.semestre) {
+                    opt.dy = 0.8 * (ky / 5) * skillList.length * opt.coefficient;
                     if (opt.dy <= minNodeHeight)
                         opt.dy = minNodeHeight;
                     opt.y = (firstSlotPlaced) ?
@@ -351,7 +351,7 @@ d3.sankey = function() {
 
         nodes.forEach(function(node) {
             if (node.option == "false")
-                tab[+node.semestre][node.categorie] += +node.coefficient;
+                tab[node.semestre][node.categorie] += +node.coefficient;
         })
 
         return tab;

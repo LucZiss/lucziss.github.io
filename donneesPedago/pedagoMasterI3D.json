@@ -1,0 +1,447 @@
+{
+    "ue": [{
+        "ueid": "11",
+        "name": "Compilation",
+        "abreviation": "Compilation",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "12",
+        "name": "Algorithmique avancée",
+        "abreviation": "Algo. avancée",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "13",
+        "name": "Programmation avancée",
+        "abreviation": "Prog. avancée",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "14",
+        "name": "Preuves assitées par ordinateur",
+        "abreviation": "PAO",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "15",
+        "name": "Fondements et algorithmes de l'imagerie numérique",
+        "abreviation": "Fond. & Algo. Img. Num.",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "16",
+        "name": "Programmation graphique 3D",
+        "abreviation": "Prog. graph. 3D",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "17",
+        "name": "Architecture et Développement Web",
+        "abreviation": "Archi/DevWeb",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "18",
+        "name": "Vie Professionnelle 1",
+        "abreviation": "Vie Pro. 1",
+        "categorie": "Tronc Commun Ouverture",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Professionnaliser"],
+            ["Realiser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "19",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "21",
+        "name": "Algorithmes distribués",
+        "abreviation": "Algo. distrib.",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Realiser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "22",
+        "name": "Sécurité",
+        "abreviation": "Sécurité",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "23",
+        "name": "Calculabilité et complexité",
+        "abreviation": "Calculab. et complex.",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "24",
+        "name": "Travail d'étude et de recherche",
+        "abreviation": "TER",
+        "categorie": "TER et Projet de Master",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "25",
+        "name": "Preuves et résolution de contraintes géométriques",
+        "abreviation": "PRCG",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "26",
+        "name": "Traitement d'images",
+        "abreviation": "Traitement d'imgs",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "27",
+        "name": "Courbes et surfaces pour la CAO 3D",
+        "abreviation": "C&S CAO 3D",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "28",
+        "name": "Géométrie numérique",
+        "abreviation": "Géom num.",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "31",
+        "name": "Certification du logiciel",
+        "abreviation": "Certif. logi.",
+        "categorie": "Tronc Commun Spécialité",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "32",
+        "name": "Projet de Master",
+        "abreviation": "Projet de Master",
+        "categorie": "TER et Projet de Master",
+        "coefficient": "6",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "33",
+        "name": "Modélisation géométrique 3D",
+        "abreviation": "Modélis. géom. 3D",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "34",
+        "name": "Interaction dans des mondes 3D animés",
+        "abreviation": "Inter. mondes 3D anim.",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "35",
+        "name": "Visualisation et vision",
+        "abreviation": "Visu. et vision",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "36",
+        "name": "Traitement d'images et géométrie discrète",
+        "abreviation": "Trait. d'img et géom disc.",
+        "categorie": "Parcours I3D",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "37",
+        "name": "Vie Professionnelle 2",
+        "abreviation": "Vie Pro. 2",
+        "categorie": "Tronc Commun Ouverture",
+        "coefficient": "6",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "38",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "41",
+        "name": "Accompagnement de stage",
+        "abreviation": "Accomp. de stage",
+        "categorie": "Stage ou Apprentissage",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }, {
+        "ueid": "42",
+        "name": "Stage Master 2",
+        "abreviation": "Stage M2",
+        "categorie": "Stage ou Apprentissage",
+        "coefficient": "27",
+        "semestre": "4",
+        "dependances": [
+            ["Programmer"],
+            ["Professionnaliser"],
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }],
+
+    "ueDoublons": [],
+
+    "options": [],
+
+    "competences" : [{
+        "name" : "Appliquer",
+        "description" : "Ceci est la compétence \"Appliquer\"",
+        "color" : "#ff7f0e"
+    }, {
+        "name" : "Construire",
+        "description" : "Ceci est la compétence \"Construire\"",
+        "color" : "#d62728"
+    }, {
+        "name" : "Formaliser",
+        "description" : "Ceci est la compétence \"Formaliser\"",
+        "color" : "#2ca02c"
+    }, {
+        "name" : "Professionnaliser",
+        "description" : "Ceci est la compétence \"Professionnaliser\"",
+        "color" : "#8c564b"
+    }, {
+        "name" : "Programmer",
+        "description" : "Ceci est la compétence \"Programmer\"",
+        "color" : "#9467bd"
+    }, {
+        "name" : "Realiser",
+        "description" : "Ceci est la compétence \"Realiser\"",
+        "color" : "#1f77b4"
+    }],
+
+    "categories" : [{
+            "name" : "Tronc Commun Spécialité",
+            "description" : "",
+            "color" : "#b3ccff"
+        }, {
+            "name" : "Parcours I3D",
+            "description" : "",
+            "color" : "#ed7676"
+        }, {
+            "name" : "TER et Projet de Master",
+            "description" : "",
+            "color" : "#bf79ea"
+        }, {
+            "name" : "Langues",
+            "description" : "",
+            "color" : "#2aaf33"
+        }, {
+            "name" : "Tronc Commun Ouverture",
+            "description" : "",
+            "color" : "lightgrey"
+        }, {
+            "name" : "Stage ou Apprentissage",
+            "description" : "",
+            "color" : "yellow"
+        }]
+}

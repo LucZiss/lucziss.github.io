@@ -1,0 +1,183 @@
+body {
+    overflow: hidden;
+    font-family: "Verdana", "Arial", "sans-serif";
+}
+
+
+svg text {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+svg {
+    background-color: white;
+}
+
+#chart {
+    outline: 3px solid rgb(116, 2, 51);
+}
+
+#semesterLayout text {
+    fill: rgb(116, 2, 51);
+    font-size: 14px;
+}
+
+#areaSeparator line {
+    stroke: rgb(116, 2, 51);
+    stroke-width: 2px;
+}
+
+.separator rect {
+    fill: rgb(116, 2, 51);
+    stroke: rgb(116, 2, 51);
+    stroke-width: 2px;
+}
+
+.separator text {
+    fill:#ffffff;
+}
+
+.node rect {
+    cursor: move;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+    stroke-width: 2px;
+}
+
+.option rect {
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+    stroke-width: 2px;
+}
+
+.facultatif {
+    stroke-dasharray: 5, 3;
+}
+
+.node text,
+.option text {
+    pointer-events: none;
+    font-family: "Verdana";
+    /*font-size: 10px;*/
+}
+
+.link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+}
+
+.link:hover {
+    stroke-opacity: .5;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    font: 12px sans-serif;
+    background: #333333;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.tooltip {
+    color: white;
+}
+
+#filterDiv {
+    right: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+}
+
+.radio-area,
+.bloc-divs {
+    color: white;
+    text-shadow: 1px 0 0 black,
+    0 1px 0 black,
+    0 -1px 0 black,
+    -1px 0 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    -1px -1px 0 black;
+}
+
+.description-area {
+    font-size: 14px;
+}
+
+.selectionButtons {
+    color: white;
+    background-color: rgb(116, 2, 51);
+    width: 90%;
+    height: 25px;
+    vertical-align: middle;
+    border-radius: 2px;
+    border: 1px solid rgb(116, 2, 51);
+    margin: 10px auto;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Verdana", "Arial", "sans-serif";
+}
+
+#selectallcheckbox {
+    margin: 5px 0;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.selectionButtons:hover {
+    background-color: rgb(116, 2, 51);
+    transition: 0.5s;
+}
+
+.selectionButtons:active {
+    background-color: rgb(116, 2, 51);
+    transition: 0.1s;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+    font-family: "Verdana";
+    border-left: 7px solid rgb(116, 2, 51);
+    color:  rgb(116, 2, 51);
+    font-size: 15px;
+    /* background: linear-gradient(to right, currentColor, #cce6ff); */
+    padding-left: 10px;
+}
+
+#infoWindow {
+    background-color: #333333;
+}
+
+#optionImage {
+    display: inline-block;
+    width: 50px;
+    height: 0px;
+    vertical-align: middle;
+}
+
+#optionText {
+    display: inline-block;
+    font-family: Verdana;
+    margin: 0 0 0 10px;
+    color: rgb(88, 100, 125);
+    vertical-align: middle;
+}
+
+.displRadiosText {
+    color : rgb(88, 100, 125);
+}
+
+circle.clickable {
+    fill: rgb(116, 2, 51);
+}
