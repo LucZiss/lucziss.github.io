@@ -420,42 +420,28 @@
     }],
 
     "categories" : [{
-        "name" : "Tronc Commun Spécialité",
-        "description" : "",
-        "color" : "#b3ccff"
-    }, {
-        "name" : "Parcours I3D",
-        "description" : "",
-        "color" : "#ed7676"
-    }, {
-        "name" : "TER et Projet de Master",
-        "description" : "",
-        "color" : "#bf79ea"
-    }, {
-        "name" : "Langues",
-        "description" : "",
-        "color" : "#2aaf33"
-    }, {
-        "name" : "Tronc Commun Ouverture",
-        "description" : "",
-        "color" : "lightgrey"
-    }, {
-        "name" : "Stage ou Apprentissage",
-        "description" : "",
-        "color" : "yellow"
-    }],
-
-    "cursus" : [{
-        "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json"
-    }, {
-        "name" : "Master SIRIS",
-        "path" : "pedagoMasterSIRIS.json"
-    }, {
-        "name" : "Master SDSC",
-        "path" : "pedagoMasterSDSC.json"
-    }, {
-        "name" : "Master SIL",
-        "path" : "pedagoMasterSIL.json"
-    }]
+            "name" : "Tronc Commun Spécialité",
+            "description" : "",
+            "color" : "#b3ccff"
+        }, {
+            "name" : "Parcours I3D",
+            "description" : "",
+            "color" : "#ed7676"
+        }, {
+            "name" : "TER et Projet de Master",
+            "description" : "",
+            "color" : "#bf79ea"
+        }, {
+            "name" : "Langues",
+            "description" : "",
+            "color" : "#2aaf33"
+        }, {
+            "name" : "Tronc Commun Ouverture",
+            "description" : "",
+            "color" : "lightgrey"
+        }, {
+            "name" : "Stage ou Apprentissage",
+            "description" : "",
+            "color" : "yellow"
+        }]
 }

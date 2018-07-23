@@ -922,19 +922,5 @@
         "name" : "Ouverture",
         "description" : "",
         "color" : "rgb(245, 255, 87)"
-    }],
-
-    "cursus" : [{
-        "name" : "Master I3D",
-        "path" : "pedagoMasterI3D.json"
-    }, {
-        "name" : "Master SIL",
-        "path" : "pedagoMasterSIL.json"
-    }, {
-        "name" : "Master SIRIS",
-        "path" : "pedagoMasterSIRIS.json"
-    }, {
-        "name" : "Master SDSC",
-        "path" : "pedagoMasterSDSC.json"
     }]
 }

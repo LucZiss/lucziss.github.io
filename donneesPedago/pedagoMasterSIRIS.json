@@ -40,9 +40,9 @@
         "facultatif": "false"
     }, {
         "ueid": "14",
-        "name": "Preuves assitées par ordinateur",
-        "abreviation": "PAO",
-        "categorie": "Parcours I3D",
+        "name": "Services Réseaux",
+        "abreviation": "SR",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -53,9 +53,9 @@
         "facultatif": "false"
     }, {
         "ueid": "15",
-        "name": "Fondements et algorithmes de l'imagerie numérique",
-        "abreviation": "Fond. & Algo. Img. Num.",
-        "categorie": "Parcours I3D",
+        "name": "Conception des systèmes d'exploitation",
+        "abreviation": "CSE",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -66,9 +66,9 @@
         "facultatif": "false"
     }, {
         "ueid": "16",
-        "name": "Programmation graphique 3D",
-        "abreviation": "Prog. graph. 3D",
-        "categorie": "Parcours I3D",
+        "name": "Routage intra-domaine",
+        "abreviation": "Routage intra-D",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -79,9 +79,9 @@
         "facultatif": "false"
     }, {
         "ueid": "17",
-        "name": "Architecture et Développement Web",
-        "abreviation": "Archi/DevWeb",
-        "categorie": "Parcours I3D",
+        "name": "Evaluation de performances",
+        "abreviation": "EDP",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -179,9 +179,9 @@
         "facultatif": "false"
     }, {
         "ueid": "25",
-        "name": "Preuves et résolution de contraintes géométriques",
-        "abreviation": "PRCG",
-        "categorie": "Parcours I3D",
+        "name": "Cloud et virtualisation",
+        "abreviation": "CV",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -194,9 +194,9 @@
         "facultatif": "false"
     }, {
         "ueid": "26",
-        "name": "Traitement d'images",
-        "abreviation": "Traitement d'imgs",
-        "categorie": "Parcours I3D",
+        "name": "Routage inter-domaine",
+        "abreviation": "Routage inter-D",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -209,9 +209,9 @@
         "facultatif": "false"
     }, {
         "ueid": "27",
-        "name": "Courbes et surfaces pour la CAO 3D",
-        "abreviation": "C&S CAO 3D",
-        "categorie": "Parcours I3D",
+        "name": "Réseaux sans fil",
+        "abreviation": "RSF",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -224,9 +224,9 @@
         "facultatif": "false"
     }, {
         "ueid": "28",
-        "name": "Géométrie numérique",
-        "abreviation": "Géom num.",
-        "categorie": "Parcours I3D",
+        "name": "Séminaires industriels",
+        "abreviation": "SI",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -269,9 +269,9 @@
         "facultatif": "false"
     }, {
         "ueid": "33",
-        "name": "Modélisation géométrique 3D",
-        "abreviation": "Modélis. géom. 3D",
-        "categorie": "Parcours I3D",
+        "name": "Administration des systèmes",
+        "abreviation": "ADS",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -284,9 +284,9 @@
         "facultatif": "false"
     }, {
         "ueid": "34",
-        "name": "Interaction dans des mondes 3D animés",
-        "abreviation": "Inter. mondes 3D anim.",
-        "categorie": "Parcours I3D",
+        "name": "Réseaux programmables",
+        "abreviation": "Réseaux prog.",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -299,9 +299,9 @@
         "facultatif": "false"
     }, {
         "ueid": "35",
-        "name": "Visualisation et vision",
-        "abreviation": "Visu. et vision",
-        "categorie": "Parcours I3D",
+        "name": "Internet des objets",
+        "abreviation": "IDO",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -314,9 +314,9 @@
         "facultatif": "false"
     }, {
         "ueid": "36",
-        "name": "Traitement d'images et géométrie discrète",
-        "abreviation": "Trait. d'img et géom disc.",
-        "categorie": "Parcours I3D",
+        "name": "Sécurité avancée",
+        "abreviation": "SA",
+        "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -424,7 +424,7 @@
         "description" : "",
         "color" : "#b3ccff"
     }, {
-        "name" : "Parcours I3D",
+        "name" : "Parcours SIRIS",
         "description" : "",
         "color" : "#ed7676"
     }, {
@@ -449,13 +449,13 @@
         "name" : "Licence Informatique",
         "path" : "pedagoLicenceInfo17.json"
     }, {
-        "name" : "Master SIRIS",
-        "path" : "pedagoMasterSIRIS.json"
-    }, {
-        "name" : "Master SDSC",
-        "path" : "pedagoMasterSDSC.json"
+        "name" : "Master I3D",
+        "path" : "pedagoMasterI3D.json"
     }, {
         "name" : "Master SIL",
         "path" : "pedagoMasterSIL.json"
+    }, {
+        "name" : "Master SDSC",
+        "path" : "pedagoMasterSDSC.json"
     }]
 }

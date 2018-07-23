@@ -1,9 +1,3 @@
-// NOTE:  Il est possible de remplacer SkillList simplement par sa longueur
-// dans certains appels de fonctions
-// NOTE : Il est probablement possible de refactorer le code de certaines
-// fonctions en créant une fonction de parcours des source/targetLinks
-
-
 // Marges et taille du SVG
 var margin = {
         top: 20,
@@ -53,6 +47,11 @@ var orange = "rgb(255, 130, 77)";
 var jaunePale = "rgb(245, 255, 87)";
 // var jaune = "rgb(255, 255, 0)";
 
+// NOTE:  Il est possible de remplacer SkillList simplement par sa longueur
+// dans certains appels de fonctions
+// NOTE : Il est possible de refactorer le code de certaines fonctions en créant
+// une fonction de parcours des source/targetLinks
+
 
 // Objets ou l'on va récuperer les descriptions de compétences plus loin dans le
 // code
@@ -74,34 +73,24 @@ var optionNodeColor = "white";
 var optionNodeMouseOverColor = d3.rgb(optionNodeColor).darker(1);
 var optionBorderColor = "black";
 
-var defaultBackgroundDropdownColor = "#eeeeee";
-var dropdownMouseOverColor = "#aaaaaa";
-var dropdownItemBorderColor = "#cccccc";
+var defaultBackgroundDropdownColor = "#b8c4d8";
+var dropdownMouseOverColor = orange;
+var dropdownItemBorderColor = orange;
 
 // =============================================================================
 
 
-//creation du svg
-d3.select("body")
+// sélection d3 du g dans le svg
+var svg = d3.select("body")
     .style("background-color", defaultBackgroundColor)
     .append("svg")
     .attr("id", "chart")
     .attr("width", width)
-    .attr("height", height);
-
-//creation du g pour la zone d'option
-d3.select("#chart")
-    .append("g")
-    .attr("id", "optionZone");
-
-// sélection d3 du g dans le svg
-var svg = d3.select("#chart")
+    .attr("height", height)
     .append("g")
     .style("display", "inline-block")
     .attr("transform",
         "translate(" + svgPadding.left + "," + svgPadding.top + ")");
-
-
 
 
 initInfoWindow();
@@ -150,11 +139,280 @@ d3.select("html").on("click", function() {
     backgroundClick = true;
 });
 
+// Parsing du json, necessite un serveur web (local ou non) pour fonctionner !!!
+// Le fichier peut être remplacé par un autre fichier valide.
+d3.json("pedagoLicenceInfo17.json").then(function(data) {
 
-if (!sessionStorage.getItem("json"))
-    sessionStorage.setItem("json", "pedagoLicenceInfo17")
+    // Création de l'objet graphe
+    // On y insère les données parsées du json
+    graph = {
+        "nodes": data.ue,
+        "options": data.options,
+        "links": getLinks(data.ue),
+        "categories": [],
+        "competences": []
+    };
 
-update(sessionStorage.getItem("json"));
+
+    // récupération des catégories renseignées dans le fichier json
+    data.categories.forEach(function(cat) {
+        graph.categories.push(cat.name);
+        groupColors[cat.name] = cat.color;
+    });
+
+    // récupération des compétences renseignées dans le fichier json
+    data.competences.forEach(function(comp) {
+        graph.competences.push(comp);
+        skillColors[comp.name] = comp.color;
+        skillDescriptions[comp.name] = comp.description;
+    });
+
+    // Désactiver le menu contextuel au clic droit lorsque la souris est sur le SVG
+    d3.select("#chart").on("contextmenu", function() {
+        d3.event.preventDefault();
+    });
+
+    // Initialisation des filtres (= toutes les compétences existantes ici)
+    // currentFilters = getSkillList(graph.nodes);
+
+    // Calcul de la dispoition des noeuds et liens du diagramme de sankey
+    var nodeW = function() {
+        var sem = getMinMaxSemester(graph.nodes);
+        var res = 30 * 10 / (0.5 * sem[1]);
+        if (res < 70) {
+            res = 70;
+        } else if (res > 150) {
+            res = 150;
+        }
+        return res;
+    }
+
+    sankey.nodeWidth(nodeW())
+        .nodes(graph.nodes)
+        .options(graph.options)
+        .links(graph.links)
+        .categories(graph.categories)
+        .competences(graph.competences)
+        .layout();
+
+    // Setup ligne de separation zone d'option
+    var separatorYPos = sankey.highestOptionY() + 20;
+    setupAreaSeparator(separatorYPos);
+
+    //Mise en place de l'affichage des semestres sous le SVG du graphe
+    displaySemesters(graph.nodes);
+
+    // selection d3 des liens avec les données du sankey bindées
+    var link = svg.append("g").selectAll(".link")
+        .data(graph.links)
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", path)
+        .style("stroke-width", function(d) {
+            return Math.max(1, d.dy);
+        })
+        .sort(function(a, b) {
+            return b.dy - a.dy;
+        });
+
+    // Initialisation de l'affichage des liens
+    // displayLinks(link);
+
+    // selection d3 des noeuds avec les données du sankey bindées
+    var node = svg.append("g").selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node noderesize")
+        .attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        })
+        .attr("width", sankey.nodeWidth())
+        // Gestion du drag des noeuds
+        .call(d3.drag()
+            .clickDistance(5)
+            .on("drag", dragmove)
+        );
+
+    // Noeuds d'options
+    var option = svg.append("g").selectAll(".option")
+        .data(graph.options)
+        .enter().append("g")
+        .attr("class", "clickable option noderesize")
+        .attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        })
+        .attr("width", sankey.nodeWidth());
+
+
+    option.on("click", function(d) {
+        backgroundClick = false;
+        initDropdown(graph.nodes, d, data);
+        disableTooltip();
+
+    }).on("mouseover", function(d) {
+        d3.select(this).select("rect").style("fill", optionNodeMouseOverColor); //option node mouseover color
+        if (lastClickedOptionNode !== d || d3.select("#dropdown").empty()) {
+            enableTooltip("Cliquer pour choisir une option" + "<br/>" +
+                printECTS(d.coefficient));
+        }
+
+    }).on("mouseout", function(d, i) {
+        d3.select(this).select("rect").style("fill", optionNodeColor);
+
+        // Disparition de l'infobulle
+        disableTooltip();
+    });
+
+    // Boutons de suppression d'option qui apparait lorsqu'une ue est choisie
+    // en option
+    initOptionDeleteButton(data, node, option);
+
+
+    // selection d3 des rects du svg (= les rectangles de chaque noeud avec
+    // couleur d'arrière plan )
+    var nodeRects = node.append("rect")
+        .attr("height", function(d) {
+            return d.dy;
+        })
+        .attr("width", sankey.nodeWidth())
+        .attr("rx", 2)
+        .attr("ry", 2)
+        .style("fill", applyColours("skillDisplay"))
+        .classed("option", function(d) {
+            return (d.option == "true");
+        })
+        .classed("facultatif", function(d) {
+            return (d.facultatif == "true");
+        })
+        .style("stroke", function(d) {
+            return applyBorderColours(getDisplayMode());
+        })
+        .on("click", function() {
+            d3.select("#infoWindow").style("display", "block");
+        });
+
+    var optionRects = option.append("rect")
+        .attr("height", function(d) {
+            return d.dy;
+        })
+        .attr("width", sankey.nodeWidth())
+        .attr("rx", 2)
+        .attr("ry", 2)
+        .style("stroke", function(d) {
+            return optionBorderColor;
+        })
+        .style("fill", optionNodeColor);
+
+    // Initialisation de l'affichage des noeuds
+    displayNodes(nodeRects);
+
+
+    // sélection d3 des textes au niveau des noeuds
+    var nodeTexts = node.append("text")
+        .attr("y", function(d) {
+            return d.dy / 2;
+        })
+        .attr("dy", ".35em")
+        .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
+        .style("text-anchor", "middle")
+        .style("fill", nodeTextColor)
+        .text(function(d) {
+            return d.abreviation;
+        })
+        .style("font-size", adaptLabelFontSize)
+        .filter(function(d) {
+            return d.x < width / 2;
+        });
+
+    var optionTexts = option.append("text")
+        .attr("y", function(d) {
+            return d.dy / 2;
+        })
+        .attr("dy", ".35em")
+        .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
+        .style("text-anchor", "middle")
+        .text(function(d) {
+            return "Option S" + d.semestre;
+        })
+        .style("font-size", adaptLabelFontSize)
+        .filter(function(d) {
+            return d.x < width / 2;
+        });
+
+    // gestion des évenements liés aux noeuds
+    node.on("mouseover", function(d, i) {
+            // Affichage de l'infobulle et mise à jour de ses informations
+            var projetDescription = (d.projet == "true") ?
+                "Cette UE comporte un projet" :
+                "";
+
+            enableTooltip(d.name + "<br/>" +
+                printECTS(d.coefficient) + "<br/>" +
+                projetDescription);
+        })
+        .on("mouseout", function(d, i) {
+            // Disparition de l'infobulle
+            disableTooltip();
+
+        })
+        .on("contextmenu", function(d, i) {
+
+            // sélection en mode compétence uniquement et
+            // lorsqu'une compétence est sélectionnée
+            if (getDisplayMode() !== "skillDisplay" ||
+                document.getElementById("radiodef").checked) {
+                return;
+            }
+            // Ajoute le noeud "d" cliqué s'il n'est pas deja dans currentSelection
+            selectNode(d);
+
+            // style noeuds sélectionnés
+            node.filter(function(d, i) {
+                    return currentSelection.includes(d);
+                }).selectAll("rect")
+                .style("stroke", "black")
+                .style("stroke-width", "4px");
+
+            // style noeuds non sélectionnés
+            node.filter(function(d, i) {
+                    return !currentSelection.includes(d);
+                }).selectAll("rect")
+                .style("stroke", applyBorderColours(getDisplayMode())).style("stroke-width", "2px");
+
+            // Affichage par défaut quand rien n'est sélectionné
+            if (currentSelection.length == 0)
+                filterSkill(currentFilters);
+
+            // Mise en valeur quand un seul noeud est sélectionné
+            if (currentSelection.length == 1) {
+                link.style("opacity", "0.2");
+                node.style("opacity", "0.2");
+                valoriseAdjacentLinks(currentSelection[0]).style("opacity", "1");
+                valoriseAdjacentNodes(currentSelection[0], currentFilters)
+                    .style("opacity", "1");
+            }
+
+        });
+
+    var SkillList = getSkillList(graph.competences);
+    filterSkill(currentFilters);
+    filterDisplayManager(data, SkillList, graph);
+    setSkillDescription(SkillList, skillDescriptions);
+    RadioLabelColor(SkillList);
+
+    // fonction gérant le drag
+    function dragmove(d) {
+        d3.select("#dropdown").remove();
+        d3.select(this)
+            .attr("transform",
+                "translate(" +
+                d.x + "," +
+                (d.y = Math.max(-48, Math.min(height - d.dy - svgPadding.bottom, d3.event.y))) + ")");
+        sankey.relayout();
+        link.attr("d", path);
+    }
+
+});
 
 
 // -------------------------------- FONCTIONS -------------------------------- //
@@ -189,8 +447,8 @@ function initOptionDeleteButton(data, nodes, options) {
     var nodeCircleTexts = nodes.filter(function(d) {
             return d.option === "true";
         }).append("text")
-        .classed("opt-text", true)
-        .style("display", "none")
+        .classed("opt-text",true)
+        .style("display","none")
         .attr("x", function(d) {
             return sankey.nodeWidth() + 2;
         })
@@ -284,10 +542,9 @@ function initDropdown(UEArray, optionNode, data) {
                 addOptionToSelection(data, UEArray, choosenUE);
 
                 choosenUE.attr("transform",
-                        "translate(" +
-                        (doption.x = optionNode.x) + "," +
-                        (doption.y = optionNode.y) + ")")
-                    .select("rect").style("fill", defaultBackgroundColor);
+                    "translate(" +
+                    (doption.x = optionNode.x) + "," +
+                    (doption.y = optionNode.y) + ")");
 
                 choosenUE.select("circle").style("display", "block");
                 choosenUE.select("text").style("display", "block");
@@ -305,23 +562,14 @@ function initDropdown(UEArray, optionNode, data) {
             .style("opacity", "1")
             .style("font-size", "10px")
             .style("text-align", "center")
-            .text(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]).abreviation);
+            .text(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]).name);
     }
 
     // items de dropdown onmouseover
     d3.selectAll(".items").on("mouseover", function() {
-        var overedItem = d3.select(this);
-        overedItem.style("background-color", dropdownMouseOverColor); //dropdown mouseover color
-        d3.selectAll(".node").filter(function(node) {
-            return overedItem.datum().ueid == node.ueid;
-        }).select("rect").style("fill", dropdownMouseOverColor);
-
+        d3.select(this).style("background-color", dropdownMouseOverColor); //dropdown mouseover color
     }).on("mouseout", function() {
-        var overedItem = d3.select(this);
-        overedItem.style("background-color", defaultBackgroundDropdownColor);
-        d3.selectAll(".node").filter(function(node) {
-            return overedItem.datum().ueid == node.ueid;
-        }).select("rect").style("fill", defaultBackgroundDropdownColor);
+        d3.select(this).style("background-color", defaultBackgroundDropdownColor);
     });
 }
 
@@ -646,7 +894,7 @@ function applyColours(mode) {
             if (mode == "groupDisplay") {
                 return "#eeeeee";
             } else if (mode == "skillDisplay") {
-                return "#eeeeee";
+                return "#eeeeee" ;
             }
         });
     });
@@ -666,8 +914,7 @@ function applyBorderColours(mode) {
                     defaultSkillDisplayColor;
             }
         });
-    });
-}
+    });}
 
 // PARAM : tableau d'UEs [UEArray]
 // Met en place l'affichage des semestres sous le graphe
@@ -687,8 +934,8 @@ function displaySemesters(UEArray) {
     }
 }
 
-// PARAM : tableau d'objets compétences [competences]
-// RETURN : tableau des noms de compétences dans le tableau [competences]
+// PARAM : tableau d'UEs [UEArray]
+// RETURN : tableau d'intitulés de compétences concernées par les UEs [UEArray]
 // EX : ["Appliquer","Programmer"]
 function getSkillList(competences) {
     var SkillList = [];
@@ -703,8 +950,6 @@ function getSkillList(competences) {
 // cette fonction ainsi que les boutons d'interaction
 // Doit être appelée une seule fois
 function filterDisplayManager(data, SkillList, graph) {
-
-    setupCursusDisplay(data.cursus);
 
     radioDisplaySetup();
 
@@ -725,40 +970,6 @@ function filterDisplayManager(data, SkillList, graph) {
     changeMode(graph, skillDiv, displayLegendDiv);
 }
 
-function setupCursusDisplay(cursus) {
-    if (cursus == [])
-        return;
-
-    if (cursus) {
-        var cursusDiv = filterDiv.append("div");
-        cursusDiv.append("h2")
-            .text("Cursus similaires");
-
-        cursusDiv.selectAll("div").data(cursus).enter()
-            .append("input")
-            .classed("clickable cursusInput", true)
-            .attr("id", function(d, i) {
-                return "cursusDisplay" + i;
-            })
-            .attr("type", "button")
-            .attr("name", function(d) {
-                return d.name;
-            })
-            .attr("path", function(d) {
-                return d.path;
-            })
-            .attr("value", function(d) {
-                return d.name;
-            });
-    }
-
-    d3.selectAll(".cursusInput")
-        .on("click", function(d) {
-            sessionStorage.setItem("json", d3.select(this).attr("path"))
-            location.reload();
-        })
-}
-
 // RETURN : void, initialise l'affichage des boutons radios permettant
 // de choisir le mode d'affichage
 function radioDisplaySetup() {
@@ -769,36 +980,32 @@ function radioDisplaySetup() {
     filterDiv.append("div")
         .attr("id", "displayRadio")
         .attr("width", "100%")
+        .append("label")
+        .classed("clickable displRadiosText", true)
+        .attr("for", "groupDisplay")
+        .style("margin-left", "5px")
+        .html("Blocs")
         .append("input")
         .classed("clickable radioInput", true)
         .attr("id", "groupDisplay")
         .attr("type", "radio")
         .attr("name", "displayMode")
         .attr("value", "groupDisplay")
-        .attr("checked", "true")
-    filterDiv.select("#displayRadio").append("label")
-        .classed("clickable displRadiosText", true)
-        .attr("for", "groupDisplay")
-        .style("margin-right", "10px")
-        .html("Blocs");
-
+        .attr("checked", "true");
 
 
     //  choix mode bloc compétence
     filterDiv.select("#displayRadio")
+        .append("label")
+        .classed("clickable displRadiosText", true)
+        .attr("for", "skillDisplay")
+        .html("Compétences")
         .append("input")
         .classed("clickable radioInput", true)
         .attr("id", "skillDisplay")
         .attr("type", "radio")
         .attr("name", "displayMode")
-        .attr("value", "skillDisplay")
-    filterDiv.select("#displayRadio").append("label")
-        .classed("clickable displRadiosText", true)
-        .attr("for", "skillDisplay")
-        .html("Compétences");
-
-
-
+        .attr("value", "skillDisplay");
 }
 
 // PARAM : tableau comportant toutes les compétences [SkillList],
@@ -869,7 +1076,6 @@ function initDefaultRadio(skillDiv) {
         .html("Défaut");
 
     document.getElementById("radiodef").addEventListener("change", function() {
-        document.getElementById("description-area").innerHTML = "Aucune compétence sélectionnée";
         var index = currentFilters.indexOf(this.value);
         currentFilters = [];
         resetSelection();
@@ -893,10 +1099,8 @@ function displayBlocks(displayLegendDiv) {
             .classed("bloc-divs", true)
             .append("p")
             .style("margin", 0)
-            .style("margin-bottom", "2px")
             .style("padding", "2px")
-            // .style("background", "linear-gradient(to right, " + groupColors[sortedKeys[i]] + ", " + defaultBackgroundColor + ")")
-            .style("border-left", "15px solid " + groupColors[sortedKeys[i]])
+            .style("background", "linear-gradient(to right, " + groupColors[sortedKeys[i]] + ", " + defaultBackgroundColor + ")")
             .text(function(d) {
                 return sortedKeys[i];
             });
@@ -970,8 +1174,6 @@ function buttonsSetup(data, graph) {
 function changeMode(graph, skillDiv, displayLegendDiv) {
     var links = d3.selectAll(".link");
 
-    var colorRects = d3.selectAll(".colorRect");
-
     var radios = document.getElementsByName("displayMode");
     radios.forEach(function(button) {
         button.addEventListener("change", function() {
@@ -982,7 +1184,6 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
                     skillDiv.style("display", "block");
                     displayLegendDiv.style("display", "none");
                     displayLinks(links);
-                    colorRects.style("display", "none");
                     break;
                 case "groupDisplay":
                     resetSelection();
@@ -991,7 +1192,6 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
                     skillDiv.style("display", "none");
                     displayLegendDiv.style("display", "block");
                     hideLinks(links);
-                    colorRects.style("display", "block");
                     break;
 
                 default:
@@ -1057,16 +1257,12 @@ function resetSelection() {
 // de chaque compétence onmouseover dans la zone prévue à cet effet
 function setSkillDescription(SkillList, descriptions) {
     var descriptionDiv = filterDiv.append("div");
-    var descriptionTitle = descriptionDiv.append("h2").text("Description de compétence");
+    var descriptionTitle = descriptionDiv.append("h2").text("Description");
     var descriptionContent = descriptionDiv.append("p")
         .attr("id", "description-area");
 
-    //texte par défaut
-    document.getElementById("description-area").innerHTML = "Aucune compétence sélectionnée";
-
-
     for (var total = 0; total < SkillList.length; total++) {
-        document.getElementById("checkdiv" + total).addEventListener("click", function() {
+        document.getElementById("checkdiv" + total).addEventListener("mouseover", function() {
             document.getElementById("description-area").innerHTML = descriptions[this.firstChild.value];
         });
     }
@@ -1079,8 +1275,8 @@ function RadioLabelColor(SkillList) {
     for (var total = 0; total < SkillList.length; total++) {
         var checkdiv = document.getElementById("checkdiv" + total);
         var currentColor = skillColors[checkdiv.firstChild.value];
-        // checkdiv.style.backgroundColor = currentColor;
-        // checkdiv.style.background = "linear-gradient(to right, " + currentColor + ", " + defaultBackgroundColor + ")";
+        checkdiv.style.backgroundColor = currentColor;
+        checkdiv.style.background = "linear-gradient(to right, " + currentColor + ", " + defaultBackgroundColor + ")";
     }
 }
 
@@ -1305,8 +1501,8 @@ function arrayInter(arrA, arrB) {
 function getDuplicatesOfUE(data, id) {
     var duplicates = data.ueDoublons;
 
-    duplicates.forEach(function(d) {
-        d.forEach(function(d1, i1, arr1) {
+    duplicates.forEach(function (d) {
+        d.forEach(function (d1,i1,arr1) {
             return arr1[i1] = +d1;
         });
     });
@@ -1369,13 +1565,8 @@ function getOptionById(data, id) {
 
 // RETURN : void, gere l'affichage de la ligne de separation entre
 // la zone d'options et celle des UEs
-function setupAreaSeparator(UEArray, yPos) {
-    var optionScale = d3.scaleLinear()
-        .domain(getMinMaxSemester(UEArray))
-        .range([svgPadding.left, width - (sankey.nodeWidth()) - (svgPadding.right / 2)]);
-    var tab = getMinMaxSemester(UEArray);
+function setupAreaSeparator(yPos) {
     var chartCenter = (margin.left + svgPadding.left + width) / 2;
-
     d3.select("#chart")
         .append("g")
         .attr("id", "areaSeparator")
@@ -1385,34 +1576,25 @@ function setupAreaSeparator(UEArray, yPos) {
         .attr("y1", yPos)
         .attr("y2", yPos);
 
-    d3.select("#optionZone")
-        .attr("transform", "translate(0," + yPos + ")")
+    d3.select("#areaSeparator")
+        .append("g")
+        .attr("class", "separator")
+        .attr("transform", "translate(" + (chartCenter - sankey.nodeWidth() / 2) + "," + yPos + ")")
+        .attr("width", sankey.nodeWidth())
         .append("rect")
-        .attr("width", margin.left + svgPadding.left + width)
-        .attr("height", height);
+        .attr("height", 25)
+        .attr("width", sankey.nodeWidth())
+        .attr("rx", 2)
+        .attr("ry", 2);
 
-    for (var i = tab[0]; i <= tab[1]; i++) {
-        d3.select("#areaSeparator")
-            .append("g")
-            .attr("id", "separator" + i)
-            .attr("class", "separator")
-            .attr("transform", "translate(" + optionScale(i) + "," + yPos + ")")
-            .attr("width", sankey.nodeWidth())
-            .append("rect")
-            .attr("height", 25)
-            .attr("width", sankey.nodeWidth())
-            .attr("rx", 2)
-            .attr("ry", 2);
-
-        d3.select("#separator" + i)
-            .append("text")
-            .attr("y", 13)
-            .attr("dy", ".35em")
-            .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
-            .style("text-anchor", "middle")
-            .text("Options S" + i)
-            .style("font-size", adaptLabelFontSize);
-    }
+    d3.select(".separator")
+        .append("text")
+        .attr("y", 13)
+        .attr("dy", ".35em")
+        .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
+        .style("text-anchor", "middle")
+        .text("Options")
+        .style("font-size", adaptLabelFontSize);
 }
 
 // RETURN : void, la fenetre d'info d'UE
@@ -1502,303 +1684,6 @@ function escapeEvents() {
             d3.select("#dropdown").remove();
             d3.select("#infoWindow").style("display", "none");
         }
-    });
-
-}
-
-function update(jsonName) {
-    sessionStorage.removeItem("json");
-
-    // Parsing du json, necessite un serveur web (local ou non) pour fonctionner !!!
-    // Le fichier peut être remplacé par un autre fichier valide.
-    d3.json(jsonName).then(function(data) {
-
-        // Création de l'objet graphe
-        // On y insère les données parsées du json
-        graph = {
-            "nodes": data.ue,
-            "options": data.options,
-            "links": getLinks(data.ue),
-            "categories": [],
-            "competences": []
-        };
-
-
-        // récupération des catégories renseignées dans le fichier json
-        data.categories.forEach(function(cat) {
-            graph.categories.push(cat.name);
-            groupColors[cat.name] = cat.color;
-        });
-
-        // récupération des compétences renseignées dans le fichier json
-        data.competences.forEach(function(comp) {
-            graph.competences.push(comp);
-            skillColors[comp.name] = comp.color;
-            skillDescriptions[comp.name] = comp.description;
-        });
-
-        // Désactiver le menu contextuel au clic droit lorsque la souris est sur le SVG
-        d3.select("#chart").on("contextmenu", function() {
-            d3.event.preventDefault();
-        });
-
-        // Initialisation des filtres (= toutes les compétences existantes ici)
-        // currentFilters = getSkillList(graph.nodes);
-
-        // Calcul de la dispoition des noeuds et liens du diagramme de sankey
-        var nodeW = function() {
-            var sem = getMinMaxSemester(graph.nodes);
-            var res = 30 * 10 / (0.5 * sem[1]);
-            if (res < 70) {
-                res = 70;
-            } else if (res > 150) {
-                res = 150;
-            }
-            return res;
-        }
-
-        sankey.nodeWidth(nodeW())
-            .nodes(graph.nodes)
-            .options(graph.options)
-            .links(graph.links)
-            .categories(graph.categories)
-            .competences(graph.competences)
-            .layout();
-
-        // Setup ligne de separation zone d'option
-        var separatorYPos = sankey.highestOptionY() + 20;
-        setupAreaSeparator(graph.nodes, separatorYPos);
-
-        //Mise en place de l'affichage des semestres sous le SVG du graphe
-        displaySemesters(graph.nodes);
-
-        // selection d3 des liens avec les données du sankey bindées
-        var link = svg.append("g").selectAll(".link")
-            .data(graph.links)
-            .enter().append("path")
-            .attr("class", "link")
-            .attr("d", path)
-            .style("stroke-width", function(d) {
-                return Math.max(1, d.dy);
-            })
-            .sort(function(a, b) {
-                return b.dy - a.dy;
-            });
-
-        // Initialisation de l'affichage des liens
-        // displayLinks(link);
-
-        // selection d3 des noeuds avec les données du sankey bindées
-        var node = svg.append("g").selectAll(".node")
-            .data(graph.nodes)
-            .enter().append("g")
-            .attr("class", "node noderesize")
-            .attr("transform", function(d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            })
-            .attr("width", sankey.nodeWidth())
-            // Gestion du drag des noeuds
-            .call(d3.drag()
-                .clickDistance(5)
-                .on("drag", dragmove)
-            );
-
-        // Noeuds d'options
-        var option = svg.append("g").selectAll(".option")
-            .data(graph.options)
-            .enter().append("g")
-            .attr("class", "clickable option noderesize")
-            .attr("transform", function(d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            })
-            .attr("width", sankey.nodeWidth());
-
-
-        option.on("click", function(d) {
-            backgroundClick = false;
-            initDropdown(graph.nodes, d, data);
-            disableTooltip();
-
-        }).on("mouseover", function(d) {
-            d3.select(this).select("rect").style("fill", optionNodeMouseOverColor); //option node mouseover color
-            if (lastClickedOptionNode !== d || d3.select("#dropdown").empty()) {
-                enableTooltip("Cliquer pour choisir une option" + "<br/>" +
-                    printECTS(d.coefficient));
-            }
-
-        }).on("mouseout", function(d, i) {
-            d3.select(this).select("rect").style("fill", optionNodeColor);
-
-            // Disparition de l'infobulle
-            disableTooltip();
-        });
-
-        // Boutons de suppression d'option qui apparait lorsqu'une ue est choisie
-        // en option
-        initOptionDeleteButton(data, node, option);
-
-
-        // selection d3 des rects du svg (= les rectangles de chaque noeud avec
-        // couleur d'arrière plan )
-        var nodeRects = node.append("rect")
-            .attr("height", function(d) {
-                return d.dy;
-            })
-            .attr("width", sankey.nodeWidth())
-            // .attr("rx", 2)
-            // .attr("ry", 2)
-            .style("fill", applyColours("skillDisplay"))
-            .classed("option", function(d) {
-                return (d.option == "true");
-            })
-            .classed("facultatif", function(d) {
-                return (d.facultatif == "true");
-            })
-            .style("stroke", function(d) {
-                return applyBorderColours(getDisplayMode());
-            })
-            .on("click", function() {
-                d3.select("#infoWindow").style("display", "block");
-            });
-
-        var nodeColors = node.append("rect")
-            .attr("class", "colorRect")
-            .attr("height", function(d) {
-                return d.dy + 2;
-            })
-            .attr("width", "10px")
-            .attr("transform", "translate(-10,-1)")
-            // .attr("rx", 2)
-            // .attr("ry", 2)
-            .style("fill", function(d) {
-                return groupColors[d.categorie]
-            })
-            .style("stroke", function(d) {
-                return applyBorderColours(getDisplayMode());
-            });
-
-        var optionRects = option.append("rect")
-            .attr("height", function(d) {
-                return d.dy;
-            })
-            .attr("width", sankey.nodeWidth())
-            // .attr("rx", 2)
-            // .attr("ry", 2)
-            .style("stroke", function(d) {
-                return optionBorderColor;
-            })
-            .style("fill", optionNodeColor);
-
-        // Initialisation de l'affichage des noeuds
-        displayNodes(nodeRects);
-
-
-        // sélection d3 des textes au niveau des noeuds
-        var nodeTexts = node.append("text")
-            .attr("y", function(d) {
-                return d.dy / 2;
-            })
-            // .attr("x", d3.select(".colorRect").attr("width"))
-            .attr("dy", ".35em")
-            .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
-            .style("text-anchor", "middle")
-            .style("fill", nodeTextColor)
-            .text(function(d) {
-                return d.abreviation;
-            })
-            .style("font-size", adaptLabelFontSize)
-            .filter(function(d) {
-                return d.x < width / 2;
-            });
-
-        var optionTexts = option.append("text")
-            .attr("y", function(d) {
-                return d.dy / 2;
-            })
-            .attr("dy", ".35em")
-            .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
-            .style("text-anchor", "middle")
-            .text(function(d) {
-                return "Option S" + d.semestre;
-            })
-            .style("font-size", adaptLabelFontSize)
-            .filter(function(d) {
-                return d.x < width / 2;
-            });
-
-        // gestion des évenements liés aux noeuds
-        node.on("mouseover", function(d, i) {
-                // Affichage de l'infobulle et mise à jour de ses informations
-                var projetDescription = (d.projet == "true") ?
-                    "Cette UE comporte un projet" :
-                    "";
-
-                enableTooltip(d.name + "<br/>" +
-                    printECTS(d.coefficient) + "<br/>" +
-                    projetDescription);
-            })
-            .on("mouseout", function(d, i) {
-                // Disparition de l'infobulle
-                disableTooltip();
-
-            })
-            .on("contextmenu", function(d, i) {
-
-                // sélection en mode compétence uniquement et
-                // lorsqu'une compétence est sélectionnée
-                if (getDisplayMode() !== "skillDisplay" ||
-                    document.getElementById("radiodef").checked) {
-                    return;
-                }
-                // Ajoute le noeud "d" cliqué s'il n'est pas deja dans currentSelection
-                selectNode(d);
-
-                // style noeuds sélectionnés
-                node.filter(function(d, i) {
-                        return currentSelection.includes(d);
-                    }).selectAll("rect")
-                    .style("stroke", "black")
-                    .style("stroke-width", "4px");
-
-                // style noeuds non sélectionnés
-                node.filter(function(d, i) {
-                        return !currentSelection.includes(d);
-                    }).selectAll("rect")
-                    .style("stroke", applyBorderColours(getDisplayMode())).style("stroke-width", "2px");
-
-                // Affichage par défaut quand rien n'est sélectionné
-                if (currentSelection.length == 0)
-                    filterSkill(currentFilters);
-
-                // Mise en valeur quand un seul noeud est sélectionné
-                if (currentSelection.length == 1) {
-                    link.style("opacity", "0.2");
-                    node.style("opacity", "0.2");
-                    valoriseAdjacentLinks(currentSelection[0]).style("opacity", "1");
-                    valoriseAdjacentNodes(currentSelection[0], currentFilters)
-                        .style("opacity", "1");
-                }
-
-            });
-
-        var SkillList = getSkillList(graph.competences);
-        filterSkill(currentFilters);
-        filterDisplayManager(data, SkillList, graph);
-        setSkillDescription(SkillList, skillDescriptions);
-        RadioLabelColor(SkillList);
-
-        // fonction gérant le drag
-        function dragmove(d) {
-            d3.select("#dropdown").remove();
-            d3.select(this)
-                .attr("transform",
-                    "translate(" +
-                    d.x + "," +
-                    (d.y = Math.max(-48, Math.min(height - d.dy - svgPadding.bottom, d3.event.y))) + ")");
-            sankey.relayout();
-            link.attr("d", path);
-        }
-
     });
 
 }
