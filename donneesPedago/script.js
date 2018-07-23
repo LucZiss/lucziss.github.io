@@ -152,7 +152,7 @@ d3.select("html").on("click", function() {
 
 
 if (!sessionStorage.getItem("json"))
-    sessionStorage.setItem("json", "pedagoLicenceInfo17")
+    sessionStorage.setItem("json", "pedagoLicenceInfo17.json")
 
 update(sessionStorage.getItem("json"));
 
