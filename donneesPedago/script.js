@@ -1586,8 +1586,10 @@ function update(jsonName) {
             .layout();
 
         // Setup ligne de separation zone d'option
-        var separatorYPos = sankey.highestOptionY() + 20;
-        setupAreaSeparator(graph.nodes, separatorYPos);
+        if(data.options.length != 0){
+            var separatorYPos = sankey.highestOptionY() + 20;
+            setupAreaSeparator(graph.nodes, separatorYPos);
+        }
 
         //Mise en place de l'affichage des semestres sous le SVG du graphe
         displaySemesters(graph.nodes);
