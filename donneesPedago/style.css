@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: "Verdana", "Arial", "sans-serif";
 }
 
@@ -17,6 +17,8 @@ svg {
 
 #chart {
     outline: 3px solid rgb(116, 2, 51);
+    min-height: 700px;
+    min-width: 800px;
 }
 
 #semesterLayout text {
@@ -79,6 +81,8 @@ svg {
 
 div.tooltip {
     position: absolute;
+    left: 0px;
+    top:0px;
     text-align: center;
     padding: 10px;
     font: 12px sans-serif;
@@ -94,7 +98,10 @@ div.tooltip {
 
 #filterDiv {
     right: 50px;
-    position: absolute;
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
     top: 0px;
     right: 0px;
 

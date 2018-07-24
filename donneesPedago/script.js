@@ -14,6 +14,10 @@ var margin = {
     width = window.innerWidth - margin.left - margin.right,
     height = window.innerHeight - margin.top - margin.bottom;
 
+
+
+
+
 // Padding du SVG
 var svgPadding = {
     top: 55,
@@ -58,6 +62,9 @@ var jaunePale = "rgb(245, 255, 87)";
 // code
 var skillDescriptions = {};
 
+
+
+
 // =========================== Gestion des couleurs ===========================
 var skillColors = {};
 
@@ -81,6 +88,9 @@ var dropdownItemBorderColor = "#cccccc";
 // =============================================================================
 
 
+
+
+
 //creation du svg
 d3.select("body")
     .style("background-color", defaultBackgroundColor)
@@ -88,6 +98,16 @@ d3.select("body")
     .attr("id", "chart")
     .attr("width", width)
     .attr("height", height);
+
+
+// Test responsive
+height = Math.max(height, parseInt(d3.select("#chart").style("min-height")));
+width = Math.max(width, parseInt(d3.select("#chart").style("min-width")));
+//
+d3.select("body").style("min-width", width + margin.right + "px");
+
+
+
 
 //creation du g pour la zone d'option
 d3.select("#chart")
@@ -109,7 +129,7 @@ initInfoWindow();
 // Division à droite du svg représentant les compétences,blocs,boutons d'interaction
 var filterDiv = d3.select("body").append("div")
     .attr("id", "filterDiv")
-    .style("width", margin.right + "px");
+    .style("width", margin.right - 20 + "px");
 
 // Création du layout d3 sankey
 // Il va calculer la position de chaque noeud du graphe
