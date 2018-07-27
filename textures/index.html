@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <title>Représentation des textures</title>
     <style media="screen">
+    body {
+        font-family: "Verdana";
+    }
 
         .node rect {
             cursor: move;
@@ -16,6 +19,9 @@
         .option {
             stroke-dasharray: 5, 3;
         }
+
+
+
 
         .node text {
             pointer-events: none;
@@ -47,13 +53,18 @@
         .tooltip {
             color: white;
         }
-
     </style>
 
 </head>
 
 <body>
-    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+    <div id="colorPickersDiv">
+
+    </div>
+
+
+
+    <script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
     <script type="text/javascript" src="d3-sankey.js"></script>
 
     <script src="script.js" charset="utf-8"></script>

@@ -1,5 +1,3 @@
-var units = "dependance(s)";
-
 // Marges et dimensions SVG
 var margin = {
         top: 20,
@@ -20,16 +18,14 @@ var svgPadding = {
 
 var jsonFileName = "flowered_wall_1k.json";
 var imageFolderName = "flowered_wall";
+var imageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
+var clickedImageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
 var startImage = "flowered_wall_1k.png";
 
 
 var defaultLinkColor = "steelblue";
-var parentLinksOnNodeMouseOverColor = "#005bef";
+var parentLinksOnNodeMouseOverColor = "#b200ff";
 var childLinksOnNodeMouseOverColor = "#b200ff";
-
-var text = d3.select("body").append("p").style("margin","0")
-    .style("font-family","Verdana")
-    .text("Touche N : affichage \"normal\" | Touche R : affichage par rapport à la racine");
 
 // groupe "g" du SVG
 var svg = d3.select("body").append("svg")
@@ -41,11 +37,64 @@ var svg = d3.select("body").append("svg")
     .attr("transform",
         "translate(" + svgPadding.left + "," + svgPadding.top + ")");
 
-// image de visualisation dans le coin supérieur gauche
-var imageVisualization = d3.select("svg").append("image")
+// image de visualisation dans le coin inferieur gauche
+
+var selectColorFilter;
+var overColorFilter;
+
+
+var imageGroup = d3.select("svg").append("g")
+    .attr("id", "imageGroup");
+
+var imageVisualizationBg = imageGroup.append("image")
+    .attr("id", "bg-img")
     .attr("height", 275)
     .attr("y", height - 275)
-    .attr("xlink:href", imageFolderName + "/" + startImage);
+    .attr("xlink:href", imageMasksFolderName + "/" + startImage);
+
+var imageVisualization = imageGroup.append("image")
+    .attr("id", "over-img")
+    .attr("height", 275)
+    .attr("y", height - 275);
+
+var selectedNode;
+var selectedNodeColor = "orange";
+
+
+
+// Si les filtres sont supportés par le navigateur
+var filtersAreOn = ("filter" in document.getElementById("over-img").style);
+if (filtersAreOn) {
+    imageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
+    clickedImageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
+    setMasksColorFilters();
+}
+createColorPickers(filtersAreOn);
+colorPickersHandler(filtersAreOn);
+
+
+
+
+
+
+var nodeInfoBox = d3.select("svg").append("g");
+var nodeInfoRec = nodeInfoBox.append("rect")
+    .attr("height", 50)
+    .attr("width", 300)
+    .attr("y", height - 275 - 60)
+    .attr("x", 0)
+    .style("opacity", "0.8")
+    .style("fill", "#333333");
+var nodeInfoText = nodeInfoBox.append("text")
+    .attr("id", "node-info-text")
+    .attr("height", 50)
+    .attr("width", 300)
+    .attr("y", height - 275 - 30)
+    .attr("x", 20)
+    .style("fill", "white");
+
+// var currentMasksDisplayed = [];
+
 
 // création de la tooltip (infobulle)
 var tip = d3.select("body").append("div")
@@ -70,24 +119,25 @@ var graph = {
 // Parsing .json
 d3.json(jsonFileName).then(function(json) {
 
-    var hierarchy = initValuesFromRoot(formatHierarchy(d3.hierarchy(json)));
+    var hierarchy = formatHierarchy(d3.hierarchy(json));
+    hierarchy = initTreeValuesFromRoot(hierarchy);
+    hierarchy = addImageMasksToHierarchy(hierarchy);
+
     var flatHier = flatHierarchy(hierarchy);
     var nodes = hierarchyToNodes(hierarchy);
     var root = nodes[0];
 
-    computeLinks(hierarchy);
     graph.nodes = nodes;
-    normalizeLinkValues(graph.links);
+    computeLinks(hierarchy, root);
 
     // Calcul du layout (position des noeuds et liens) en fonction des données passées
     sankey.nodes(graph.nodes)
         .links(graph.links)
         .layout();
 
-    keyboardEventsManager(hierarchy);
-
     // selection d3 des liens avec les données du sankey bindées
-    var link = svg.append("g").selectAll(".link")
+    var link = svg.append("g").attr("id", "linkgroup")
+        .selectAll(".link")
         .data(graph.links)
         .enter().append("path")
         .attr("class", "link")
@@ -99,11 +149,13 @@ d3.json(jsonFileName).then(function(json) {
         })
         .on("mouseover", function(d) {
             enableTooltip(d.source.id + " → " + d.target.id + "<br/>" +
-                "Valeur : " + d.value);
+                "Valeur : " + (Math.round(d.value * 10000) / 100) + "%");
         })
         .on("mouseout", function(d) {
             disableTooltip();
         });
+
+    hideLinks(link);
 
     // selection d3 des noeuds avec les données du sankey bindées
     var node = svg.append("g").selectAll(".node")
@@ -113,24 +165,95 @@ d3.json(jsonFileName).then(function(json) {
         .attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
         })
-        .attr("width", sankey.nodeWidth())
-        .call(d3.drag()
-            .clickDistance(5)
-            .on("drag", dragmove)
-        );
+        .attr("width", sankey.nodeWidth());
+    // .call(d3.drag()
+    //     .clickDistance(5)
+    //     .on("drag", dragmove)
+    // );
 
     node.on("mouseover", function(d, i) {
-            node.style("opacity", 0.2);
-            link.style("opacity", 0.2);
-            imageVisualization.attr("xlink:href", imageFolderName + "/" + d.image.slice(0, -4) + "_full.png");
-            valoriseParents(root, d);
-            valoriseChildren(d, flatHier);
-            enableTooltip(d.id);
+
+            imageVisualization.attr("xlink:href", imageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png")
+                .style("opacity", "0.8");
+
+            if (selectedNode) {
+
+                node.style("opacity", 0.2);
+                link.style("opacity", 0.2);
+
+                if (selectedNode.depth > d.depth) {
+                    valoriseChildren(d, flatHier, true);
+                } else if (selectedNode.depth < d.depth) {
+                    valoriseParents(root, d, true);
+
+                } else {
+                    valoriseParents(root, d, false);
+                    valoriseChildren(d, flatHier, false);
+                }
+            }
+
+            d3.select("#node-info-text")
+                .append("tspan")
+                .attr("x", 0)
+                .attr("dy", -10)
+                .text(("Pixels : " + (sumSize(getAllNodesWithID(flatHier, d.id)))));
+            d3.select("#node-info-text")
+                .append("tspan")
+                .attr("x", 0)
+                .attr("dy", 20)
+                .text("Proportion de l'image : " + (Math.round((sumSize(getAllNodesWithID(flatHier, d.id))/sumSize(getAllNodesWithID(flatHier, root.id)))*10000)/100) + "%");
         })
         .on("mouseout", function(d, i) {
             applyDefaultStyle();
-            imageVisualization.attr("xlink:href", imageFolderName + "/" + startImage);
-            disableTooltip();
+            imageVisualization.attr("xlink:href", "");
+            d3.select("#node-info-text").text("");
+        })
+        .on("click", function(d) {
+            hideLinks(link);
+            computeLinks(hierarchy, d);
+            updateLinks();
+            selectedNode = d;
+            d3.selectAll(".link").classed("ondisplaylink", false);
+            displayParentLinks(root, d);
+            displayChildrenLinks(d, flatHier);
+
+            link.style("opacity","0.2");
+            node.style("opacity","0.2");
+            valoriseParents(root, d, false);
+            valoriseChildren(d, flatHier, false);
+
+            // style noeuds non sélectionnés
+            node.classed("selectedNode", false)
+                .selectAll("rect")
+                .style("stroke", function(d) {
+                    return "#" + d.color;
+                })
+                .style("stroke-width", "2px");
+
+            var imageGroup = d3.select("#imageGroup");
+            imageGroup.select("#selected-img").remove();
+            if (d.depth != 0) {
+                imageGroup.append("image")
+                    .attr("id", "selected-img")
+                    .attr("height", 275)
+                    .style("opacity", "1")
+                    .attr("y", height - 275)
+                    .attr("xlink:href", clickedImageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png");
+                if (filtersAreOn) {
+                    d3.select("#selected-img").style("filter", "url(#selectColorFilter)")
+                }
+
+            }
+
+            // style noeuds sélectionnés
+            node.filter(function(di, i) {
+                    return di === d;
+                })
+                .classed("selectedNode", true)
+                .selectAll("rect")
+                .style("stroke", selectedNodeColor)
+                .style("stroke-width", "8px");
+
         });
 
     var nodeRects = node.append("rect")
@@ -162,66 +285,366 @@ d3.json(jsonFileName).then(function(json) {
 
 })
 
-function dragmove(d) {
-    d3.select(this)
-        .attr("transform",
-            "translate(" +
-            d.x + "," +
-            (d.y = Math.max(-margin.top - svgPadding.top, Math.min(height - d.dy, d3.event.y))) + ")");
-    sankey.relayout();
-    d3.selectAll(".link").attr("d", path);
+
+
+// ============================= INTERACTION CLICK =============================
+
+// PARAM : racine de l'arborescence json [root] et noeud considéré [node]
+// RETURN : void, affiche les liens parents
+function displayParentLinks(root, node) {
+    var parents = setParentsOnDisplay(root, node);
+    d3.selectAll(".link").filter(function(d, i) {
+            return parents.links.includes(d);
+        }).style("display", "block")
+        .style("stroke", parentLinksOnNodeMouseOverColor);
 }
 
+// PARAM : racine de l'arborescence json [root] et noeud considéré [node]
+// RETURN : liste de liens parents à afficher
+function setParentsOnDisplay(root, node) {
+    var parents = {
+        "links": []
+    };
+    var links = d3.selectAll(".link");
+    setParentsOnDisplayRec(root);
 
-// PARAM : Racine de l'arborescence .json [rot]
-// RETURN : liste des liens extraits en partant de la racine [root]
-// valeur par rapport au parent direct
-function getLinks(root) {
-    var links = [];
-    var i = 0;
-    var valf = d3.format(".6f");
-    getLinksRec(root);
+    function setParentsOnDisplayRec(nodeRec) {
+        if (nodeRec.id === node.id) {
+            return true;
+        } else if (nodeRec.depth > node.depth) {
+            return false;
+        }
+        var found = false;
+        if (nodeRec.children) {
+            nodeRec.children.forEach(function(d, i) {
+                if (setParentsOnDisplayRec(d)) {
+                    var d3link = getd3LinkFromTo(nodeRec, d);
+                    d3link.classed("ondisplaylink", true);
+                    parents.links.push(d3link.datum());
+                    found = true;
+                }
+            })
+        }
+        return found;
+    }
+    return parents;
+}
 
-    function getLinksRec(node) {
-        if (node.children) {
-            node.children.forEach(function(d, i) {
-                links.push({
-                    "source": node,
-                    "target": d,
-                    "value": +valf(d.value),
-                    "id": node.id + "." + d.id
-                });
-                getLinksRec(d);
+// PARAM : noeud considéré [node] et liste de noeuds [nodes]
+// RETURN : void, affiche les liens et enfants
+function displayChildrenLinks(node, nodes) {
+    var children = setChildrenOnDisplay(node, nodes);
+    d3.selectAll(".link").filter(function(d, i) {
+            return children.links.includes(d);
+        }).style("display", "block")
+        .style("stroke", parentLinksOnNodeMouseOverColor);
+}
+
+// PARAM : noeud considéré [node] et liste de noeuds [nodes]
+// RETURN : liste de liens enfants à afficher
+function setChildrenOnDisplay(node, nodes) {
+    var children = {
+        "links": []
+    };
+
+    var nodewithid = getAllNodesWithID(nodes, node.id);
+    nodewithid.forEach(function(d) {
+        setChildrenOnDisplayRec(d);
+    })
+
+    function setChildrenOnDisplayRec(nodeRec) {
+        if (nodeRec.children) {
+            nodeRec.children.forEach(function(d, i) {
+                var d3link = getd3LinkFromTo(nodeRec, d);
+
+                d3link.classed("ondisplaylink", true);
+                children.links.push(d3link.datum());
+                setChildrenOnDisplayRec(d);
             })
         }
     }
-    return links;
+    return children;
 }
 
-// PARAM : Racine de l'arborescence .json [rot]
-// RETURN : liste des liens extraits en partant de la racine [root]
-// valeur par rapport à la racine
-function getLinksFromRoot(root) {
-    var links = [];
-    var i = 0;
-    var valf = d3.format(".6f");
-    getLinksFromRootRec(root);
+// =============================================================================
 
-    function getLinksFromRootRec(node) {
-        if (node.children) {
-            node.children.forEach(function(d, i) {
-                links.push({
-                    "source": node,
-                    "target": d,
-                    "value": +valf(d.valueFromRoot),
-                    "id": node.id + "." + d.id
-                });
-                getLinksFromRootRec(d);
+
+
+// =========================== INTERACTION MOUSEOVER ===========================
+
+// PARAM : noeud on mouseover [node] et racine de l'arborescence [root]
+// RETURN : void, met en valeur les noeuds et liens parents du noeud [node]
+function valoriseParents(root, node, nodeSelected) {
+    var parents = getDisplayedParents(root, node);
+    var selectedNodeCondition = true;
+
+    d3.selectAll(".node").filter(function(d, i) {
+
+        if (nodeSelected) {
+            if (selectedNode.depth > d.depth) {
+                selectedNodeCondition = false;
+            } else {
+                selectedNodeCondition = true;
+            }
+        }
+
+        return (parents.nodes.includes(d.id) && selectedNodeCondition) || d === node;
+    }).style("opacity", 1);
+
+    d3.selectAll(".link").filter(function(d, i) {
+
+            if (nodeSelected) {
+                if (selectedNode.depth > d.source.depth) {
+                    selectedNodeCondition = false;
+                } else {
+                    selectedNodeCondition = true;
+                }
+            }
+
+            return parents.links.includes(d) && selectedNodeCondition;
+        }).style("opacity", 1)
+        .style("stroke", parentLinksOnNodeMouseOverColor);
+}
+
+// PARAM : racine de l'arborescence json [root] et noeud considéré [node]
+// RETURN : liste des liens et noeuds parents à afficher en parcourant l'arborescence de la
+// racine jusqu'au noeud considéré
+function getDisplayedParents(root, node) {
+    var parents = {
+        "nodes": [],
+        "links": []
+    };
+    var links = d3.selectAll(".link");
+    getDisplayedParentsRec(root);
+
+    function getDisplayedParentsRec(nodeRec) {
+        if (nodeRec.id === node.id) {
+            return true;
+        } else if (nodeRec.depth > node.depth) {
+            return false;
+        }
+        var found = false;
+        if (nodeRec.children) {
+            nodeRec.children.forEach(function(d, i) {
+                if (getDisplayedParentsRec(d)) {
+                    var d3link = getd3LinkFromTo(nodeRec, d);
+
+                    if (d3link.classed("ondisplaylink")) {
+                        parents.nodes.push(nodeRec.id);
+                        parents.links.push(d3link.datum());
+                        found = true;
+                    }
+
+                }
             })
         }
+        return found;
     }
-    return links;
+    return parents;
 }
+
+// PARAM : noeud considéré [node] et liste de noeuds [nodes]
+// RETURN : void, met en valeur les noeuds et liens enfants du noeud [node]
+function valoriseChildren(node, nodes, nodeSelected) {
+    var children = getDisplayedChildren(node, nodes);
+    var selectedNodeCondition = true;
+
+    d3.selectAll(".node").filter(function(d, i) {
+
+        if (nodeSelected) {
+            if (selectedNode.depth < d.depth) {
+                selectedNodeCondition = false;
+            } else {
+                selectedNodeCondition = true;
+            }
+        }
+        return (children.nodes.includes(d.id) && selectedNodeCondition) || d === node;
+    }).style("opacity", 1);
+
+    d3.selectAll(".link").filter(function(d, i) {
+            if (nodeSelected) {
+                if (selectedNode.depth < d.target.depth) {
+                    selectedNodeCondition = false;
+                } else {
+                    selectedNodeCondition = true;
+                }
+            }
+            return children.links.includes(d) && selectedNodeCondition;
+        }).style("opacity", 1)
+        .style("stroke", childLinksOnNodeMouseOverColor);
+}
+
+// PARAM : noeud considéré [node] et liste de noeuds [nodes]
+// RETURN : liste des liens et noeuds parents à afficher en parcourant l'arborescence du
+// noeud considéré jusqu'à la fin de l'arborescence
+function getDisplayedChildren(node, nodes) {
+
+    var children = {
+        "nodes": [],
+        "links": []
+    };
+
+    var nodewithid = getAllNodesWithID(nodes, node.id);
+    nodewithid.forEach(function(d) {
+        getDisplayedChildrenRec(d);
+    })
+
+    function getDisplayedChildrenRec(nodeRec) {
+        children.nodes.push(nodeRec.id);
+        if (nodeRec.children) {
+            nodeRec.children.forEach(function(d, i) {
+                var d3link = getd3LinkFromTo(nodeRec, d);
+
+                if (d3link.classed("ondisplaylink")) {
+                    children.links.push(d3link.datum());
+                    getDisplayedChildrenRec(d);
+                }
+            });
+        }
+    }
+    return children;
+}
+
+// =============================================================================
+
+// =========================== FONCTIONS UTILITAIRES ===========================
+
+
+function colorPickersHandler(filterOn) {
+
+    if (filterOn) {
+        document.getElementById("selected-color-picker").addEventListener("change", function() {
+            updateMaskColor("selectColorFilter", this.value);
+            selectedNodeColor = this.value;
+            d3.selectAll(".selectedNode").select("rect")
+                .style("stroke", selectedNodeColor)
+                .style("stroke-width", "8px");
+        });
+
+        document.getElementById("over-color-picker").addEventListener("change", function() {
+            updateMaskColor("overColorFilter", this.value);
+        });
+    }
+    document.getElementById("link-color-picker").addEventListener("change", function() {
+        parentLinksOnNodeMouseOverColor = this.value;
+        childLinksOnNodeMouseOverColor = this.value;
+    });
+}
+
+function createColorPickers(filterOn) {
+
+    var colorPickersDiv = document.getElementById("colorPickersDiv");
+    var d3colorPickersDiv = d3.select("#colorPickersDiv");
+
+    if (filterOn) {
+
+        colorPickersDiv.innerHTML += "Filtre région sélectionnée : ";
+        d3colorPickersDiv.append("input")
+            .attr("type", "color")
+            .attr("id", "selected-color-picker")
+            .attr("value", selectedNodeColor);
+
+        colorPickersDiv.innerHTML += " Filtre région survol : ";
+        d3colorPickersDiv.append("input")
+            .attr("type", "color")
+            .attr("id", "over-color-picker")
+            .attr("value", "#ffffff");
+    }
+
+    colorPickersDiv.innerHTML += " Couleur des liens : ";
+    d3colorPickersDiv.append("input")
+        .attr("type", "color")
+        .attr("id", "link-color-picker")
+        .attr("value", childLinksOnNodeMouseOverColor);
+
+}
+
+function setMasksColorFilters() {
+
+    selectColorFilter = svg.append("filter")
+        .attr("id", "selectColorFilter")
+        .append("feColorMatrix")
+        .attr("in", "")
+        .attr("type", "matrix")
+        .attr("values", "1 0 0 0 0 " +
+            "0 1 0 0 0 " +
+            "0 0 1 0 0 " +
+            "0 0 0 1 0");
+
+
+    overColorFilter = svg.append("filter")
+        .attr("id", "overColorFilter")
+        .append("feColorMatrix")
+        .attr("in", "")
+        .attr("type", "matrix")
+        .attr("values", "1 0 0 0 0 " +
+            "0 1 0 0 0 " +
+            "0 0 1 0 0 " +
+            "0 0 0 1 0");
+
+    d3.select("#over-img").style("filter", "url(#overColorFilter)")
+
+}
+
+function updateMaskColor(maskid, hexValue) {
+    var splitedHexValue = hexValue.split("");
+    var red = splitedHexValue[1] + splitedHexValue[2];
+    var green = splitedHexValue[3] + splitedHexValue[4];
+    var blue = splitedHexValue[5] + splitedHexValue[6];
+    var rgbValue = [red, green, blue].map(function(v) {
+        return parseInt(v, 16)
+    });
+    changeColorFilter(maskid, rgbValue, 1);
+
+}
+
+
+function changeColorFilter(maskid, rgbColorTab, opacity) {
+    var red = rgbColorTab[0] / 255;
+    var green = rgbColorTab[1] / 255;
+    var blue = rgbColorTab[2] / 255;
+    d3.select("#" + maskid).select("feColorMatrix")
+        .attr("values", "" + red + " 0 0 0 0 " +
+            "0 " + green + " 0 0 0 " +
+            "0 0 " + blue + " 0 0 " +
+            "0 0 0 " + opacity + " 0");
+}
+
+
+
+
+
+
+
+// BRIEF : applique le style par défaut aux noeuds et liens
+function applyDefaultStyle() {
+    applyDefaultOpacity();
+    applyDefaultLinkColor();
+}
+
+// BRIEF : applique l'opacité par défaut aux noeuds et liens
+function applyDefaultOpacity() {
+    d3.selectAll(".link")
+        .style("opacity", "1");
+    d3.selectAll(".node")
+        .style("opacity", "1");
+}
+
+// BRIEF : applique la couleur par défaut des liens
+function applyDefaultLinkColor() {
+    d3.selectAll(".link")
+        .style("stroke", defaultLinkColor);
+}
+
+
+// PARAM : deux noeuds [nodeA] et [nodeB]
+// RETURN : lien entre les deux noeuds en se basant sur d3
+function getd3LinkFromTo(nodeA, nodeB) {
+    return d3.selectAll(".link").filter(function(d, i) {
+        return d.source.id === nodeA.id && d.target.id === nodeB.id;
+    });
+}
+
 
 // PARAM : liste de noeuds [nodes] et ID de filtrage [id]
 // RETURN : liste de noeuds ayant l'ID [id]
@@ -248,127 +671,8 @@ function getNodeById(nodes, id) {
     return node;
 }
 
-// PARAM : racine de l'arborescence json [root] et noeud considéré [node]
-// RETURN : liste des liens et noeuds parents en parcourant l'arborescence de la
-// racine jusqu'au noeud considéré
-function getParents(root, node) {
-    var parents = {
-        "nodes": [],
-        "links": []
-    };
-    getParentsRec(root);
-
-    function getParentsRec(nodeRec) {
-        if (nodeRec.id === node.id) {
-            return true;
-        } else if (nodeRec.depth > node.depth) {
-            return false;
-        }
-        var found = false;
-        if (nodeRec.children) {
-            nodeRec.children.forEach(function(d, i) {
-                if (getParentsRec(d)) {
-                    parents.nodes.push(nodeRec.id);
-                    parents.links.push(getd3LinkFromTo(nodeRec, d));
-                    found = true;
-                }
-            })
-        }
-        return found;
-    }
-    return parents;
-}
-
-
-// PARAM : noeud considéré [node]
-// RETURN : liste des liens et noeuds enfant en parcourant l'arborescence du
-// noeud considéré jusqu'à la fin de l'arborescence
-function getChildren(node, nodes) {
-
-    var children = {
-        "nodes": [],
-        "links": []
-    };
-
-    var nodewithid = getAllNodesWithID(nodes, node.id);
-    nodewithid.forEach(function(d) {
-        getChildrenRec(d);
-    })
-
-    function getChildrenRec(nodeRec) {
-        children.nodes.push(nodeRec.id);
-        if (nodeRec.children) {
-            nodeRec.children.forEach(function(d, i) {
-                children.links.push(getd3LinkFromTo(nodeRec, d))
-                getChildrenRec(d);
-            })
-        }
-    }
-    return children;
-}
-// PARAM : deux noeuds [nodeA] et [nodeB]
-// RETURN : lien entre les deux noeuds en se basant sur d3
-function getd3LinkFromTo(nodeA, nodeB) {
-    var link;
-    d3.selectAll(".link").data().forEach(function(d, i) {
-        if (d.source.id === nodeA.id && d.target.id === nodeB.id) {
-            link = d;
-        }
-    })
-    return link;
-}
-
-
-
-
-// PARAM : noeud on mouseover [node] et racine de l'arborescence [root]
-// RETURN : void, met en valeur les noeuds et liens parents du noeud [node]
-function valoriseParents(root, node) {
-    var parents = getParents(root, node);
-    d3.selectAll(".node").filter(function(d, i) {
-        return parents.nodes.includes(d.id) || d === node;
-    }).style("opacity", 1);
-    d3.selectAll(".link").filter(function(d, i) {
-            return parents.links.includes(d);
-        }).style("opacity", 1)
-        .style("stroke", parentLinksOnNodeMouseOverColor);
-}
-
-// PARAM : noeud on mouseover [node]
-// RETURN : void, met en valeur les noeuds et liens enfants du noeud [node]
-function valoriseChildren(node, nodes) {
-    var children = getChildren(node, nodes);
-    d3.selectAll(".node").filter(function(d, i) {
-        return children.nodes.includes(d.id) || d === node;
-    }).style("opacity", 1);
-    d3.selectAll(".link").filter(function(d, i) {
-            return children.links.includes(d);
-        }).style("opacity", 1)
-        .style("stroke", childLinksOnNodeMouseOverColor);
-}
-
-
-
-// BRIEF : applique le style par défaut aux noeuds et liens
-function applyDefaultStyle() {
-    applyDefaultOpacity();
-    applyDefaultLinkColor();
-}
-
-// BRIEF : applique l'opacité par défaut aux noeuds et liens
-function applyDefaultOpacity() {
-    d3.selectAll(".link")
-        .style("opacity", "1");
-    d3.selectAll(".node")
-        .style("opacity", "1");
-}
-
-// BRIEF : applique la couleur par défaut des liens
-function applyDefaultLinkColor() {
-    d3.selectAll(".link")
-        .style("stroke", defaultLinkColor);
-}
-
+// PARAM : hierarchie en arbre [hierarchy]
+// RETURN : la hierarchie avec des informations supplémentaires
 function formatHierarchy(hierarchy) {
     var root = hierarchy.data;
     root.value = hierarchy.value;
@@ -391,32 +695,37 @@ function formatHierarchy(hierarchy) {
             });
         }
     }
-    hierarchy = extractData(hierarchy);
+    hierarchy = hierarchy.data;
 
     return hierarchy;
 }
 
-function extractData(hierarchy) {
-    return hierarchy.data;
-}
+// inutilisée ACTUELLEMENT
+// PARAM : hierarchie en arbre [hierarchy] et ID filtrage [id]
+// RETURN : Retourne le noeud avec l'id correspondant [id]
+function getNodeInHierarchy(hierarchy, id) {
+    var ref;
+    getNodeInHierarchyRec(hierarchy, id);
 
-function initValuesFromRoot(hierarchy) {
+    function getNodeInHierarchyRec(hierarchy, id) {
+        if (hierarchy.id === id) {
+            ref = hierarchy;
+        }
 
-    hierarchy.valueFromRoot = 1;
-    initValuesFromRootRec(hierarchy);
-
-    function initValuesFromRootRec(node) {
-        if (node.children) {
-            node.children.forEach(function(d) {
-                d.valueFromRoot = node.valueFromRoot * d.value;
-                initValuesFromRootRec(d);
+        if (hierarchy.children) {
+            hierarchy.children.forEach(function(d) {
+                getNodeInHierarchyRec(d, id);
             });
         }
+
     }
 
-    return hierarchy;
+    return ref;
 }
 
+
+// PARAM : hierarchie en arbre [hierarchy]
+// RETURN : Retourne le tableau des noeuds extraits de la hierarchie
 function flatHierarchy(hierarchy) {
     var nodes = [];
     flatHierarchyRec(hierarchy);
@@ -432,6 +741,10 @@ function flatHierarchy(hierarchy) {
     return nodes;
 }
 
+
+// PARAM : hierarchie en arbre [hierarchy]
+// RETURN : Retourne le tableau des noeuds extraits de la hierarchie sans motif
+// doublon
 function hierarchyToNodes(hierarchy) {
     var nodeFlags = {};
     var flatHier = flatHierarchy(hierarchy);
@@ -444,36 +757,13 @@ function hierarchyToNodes(hierarchy) {
     return Object.values(nodeFlags);
 }
 
-function mergeLinks(links) {
-    var linkFlags = {}
-    links.forEach(function(d) {
-        if (linkFlags[d.id]) {
-            linkFlags[d.id].value += d.value;
-        } else {
-            linkFlags[d.id] = d;
-        }
-    });
 
-    return Object.values(linkFlags);
-}
-
-
-// fonction de tests
-function getSumByDepth(nodes, links) {
-    var depthSums = {};
-    links.forEach(function(d) {
-        var depth = getNodeById(nodes, d.source).depth;
-        if (depthSums[depth]) {
-            depthSums[depth] += d.value;
-        } else {
-            depthSums[depth] = d.value;
-        }
-    })
-    console.log(depthSums);
-}
-
+// BRIEF : met à jour les valeurs de liens
 function updateLinks() {
+    sankey.links(graph.links).layout();
     var links = d3.selectAll(".link");
+    links.data(graph.links);
+
     links.select("title")
         .text(function(d, i) {
             return d.source.id + " → " + d.target.id + "\n" +
@@ -486,6 +776,8 @@ function updateLinks() {
         });
 }
 
+// inutilisée ACTUELLEMENT
+// BRIEF : met à jour les noeuds
 function updateNodes() {
     var nodes = d3.selectAll(".node");
     nodes.transition().attr("transform", function(d) {
@@ -499,84 +791,69 @@ function updateNodes() {
     });
 }
 
-function computeLinksFromRoot(hierarchy) {
-    graph.links = mergeLinks(getLinksFromRoot(hierarchy));
+
+// PARAM : hierarchie en arbre [hierarchy], noeud de reference  [reference]
+// (objet avec id,etc)
+// RETURN : void, calcule les liens du diagramme sans doublon source-destination
+// et remplace les noeuds par leurs IDs
+function computeLinks(hierarchy, reference) {
+    graph.links = mergeLinks(getLinks(hierarchy, reference));
     graph.links.forEach(function(d, i, arr) {
         arr[i].target = arr[i].target.id;
         arr[i].source = arr[i].source.id;
     });
 }
 
-function computeLinks(hierarchy) {
-    graph.links = mergeLinks(getLinks(hierarchy));
-    graph.links.forEach(function(d, i, arr) {
-        arr[i].target = arr[i].target.id;
-        arr[i].source = arr[i].source.id;
-    });
-}
 
-
-function keyboardEventsManager(hierarchy) {
-    document.addEventListener("keydown", function(event) {
-        const keyName = event.key;
-        if (keyName === "r") { // Affichage des proportions par rap. à la racine
-
-            computeLinksFromRoot(hierarchy);
-                imageVisualization.style("opacity", "0");
-                imageVisualization.style("display", "none");
-            sankey
-                .nodes(graph.nodes)
-                .links(graph.links)
-                .layout();
-
-            d3.selectAll(".node").data(graph.nodes);
-            d3.selectAll(".link").data(graph.links);
-
-            updateLinks();
-            updateNodes();
-
-
-        }
-        if (keyName === "n") { // Affichage classique
-
-            computeLinks(hierarchy);
-            normalizeLinkValues(graph.links);
-            imageVisualization.style("display", "block");
-            imageVisualization.transition().style("opacity", "1");
-            sankey
-                .nodes(graph.nodes)
-                .links(graph.links)
-                .layout();
-
-            d3.selectAll(".node").data(graph.nodes);
-            d3.selectAll(".link").data(graph.links);
-
-            updateLinks();
-            updateNodes();
-
-        }
-
-    });
-}
-
-
-function normalizeLinkValues(links) {
-    var linkSourcesFlags = {}
+// PARAM : liste de liens [links]
+// (objet avec id,etc)
+// RETURN : liste de liens sans doublons
+function mergeLinks(links) {
+    var linkFlags = {}
     links.forEach(function(d) {
-        if (linkSourcesFlags[d.id.split(".", 1)[0]]) {
-            linkSourcesFlags[d.id.split(".", 1)[0]] += d.value;
-        } else {
-            linkSourcesFlags[d.id.split(".", 1)[0]] = d.value;
+        if (!linkFlags[d.id]) {
+            linkFlags[d.id] = d;
         }
     });
+    return Object.values(linkFlags);
+}
 
-    links.forEach(function(d, i, arr) {
-        var scale = d3.scaleLinear()
-            .domain([0, linkSourcesFlags[d.id.split(".", 1)[0]]])
-            .range([0, 1]);
+// PARAM : Racine de l'arborescence .json [rot], noeud de reference [reference]
+// RETURN : liste des liens extraits en partant de la racine [root]
+// valeur par rapport à une référence
+function getLinks(root, reference) {
+    var links = [];
+    var i = 0;
+    var valf = d3.format(".6f");
+    getLinksRec(root);
 
-        arr[i].value = scale(arr[i].value);
-    });
+    function getLinksRec(node) {
+        if (node.children) {
+            if (node.depth >= reference.depth) {
+                node.children.forEach(function(d, i) {
+                    links.push({
+                        "source": node,
+                        "target": d,
+                        "value": +valf(getDescendantProportion(root, node, d, reference)),
+                        "id": node.id + "." + d.id
+                    });
+
+                    getLinksRec(d);
+                })
+            } else {
+                node.children.forEach(function(d, i) {
+                    links.push({
+                        "source": node,
+                        "target": d,
+                        "value": +valf(getAscendantProportion(root, node, d, reference)),
+                        "id": node.id + "." + d.id
+                    });
+
+                    getLinksRec(d);
+                })
+            }
+        }
+    }
     return links;
 }
 
@@ -601,202 +878,264 @@ function disableTooltip() {
 }
 
 
+// PARAM : hierarchie en arbre [hierarchy]
+// RETURN : hierarchie avec ajout des masques pour la visualisation de carte
+function addImageMasksToHierarchy(hierarchy) {
+    hierarchy.imagemask = startImage;
 
+    addImageMasksToHierarchyRec(hierarchy);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ============================================================================
-// Anciennes fonctions qui ne sont plus utilisées pour le moment
-
-
-// PARAM : liste de noeuds [nodes]
-// RETURN : Retourne la liste de noeuds fusionnés par ID égal (des noeuds ayant
-// le même id sont regoupés en un seul)
-function mergeWithSameId(nodes) {
-    var nodeChildrens = {};
-    var nodeParents = {};
-    var mergedNodes = [];
-    nodes.forEach(function(d, i) {
-        if (nodeChildrens[d.id]) {
-            nodeChildrens[d.id] = nodeChildrens[d.id].concat(getAllChildren(d));
-            removeDuplicateChildren(nodeChildrens[d.id]);
-
-        } else {
-            nodeChildrens[d.id] = getAllChildren(d);
-            mergedNodes.push(Object.assign({}, d)); // copie
+    function addImageMasksToHierarchyRec(node) {
+        if (node.children) {
+            node.children.forEach(function(d) {
+                d.imagemask = startImage.slice(0, -4) + "_" + d.depth + "_" + d.id + "_pattern.png";
+                addImageMasksToHierarchyRec(d);
+            })
         }
+    }
 
-        if (nodeParents[d.id]) {
-            nodeParents[d.id] = nodeParents[d.id].concat(d.parent);
-            removeDuplicateParents(nodeParents[d.id]);
+    return hierarchy;
+}
 
+
+// PARAM : liste de noeuds ancetres [ancestors], noeud [b]
+// RETURN : bool, true si tous les [ancestors] sont ancetres de noeud [b], false sinon
+function areTreeAncestorOf(ancestors, b) {
+    var bool = true;
+    var bAncestors = getTreeAncestorsOf(b);
+    ancestors.forEach(function(d) {
+        if (!bAncestors.includes(d.id)) {
+            bool = false;
+        }
+    });
+
+    return bool;
+}
+
+
+// PARAM : noeud de l'arborescence [nodeTree]
+// RETURN : liste des ancetres de l'arborescence de [nodeTree]
+function getTreeAncestorsOf(nodeTree) {
+    var ancestors = [];
+    getTreeAncestorsOfRec(nodeTree);
+
+    function getTreeAncestorsOfRec(node) {
+        if (node.parent !== null) {
+            if (!ancestors.includes(node.parent.id)) {
+                ancestors.push(node.parent.id);
+            }
+            getTreeAncestorsOfRec(node.parent);
+        }
+    }
+    return ancestors;
+}
+
+// PARAM : liste de noeuds ancetres [ancestors(FACULTATIF)], noeud [a], racine arborescence [root]
+// RETURN : float proportion absolue du noeud d'arborescence [a] (par rapport à la racine)
+// en sachant que [a] doit avoir [ancestors] pour ancetres si définit
+function computeProportionFromTreeRoot(root, a, ancestors) {
+    var nodeValueFromRoot = 0;
+    var aNodes = getAllNodesWithID(flatHierarchy(root), a.id);
+    aNodes.forEach(function(d) {
+        if (ancestors) {
+            if (areTreeAncestorOf(ancestors, d)) {
+                nodeValueFromRoot += d.valueFromRoot;
+            }
         } else {
-            nodeParents[d.id] = [d.parent];
+            nodeValueFromRoot += d.valueFromRoot;
+        }
+    });
+    //
+    // computeProportionFromTreeRootRec(root, a);
+    //
+    // function computeProportionFromTreeRootRec(node, al) {
+    //
+    //     currentValue *= node.value;
+    //     if (node.id === al.id) {
+    //         if (ancestors) {
+    //             if (areTreeAncestorOf(ancestors, node)) {
+    //                 nodeValueFromRoot += currentValue;
+    //             }
+    //         } else {
+    //             nodeValueFromRoot += currentValue;
+    //         }
+    //     }
+    //
+    //     if (node.children) {
+    //         node.children.forEach(function(d) {
+    //             computeProportionFromTreeRootRec(d, al);
+    //             currentValue /= d.value;
+    //         });
+    //     }
+    // }
+
+    return nodeValueFromRoot;
+}
+
+// PARAM : liste de noeuds ancetres [ancestors(FACULTATIF)], noeud [a] et [b], racine arborescence [root]
+// RETURN : float proportion du noeud graphe [b] dans [a]
+// en sachant que [b] doit avoir [ancestors] pour ancetres si définit
+function computeProportionFromNodeIn(root, a, b, ancestors) {
+    var nancestors = ancestors;
+    if (nancestors) {
+        nancestors.push(a);
+    } else {
+        nancestors = [a];
+    }
+    var sizeofA = computeProportionFromTreeRoot(root, a);
+    var sizeofB = computeProportionFromTreeRoot(root, b, nancestors);
+    return sizeofB / sizeofA;
+}
+
+function initTreeValuesFromRoot(root) {
+    root.valueFromRoot = 1;
+    initTreeValuesFromRootRec(root);
+
+    function initTreeValuesFromRootRec(node) {
+        if (node.children) {
+            node.children.forEach(function(d) {
+                d.valueFromRoot = node.valueFromRoot * d.value;
+                initTreeValuesFromRootRec(d);
+            });
+        }
+    }
+    return root;
+}
+
+// PARAM : selection d3 de liens
+// RETURN : void, fait disparaitre tous les liens en parametre
+function hideLinks(links) {
+    links.style("display", "none");
+}
+
+
+
+// fonction de tests
+function getSumByDepth(nodes, links) {
+    var depthSums = {};
+    links.forEach(function(d) {
+        var depth = getNodeById(nodes, d.source).depth;
+        if (depthSums[depth]) {
+            depthSums[depth] += d.value;
+        } else {
+            depthSums[depth] = d.value;
         }
     })
-    mergedNodes.forEach(function(d, i) {
-        d.children = nodeChildrens[d.id];
-        d.parent = nodeParents[d.id];
-
-    });
-    return mergedNodes;
+    console.log(depthSums);
 }
 
+// fonction renvoyant un tableau de noeuds de l'arbre correspondant a l'intersection entre les noeuds de graphe A et B,
+// le noeud B etant un descendant du noeud A
+function getIntersectBetween2(nodeA, nodeB, root) {
+    var res = [];
+    getAllNodesWithID(flatHierarchy(root), nodeA.id).forEach(function(node) {
+        getIntersectBetween2Rec(node, nodeB);
+    })
 
+    return res;
 
+    function getIntersectBetween2Rec(nodeA, nodeB) {
+        nodeA.children.forEach(function(n) {
+            if (n.id === nodeB.id) {
+                res.push(n);
+            }
 
-
-// PARAM : liste de noeuds enfants [children]
-// RETURN : [!] liste en paramètre modifiée [!] doublons supprimés
-function removeDuplicateChildren(children) {
-    var childFlag = {};
-    for (var i = 0; i < children.length; i++) {
-
-        if (childFlag[children[i].id]) {
-            children.splice(children.indexOf(children[i]), 1);
-            i--;
-        } else {
-            childFlag[children[i].id] = true;
-        }
-    }
-}
-
-// PARAM : liste de noeuds parents [parents]
-// RETURN : [!] liste en paramètre modifiée [!] doublons supprimés
-function removeDuplicateParents(parents) {
-    var parentFlag = {};
-    for (var i = 0; i < parents.length; i++) {
-
-        if (parentFlag[parents[i].id]) {
-            parents.splice(parents.indexOf(parents[i]), 1);
-            i--;
-        } else {
-            parentFlag[parents[i].id] = true;
-        }
-    }
-}
-
-// PARAM : objet noeud [node]
-// RETURN : liste des enfants du noeud si la liste existe et renvoie une liste
-// vide sinon
-// NOTE: Simplifiable nodeChildren.push en nodeChildren = node.children ?
-function getAllChildren(node) {
-    var nodeChildren = [];
-    if (node.children) {
-        node.children.forEach(function(d, i) {
-            nodeChildren.push(d);
+            if (!n.children)
+                return;
+            else
+                getIntersectBetween2Rec(n, nodeB);
         })
     }
-    return nodeChildren;
 }
 
+// fonction renvoyant un tableau de noeuds de l'arbre correspondant a l'intersection entre les noeuds de graphe A et B et Ref,
+// le noeud Ref etant un descendant du noeud B etant lui-meme un descendant du noeud A
+function getIntersectBetween3(nodeA, nodeB, nodeC, root) {
+    var intersection = [];
 
-// PARAM : tableau de liens à formater [links]
-// RETURN : tableau de liens formatés.Formate les liens avec des IDs plutot que les objects
-function formatLinksWithIDs(links) {
-    var linkIDs = links.map(function(d, i) {
-        d.source = d.source.id;
-        d.target = d.target.id;
-        return d;
+    var maxDepthNodes = getAllNodesWithID(flatHierarchy(root), nodeC.id);
+
+    maxDepthNodes.forEach(function(d) {
+        if (areTreeAncestorOf([nodeA, nodeB], d)) {
+            intersection.push(d);
+        }
     });
-    return linkIDs;
+
+    return intersection;
+
 }
 
+// renvoie la somme des tailles de chaque noeud d'un tableau de noeud
+function sumSize(nodeTab) {
+    var res = 0;
 
-
-
-
-// PARAM : liste de liens [links] et racine de l'arborescence [root]
-// RETURN : void, modifie les valeurs des liens pour dépendre de
-// la valeur du lien parent
-function computeDescendingLinkValues(links, root) {
-    var previousValue = 1;
-    computeDescendingLinkValuesRec(root, previousValue);
-
-    function computeDescendingLinkValuesRec(node, previousValue) {
-        if (node.children) {
-            node.children.forEach(function(d, i) {
-                var link = getLinkFromTo(links, node, d);
-                var initialValue = previousValue;
-                link.value *= previousValue;
-                previousValue = link.value;
-                computeDescendingLinkValuesRec(d, previousValue);
-                previousValue = initialValue;
-            })
-        }
-    }
-}
-
-function computeDescendingLinkValues2(links, root) {
-    var previousValue = 1;
-    computeDescendingLinkValues2Rec(root, previousValue);
-
-    function computeDescendingLinkValues2Rec(node, previousValue) {
-        if (node.children) {
-            node.children.forEach(function(d, i) {
-                var link = getLinkFromTo(links, node, d);
-                var initialValue = previousValue;
-                link.value *= previousValue;
-                previousValue = link.value;
-                computeDescendingLinkValues2Rec(d, previousValue);
-                previousValue = initialValue;
-            })
-        }
-    }
-}
-
-
-// PARAM : liste de liens [links]
-// RETURN : liste de liens ou les doublons sont fusionnés et fusion des valeur
-// de liens
-function removeDuplicateLinksWithID(links) {
-    var linkFlags = {};
-    for (var i = 0; i < links.length; i++) {
-        if (linkFlags[links[i].source + "" + links[i].target]) {
-            linkFlags[links[i].source + "" + links[i].target].value += links[i].value;
-        } else {
-            linkFlags[links[i].source + "" + links[i].target] = links[i];
-        }
-    }
-    return Object.values(linkFlags);
-}
-
-
-
-
-// PARAM : deux noeuds [nodeA] et [nodeB] et liste des liens (objets)
-// RETURN : lien entre les deux noeuds en se basant sur les objets
-function getLinkFromTo(links, nodeA, nodeB) {
-    var link;
-    links.forEach(function(d, i) {
-        if (d.source === nodeA.id && d.target === nodeB.id) {
-            link = d;
-        }
+    nodeTab.forEach(function(n) {
+        res += n.npixels;
     })
-    return link;
+
+    return res;
 }
 
+function getAscendantProportion(root, nodeA, nodeB, nodeRef) {
+    var refSize = sumSize(getAllNodesWithID(flatHierarchy(root), nodeRef.id));
+
+    if (nodeB.id == nodeRef.id) {
+        return (sumSize(getIntersectBetween2(nodeA, nodeB, root)) / refSize);
+    } else {
+        return (sumSize(getIntersectBetween3(nodeA, nodeB, nodeRef, root)) / refSize);
+    }
+}
+
+function getDescendantProportion(root, nodeA, nodeB, nodeRef) {
+    var refSize = sumSize(getAllNodesWithID(flatHierarchy(root), nodeRef.id));
+
+    if (nodeA.id == nodeRef.id) {
+        return (sumSize(getIntersectBetween2(nodeA, nodeB, root)) / refSize);
+    } else {
+        return (sumSize(getIntersectBetween3(nodeRef, nodeA, nodeB, root)) / refSize);
+    }
+}
+
+// =============================================================================
 
 
-// PAS METTRE DE FONCTIONS ICI ! ! ! !
+// ===================== AUTRES PAS UTILISEES ACTUELLEMENT =====================
+function addSelectedNode(d) {
+    var exist = currentSelection.indexOf(d);
+    if (exist >= 0) {
+        removeFromSelection(d);
+    } else {
+        currentSelection.push(d);
+    }
+}
+
+function removeFromSelection(d) {
+    d3.select("#img_" + currentSelection[currentSelection.indexOf(d)].id).remove();
+    currentSelection.splice(currentSelection.indexOf(d), 1);
+    currentMasksDisplayed.splice(currentMasksDisplayed.indexOf(d.id), 1);
+}
+
+function displaySelectedMasks() {
+    var imageGroup = d3.select("#imageGroup");
+
+    currentSelection.forEach(function(elem) {
+        if (!currentMasksDisplayed.includes(elem.id)) {
+            imageGroup.append("image")
+                .attr("id", "img_" + elem.id)
+                .attr("height", 275)
+                .attr("y", height - 275)
+                .attr("xlink:href", imageMasksFolderName + "/" + elem.imagemask.slice(0, -4) + ".png");
+
+            currentMasksDisplayed.push(elem.id);
+        }
+    });
+}
+
+function dragmove(d) {
+    d3.select(this)
+        .attr("transform",
+            "translate(" +
+            d.x + "," +
+            (d.y = Math.max(-margin.top - svgPadding.top, Math.min(height - d.dy, d3.event.y))) + ")");
+    d3.selectAll(".link").attr("d", path);
+}

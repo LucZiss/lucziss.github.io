@@ -117,20 +117,23 @@ d3.sankey = function() {
     while (remainingNodes.length) {
       nextNodes = [];
       remainingNodes.forEach(function(node) {
-        node.x = x;
-        node.dx = nodeWidth;
-        node.sourceLinks.forEach(function(link) {
-          if (nextNodes.indexOf(link.target) < 0) {
-            nextNodes.push(link.target);
-          }
-        });
+        if(node.targetLinks.length || node.sourceLinks.length)
+        {
+          node.x = x;
+          node.dx = nodeWidth;
+          node.sourceLinks.forEach(function(link) {
+            if (nextNodes.indexOf(link.target) < 0) {
+              nextNodes.push(link.target);
+            }
+          });
+        }
       });
       remainingNodes = nextNodes;
       ++x;
     }
 
     //
-    moveSinksRight(x);
+    // moveSinksRight(x);
     scaleNodeBreadths((size[0] - nodeWidth) / (x - 1));
   }
 
@@ -174,14 +177,19 @@ d3.sankey = function() {
     }
 
     function initializeNodeDepth() {
-      var ky = d3.min(nodesByBreadth, function(nodes) {
-        return (size[1] - (nodes.length - 1) * nodePadding) / d3.sum(nodes, value);
-      });
+
+      var maxNodesPerDepth = 0;
+      nodesByBreadth.forEach(function (arr) {
+        if(maxNodesPerDepth < arr.length)
+          maxNodesPerDepth = arr.length;
+      })
+
+      var ky = size[1] / (maxNodesPerDepth + nodePadding);
 
       nodesByBreadth.forEach(function(nodes) {
         nodes.forEach(function(node, i) {
           node.y = i;
-          node.dy = node.value * ky;
+          node.dy = ky;
         });
       });
 

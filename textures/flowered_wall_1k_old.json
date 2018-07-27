@@ -1,0 +1,1320 @@
+{
+    "id": "00000000",
+    "color": "000000",
+    "image": "flowered_wall_1k.png",
+    "value": 1,
+    "children": [{
+            "id": "015A8744",
+            "color": "5A8744",
+            "image": "flowered_wall_1k_cl_1_015A8744.png",
+            "value": 0.0162232,
+            "children": [{
+                "id": "02577848",
+                "color": "577848",
+                "image": "flowered_wall_1k_cl_2_02577848.png",
+                "value": 1,
+                "children": [{
+                        "id": "03577E44",
+                        "color": "577E44",
+                        "image": "flowered_wall_1k_cl_3_03577E44.png",
+                        "value": 0.891414,
+                        "children": [{
+                                "id": "0440403F",
+                                "color": "40403F",
+                                "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                "value": 0.00904346
+                            },
+                            {
+                                "id": "04486D39",
+                                "color": "486D39",
+                                "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                "value": 0.376548
+                            },
+                            {
+                                "id": "04639F48",
+                                "color": "639F48",
+                                "image": "flowered_wall_1k_cl_4_04639F48.png",
+                                "value": 0.53059
+                            },
+                            {
+                                "id": "04736679",
+                                "color": "736679",
+                                "image": "flowered_wall_1k_cl_4_04736679.png",
+                                "value": 0.0838189
+                            }
+                        ]
+                    },
+                    {
+                        "id": "035F5D60",
+                        "color": "5F5D60",
+                        "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                        "value": 0.108586,
+                        "children": [{
+                                "id": "0440403F",
+                                "color": "40403F",
+                                "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                "value": 0.445939
+                            },
+                            {
+                                "id": "04486D39",
+                                "color": "486D39",
+                                "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                "value": 0.382162
+                            },
+                            {
+                                "id": "04736679",
+                                "color": "736679",
+                                "image": "flowered_wall_1k_cl_4_04736679.png",
+                                "value": 0.171898
+                            }
+                        ]
+                    }
+                ]
+            }]
+        },
+        {
+            "id": "01757075",
+            "color": "757075",
+            "image": "flowered_wall_1k_cl_1_01757075.png",
+            "value": 0.0882943,
+            "children": [{
+                    "id": "02577848",
+                    "color": "577848",
+                    "image": "flowered_wall_1k_cl_2_02577848.png",
+                    "value": 0.318839,
+                    "children": [{
+                            "id": "03577E44",
+                            "color": "577E44",
+                            "image": "flowered_wall_1k_cl_3_03577E44.png",
+                            "value": 0.80323,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.0646301
+                                },
+                                {
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.481096
+                                },
+                                {
+                                    "id": "04639F48",
+                                    "color": "639F48",
+                                    "image": "flowered_wall_1k_cl_4_04639F48.png",
+                                    "value": 0.282393
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.0367208
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.0749942
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0400202
+                                },
+                                {
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.0172735
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.00287245
+                                }
+                            ]
+                        },
+                        {
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.140773,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.399557
+                                },
+                                {
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.178295
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.160576
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.215725
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.0458472
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B382C8",
+                            "color": "B382C8",
+                            "image": "flowered_wall_1k_cl_3_03B382C8.png",
+                            "value": 0.0559973,
+                            "children": [{
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.295657
+                                },
+                                {
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.198775
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.505568
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "027C7A7B",
+                    "color": "7C7A7B",
+                    "image": "flowered_wall_1k_cl_2_027C7A7B.png",
+                    "value": 0.206754,
+                    "children": [{
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.530003,
+                            "children": [{
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.0520729
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.446158
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.309353
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.192416
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03888785",
+                            "color": "888785",
+                            "image": "flowered_wall_1k_cl_3_03888785.png",
+                            "value": 0.469997,
+                            "children": [{
+                                "id": "04878783",
+                                "color": "878783",
+                                "image": "flowered_wall_1k_cl_4_04878783.png",
+                                "value": 1
+                            }]
+                        }
+                    ]
+                },
+                {
+                    "id": "029A78A8",
+                    "color": "9A78A8",
+                    "image": "flowered_wall_1k_cl_2_029A78A8.png",
+                    "value": 0.474407,
+                    "children": [{
+                            "id": "03577E44",
+                            "color": "577E44",
+                            "image": "flowered_wall_1k_cl_3_03577E44.png",
+                            "value": 0.0439839,
+                            "children": [{
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.757504
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.242496
+                                }
+                            ]
+                        },
+                        {
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.403839,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.178809
+                                },
+                                {
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.20356
+                                },
+                                {
+                                    "id": "04639F48",
+                                    "color": "639F48",
+                                    "image": "flowered_wall_1k_cl_4_04639F48.png",
+                                    "value": 0.069946
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.12417
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.260482
+                                },
+                                {
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.086758
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.0459734
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.030303
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03888785",
+                            "color": "888785",
+                            "image": "flowered_wall_1k_cl_3_03888785.png",
+                            "value": 0.0202841,
+                            "children": [{
+                                "id": "04878783",
+                                "color": "878783",
+                                "image": "flowered_wall_1k_cl_4_04878783.png",
+                                "value": 1
+                            }]
+                        },
+                        {
+                            "id": "03B154E1",
+                            "color": "B154E1",
+                            "image": "flowered_wall_1k_cl_3_03B154E1.png",
+                            "value": 0.0996605,
+                            "children": [{
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.807822
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.192178
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B1AEAC",
+                            "color": "B1AEAC",
+                            "image": "flowered_wall_1k_cl_3_03B1AEAC.png",
+                            "value": 0.0490549,
+                            "children": [{
+                                "id": "04A09E9E",
+                                "color": "A09E9E",
+                                "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                "value": 1
+                            }]
+                        },
+                        {
+                            "id": "03B382C8",
+                            "color": "B382C8",
+                            "image": "flowered_wall_1k_cl_3_03B382C8.png",
+                            "value": 0.383178,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.0583507
+                                },
+                                {
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.0662255
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.0365854
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.122334
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0803894
+                                },
+                                {
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.070327
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.479711
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.0860768
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "019E6FB5",
+            "color": "9E6FB5",
+            "image": "flowered_wall_1k_cl_1_019E6FB5.png",
+            "value": 0.0497072,
+            "children": [{
+                    "id": "029A78A8",
+                    "color": "9A78A8",
+                    "image": "flowered_wall_1k_cl_2_029A78A8.png",
+                    "value": 0.902085,
+                    "children": [{
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.310085,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.214885
+                                },
+                                {
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.161101
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.137428
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.310523
+                                },
+                                {
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.0177388
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.133956
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.0243671
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B154E1",
+                            "color": "B154E1",
+                            "image": "flowered_wall_1k_cl_3_03B154E1.png",
+                            "value": 0.0912383,
+                            "children": [{
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.562111
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.425231
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.0126582
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B382C8",
+                            "color": "B382C8",
+                            "image": "flowered_wall_1k_cl_3_03B382C8.png",
+                            "value": 0.598677,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.0161849
+                                },
+                                {
+                                    "id": "04486D39",
+                                    "color": "486D39",
+                                    "image": "flowered_wall_1k_cl_4_04486D39.png",
+                                    "value": 0.0205336
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.0228224
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.209031
+                                },
+                                {
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.196639
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.180879
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.353911
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "02A84ADF",
+                    "color": "A84ADF",
+                    "image": "flowered_wall_1k_cl_2_02A84ADF.png",
+                    "value": 0.0979146,
+                    "children": [{
+                        "id": "03B154E1",
+                        "color": "B154E1",
+                        "image": "flowered_wall_1k_cl_3_03B154E1.png",
+                        "value": 1,
+                        "children": [{
+                                "id": "04B04FE3",
+                                "color": "B04FE3",
+                                "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                "value": 0.89991
+                            },
+                            {
+                                "id": "04C175E0",
+                                "color": "C175E0",
+                                "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                "value": 0.10009
+                            }
+                        ]
+                    }]
+                }
+            ]
+        },
+        {
+            "id": "01AAA8A3",
+            "color": "AAA8A3",
+            "image": "flowered_wall_1k_cl_1_01AAA8A3.png",
+            "value": 0.845775,
+            "children": [{
+                    "id": "027C7A7B",
+                    "color": "7C7A7B",
+                    "image": "flowered_wall_1k_cl_2_027C7A7B.png",
+                    "value": 0.196762,
+                    "children": [{
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.164164,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.571181
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.258795
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.0342811
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0773012
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.0416707
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.0167711
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03888785",
+                            "color": "888785",
+                            "image": "flowered_wall_1k_cl_3_03888785.png",
+                            "value": 0.767997,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.0705858
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.244118
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.561933
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.0937161
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.020033
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.00501339
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.00460133
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B1AEAC",
+                            "color": "B1AEAC",
+                            "image": "flowered_wall_1k_cl_3_03B1AEAC.png",
+                            "value": 0.0349478,
+                            "children": [{
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.463779
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.536221
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03C7C4BF",
+                            "color": "C7C4BF",
+                            "image": "flowered_wall_1k_cl_3_03C7C4BF.png",
+                            "value": 0.0328908,
+                            "children": [{
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.760904
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.239096
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "029A78A8",
+                    "color": "9A78A8",
+                    "image": "flowered_wall_1k_cl_2_029A78A8.png",
+                    "value": 0.0177701,
+                    "children": [{
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.023302,
+                            "children": [{
+                                "id": "0440403F",
+                                "color": "40403F",
+                                "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                "value": 1
+                            }]
+                        },
+                        {
+                            "id": "03B1AEAC",
+                            "color": "B1AEAC",
+                            "image": "flowered_wall_1k_cl_3_03B1AEAC.png",
+                            "value": 0.41891,
+                            "children": [{
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0773735
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.190297
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.56629
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.166039
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B382C8",
+                            "color": "B382C8",
+                            "image": "flowered_wall_1k_cl_3_03B382C8.png",
+                            "value": 0.478596,
+                            "children": [{
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.115558
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.150214
+                                },
+                                {
+                                    "id": "04B04FE3",
+                                    "color": "B04FE3",
+                                    "image": "flowered_wall_1k_cl_4_04B04FE3.png",
+                                    "value": 0.108603
+                                },
+                                {
+                                    "id": "04C175E0",
+                                    "color": "C175E0",
+                                    "image": "flowered_wall_1k_cl_4_04C175E0.png",
+                                    "value": 0.230872
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.358389
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.0363636
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03E0DEDB",
+                            "color": "E0DEDB",
+                            "image": "flowered_wall_1k_cl_3_03E0DEDB.png",
+                            "value": 0.0791917,
+                            "children": [{
+                                "id": "04D2D0CB",
+                                "color": "D2D0CB",
+                                "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                "value": 1
+                            }]
+                        }
+                    ]
+                },
+                {
+                    "id": "02A3A196",
+                    "color": "A3A196",
+                    "image": "flowered_wall_1k_cl_2_02A3A196.png",
+                    "value": 0.290812,
+                    "children": [{
+                            "id": "035F5D60",
+                            "color": "5F5D60",
+                            "image": "flowered_wall_1k_cl_3_035F5D60.png",
+                            "value": 0.00889295,
+                            "children": [{
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.722713
+                                },
+                                {
+                                    "id": "04736679",
+                                    "color": "736679",
+                                    "image": "flowered_wall_1k_cl_4_04736679.png",
+                                    "value": 0.277287
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03888785",
+                            "color": "888785",
+                            "image": "flowered_wall_1k_cl_3_03888785.png",
+                            "value": 0.400418,
+                            "children": [{
+                                    "id": "0440403F",
+                                    "color": "40403F",
+                                    "image": "flowered_wall_1k_cl_4_0440403F.png",
+                                    "value": 0.0131009
+                                },
+                                {
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.0796838
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.556958
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.195346
+                                },
+                                {
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.106358
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.0477247
+                                },
+                                {
+                                    "id": "04E1BBED",
+                                    "color": "E1BBED",
+                                    "image": "flowered_wall_1k_cl_4_04E1BBED.png",
+                                    "value": 0.000828833
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03ABA895",
+                            "color": "ABA895",
+                            "image": "flowered_wall_1k_cl_3_03ABA895.png",
+                            "value": 0.367587,
+                            "children": [{
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.106508
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.026979
+                                },
+                                {
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.832515
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.0136011
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.0203969
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B1AEAC",
+                            "color": "B1AEAC",
+                            "image": "flowered_wall_1k_cl_3_03B1AEAC.png",
+                            "value": 0.144175,
+                            "children": [{
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0175491
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.474914
+                                },
+                                {
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.211752
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.287468
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.00831663
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B382C8",
+                            "color": "B382C8",
+                            "image": "flowered_wall_1k_cl_3_03B382C8.png",
+                            "value": 0.00316178,
+                            "children": [{
+                                "id": "04736679",
+                                "color": "736679",
+                                "image": "flowered_wall_1k_cl_4_04736679.png",
+                                "value": 1
+                            }]
+                        },
+                        {
+                            "id": "03C7C4BF",
+                            "color": "C7C4BF",
+                            "image": "flowered_wall_1k_cl_3_03C7C4BF.png",
+                            "value": 0.0421915,
+                            "children": [{
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.121374
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.526093
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.311596
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.0409372
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03E0DEDB",
+                            "color": "E0DEDB",
+                            "image": "flowered_wall_1k_cl_3_03E0DEDB.png",
+                            "value": 0.0335734,
+                            "children": [{
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.0867347
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.345132
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.568134
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "02B8B6B1",
+                    "color": "B8B6B1",
+                    "image": "flowered_wall_1k_cl_2_02B8B6B1.png",
+                    "value": 0.349371,
+                    "children": [{
+                            "id": "03888785",
+                            "color": "888785",
+                            "image": "flowered_wall_1k_cl_3_03888785.png",
+                            "value": 0.0872541,
+                            "children": [{
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.444066
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.529414
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.0265201
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03ABA895",
+                            "color": "ABA895",
+                            "image": "flowered_wall_1k_cl_3_03ABA895.png",
+                            "value": 0.080829,
+                            "children": [{
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0239976
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.0968726
+                                },
+                                {
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.854875
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.0242549
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03B1AEAC",
+                            "color": "B1AEAC",
+                            "image": "flowered_wall_1k_cl_3_03B1AEAC.png",
+                            "value": 0.409706,
+                            "children": [{
+                                    "id": "046C6B6B",
+                                    "color": "6C6B6B",
+                                    "image": "flowered_wall_1k_cl_4_046C6B6B.png",
+                                    "value": 0.017647
+                                },
+                                {
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.0339237
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.194965
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.690677
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.0605248
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.00226207
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03C7C4BF",
+                            "color": "C7C4BF",
+                            "image": "flowered_wall_1k_cl_3_03C7C4BF.png",
+                            "value": 0.376134,
+                            "children": [{
+                                    "id": "04878783",
+                                    "color": "878783",
+                                    "image": "flowered_wall_1k_cl_4_04878783.png",
+                                    "value": 0.00715499
+                                },
+                                {
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.0123435
+                                },
+                                {
+                                    "id": "04AFAC99",
+                                    "color": "AFAC99",
+                                    "image": "flowered_wall_1k_cl_4_04AFAC99.png",
+                                    "value": 0.155909
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.407968
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.405165
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.011459
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03E0DEDB",
+                            "color": "E0DEDB",
+                            "image": "flowered_wall_1k_cl_3_03E0DEDB.png",
+                            "value": 0.0460777,
+                            "children": [{
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.525335
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.474665
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "02D3D1CE",
+                    "color": "D3D1CE",
+                    "image": "flowered_wall_1k_cl_2_02D3D1CE.png",
+                    "value": 0.145285,
+                    "children": [{
+                            "id": "03B1AEAC",
+                            "color": "B1AEAC",
+                            "image": "flowered_wall_1k_cl_3_03B1AEAC.png",
+                            "value": 0.0833893,
+                            "children": [{
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.112643
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.780367
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.10699
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03C7C4BF",
+                            "color": "C7C4BF",
+                            "image": "flowered_wall_1k_cl_3_03C7C4BF.png",
+                            "value": 0.499221,
+                            "children": [{
+                                    "id": "04A09E9E",
+                                    "color": "A09E9E",
+                                    "image": "flowered_wall_1k_cl_4_04A09E9E.png",
+                                    "value": 0.0084707
+                                },
+                                {
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.323775
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.657523
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.0102307
+                                }
+                            ]
+                        },
+                        {
+                            "id": "03E0DEDB",
+                            "color": "E0DEDB",
+                            "image": "flowered_wall_1k_cl_3_03E0DEDB.png",
+                            "value": 0.417389,
+                            "children": [{
+                                    "id": "04BAB8B6",
+                                    "color": "BAB8B6",
+                                    "image": "flowered_wall_1k_cl_4_04BAB8B6.png",
+                                    "value": 0.016823
+                                },
+                                {
+                                    "id": "04D2D0CB",
+                                    "color": "D2D0CB",
+                                    "image": "flowered_wall_1k_cl_4_04D2D0CB.png",
+                                    "value": 0.523326
+                                },
+                                {
+                                    "id": "04EAE9E7",
+                                    "color": "EAE9E7",
+                                    "image": "flowered_wall_1k_cl_4_04EAE9E7.png",
+                                    "value": 0.459851
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
