@@ -80,7 +80,7 @@
     }, {
         "ueid": "17",
         "name": "Evaluation de performances",
-        "abreviation": "EDP",
+        "abreviation": "Eval. de perf.",
         "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "1",
@@ -180,7 +180,7 @@
     }, {
         "ueid": "25",
         "name": "Cloud et virtualisation",
-        "abreviation": "CV",
+        "abreviation": "Cloud et Virtu.",
         "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "2",
@@ -270,7 +270,7 @@
     }, {
         "ueid": "33",
         "name": "Administration des systèmes",
-        "abreviation": "ADS",
+        "abreviation": "Admin des syst.",
         "categorie": "Parcours SIRIS",
         "coefficient": "3",
         "semestre": "3",
@@ -422,40 +422,59 @@
     "categories" : [{
         "name" : "Tronc Commun Spécialité",
         "description" : "",
-        "color" : "#b3ccff"
+        "color" : "#b3ccff",
+        "sortIndex" : 0
     }, {
         "name" : "Parcours SIRIS",
         "description" : "",
-        "color" : "#ed7676"
+        "color" : "#ed7676",
+        "sortIndex" : 5
     }, {
         "name" : "TER et Projet de Master",
         "description" : "",
-        "color" : "#bf79ea"
+        "color" : "#bf79ea",
+        "sortIndex" : 2
     }, {
         "name" : "Langues",
         "description" : "",
-        "color" : "#2aaf33"
+        "color" : "#2aaf33",
+        "sortIndex" : 3
     }, {
         "name" : "Tronc Commun Ouverture",
         "description" : "",
-        "color" : "lightgrey"
+        "color" : "lightgrey",
+        "sortIndex" : 1
     }, {
         "name" : "Stage ou Apprentissage",
         "description" : "",
-        "color" : "yellow"
+        "color" : "yellow",
+        "sortIndex" : 4
     }],
 
     "cursus" : [{
         "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json"
+        "path" : "pedagoLicenceInfo17.json",
+        "class" : "licence",
+        "sortIndex" : 0
     }, {
-        "name" : "Master I3D",
-        "path" : "pedagoMasterI3D.json"
+        "name" : "Parcours I3D",
+        "path" : "pedagoMasterI3D.json",
+        "class" : "master",
+        "sortIndex" : 0
     }, {
-        "name" : "Master SIL",
-        "path" : "pedagoMasterSIL.json"
+        "name" : "Parcours SIL",
+        "path" : "pedagoMasterSIL.json",
+        "class" : "master",
+        "sortIndex" : 3
     }, {
-        "name" : "Master SDSC",
-        "path" : "pedagoMasterSDSC.json"
+        "name" : "Parcours SDSC",
+        "path" : "pedagoMasterSDSC.json",
+        "class" : "master",
+        "sortIndex" : 2
+    }, {
+        "name" : "Parcours SIRIS",
+        "path" : "pedagoMasterSIRIS.json",
+        "class" : "master",
+        "sortIndex" : 1
     }]
 }

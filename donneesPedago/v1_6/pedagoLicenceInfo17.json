@@ -905,54 +905,36 @@
     "categories" : [{
         "name" : "Mathématiques",
         "description" : "",
-        "color" : "rgb(252, 54, 107)",
-        "sortIndex" : 3
+        "color" : "rgb(252, 54, 107)"
     }, {
         "name" : "Informatique",
         "description" : "",
-        "color" : "rgb(192, 16, 63)",
-        "sortIndex" : 1
+        "color" : "rgb(192, 16, 63)"
     }, {
         "name" : "Informatique théorique",
         "description" : "",
-        "color" : "rgb(116, 2, 51)",
-        "sortIndex" : 2
+        "color" : "rgb(116, 2, 51)"
     }, {
         "name" : "Langues",
         "description" : "",
-        "color" : "rgb(255, 130, 77)",
-        "sortIndex" : 0
+        "color" : "rgb(255, 130, 77)"
     }, {
         "name" : "Ouverture",
         "description" : "",
-        "color" : "rgb(245, 255, 87)",
-        "sortIndex" : 4
+        "color" : "rgb(245, 255, 87)"
     }],
 
     "cursus" : [{
-        "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json",
-        "class" : "licence",
-        "sortIndex" : 0
+        "name" : "Master I3D",
+        "path" : "pedagoMasterI3D.json"
     }, {
-        "name" : "Parcours I3D",
-        "path" : "pedagoMasterI3D.json",
-        "class" : "master",
-        "sortIndex" : 0
+        "name" : "Master SIL",
+        "path" : "pedagoMasterSIL.json"
     }, {
-        "name" : "Parcours SIL",
-        "path" : "pedagoMasterSIL.json",
-        "class" : "master",
-        "sortIndex" : 3
+        "name" : "Master SIRIS",
+        "path" : "pedagoMasterSIRIS.json"
     }, {
-        "name" : "Parcours SDSC",
-        "path" : "pedagoMasterSDSC.json",
-        "class" : "master",
-        "sortIndex" : 2
-    }, {
-        "name" : "Parcours SIRIS",
-        "path" : "pedagoMasterSIRIS.json",
-        "class" : "master",
-        "sortIndex" : 1
+        "name" : "Master SDSC",
+        "path" : "pedagoMasterSDSC.json"
     }]
 }

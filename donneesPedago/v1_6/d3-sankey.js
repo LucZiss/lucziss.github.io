@@ -210,13 +210,15 @@ d3.sankey = function() {
         var lastOptionNode = null;
         var minNodeHeight = 15;
 
+        var firstBlocks = getFirstBlocksList(ueInBlockBySemester());
+
         nodesByBreadth.forEach(function(_nodes) {
             lastNode = null;
             lastNotOptionNode = null;
             lastOptionNode = null;
 
             var nodes = [];
-            nodes = sortNodes(nodes, _nodes);
+            nodes = sortNodes(nodes, _nodes, firstBlocks);
 
             nodes.forEach(function(node, i) {
                 node.dy = ky * +node.coefficient;
@@ -281,8 +283,9 @@ d3.sankey = function() {
 
     // PARAM: [nodes]: tableau vide auquel on ajoute les noeuds a trier
     // [entry]: tableau des noeuds a trier
+    // [firstBlocks]: tableau contenant le nom de chaque bloc ayant le meme nombre d'UEs dans chaque semestre
     // RETURN: Tableau des noeuds tries en fonction du bloc auquel ils appartiennent
-    function sortNodes(nodes, entry) {
+    function sortNodes(nodes, entry, firstBlocks) {
 
         var nodesArray = d3.nest()
             .key(function(d) {
@@ -290,20 +293,33 @@ d3.sankey = function() {
             })
             .sortKeys(d3.ascending)
             .key(function(d) {
-                return getSortIndexWithCategName(d.categorie);
+                return d.categorie;
             })
-            .sortKeys(function (a,b) {
-                return a - b;
-            })
+            .sortKeys(d3.ascending)
             .entries(entry);
 
         nodesArray.forEach(function(arr) {
             arr.values.forEach(function(arr2) {
                 arr2.values.forEach(function(elem) {
+                    // var index = firstBlocks.indexOf(elem.categorie);
+                    // if (index != -1 && elem.option == "false")
+                    //     nodes.splice(index, 0, elem);
+                    // else
+                    //     nodes.push(elem);
+                    var bool = firstBlocks.includes(elem.categorie);
+                    if (bool && elem.option == "false") {
+                        if (getCategFirstIdx(nodes, elem.categorie) == -1) {
+                            nodes.unshift(elem);
+                        } else {
+                            nodes.splice(getCategFirstIdx(nodes, elem.categorie), 0, elem);
+                        }
+                    } else {
                         nodes.push(elem)
+                    }
                 })
             })
         })
+
         var firstOptionIndice = -1;
         nodes.forEach(function(node, i) {
             if (node.option === "true" && firstOptionIndice === -1) {
@@ -312,7 +328,9 @@ d3.sankey = function() {
         })
 
         if (firstOptionIndice >= 0) {
-            var sortedOptions = nodes.slice(firstOptionIndice).sort(sortOptions);
+            var sortedOptions = nodes.slice(firstOptionIndice).sort(function(b, a) {
+                return a.categorie > b.categorie;
+            });
             nodes = nodes.slice(0, firstOptionIndice).concat(sortedOptions);
         }
 
@@ -375,33 +393,6 @@ d3.sankey = function() {
             }
         })
         return idx;
-    }
-
-    // recupere le sort index de la categorie avec le nom [name]
-    function getSortIndexWithCategName(name) {
-        var index = null;
-        if (categories) {
-            categories.forEach(function (d) {
-               if(d.name === name && index === null) {
-                   index = d.sortIndex;
-               }
-            });
-        }
-        return index;
-    }
-
-    function sortOptions(a,b) {
-        var alpha = a.name.toLowerCase();
-        var beta = b.name.toLowerCase();
-
-        var aIdx = getSortIndexWithCategName(a.categorie);
-        var bIdx = getSortIndexWithCategName(b.categorie);
-
-        if(aIdx !== bIdx) {
-            return bIdx - aIdx;
-        } else {
-            return beta.localeCompare(alpha.toLowerCase());
-        }
     }
 
     // Fonction de calcul des positions de depart et d'arrivee des liens sur chaque noeud

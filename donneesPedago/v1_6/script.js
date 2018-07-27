@@ -145,7 +145,7 @@ var path = sankey.link();
 // SVG représentant l'axe des semestres sous le graphe (Semestre 1,Semestre 2,etc...)
 var semesterLayout = d3.select("body").append("svg")
     .attr("id", "semesterLayout")
-    .attr("width", d3.select("#chart").attr("width"))
+    .attr("width", "100%")
     .attr("height", 45)
     .style("background-color", defaultBackgroundColor)
     .append("g");
@@ -174,7 +174,7 @@ d3.select("html").on("click", function() {
 if (!sessionStorage.getItem("json"))
     sessionStorage.setItem("json", "pedagoLicenceInfo17.json")
 
-parseJson(sessionStorage.getItem("json"));
+update(sessionStorage.getItem("json"));
 
 
 // -------------------------------- FONCTIONS -------------------------------- //
@@ -183,7 +183,7 @@ parseJson(sessionStorage.getItem("json"));
 // option [options]
 // RETURN : void, initialise les mécaniques  et l'apparence des boutons de
 // suppression d'option préalablement choisie
-function initOptionDeleteButton(dataueDoublons, nodes, options) {
+function initOptionDeleteButton(data, nodes, options) {
 
     var nodeCircles = nodes.filter(function(d) {
             return d.option === "true";
@@ -200,7 +200,7 @@ function initOptionDeleteButton(dataueDoublons, nodes, options) {
     nodeCircles.on("click", function(d, i) {
 
         hideCircleAndMoveToInitPos(d);
-        showUEAndDuplicates(dataueDoublons, +d.ueid);
+        showUEAndDuplicates(data, +d.ueid);
         sankey.relayout();
         d3.selectAll(".link").attr("d", path);
         removeOptionFromSelection(options, d);
@@ -238,8 +238,8 @@ function hideCircleAndMoveToInitPos(node) {
 
 // PARAM : données .json [data], id du noeud à afficher [id]
 // RETURN : void, affiche le noeud d'id [id] ainsi que ses doublons
-function showUEAndDuplicates(dataueDoublons, id) {
-    var showUEAndDuplicates = getDuplicatesOfUE(dataueDoublons, +id);
+function showUEAndDuplicates(data, id) {
+    var showUEAndDuplicates = getDuplicatesOfUE(data, +id);
     var nodesToShow = d3.selectAll(".node").filter(function(dnodes) {
         return showUEAndDuplicates.includes(+dnodes.ueid);
     });
@@ -286,11 +286,11 @@ function initDropdown(UEArray, optionNode, data) {
         .style("top", optionNode.y + margin.top + "px")
         .style("left", optionNode.x + margin.left + sankey.nodeWidth() + "px")
         .style("width", sankey.nodeWidth() + "px");
-        var UESelection = filterUESelection(data, optionNode.ueList);
-        var UESelectionLength = UESelection.length;
-    for (var i = 0; i < UESelectionLength; i++) {
+
+    for (var i = 0; i < filterUESelection(data, optionNode.ueList).length; i++) {
+
         dropdown.append("div")
-            .datum(getUEById(UEArray, UESelection[i]))
+            .datum(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]))
             .attr("class", "clickable items")
             .style("border-top", "1px solid " + dropdownItemBorderColor)
             .style("border-bottom", "1px solid " + dropdownItemBorderColor)
@@ -301,7 +301,7 @@ function initDropdown(UEArray, optionNode, data) {
                 });
 
                 optionNode.selectedUE = (choosenUE.data()[0]) ? choosenUE.data()[0] : {};
-                addOptionToSelection(data.ueDoublons, UEArray, choosenUE);
+                addOptionToSelection(data, UEArray, choosenUE);
 
                 choosenUE.attr("transform",
                         "translate(" +
@@ -325,7 +325,7 @@ function initDropdown(UEArray, optionNode, data) {
             .style("opacity", "1")
             .style("font-size", "10px")
             .style("text-align", "center")
-            .text(getUEById(UEArray, UESelection[i]).abreviation);
+            .text(getUEById(UEArray, filterUESelection(data, optionNode.ueList)[i]).abreviation);
     }
 
     // items de dropdown onmouseover
@@ -351,11 +351,11 @@ function initDropdown(UEArray, optionNode, data) {
 // RETURN : void, ajoute l'option choisie à la sélection (currentSelectedOptions)
 // et fait disparaitre les doublons (comme Droit S4 doublon de Droit S6) ainsi
 // que leurs liens
-function addOptionToSelection(dataueDoublons, UEArray, UEChoice) {
+function addOptionToSelection(data, UEArray, UEChoice) {
 
     currentSelectedOptions.push(+UEChoice.data()[0].ueid);
 
-    var duplicatesToHide = hideDuplicatesOfUE(dataueDoublons, +UEChoice.data()[0].ueid);
+    var duplicatesToHide = hideDuplicatesOfUE(data, +UEChoice.data()[0].ueid);
     var linksFromDuplicatesToHide = d3.selectAll(".link").filter(function(link) {
         var boolean = false;
         duplicatesToHide.forEach(function(node) {
@@ -622,13 +622,10 @@ function valoriseAdjacentNodes(node, currentFilters) {
     return nodes.filter(function(dn) {
         var containsFilter = false;
 
-        if (node === dn) {
-            containsFilter = true;
-        }
-
         links.each(function(d) {
             if (((dn === d.source && d.target === node) ||
-                    (dn === d.target && d.source === node)) &&
+                    (dn === d.target && d.source === node) ||
+                    (node === dn)) &&
                 currentFilters.includes(d.linktype)) {
                 containsFilter = true;
             }
@@ -739,11 +736,11 @@ function filterDisplayManager(data, SkillList, graph) {
     var displayLegendDiv = filterDiv.append("div");
     displayLegendDiv.append("h2")
         .text("Blocs");
-    displayBlocks(displayLegendDiv, data.categories);
+    displayBlocks(displayLegendDiv);
 
     // selectAllSetup(SkillList);
 
-    buttonsSetup(data.ueDoublons, graph);
+    buttonsSetup(data, graph);
 
     changeMode(graph, skillDiv, displayLegendDiv);
 }
@@ -753,54 +750,15 @@ function setupCursusDisplay(cursus) {
         return;
 
     if (cursus) {
+        var cursusDiv = filterDiv.append("div");
+        cursusDiv.append("h2")
+            .text("Cursus similaires");
 
-
-        var licenceCursusData = cursus.filter(function(d) {
-            return d.class === "licence";
-        });
-
-
-        var masterCursusData = cursus.filter(function(d) {
-            return d.class === "master";
-        });
-
-
-        var licenceCursusDiv = filterDiv.append("div");
-        licenceCursusDiv.append("h2")
-            .text("Parcours Licence");
-
-        licenceCursusDiv.selectAll("div").data(licenceCursusData).enter()
+        cursusDiv.selectAll("div").data(cursus).enter()
             .append("input")
             .classed("clickable cursusInput", true)
-            .sort(function(a, b) {
-                return a.sortIndex - b.sortIndex;
-            })
             .attr("id", function(d, i) {
-                return "licenceCursusDisplay" + i;
-            })
-            .attr("type", "button")
-            .attr("name", function(d) {
-                return d.name;
-            })
-            .attr("path", function(d) {
-                return d.path;
-            })
-            .attr("value", function(d) {
-                return d.name;
-            });
-
-        var masterCursusDiv = filterDiv.append("div");
-        masterCursusDiv.append("h2")
-            .text("Parcours Master");
-
-        masterCursusDiv.selectAll("div").data(masterCursusData).enter()
-            .append("input")
-            .classed("clickable cursusInput", true)
-            .sort(function(a, b) {
-                return a.sortIndex - b.sortIndex;
-            })
-            .attr("id", function(d, i) {
-                return "licenceCursusDisplay" + i;
+                return "cursusDisplay" + i;
             })
             .attr("type", "button")
             .attr("name", function(d) {
@@ -818,7 +776,7 @@ function setupCursusDisplay(cursus) {
         .on("click", function(d) {
             sessionStorage.setItem("json", d3.select(this).attr("path"))
             location.reload();
-        });
+        })
 }
 
 // RETURN : void, initialise l'affichage des boutons radios permettant
@@ -943,33 +901,32 @@ function initDefaultRadio(skillDiv) {
 }
 
 // PARAM : selection d3 de l'element "div" du DOM contenant
-// la légende des blocs [displayLegendDiv] et données json de categories [categories]
+// la légende des blocs [displayLegendDiv]
 // RETURN : void, gere l'affichage en mode "blocs" ainsi que
 // la légende de ce mode d'affichage
-function displayBlocks(displayLegendDiv, categories) {
-    var blocLegendDivs = displayLegendDiv.selectAll(".bloc-divs")
-        .data(categories)
-        .enter().append("div")
-        .classed("bloc-divs", true)
-        .sort(function(a, b) {
-            return a.sortIndex - b.sortIndex;
-        })
-        .append("p")
-        .style("margin", 0)
-        .style("margin-bottom", "2px")
-        .style("padding", "2px")
-        .style("border-left", function(d) {
-            return "15px solid " + d.color;
-        })
-        .text(function(d) {
-            return d.name;
-        });
+function displayBlocks(displayLegendDiv) {
+    for (var i = 0, sortedKeys = Object.keys(groupColors).sort(); i < Object.keys(groupColors).length; i++) {
+        if (!groupColors.hasOwnProperty(sortedKeys[i])) {
+            continue;
+        }
+        var displDiv = displayLegendDiv.append("div")
+            .classed("bloc-divs", true)
+            .append("p")
+            .style("margin", 0)
+            .style("margin-bottom", "2px")
+            .style("padding", "2px")
+            // .style("background", "linear-gradient(to right, " + groupColors[sortedKeys[i]] + ", " + defaultBackgroundColor + ")")
+            .style("border-left", "15px solid " + groupColors[sortedKeys[i]])
+            .text(function(d) {
+                return sortedKeys[i];
+            });
+    }
 }
 
 // PARAM : Tableau des donnees des noeuds et des liens [graph], donnees du fichier .json [data]
 // RETURN : void, gere l'affichage du bouton de reinitialisation ainsi
 // que la legende (UE en option)
-function buttonsSetup(dataueDoublons, graph) {
+function buttonsSetup(data, graph) {
     var svg = d3.select("#chart").select("g");
     var semesterLayout = d3.select("#semesterLayout").select("g");
 
@@ -989,9 +946,7 @@ function buttonsSetup(dataueDoublons, graph) {
             return "2px dashed " + defaultSkillDisplayColor + "";
         });
 
-    optionLegend.append("p")
-        .style("font-style", "italic")
-        .text("UE facultative")
+    optionLegend.append("p").text("UE facultative")
         .attr("id", "optionText");
 
     resetViewButton.on("click", function(d) {
@@ -1011,7 +966,7 @@ function buttonsSetup(dataueDoublons, graph) {
 
             hideCircleAndMoveToInitPos(node);
 
-            showUEAndDuplicates(dataueDoublons, +node.ueid);
+            showUEAndDuplicates(data, +node.ueid);
 
             sankey.relayout();
             d3.selectAll(".link").attr("d", path);
@@ -1120,7 +1075,7 @@ function resetSelection() {
 // PARAM : tableau de compétences [SkillList] et leurs descriptions [descriptions]
 // RETURN : void, gère l'affichage des descriptions
 // de chaque compétence onmouseover dans la zone prévue à cet effet
-function setSkillDescription(SkillListLength, descriptions) {
+function setSkillDescription(SkillList, descriptions) {
     var descriptionDiv = filterDiv.append("div");
     var descriptionTitle = descriptionDiv.append("h2").text("Description de compétence");
     var descriptionContent = descriptionDiv.append("p")
@@ -1130,7 +1085,7 @@ function setSkillDescription(SkillListLength, descriptions) {
     document.getElementById("description-area").innerHTML = "Aucune compétence sélectionnée";
 
 
-    for (var total = 0; total < SkillListLength; total++) {
+    for (var total = 0; total < SkillList.length; total++) {
         document.getElementById("checkdiv" + total).addEventListener("click", function() {
             document.getElementById("description-area").innerHTML = descriptions[this.firstChild.value];
         });
@@ -1140,8 +1095,8 @@ function setSkillDescription(SkillListLength, descriptions) {
 // PARAM : tableau de compétences [SkillList]
 // RETURN : void, applique la couleur de fond de
 // chaque compétence au niveau des radios
-function RadioLabelColor(SkillListLength) {
-    for (var total = 0; total < SkillListLength; total++) {
+function RadioLabelColor(SkillList) {
+    for (var total = 0; total < SkillList.length; total++) {
         var checkdiv = document.getElementById("checkdiv" + total);
         var currentColor = skillColors[checkdiv.firstChild.value];
         // checkdiv.style.backgroundColor = currentColor;
@@ -1349,43 +1304,11 @@ function filterUESelection(data, selectionArray) {
     var filteredArray = [];
     selectionArray.forEach(function(d, i) {
         if (!currentSelectedOptions.includes(+d) &&
-            !arrayInter(currentSelectedOptions, getDuplicatesOfUE(data.ueDoublons, +d)).length) {
-            filteredArray.push(getUEById(data.ue,d));
+            !arrayInter(currentSelectedOptions, getDuplicatesOfUE(data, +d)).length) {
+            filteredArray.push(+d);
         }
     });
-    filteredArray = filteredArray.sort(sortDropDown)
-        .map(function (d) {
-            return d.ueid;
-        });
     return filteredArray;
-}
-
-function sortDropDown(a,b) {
-    var alpha = a.name.toLowerCase();
-    var beta = b.name.toLowerCase();
-
-    var aIdx = getSortIndexWithCategName(a.categorie);
-    var bIdx =getSortIndexWithCategName(b.categorie);
-
-    if(aIdx !== bIdx) {
-        return aIdx - bIdx;
-    } else {
-        return alpha.localeCompare(beta.toLowerCase());
-    }
-}
-
-
-// recupere le sort index de la categorie avec le nom [name]
-function getSortIndexWithCategName(name) {
-    var index = null;
-    if (categories) {
-        categories.forEach(function(d) {
-            if (d.name === name && index === null) {
-                index = d.sortIndex;
-            }
-        });
-    }
-    return index;
 }
 
 // PARAM : deux tableaux [arrA] et [arrB]
@@ -1399,15 +1322,17 @@ function arrayInter(arrA, arrB) {
 // PARAM : données json [data], ID d'ue [id]
 // RETURN : tableau comportant l'ue avec l'id [id] ainsi que ses doublons
 //dans les autres semestres
-function getDuplicatesOfUE(dataueDoublons, id) {
-    dataueDoublons.forEach(function(d) {
+function getDuplicatesOfUE(data, id) {
+    var duplicates = data.ueDoublons;
+
+    duplicates.forEach(function(d) {
         d.forEach(function(d1, i1, arr1) {
             return arr1[i1] = +d1;
         });
     });
 
     var duplicatesOfUE = [id];
-    dataueDoublons.forEach(function(d, i) {
+    duplicates.forEach(function(d, i) {
         if (d.includes(id)) {
             duplicatesOfUE = d;
         }
@@ -1418,9 +1343,10 @@ function getDuplicatesOfUE(dataueDoublons, id) {
 // PARAM : données json [data], ID d'ue [id]
 // RETURN : tableau comportant les doublons de l'UE d'id [id] sans l'ue elle
 // même. Cela sert à cacher les doublons une fois l'UE sélectionnée
-function hideDuplicatesOfUE(dataueDoublons, id) {
+function hideDuplicatesOfUE(data, id) {
+    var duplicates = data.ueDoublons;
     var duplicatesOfUE = [];
-    dataueDoublons.forEach(function(d, i) {
+    duplicates.forEach(function(d, i) {
         if (d.includes(id)) {
             d.forEach(function(d) {
                 if (+d !== +id) {
@@ -1600,7 +1526,7 @@ function escapeEvents() {
 
 }
 
-function parseJson(jsonName) {
+function update(jsonName) {
     sessionStorage.removeItem("json");
 
     // Parsing du json, necessite un serveur web (local ou non) pour fonctionner !!!
@@ -1620,7 +1546,7 @@ function parseJson(jsonName) {
 
         // récupération des catégories renseignées dans le fichier json
         data.categories.forEach(function(cat) {
-            graph.categories.push(cat);
+            graph.categories.push(cat.name);
             groupColors[cat.name] = cat.color;
         });
 
@@ -1660,7 +1586,7 @@ function parseJson(jsonName) {
             .layout();
 
         // Setup ligne de separation zone d'option
-        if (data.options.length != 0) {
+        if(data.options.length != 0){
             var separatorYPos = sankey.highestOptionY() + 20;
             setupAreaSeparator(graph.nodes, separatorYPos);
         }
@@ -1680,6 +1606,9 @@ function parseJson(jsonName) {
             .sort(function(a, b) {
                 return b.dy - a.dy;
             });
+
+        // Initialisation de l'affichage des liens
+        // displayLinks(link);
 
         // selection d3 des noeuds avec les données du sankey bindées
         var node = svg.append("g").selectAll(".node")
@@ -1728,7 +1657,7 @@ function parseJson(jsonName) {
 
         // Boutons de suppression d'option qui apparait lorsqu'une ue est choisie
         // en option
-        initOptionDeleteButton(data.ueDoublons, node, option);
+        initOptionDeleteButton(data, node, option);
 
 
         // selection d3 des rects du svg (= les rectangles de chaque noeud avec
@@ -1799,9 +1728,6 @@ function parseJson(jsonName) {
             .text(function(d) {
                 return d.abreviation;
             })
-            .style("font-style", function(d) {
-                return (d.facultatif === "true") ? "italic" : "normal";
-            })
             .style("font-size", adaptLabelFontSize)
             .filter(function(d) {
                 return d.x < width / 2;
@@ -1825,17 +1751,12 @@ function parseJson(jsonName) {
         // gestion des évenements liés aux noeuds
         node.on("mouseover", function(d, i) {
                 // Affichage de l'infobulle et mise à jour de ses informations
-                var projetDescription = (d.projet === "true") ?
+                var projetDescription = (d.projet == "true") ?
                     "Cette UE comporte un projet" :
-                    "";
-
-                var facultatifText = (d.facultatif === "true") ?
-                    "UE facultative <br/>" :
                     "";
 
                 enableTooltip(d.name + "<br/>" +
                     printECTS(d.coefficient) + "<br/>" +
-                    facultatifText +
                     projetDescription);
             })
             .on("mouseout", function(d, i) {
@@ -1885,8 +1806,8 @@ function parseJson(jsonName) {
         var SkillList = getSkillList(graph.competences);
         filterSkill(currentFilters);
         filterDisplayManager(data, SkillList, graph);
-        setSkillDescription(SkillList.length, skillDescriptions);
-        // RadioLabelColor(SkillList.length);
+        setSkillDescription(SkillList, skillDescriptions);
+        RadioLabelColor(SkillList);
 
         // fonction gérant le drag
         function dragmove(d) {

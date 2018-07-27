@@ -422,59 +422,40 @@
     "categories" : [{
         "name" : "Tronc Commun Spécialité",
         "description" : "",
-        "color" : "#b3ccff",
-        "sortIndex" : 0
+        "color" : "#b3ccff"
     }, {
         "name" : "Parcours SDSC",
         "description" : "",
-        "color" : "#ed7676",
-        "sortIndex" : 5
+        "color" : "#ed7676"
     }, {
         "name" : "TER et Projet de Master",
         "description" : "",
-        "color" : "#bf79ea",
-        "sortIndex" : 2
+        "color" : "#bf79ea"
     }, {
         "name" : "Langues",
         "description" : "",
-        "color" : "#2aaf33",
-        "sortIndex" : 3
+        "color" : "#2aaf33"
     }, {
         "name" : "Tronc Commun Ouverture",
         "description" : "",
-        "color" : "lightgrey",
-        "sortIndex" : 1
+        "color" : "lightgrey"
     }, {
         "name" : "Stage ou Apprentissage",
         "description" : "",
-        "color" : "yellow",
-        "sortIndex" : 4
+        "color" : "yellow"
     }],
 
     "cursus" : [{
         "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json",
-        "class" : "licence",
-        "sortIndex" : 0
+        "path" : "pedagoLicenceInfo17.json"
     }, {
-        "name" : "Parcours I3D",
-        "path" : "pedagoMasterI3D.json",
-        "class" : "master",
-        "sortIndex" : 0
+        "name" : "Master I3D",
+        "path" : "pedagoMasterI3D.json"
     }, {
-        "name" : "Parcours SIL",
-        "path" : "pedagoMasterSIL.json",
-        "class" : "master",
-        "sortIndex" : 3
+        "name" : "Master SIRIS",
+        "path" : "pedagoMasterSIRIS.json"
     }, {
-        "name" : "Parcours SDSC",
-        "path" : "pedagoMasterSDSC.json",
-        "class" : "master",
-        "sortIndex" : 2
-    }, {
-        "name" : "Parcours SIRIS",
-        "path" : "pedagoMasterSIRIS.json",
-        "class" : "master",
-        "sortIndex" : 1
+        "name" : "Master SIL",
+        "path" : "pedagoMasterSIL.json"
     }]
 }

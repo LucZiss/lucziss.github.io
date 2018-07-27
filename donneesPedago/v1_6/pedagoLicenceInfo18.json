@@ -759,32 +759,26 @@
     "categories" : [{
         "name" : "Mathématiques",
         "description" : "",
-        "color" : "#b3ccff",
-        "sortIndex" : 4
+        "color" : "#b3ccff"
     }, {
         "name" : "Informatique",
         "description" : "",
-        "color" : "#ed7676",
-        "sortIndex" : 1
+        "color" : "#ed7676"
     }, {
         "name" : "Informatique théorique",
         "description" : "",
-        "color" : "#bf79ea",
-        "sortIndex" : 2
+        "color" : "#bf79ea"
     }, {
         "name" : "Langues",
         "description" : "",
-        "color" : "#2aaf33",
-        "sortIndex" : 0
+        "color" : "#2aaf33"
     }, {
         "name" : "Ouverture",
         "description" : "",
-        "color" : "lightgrey",
-        "sortIndex" : 5
+        "color" : "lightgrey"
     }, {
         "name" : "Projet Intégrateur",
         "description" : "",
-        "color" : "yellow",
-        "sortIndex" : 3
+        "color" : "yellow"
     }]
 }

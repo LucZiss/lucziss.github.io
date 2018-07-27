@@ -183,54 +183,18 @@
     "categories": [{
         "name": "Spécialité",
         "description": "",
-        "color": "#ed7676",
-        "sortIndex" : 1
+        "color": "#ed7676"
     },{
         "name": "Projet et stage",
         "description": "",
-        "color": "#fce88d",
-        "sortIndex" : 2
+        "color": "#fce88d"
     },{
         "name": "Langues",
         "description": "",
-        "color": "#2aaf33",
-        "sortIndex" : 0
+        "color": "#2aaf33"
     },{
         "name": "Ouverture",
         "description": "",
-        "color": "lightgrey",
-        "sortIndex" : 3
-    }],
-
-    "cursus" : [{
-        "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json",
-        "class" : "licence",
-        "sortIndex" : 0
-    }, {
-        "name" : "Licence Professionnelle",
-        "path" : "pedagoLicencePro.json",
-        "class" : "licence",
-        "sortIndex" : 1
-    }, {
-        "name" : "Parcours I3D",
-        "path" : "pedagoMasterI3D.json",
-        "class" : "master",
-        "sortIndex" : 0
-    }, {
-        "name" : "Parcours SIL",
-        "path" : "pedagoMasterSIL.json",
-        "class" : "master",
-        "sortIndex" : 3
-    }, {
-        "name" : "Parcours SDSC",
-        "path" : "pedagoMasterSDSC.json",
-        "class" : "master",
-        "sortIndex" : 2
-    }, {
-        "name" : "Parcours SIRIS",
-        "path" : "pedagoMasterSIRIS.json",
-        "class" : "master",
-        "sortIndex" : 1
+        "color": "lightgrey"
     }]
 }
