@@ -286,8 +286,8 @@ function initDropdown(UEArray, optionNode, data) {
         .style("top", optionNode.y + margin.top + "px")
         .style("left", optionNode.x + margin.left + sankey.nodeWidth() + "px")
         .style("width", sankey.nodeWidth() + "px");
-        var UESelection = filterUESelection(data, optionNode.ueList);
-        var UESelectionLength = UESelection.length;
+    var UESelection = filterUESelection(data, optionNode.ueList);
+    var UESelectionLength = UESelection.length;
     for (var i = 0; i < UESelectionLength; i++) {
         dropdown.append("div")
             .datum(getUEById(UEArray, UESelection[i]))
@@ -503,6 +503,7 @@ function displayLinks(links) {
     if (getDisplayMode() !== "skillDisplay") {
         return;
     }
+
     links.filter(function(d, i) {
         return d3.select(this).classed("ondisplaylinks") &&
             !d3.select(this).classed("dupsLinksToHide");
@@ -580,7 +581,6 @@ function filterSkill(skill) {
         valoriseAdjacentNodes(currentSelection[0], currentFilters)
             .style("opacity", "1");
     }
-
     return skill;
 }
 
@@ -832,7 +832,7 @@ function radioDisplaySetup() {
         .attr("id", "displayRadio")
         .attr("width", "100%")
         .append("input")
-        .classed("clickable radioInput", true)
+        .classed("clickable radioInput displayMode", true)
         .attr("id", "groupDisplay")
         .attr("type", "radio")
         .attr("name", "displayMode")
@@ -849,7 +849,7 @@ function radioDisplaySetup() {
     //  choix mode bloc compétence
     filterDiv.select("#displayRadio")
         .append("input")
-        .classed("clickable radioInput", true)
+        .classed("clickable radioInput displayMode", true)
         .attr("id", "skillDisplay")
         .attr("type", "radio")
         .attr("name", "displayMode")
@@ -858,7 +858,6 @@ function radioDisplaySetup() {
         .classed("clickable displRadiosText", true)
         .attr("for", "skillDisplay")
         .html("Compétences");
-
 
 
 }
@@ -890,7 +889,6 @@ function displaySkills(SkillList, skillDiv) {
             .html(SkillList[total]);
 
         var currentRadio = document.getElementById("radio" + total);
-
         currentRadio.addEventListener("change", function() {
             var index = currentFilters.indexOf(this.value);
             currentFilters = [];
@@ -1037,9 +1035,10 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
 
     var colorRects = d3.selectAll(".colorRect");
 
-    var radios = document.getElementsByName("displayMode");
-    radios.forEach(function(button) {
-        button.addEventListener("change", function() {
+    var radios = document.getElementsByClassName("displayMode");
+    for (var i = 0; i < radios.length; i++) {
+
+        radios[i].addEventListener("change", function() {
             switch (this.value) {
                 case "skillDisplay":
                     filterSkill(currentFilters);
@@ -1066,10 +1065,11 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
             }
         });
         // initialise l'affichage
-        if (button.checked) {
-            button.dispatchEvent(new Event("change"));
+        if (radios[i].checked) {
+            radios[i].dispatchEvent(new Event("change"));
         }
-    })
+    }
+
 }
 
 // PARAM : tableau comportant toutes les compétences [SkillList]
@@ -1333,8 +1333,8 @@ function getIgnoredSkills(node) {
 
 // RETURN : renvoie le mode d'affichage courant
 function getDisplayMode() {
-    var modes = document.getElementsByName("displayMode");
-    for (var i in modes) {
+    var modes = document.getElementsByClassName("displayMode");
+    for (var i = 0; i < modes.length; i++) {
         if (modes[i].checked) {
             return modes[i].value;
         }
@@ -1350,24 +1350,24 @@ function filterUESelection(data, selectionArray) {
     selectionArray.forEach(function(d, i) {
         if (!currentSelectedOptions.includes(+d) &&
             !arrayInter(currentSelectedOptions, getDuplicatesOfUE(data.ueDoublons, +d)).length) {
-            filteredArray.push(getUEById(data.ue,d));
+            filteredArray.push(getUEById(data.ue, d));
         }
     });
     filteredArray = filteredArray.sort(sortDropDown)
-        .map(function (d) {
+        .map(function(d) {
             return d.ueid;
         });
     return filteredArray;
 }
 
-function sortDropDown(a,b) {
+function sortDropDown(a, b) {
     var alpha = a.name.toLowerCase();
     var beta = b.name.toLowerCase();
 
     var aIdx = getSortIndexWithCategName(a.categorie);
-    var bIdx =getSortIndexWithCategName(b.categorie);
+    var bIdx = getSortIndexWithCategName(b.categorie);
 
-    if(aIdx !== bIdx) {
+    if (aIdx !== bIdx) {
         return aIdx - bIdx;
     } else {
         return alpha.localeCompare(beta.toLowerCase());

@@ -49,17 +49,20 @@ var imageGroup = d3.select("svg").append("g")
 var imageVisualizationBg = imageGroup.append("image")
     .attr("id", "bg-img")
     .attr("height", 275)
+    .attr("width", 500)
+    .attr("preserveAspectRatio","xMinYMax meet")
     .attr("y", height - 275)
     .attr("xlink:href", imageMasksFolderName + "/" + startImage);
 
 var imageVisualization = imageGroup.append("image")
     .attr("id", "over-img")
     .attr("height", 275)
-    .attr("y", height - 275);
+    .attr("width", 500)
+    .attr("preserveAspectRatio","xMinYMax meet")    .attr("y", height - 275);
 
 var selectedNode;
-var selectedNodeColor = "orange";
-
+var selectedNodeColor = "#ffff00";
+var overNodeColor = "#000000";
 
 
 // Si les filtres sont supportés par le navigateur
@@ -68,6 +71,8 @@ if (filtersAreOn) {
     imageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
     clickedImageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
     setMasksColorFilters();
+    updateMaskColor("selectColorFilter", selectedNodeColor);
+    updateMaskColor("overColorFilter", overNodeColor);
 }
 createColorPickers(filtersAreOn);
 colorPickersHandler(filtersAreOn);
@@ -192,6 +197,12 @@ d3.json(jsonFileName).then(function(json) {
                 }
             }
 
+            if(d3.select(this).datum() != selectedNode){
+                d3.select(this).select("rect")
+                    .style("stroke", overNodeColor)
+                    .style("stroke-width", "5px");
+            }
+
             d3.select("#node-info-text")
                 .append("tspan")
                 .attr("x", 0)
@@ -207,20 +218,19 @@ d3.json(jsonFileName).then(function(json) {
             applyDefaultStyle();
             imageVisualization.attr("xlink:href", "");
             d3.select("#node-info-text").text("");
+
+            if(d3.select(this).datum() != selectedNode){
+                d3.select(this).select("rect")
+                    .style("stroke", function(d) {
+                        return "#" + d.color;
+                    })
+                    .style("stroke-width", "2px");
+            }
         })
         .on("click", function(d) {
             hideLinks(link);
             computeLinks(hierarchy, d);
             updateLinks();
-            selectedNode = d;
-            d3.selectAll(".link").classed("ondisplaylink", false);
-            displayParentLinks(root, d);
-            displayChildrenLinks(d, flatHier);
-
-            link.style("opacity","0.2");
-            node.style("opacity","0.2");
-            valoriseParents(root, d, false);
-            valoriseChildren(d, flatHier, false);
 
             // style noeuds non sélectionnés
             node.classed("selectedNode", false)
@@ -230,29 +240,47 @@ d3.json(jsonFileName).then(function(json) {
                 })
                 .style("stroke-width", "2px");
 
-            var imageGroup = d3.select("#imageGroup");
-            imageGroup.select("#selected-img").remove();
-            if (d.depth != 0) {
-                imageGroup.append("image")
-                    .attr("id", "selected-img")
-                    .attr("height", 275)
-                    .style("opacity", "1")
-                    .attr("y", height - 275)
-                    .attr("xlink:href", clickedImageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png");
-                if (filtersAreOn) {
-                    d3.select("#selected-img").style("filter", "url(#selectColorFilter)")
-                }
-
+            if(selectedNode && selectedNode.id == d.id) {
+                selectedNode = null;
+                hideLinks(link);
+                d3.select("#imageGroup").select("#selected-img").remove();
             }
+            else {
+                selectedNode = d;
+                d3.selectAll(".link").classed("ondisplaylink", false);
+                displayParentLinks(root, d);
+                displayChildrenLinks(d, flatHier);
 
-            // style noeuds sélectionnés
-            node.filter(function(di, i) {
-                    return di === d;
-                })
-                .classed("selectedNode", true)
-                .selectAll("rect")
-                .style("stroke", selectedNodeColor)
-                .style("stroke-width", "8px");
+                link.style("opacity","0.2");
+                node.style("opacity","0.2");
+                valoriseParents(root, d, false);
+                valoriseChildren(d, flatHier, false);
+
+                var imageGroup = d3.select("#imageGroup");
+                imageGroup.select("#selected-img").remove();
+                if (d.depth != 0) {
+                    imageGroup.append("image")
+                        .attr("id", "selected-img")
+                        .attr("height", 275)
+                        .attr("width", 500)
+                        .attr("preserveAspectRatio","xMinYMax meet")
+                        .style("opacity", "1")
+                        .attr("y", height - 275)
+                        .attr("xlink:href", clickedImageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png");
+                    if (filtersAreOn) {
+                        d3.select("#selected-img").style("filter", "url(#selectColorFilter)")
+                    }
+
+                // style noeuds sélectionnés
+                node.filter(function(di, i) {
+                        return di === d;
+                    })
+                    .classed("selectedNode", true)
+                    .selectAll("rect")
+                    .style("stroke", selectedNodeColor)
+                    .style("stroke-width", "8px");
+                }
+            }
 
         });
 
@@ -523,6 +551,7 @@ function colorPickersHandler(filterOn) {
 
         document.getElementById("over-color-picker").addEventListener("change", function() {
             updateMaskColor("overColorFilter", this.value);
+            overNodeColor = this.value;
         });
     }
     document.getElementById("link-color-picker").addEventListener("change", function() {
@@ -548,10 +577,10 @@ function createColorPickers(filterOn) {
         d3colorPickersDiv.append("input")
             .attr("type", "color")
             .attr("id", "over-color-picker")
-            .attr("value", "#ffffff");
+            .attr("value", overNodeColor);
     }
 
-    colorPickersDiv.innerHTML += " Couleur des liens : ";
+    colorPickersDiv.innerHTML += " Couleur des liens (survol): ";
     d3colorPickersDiv.append("input")
         .attr("type", "color")
         .attr("id", "link-color-picker")
@@ -564,7 +593,7 @@ function setMasksColorFilters() {
     selectColorFilter = svg.append("filter")
         .attr("id", "selectColorFilter")
         .append("feColorMatrix")
-        .attr("in", "")
+        .attr("in", "SourceGraphic")
         .attr("type", "matrix")
         .attr("values", "1 0 0 0 0 " +
             "0 1 0 0 0 " +
@@ -575,7 +604,7 @@ function setMasksColorFilters() {
     overColorFilter = svg.append("filter")
         .attr("id", "overColorFilter")
         .append("feColorMatrix")
-        .attr("in", "")
+        .attr("in", "SourceGraphic")
         .attr("type", "matrix")
         .attr("values", "1 0 0 0 0 " +
             "0 1 0 0 0 " +
