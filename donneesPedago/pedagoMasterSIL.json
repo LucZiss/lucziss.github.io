@@ -1,4 +1,9 @@
 {
+    "general" : {
+      "cursusname" : "Master Parcours SIL",
+      "affichagelegendeUEfacultative" : "false"
+    },
+
     "ue": [{
         "ueid": "11",
         "name": "Compilation",

@@ -1,4 +1,9 @@
 {
+    "general" : {
+      "cursusname" : "Licence Informatique",
+      "affichagelegendeUEfacultative" : "true"  
+    },
+
     "ue" : [{
         "ueid": "11",
         "name": "Algèbre S1",

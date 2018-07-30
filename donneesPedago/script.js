@@ -743,7 +743,7 @@ function filterDisplayManager(data, SkillList, graph) {
 
     // selectAllSetup(SkillList);
 
-    buttonsSetup(data.ueDoublons, graph);
+    buttonsSetup(data.ueDoublons, data.general, graph);
 
     changeMode(graph, skillDiv, displayLegendDiv);
 }
@@ -967,7 +967,7 @@ function displayBlocks(displayLegendDiv, categories) {
 // PARAM : Tableau des donnees des noeuds et des liens [graph], donnees du fichier .json [data]
 // RETURN : void, gere l'affichage du bouton de reinitialisation ainsi
 // que la legende (UE en option)
-function buttonsSetup(dataueDoublons, graph) {
+function buttonsSetup(dataueDoublons, generalInfos, graph) {
     var svg = d3.select("#chart").select("g");
     var semesterLayout = d3.select("#semesterLayout").select("g");
 
@@ -979,18 +979,20 @@ function buttonsSetup(dataueDoublons, graph) {
         .classed("selectionButtons clickable", true)
         .text("Réinitialiser tout");
 
-    var optionLegend = filterDiv.append("div")
-        .style("width", "100%");
-    optionLegend.append("div")
-        .attr("id", "optionImage")
-        .style("border", function() {
-            return "2px dashed " + defaultSkillDisplayColor + "";
-        });
+    if (generalInfos.affichagelegendeUEfacultative === "true") {
+        var optionLegend = filterDiv.append("div")
+            .style("width", "100%");
+        optionLegend.append("div")
+            .attr("id", "optionImage")
+            .style("border", function() {
+                return "2px dashed " + defaultSkillDisplayColor + "";
+            });
 
-    optionLegend.append("p")
-        .style("font-style", "italic")
-        .text("UE facultative")
-        .attr("id", "optionText");
+        optionLegend.append("p")
+            .style("font-style", "italic")
+            .text("UE facultative")
+            .attr("id", "optionText");
+    }
 
     resetViewButton.on("click", function(d) {
         sankey
@@ -1463,7 +1465,8 @@ function getOptionById(data, id) {
 
 // RETURN : void, gere l'affichage de la ligne de separation entre
 // la zone d'options et celle des UEs
-function setupAreaSeparator(UEArray, yPos) {
+function setupAreaSeparator(UEArray, generalInfos, yPos) {
+    console.log(generalInfos);
     var optionScale = d3.scaleLinear()
         .domain(getMinMaxSemester(UEArray))
         .range([svgPadding.left, width - (sankey.nodeWidth()) - (svgPadding.right / 2)]);
@@ -1485,7 +1488,7 @@ function setupAreaSeparator(UEArray, yPos) {
         .attr("width", margin.left + svgPadding.left + width)
         .attr("height", height);
 
-    if(checkTypeParcours(UEArray) == "licence"){
+    if (checkTypeParcours(UEArray) == "licence") {
         for (var i = tab[0]; i <= tab[1]; i++) {
             d3.select("#areaSeparator")
                 .append("g")
@@ -1508,13 +1511,12 @@ function setupAreaSeparator(UEArray, yPos) {
                 .text("Options S" + i)
                 .style("font-size", adaptLabelFontSize);
         }
-    }
-    else {
+    } else {
         d3.select("#areaSeparator")
             .append("g")
             .attr("id", "separator")
             .attr("class", "separator")
-            .attr("transform", "translate(" + (chartCenter - sankey.nodeWidth()/2) + "," + yPos + ")")
+            .attr("transform", "translate(" + (chartCenter - sankey.nodeWidth() / 2) + "," + yPos + ")")
             .attr("width", sankey.nodeWidth())
             .append("rect")
             .attr("height", 25)
@@ -1528,7 +1530,7 @@ function setupAreaSeparator(UEArray, yPos) {
             .attr("dy", ".35em")
             .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
             .style("text-anchor", "middle")
-            .text("Parcours spécialité")
+            .text("Spécialité " + generalInfos.cursusname)
             .style("font-size", adaptLabelFontSize);
     }
 }
@@ -1536,7 +1538,7 @@ function setupAreaSeparator(UEArray, yPos) {
 function checkTypeParcours(UEArray) {
     var res = "licence";
     UEArray.forEach(function(ue) {
-        if(ue.commun){
+        if (ue.commun) {
             res = "master";
         }
     })
@@ -1696,7 +1698,7 @@ function parseJson(jsonName) {
         // Setup ligne de separation zone d'option
         if ((checkTypeParcours(graph.nodes) == "licence" && data.options.length != 0) || checkTypeParcours(graph.nodes) == "master") {
             var separatorYPos = sankey.highestOptionY() + 20;
-            setupAreaSeparator(graph.nodes, separatorYPos);
+            setupAreaSeparator(graph.nodes, data.general, separatorYPos);
         }
 
         //Mise en place de l'affichage des semestres sous le SVG du graphe
