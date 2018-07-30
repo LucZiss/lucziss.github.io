@@ -11,8 +11,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "12",
         "name": "Algorithmique avancée",
@@ -25,8 +24,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "13",
         "name": "Programmation avancée",
@@ -39,13 +37,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "14",
-        "name": "Services Réseaux",
-        "abreviation": "SR",
-        "categorie": "Parcours SIRIS",
+        "name": "Preuves assitées par ordinateur",
+        "abreviation": "PAO",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -53,13 +50,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "15",
-        "name": "Conception des systèmes d'exploitation",
-        "abreviation": "CSE",
-        "categorie": "Parcours SIRIS",
+        "name": "Architecture et Développement Web",
+        "abreviation": "Archi/DevWeb",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -67,13 +63,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "16",
-        "name": "Routage intra-domaine",
-        "abreviation": "Routage intra-D",
-        "categorie": "Parcours SIRIS",
+        "name": "Programmation embarquée",
+        "abreviation": "Prog. embarquée",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -81,13 +76,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "17",
-        "name": "Evaluation de performances",
-        "abreviation": "Eval. de perf.",
-        "categorie": "Parcours SIRIS",
+        "name": "Mission",
+        "abreviation": "Mission",
+        "categorie": "Stage ou Apprentissage",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -95,8 +89,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "18",
         "name": "Vie Professionnelle 1",
@@ -110,8 +103,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "19",
         "name": "Langue",
@@ -124,8 +116,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "21",
         "name": "Algorithmes distribués",
@@ -140,8 +131,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "22",
         "name": "Sécurité",
@@ -156,8 +146,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "23",
         "name": "Calculabilité et complexité",
@@ -172,8 +161,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "24",
         "name": "Travail d'étude et de recherche",
@@ -188,13 +176,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "25",
-        "name": "Cloud et virtualisation",
-        "abreviation": "Cloud et Virtu.",
-        "categorie": "Parcours SIRIS",
+        "name": "Optimisation et transformation de codes",
+        "abreviation": "Opt. et tr. de code",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -204,13 +191,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "26",
-        "name": "Routage inter-domaine",
-        "abreviation": "Routage inter-D",
-        "categorie": "Parcours SIRIS",
+        "name": "Programmation temps réel",
+        "abreviation": "PTR",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -220,14 +206,13 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "27",
-        "name": "Réseaux sans fil",
-        "abreviation": "RSF",
-        "categorie": "Parcours SIRIS",
-        "coefficient": "3",
+        "name": "Stage Master 1",
+        "abreviation": "Stage M1",
+        "categorie": "Stage ou Apprentissage",
+        "coefficient": "6",
         "semestre": "2",
         "dependances": [
             ["Programmer"],
@@ -236,24 +221,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
-    }, {
-        "ueid": "28",
-        "name": "Séminaires industriels",
-        "abreviation": "SI",
-        "categorie": "Parcours SIRIS",
-        "coefficient": "3",
-        "semestre": "2",
-        "dependances": [
-            ["Programmer"],
-            ["Professionnaliser"],
-            ["Construire"]
-        ],
-        "projet": "false",
-        "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "31",
         "name": "Certification du logiciel",
@@ -268,8 +236,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "32",
         "name": "Projet de Master",
@@ -284,13 +251,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "33",
-        "name": "Administration des systèmes",
-        "abreviation": "Admin des syst.",
-        "categorie": "Parcours SIRIS",
+        "name": "Analyse et architecture logicielle orientée objets",
+        "abreviation": "AALOO",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -300,13 +266,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "34",
-        "name": "Réseaux programmables",
-        "abreviation": "Réseaux prog.",
-        "categorie": "Parcours SIRIS",
+        "name": "Méthodologie de développement",
+        "abreviation": "MDD",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -316,13 +281,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "35",
-        "name": "Internet des objets",
-        "abreviation": "IDO",
-        "categorie": "Parcours SIRIS",
+        "name": "Programmation mobile",
+        "abreviation": "Prog. mobile",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -332,13 +296,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "36",
-        "name": "Sécurité avancée",
-        "abreviation": "SA",
-        "categorie": "Parcours SIRIS",
+        "name": "Traitement large échelle",
+        "abreviation": "TLE",
+        "categorie": "Parcours SIL",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -348,8 +311,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "37",
         "name": "Vie Professionnelle 2",
@@ -364,8 +326,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "38",
         "name": "Langue",
@@ -380,8 +341,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "41",
         "name": "Accompagnement de stage",
@@ -396,8 +356,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "42",
         "name": "Stage Master 2",
@@ -412,8 +371,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }],
 
     "ueDoublons": [],
@@ -452,7 +410,7 @@
         "color" : "#b3ccff",
         "sortIndex" : 0
     }, {
-        "name" : "Parcours SIRIS",
+        "name" : "Parcours SIL",
         "description" : "",
         "color" : "#ed7676",
         "sortIndex" : 5

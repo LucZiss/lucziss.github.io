@@ -223,27 +223,23 @@ d3.sankey = function() {
                 if (node.dy <= minNodeHeight)
                     node.dy = minNodeHeight;
 
-                if ((!node.commun && (lastNode == null || lastNotOptionNode == null) && node.option == "false") ||
-                (node.option == "false" && (lastNode == null || lastNotOptionNode == null) && node.commun == "true"))
+                if ((lastNode == null || lastNotOptionNode == null) && node.option == "false")
                     node.y = -48;
-                else if ((!node.commun && node.option == "true" && lastOptionNode == null) ||
-                (node.commun == "false" && lastOptionNode == null)) {
+                else if (node.option == "true" && lastOptionNode == null) {
                     node.y = size[1] - node.dy;
                     if (node.y < highestOptionY)
                         highestOptionY = node.y;
-                } else if ((!node.commun && node.option == "true") ||
-                (node.commun == "false")) {
+                } else if (node.option == "true") {
                     node.y = lastOptionNode.y - node.dy;
                     if (node.y < highestOptionY)
                         highestOptionY = node.y;
-                } else if ((!node.commun && node.option == "false") ||
-                (node.commun == "true")) {
+                } else if (node.option == "false") {
                     node.y = lastNotOptionNode.y + lastNotOptionNode.dy + nodePadding;
                 } else {
                     node.y = lastNode.y + lastNode.dy + nodePadding;
                 }
 
-                if ((!node.commun && node.option == "false") || node.commun == "true")
+                if (node.option == "false")
                     lastNotOptionNode = node;
                 else
                     lastOptionNode = node;

@@ -11,8 +11,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "12",
         "name": "Algorithmique avancée",
@@ -25,8 +24,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "13",
         "name": "Programmation avancée",
@@ -39,13 +37,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "14",
-        "name": "Services Réseaux",
-        "abreviation": "SR",
-        "categorie": "Parcours SIRIS",
+        "name": "Fondements Statistiques pour la Science des Données",
+        "abreviation": "Fond. Stat. pour la Sci. des Données",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -53,13 +50,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "15",
-        "name": "Conception des systèmes d'exploitation",
-        "abreviation": "CSE",
-        "categorie": "Parcours SIRIS",
+        "name": "Modèles de connaissances et web sémantique",
+        "abreviation": "Modèles de conn. & web sém.",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -67,13 +63,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "16",
-        "name": "Routage intra-domaine",
-        "abreviation": "Routage intra-D",
-        "categorie": "Parcours SIRIS",
+        "name": "Apprentissage et Fouille de Données",
+        "abreviation": "AFD",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -81,13 +76,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "17",
-        "name": "Evaluation de performances",
-        "abreviation": "Eval. de perf.",
-        "categorie": "Parcours SIRIS",
+        "name": "Entrepôts de Données et Informatique Décisionnelle",
+        "abreviation": "ED & ID",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "1",
         "dependances": [
@@ -95,8 +89,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "18",
         "name": "Vie Professionnelle 1",
@@ -110,8 +103,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "19",
         "name": "Langue",
@@ -124,8 +116,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "21",
         "name": "Algorithmes distribués",
@@ -140,8 +131,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "22",
         "name": "Sécurité",
@@ -156,8 +146,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "23",
         "name": "Calculabilité et complexité",
@@ -172,8 +161,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "24",
         "name": "Travail d'étude et de recherche",
@@ -188,13 +176,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "25",
-        "name": "Cloud et virtualisation",
-        "abreviation": "Cloud et Virtu.",
-        "categorie": "Parcours SIRIS",
+        "name": "Algorithmes du Texte et Recherche d'Information",
+        "abreviation": "Algo. Texte & Rech. Info.",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -204,13 +191,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "26",
-        "name": "Routage inter-domaine",
-        "abreviation": "Routage inter-D",
-        "categorie": "Parcours SIRIS",
+        "name": "Intelligence Collective, Intelligence Artificielle",
+        "abreviation": "ICIA",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -220,13 +206,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "27",
-        "name": "Réseaux sans fil",
-        "abreviation": "RSF",
-        "categorie": "Parcours SIRIS",
+        "name": "Systèmes complexes et Optimisation Stochastique Massivement Parallèle",
+        "abreviation": "SC & OSMP",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -236,13 +221,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "28",
-        "name": "Séminaires industriels",
-        "abreviation": "SI",
-        "categorie": "Parcours SIRIS",
+        "name": "Gestion et Extraction de Connaissances pour les Masses de Données",
+        "abreviation": "GECMD",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "2",
         "dependances": [
@@ -252,8 +236,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "31",
         "name": "Certification du logiciel",
@@ -268,8 +251,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "32",
         "name": "Projet de Master",
@@ -284,13 +266,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "33",
-        "name": "Administration des systèmes",
-        "abreviation": "Admin des syst.",
-        "categorie": "Parcours SIRIS",
+        "name": "Traitement et Données Réparties",
+        "abreviation": "TDR",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -300,13 +281,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "34",
-        "name": "Réseaux programmables",
-        "abreviation": "Réseaux prog.",
-        "categorie": "Parcours SIRIS",
+        "name": "Protection des Données et Sécurité des Systèmes Complexes",
+        "abreviation": "PDSSC",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -316,13 +296,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "35",
-        "name": "Internet des objets",
-        "abreviation": "IDO",
-        "categorie": "Parcours SIRIS",
+        "name": "Science des Données Appliquées aux Nouveaux Défis",
+        "abreviation": "SDAND",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -332,13 +311,12 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "36",
-        "name": "Sécurité avancée",
-        "abreviation": "SA",
-        "categorie": "Parcours SIRIS",
+        "name": "Bioinformatique",
+        "abreviation": "Bioinformatique",
+        "categorie": "Parcours SDSC",
         "coefficient": "3",
         "semestre": "3",
         "dependances": [
@@ -348,8 +326,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "37",
         "name": "Vie Professionnelle 2",
@@ -364,8 +341,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "38",
         "name": "Langue",
@@ -380,8 +356,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "41",
         "name": "Accompagnement de stage",
@@ -396,8 +371,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "42",
         "name": "Stage Master 2",
@@ -412,8 +386,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }],
 
     "ueDoublons": [],
@@ -452,7 +425,7 @@
         "color" : "#b3ccff",
         "sortIndex" : 0
     }, {
-        "name" : "Parcours SIRIS",
+        "name" : "Parcours SDSC",
         "description" : "",
         "color" : "#ed7676",
         "sortIndex" : 5

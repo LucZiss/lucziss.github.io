@@ -11,8 +11,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "12",
         "name": "Algorithmique avancée",
@@ -25,8 +24,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "13",
         "name": "Programmation avancée",
@@ -39,8 +37,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "14",
         "name": "Services Réseaux",
@@ -53,8 +50,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "15",
         "name": "Conception des systèmes d'exploitation",
@@ -67,8 +63,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "16",
         "name": "Routage intra-domaine",
@@ -81,8 +76,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "17",
         "name": "Evaluation de performances",
@@ -95,8 +89,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "18",
         "name": "Vie Professionnelle 1",
@@ -110,8 +103,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "19",
         "name": "Langue",
@@ -124,8 +116,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "21",
         "name": "Algorithmes distribués",
@@ -140,8 +131,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "22",
         "name": "Sécurité",
@@ -156,8 +146,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "23",
         "name": "Calculabilité et complexité",
@@ -172,8 +161,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "24",
         "name": "Travail d'étude et de recherche",
@@ -188,8 +176,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "25",
         "name": "Cloud et virtualisation",
@@ -204,8 +191,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "26",
         "name": "Routage inter-domaine",
@@ -220,8 +206,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "27",
         "name": "Réseaux sans fil",
@@ -236,8 +221,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "28",
         "name": "Séminaires industriels",
@@ -252,8 +236,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "31",
         "name": "Certification du logiciel",
@@ -268,8 +251,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "32",
         "name": "Projet de Master",
@@ -284,8 +266,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "33",
         "name": "Administration des systèmes",
@@ -300,8 +281,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "34",
         "name": "Réseaux programmables",
@@ -316,8 +296,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "35",
         "name": "Internet des objets",
@@ -332,8 +311,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "36",
         "name": "Sécurité avancée",
@@ -348,8 +326,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "false"
+        "facultatif": "false"
     }, {
         "ueid": "37",
         "name": "Vie Professionnelle 2",
@@ -364,8 +341,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "38",
         "name": "Langue",
@@ -380,8 +356,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "41",
         "name": "Accompagnement de stage",
@@ -396,8 +371,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }, {
         "ueid": "42",
         "name": "Stage Master 2",
@@ -412,8 +386,7 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false",
-        "commun": "true"
+        "facultatif": "false"
     }],
 
     "ueDoublons": [],

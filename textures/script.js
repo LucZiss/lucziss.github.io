@@ -202,22 +202,10 @@ d3.json(jsonFileName).then(function(json) {
                     .style("stroke", overNodeColor)
                     .style("stroke-width", "5px");
             }
-
-            d3.select("#node-info-text")
-                .append("tspan")
-                .attr("x", 0)
-                .attr("dy", -10)
-                .text(("Pixels : " + (sumSize(getAllNodesWithID(flatHier, d.id)))));
-            d3.select("#node-info-text")
-                .append("tspan")
-                .attr("x", 0)
-                .attr("dy", 20)
-                .text("Proportion de l'image : " + (Math.round((sumSize(getAllNodesWithID(flatHier, d.id))/sumSize(getAllNodesWithID(flatHier, root.id)))*10000)/100) + "%");
         })
         .on("mouseout", function(d, i) {
             applyDefaultStyle();
             imageVisualization.attr("xlink:href", "");
-            d3.select("#node-info-text").text("");
 
             if(d3.select(this).datum() != selectedNode){
                 d3.select(this).select("rect")
@@ -244,6 +232,7 @@ d3.json(jsonFileName).then(function(json) {
                 selectedNode = null;
                 hideLinks(link);
                 d3.select("#imageGroup").select("#selected-img").remove();
+                d3.select("#node-info-text").text("");
             }
             else {
                 selectedNode = d;
@@ -280,6 +269,18 @@ d3.json(jsonFileName).then(function(json) {
                     .style("stroke", selectedNodeColor)
                     .style("stroke-width", "8px");
                 }
+
+                d3.select("#node-info-text").text("");
+                d3.select("#node-info-text")
+                    .append("tspan")
+                    .attr("x", 0)
+                    .attr("dy", -10)
+                    .text(("Pixels : " + (sumSize(getAllNodesWithID(flatHier, d.id)))));
+                d3.select("#node-info-text")
+                    .append("tspan")
+                    .attr("x", 0)
+                    .attr("dy", 20)
+                    .text("Proportion de l'image : " + (Math.round((sumSize(getAllNodesWithID(flatHier, d.id))/sumSize(getAllNodesWithID(flatHier, root.id)))*10000)/100) + "%");
             }
 
         });

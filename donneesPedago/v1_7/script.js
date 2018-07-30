@@ -1485,36 +1485,12 @@ function setupAreaSeparator(UEArray, yPos) {
         .attr("width", margin.left + svgPadding.left + width)
         .attr("height", height);
 
-    if(checkTypeParcours(UEArray) == "licence"){
-        for (var i = tab[0]; i <= tab[1]; i++) {
-            d3.select("#areaSeparator")
-                .append("g")
-                .attr("id", "separator" + i)
-                .attr("class", "separator")
-                .attr("transform", "translate(" + optionScale(i) + "," + yPos + ")")
-                .attr("width", sankey.nodeWidth())
-                .append("rect")
-                .attr("height", 25)
-                .attr("width", sankey.nodeWidth())
-                .attr("rx", 2)
-                .attr("ry", 2);
-
-            d3.select("#separator" + i)
-                .append("text")
-                .attr("y", 13)
-                .attr("dy", ".35em")
-                .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
-                .style("text-anchor", "middle")
-                .text("Options S" + i)
-                .style("font-size", adaptLabelFontSize);
-        }
-    }
-    else {
+    for (var i = tab[0]; i <= tab[1]; i++) {
         d3.select("#areaSeparator")
             .append("g")
-            .attr("id", "separator")
+            .attr("id", "separator" + i)
             .attr("class", "separator")
-            .attr("transform", "translate(" + (chartCenter - sankey.nodeWidth()/2) + "," + yPos + ")")
+            .attr("transform", "translate(" + optionScale(i) + "," + yPos + ")")
             .attr("width", sankey.nodeWidth())
             .append("rect")
             .attr("height", 25)
@@ -1522,25 +1498,15 @@ function setupAreaSeparator(UEArray, yPos) {
             .attr("rx", 2)
             .attr("ry", 2);
 
-        d3.select("#separator")
+        d3.select("#separator" + i)
             .append("text")
             .attr("y", 13)
             .attr("dy", ".35em")
             .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
             .style("text-anchor", "middle")
-            .text("Parcours spécialité")
+            .text("Options S" + i)
             .style("font-size", adaptLabelFontSize);
     }
-}
-
-function checkTypeParcours(UEArray) {
-    var res = "licence";
-    UEArray.forEach(function(ue) {
-        if(ue.commun){
-            res = "master";
-        }
-    })
-    return res;
 }
 
 // RETURN : void, la fenetre d'info d'UE
@@ -1694,7 +1660,7 @@ function parseJson(jsonName) {
             .layout();
 
         // Setup ligne de separation zone d'option
-        if ((checkTypeParcours(graph.nodes) == "licence" && data.options.length != 0) || checkTypeParcours(graph.nodes) == "master") {
+        if (data.options.length != 0) {
             var separatorYPos = sankey.highestOptionY() + 20;
             setupAreaSeparator(graph.nodes, separatorYPos);
         }
