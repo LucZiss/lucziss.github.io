@@ -99,7 +99,7 @@ var tip = d3.select("body").append("div")
 
 zoomHandler(svg, semesterLayout, 3);
 
-d3.json("https://lucziss.github.io/donneesPedago/pedago.json").then(function(data) {
+d3.json("pedago.json").then(function(data) {
 
     var graph = {
         "nodes": data,
