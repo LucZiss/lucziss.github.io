@@ -1,7 +1,7 @@
 {
     "general" : {
-      "cursusname" : "Parcours Science des données et systèmes complexes",
-      "abrevname" : "SDSC"
+      "cursusname" : "Master Parcours SDSC",
+      "affichagelegendeUEfacultative" : "false"
     },
 
     "ue": [{
@@ -17,23 +17,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "12",
         "name": "Algorithmique avancée",
@@ -47,23 +31,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "13",
         "name": "Programmation avancée",
@@ -77,23 +45,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "14",
         "name": "Fondements Statistiques pour la Science des Données",
@@ -107,23 +59,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "15",
         "name": "Modèles de connaissances et web sémantique",
@@ -137,23 +73,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "16",
         "name": "Apprentissage et Fouille de Données",
@@ -167,23 +87,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "17",
         "name": "Entrepôts de Données et Informatique Décisionnelle",
@@ -197,23 +101,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "18",
         "name": "Vie Professionnelle 1",
@@ -223,28 +111,12 @@
         "semestre": "1",
         "dependances": [
             ["Professionnaliser"],
-            ["Réaliser"]
+            ["Realiser"]
         ],
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "19",
         "name": "Langue",
@@ -258,23 +130,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "21",
         "name": "Algorithmes distribués",
@@ -284,29 +140,13 @@
         "semestre": "2",
         "dependances": [
             ["Programmer"],
-            ["Réaliser"],
+            ["Realiser"],
             ["Construire"]
         ],
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "22",
         "name": "Sécurité",
@@ -322,23 +162,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "23",
         "name": "Calculabilité et complexité",
@@ -354,23 +178,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "24",
         "name": "Travail d'étude et de recherche",
@@ -386,23 +194,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "25",
         "name": "Algorithmes du Texte et Recherche d'Information",
@@ -418,23 +210,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "26",
         "name": "Intelligence Collective, Intelligence Artificielle",
@@ -450,23 +226,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "27",
         "name": "Systèmes complexes et Optimisation Stochastique Massivement Parallèle",
@@ -482,23 +242,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "28",
         "name": "Gestion et Extraction de Connaissances pour les Masses de Données",
@@ -514,23 +258,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "31",
         "name": "Certification du logiciel",
@@ -546,23 +274,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "32",
         "name": "Projet de Master",
@@ -578,23 +290,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "33",
         "name": "Traitement et Données Réparties",
@@ -610,23 +306,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "34",
         "name": "Protection des Données et Sécurité des Systèmes Complexes",
@@ -642,23 +322,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "35",
         "name": "Science des Données Appliquées aux Nouveaux Défis",
@@ -674,23 +338,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "36",
         "name": "Bioinformatique",
@@ -706,23 +354,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "false",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "false"
     }, {
         "ueid": "37",
         "name": "Vie Professionnelle 2",
@@ -738,23 +370,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "38",
         "name": "Langue",
@@ -770,23 +386,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "41",
         "name": "Accompagnement de stage",
@@ -802,23 +402,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }, {
         "ueid": "42",
         "name": "Stage Master 2",
@@ -834,23 +418,7 @@
         "projet": "false",
         "option": "false",
         "facultatif": "false",
-        "commun": "true",
-
-        "informations": {
-            "horaires": {
-                "CM": "",
-                "CI": "",
-                "TD": "",
-                "TP": "",
-                "TE": ""
-            },
-            "contenuDesc": "",
-            "competenceObj": "",
-            "biblio": "",
-            "prerequisOblig": "",
-            "prerequisRecomm": ""
-        }
-
+        "commun": "true"
     }],
 
     "ueDoublons": [],
@@ -878,44 +446,49 @@
         "description" : "Ceci est la compétence \"Programmer\"",
         "color" : "#9467bd"
     }, {
-        "name" : "Réaliser",
-        "description" : "Ceci est la compétence \"Réaliser\"",
+        "name" : "Realiser",
+        "description" : "Ceci est la compétence \"Realiser\"",
         "color" : "#1f77b4"
     }],
 
     "categories" : [{
         "name" : "Tronc Commun Spécialité",
         "description" : "",
-        "color" : "rgb(116, 2, 51)",
+        "color" : "#b3ccff",
         "sortIndex" : 0
     }, {
         "name" : "Parcours SDSC",
         "description" : "",
-        "color" : "rgb(192, 16, 63)",
+        "color" : "#ed7676",
         "sortIndex" : 5
     }, {
         "name" : "TER et Projet de Master",
         "description" : "",
-        "color" : "rgb(89, 64, 153)",
+        "color" : "#bf79ea",
         "sortIndex" : 2
     }, {
         "name" : "Langues",
         "description" : "",
-        "color" : "rgb(255, 130, 77)",
+        "color" : "#2aaf33",
         "sortIndex" : 3
     }, {
         "name" : "Tronc Commun Ouverture",
         "description" : "",
-        "color" : "rgb(252, 54, 107)",
+        "color" : "lightgrey",
         "sortIndex" : 1
     }, {
         "name" : "Stage ou Apprentissage",
         "description" : "",
-        "color" : "rgb(245, 255, 87)",
+        "color" : "yellow",
         "sortIndex" : 4
     }],
 
     "cursus" : [{
+        "name" : "Licence Informatique",
+        "path" : "pedagoLicenceInfo17.json",
+        "class" : "licence",
+        "sortIndex" : 0
+    }, {
         "name" : "Parcours I3D",
         "path" : "pedagoMasterI3D.json",
         "class" : "master",

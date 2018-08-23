@@ -1,8 +1,9 @@
 {
-    "ue" : [],
-    "ueDoublons" : [],
-    "options" : [],
-    "competences" : [],
-    "categories" : [],
-    "cursus" : []
+    "general": [],
+    "ue": [],
+    "ueDoublons": [],
+    "options": [],
+    "competences": [],
+    "categories": [],
+    "cursus": []
 }

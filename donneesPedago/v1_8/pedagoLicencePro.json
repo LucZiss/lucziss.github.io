@@ -1,0 +1,236 @@
+{
+    "ue": [{
+        "ueid": "11",
+        "name": "Administration système et internet",
+        "abreviation": "ASI",
+        "categorie": "Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "12",
+        "name": "Réseaux locaux",
+        "abreviation": "RL",
+        "categorie": "Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "13",
+        "name": "Virtualisation et stockage",
+        "abreviation": "VS",
+        "categorie": "Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "14",
+        "name": "Sécurité des systèmes",
+        "abreviation": "SDS",
+        "categorie": "Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "15",
+        "name": "Sécurité des réseaux",
+        "abreviation": "SDR",
+        "categorie": "Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "16",
+        "name": "Développement Web",
+        "abreviation": "Dev. Web",
+        "categorie": "Spécialité",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "17",
+        "name": "Services réseaux",
+        "abreviation": "SR",
+        "categorie": "Spécialité",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "18",
+        "name": "Projet",
+        "abreviation": "Projet",
+        "categorie": "Projet et stage",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "21",
+        "name": "Langue",
+        "abreviation": "Langue",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "22",
+        "name": "Communication en entreprise",
+        "abreviation": "CEE",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "23",
+        "name": "Gestion de projets",
+        "abreviation": "GDP",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "24",
+        "name": "Formation en entreprise",
+        "abreviation": "FEE",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    },{
+        "ueid": "25",
+        "name": "Stage",
+        "abreviation": "Stage",
+        "categorie": "Projet et stage",
+        "coefficient": "18",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif": "false"
+    }],
+
+    "ueDoublons": [],
+
+    "options": [],
+
+    "competences": [{
+        "name": "Appliquer",
+        "description": "Ceci est la compétence \"Appliquer\"",
+        "color": "#ff7f0e"
+    }],
+
+    "categories": [{
+        "name": "Spécialité",
+        "description": "",
+        "color": "#ed7676",
+        "sortIndex" : 1
+    },{
+        "name": "Projet et stage",
+        "description": "",
+        "color": "#fce88d",
+        "sortIndex" : 2
+    },{
+        "name": "Langues",
+        "description": "",
+        "color": "#2aaf33",
+        "sortIndex" : 0
+    },{
+        "name": "Ouverture",
+        "description": "",
+        "color": "lightgrey",
+        "sortIndex" : 3
+    }],
+
+    "cursus" : [{
+        "name" : "Licence Informatique",
+        "path" : "pedagoLicenceInfo17.json",
+        "class" : "licence",
+        "sortIndex" : 0
+    }, {
+        "name" : "Licence Professionnelle",
+        "path" : "pedagoLicencePro.json",
+        "class" : "licence",
+        "sortIndex" : 1
+    }, {
+        "name" : "Parcours I3D",
+        "path" : "pedagoMasterI3D.json",
+        "class" : "master",
+        "sortIndex" : 0
+    }, {
+        "name" : "Parcours SIL",
+        "path" : "pedagoMasterSIL.json",
+        "class" : "master",
+        "sortIndex" : 3
+    }, {
+        "name" : "Parcours SDSC",
+        "path" : "pedagoMasterSDSC.json",
+        "class" : "master",
+        "sortIndex" : 2
+    }, {
+        "name" : "Parcours SIRIS",
+        "path" : "pedagoMasterSIRIS.json",
+        "class" : "master",
+        "sortIndex" : 1
+    }]
+}

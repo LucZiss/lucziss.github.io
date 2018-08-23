@@ -1,10 +1,10 @@
 {
-    "general" : {
-      "cursusname" : "Licence Informatique",
-      "affichagelegendeUEfacultative" : "true"  
+    "general": {
+        "cursusname": "Licence Informatique",
+        "abrevname" : ""
     },
 
-    "ue" : [{
+    "ue": [{
         "ueid": "11",
         "name": "Algèbre S1",
         "abreviation": "Algèbre S1",
@@ -16,12 +16,28 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "12",
         "name": "Algorithmique et programmation S1",
         "abreviation": "AlgoProg S1",
-        "categorie":"Informatique",
+        "categorie": "Informatique",
         "coefficient": "6",
         "semestre": "1",
         "dependances": [
@@ -31,7 +47,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "13",
         "name": "Analyse S1",
@@ -44,7 +76,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "14",
         "name": "Calcul formel",
@@ -57,7 +105,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "15",
         "name": "Mécanique",
@@ -71,7 +135,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "16",
         "name": "Méthodologie du travail universitaire",
@@ -86,7 +166,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "17",
         "name": "Certificat informatique et internet",
@@ -99,7 +195,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "18",
         "name": "Langue S1",
@@ -112,7 +224,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "21",
         "name": "Algèbre S2",
@@ -125,7 +253,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "22",
         "name": "Algorithmique et programmation S2",
@@ -140,7 +284,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "23",
         "name": "Analyse Réelle S2",
@@ -153,7 +313,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "24",
         "name": "Modélisation",
@@ -167,7 +343,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "25",
         "name": "Projet professionnel personnel",
@@ -180,7 +372,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "26",
         "name": "Langue S2",
@@ -193,7 +401,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "201",
         "name": "Culture et pratique de l'informatique",
@@ -208,7 +432,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "202",
         "name": "Introduction a la programmation Web",
@@ -221,7 +461,23 @@
         ],
         "projet": "true",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "203",
         "name": "Modèles de calcul",
@@ -234,7 +490,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "31",
         "name": "Anglais pour l'informatique S3",
@@ -247,7 +519,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "32",
         "name": "Architecture des ordinateurs",
@@ -261,7 +549,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "33",
         "name": "Bases de données 1",
@@ -276,7 +580,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "34",
         "name": "Pratique des systèmes d'exploitation",
@@ -290,7 +610,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "35",
         "name": "Programmation Fonctionnelle",
@@ -305,7 +641,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "36",
         "name": "Projet personnel professionnalisé",
@@ -318,7 +670,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "37",
         "name": "Structures de données, algorithmes 1",
@@ -330,11 +698,27 @@
             ["Formaliser", 46],
             ["Programmer", 46, 47],
             ["Construire", 46, 47],
-            ["Realiser", 407, 501, 608]
+            ["Réaliser", 407, 501, 608]
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "38",
         "name": "Techniques de développement",
@@ -345,11 +729,27 @@
         "dependances": [
             ["Programmer", 47, 62],
             ["Construire", 62],
-            ["Realiser", 407, 501, 62, 608]
+            ["Réaliser", 407, 501, 62, 608]
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "301",
         "name": "Arithmétique et cryptographie S3",
@@ -362,7 +762,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "302",
         "name": "Introduction aux grandes catégories de problèmes S3",
@@ -376,7 +792,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "41",
         "name": "Algèbre linéaire appliquée",
@@ -389,7 +821,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "42",
         "name": "Théorie des Graphes",
@@ -404,7 +852,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "43",
         "name": "Langue S4",
@@ -417,7 +881,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "44",
         "name": "Logique et programmation logique",
@@ -432,7 +912,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "45",
         "name": "Programmation orientée objets 1",
@@ -446,7 +942,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "46",
         "name": "Structures de données, algorithmes 2",
@@ -462,7 +974,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "47",
         "name": "Systèmes d'Exploitation",
@@ -476,7 +1004,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "401",
         "name": "Arithmétique et cryptographie S4",
@@ -489,7 +1033,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "402",
         "name": "Introduction aux grandes catégories de problèmes S4",
@@ -503,7 +1063,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "403",
         "name": "Communication S4",
@@ -516,7 +1092,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "404",
         "name": "Droit S4",
@@ -529,7 +1121,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "405",
         "name": "Economie et gestion S4",
@@ -542,7 +1150,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "406",
         "name": "UE Unistra libre",
@@ -555,7 +1179,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "407",
         "name": "Stage S4",
@@ -565,12 +1205,28 @@
         "semestre": "4",
         "dependances": [
             ["Formaliser"],
-            ["Realiser"],
+            ["Réaliser"],
             ["Professionnaliser"]
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "51",
         "name": "Bases de données 2 et programmation Web",
@@ -584,7 +1240,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "52",
         "name": "Langue S5",
@@ -597,7 +1269,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "53",
         "name": "Probabilités et statistiques",
@@ -611,7 +1299,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "54",
         "name": "Programmation orientée objets 2",
@@ -625,7 +1329,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "55",
         "name": "Réseaux et protocoles",
@@ -639,7 +1359,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "56",
         "name": "Systèmes concurrents",
@@ -654,7 +1390,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "501",
         "name": "Stage S5",
@@ -664,12 +1416,28 @@
         "semestre": "5",
         "dependances": [
             ["Formaliser"],
-            ["Realiser"],
+            ["Réaliser"],
             ["Professionnaliser"]
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "61",
         "name": "Anglais pour l'informatique S6",
@@ -682,7 +1450,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "62",
         "name": "Génie logiciel",
@@ -693,11 +1477,27 @@
         "dependances": [
             ["Programmer"],
             ["Construire"],
-            ["Realiser", 608]
+            ["Réaliser", 608]
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "63",
         "name": "Interface homme-machine",
@@ -710,7 +1510,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "64",
         "name": "Systèmes distribués",
@@ -725,7 +1541,23 @@
         ],
         "projet": "true",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "65",
         "name": "Théorie des langages",
@@ -739,7 +1571,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "601",
         "name": "Géométrie pour la 3D",
@@ -753,7 +1601,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "602",
         "name": "Intelligence artificielle",
@@ -767,7 +1631,23 @@
         ],
         "projet": "true",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "603",
         "name": "Réseaux locaux et interconnexions",
@@ -780,7 +1660,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "604",
         "name": "Introduction à la recherche",
@@ -793,7 +1689,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "605",
         "name": "Communication S6",
@@ -806,7 +1718,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "606",
         "name": "Droit S6",
@@ -819,7 +1747,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "607",
         "name": "Economie et gestion S6",
@@ -832,7 +1776,23 @@
         ],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "608",
         "name": "Stage S6",
@@ -842,122 +1802,117 @@
         "semestre": "6",
         "dependances": [
             ["Formaliser"],
-            ["Realiser"],
+            ["Réaliser"],
             ["Professionnaliser"]
         ],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }],
 
-    "ueDoublons" : [
-        [301,401],[302,402],[403,605],[404,606],[405,607]
+    "ueDoublons": [
+        [301, 401],
+        [302, 402],
+        [403, 605],
+        [404, 606],
+        [405, 607]
     ],
 
-    "options" : [{
-        "semestre" : 2,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [201,202]
+    "options": [{
+        "semestre": 2,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [201, 202]
     }, {
-        "semestre" : 3,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [301,302]
+        "semestre": 3,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [301, 302]
     }, {
-        "semestre" : 4,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [401,402,403,404,405,406]
+        "semestre": 4,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [401, 402, 403, 404, 405, 406]
     }, {
-        "semestre" : 6,
-        "coefficient" : 3,
-        "nbChoix" : 2,
-        "ueList" : [601,602,603]
+        "semestre": 6,
+        "coefficient": 3,
+        "nbChoix": 2,
+        "ueList": [601, 602, 603]
     }, {
-        "semestre" : 6,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [604,605,606,607]
+        "semestre": 6,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [604, 605, 606, 607]
     }],
 
-    "competences" : [{
-        "name" : "Appliquer",
-        "description" : "Ceci est la compétence \"Appliquer\"",
-        "color" : "rgb(192, 16, 63)"
+    "competences": [{
+        "name": "Appliquer",
+        "description": "Ceci est la compétence \"Appliquer\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Construire",
-        "description" : "Ceci est la compétence \"Construire\"",
-        "color" : "rgb(192, 16, 63)"
+        "name": "Construire",
+        "description": "Ceci est la compétence \"Construire\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Formaliser",
-        "description" : "Ceci est la compétence \"Formaliser\"",
-        "color" : "rgb(192, 16, 63)"
+        "name": "Formaliser",
+        "description": "Ceci est la compétence \"Formaliser\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Professionnaliser",
-        "description" : "Ceci est la compétence \"Professionnaliser\"",
-        "color" : "rgb(192, 16, 63)"
+        "name": "Professionnaliser",
+        "description": "Ceci est la compétence \"Professionnaliser\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Programmer",
-        "description" : "Ceci est la compétence \"Programmer\"",
-        "color" : "rgb(192, 16, 63)"
+        "name": "Programmer",
+        "description": "Ceci est la compétence \"Programmer\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Realiser",
-        "description" : "Ceci est la compétence \"Realiser\"",
-        "color" : "rgb(192, 16, 63)"
+        "name": "Réaliser",
+        "description": "Ceci est la compétence \"Réaliser\"",
+        "color": "rgb(192, 16, 63)"
     }],
 
-    "categories" : [{
-        "name" : "Mathématiques",
-        "description" : "",
-        "color" : "rgb(252, 54, 107)",
-        "sortIndex" : 3
+    "categories": [{
+        "name": "Mathématiques",
+        "description": "",
+        "color": "rgb(252, 54, 107)",
+        "sortIndex": 3
     }, {
-        "name" : "Informatique",
-        "description" : "",
-        "color" : "rgb(192, 16, 63)",
-        "sortIndex" : 1
+        "name": "Informatique",
+        "description": "",
+        "color": "rgb(192, 16, 63)",
+        "sortIndex": 1
     }, {
-        "name" : "Informatique théorique",
-        "description" : "",
-        "color" : "rgb(116, 2, 51)",
-        "sortIndex" : 2
+        "name": "Informatique théorique",
+        "description": "",
+        "color": "rgb(116, 2, 51)",
+        "sortIndex": 2
     }, {
-        "name" : "Langues",
-        "description" : "",
-        "color" : "rgb(255, 130, 77)",
-        "sortIndex" : 0
+        "name": "Langues",
+        "description": "",
+        "color": "rgb(255, 130, 77)",
+        "sortIndex": 0
     }, {
-        "name" : "Ouverture",
-        "description" : "",
-        "color" : "rgb(245, 255, 87)",
-        "sortIndex" : 4
+        "name": "Ouverture",
+        "description": "",
+        "color": "rgb(245, 255, 87)",
+        "sortIndex": 4
     }],
 
-    "cursus" : [{
-        "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json",
-        "class" : "licence",
-        "sortIndex" : 0
-    }, {
-        "name" : "Parcours I3D",
-        "path" : "pedagoMasterI3D.json",
-        "class" : "master",
-        "sortIndex" : 0
-    }, {
-        "name" : "Parcours SIL",
-        "path" : "pedagoMasterSIL.json",
-        "class" : "master",
-        "sortIndex" : 3
-    }, {
-        "name" : "Parcours SDSC",
-        "path" : "pedagoMasterSDSC.json",
-        "class" : "master",
-        "sortIndex" : 2
-    }, {
-        "name" : "Parcours SIRIS",
-        "path" : "pedagoMasterSIRIS.json",
-        "class" : "master",
-        "sortIndex" : 1
-    }]
+    "cursus": []
 }

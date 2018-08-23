@@ -1,5 +1,10 @@
 {
-    "ue" : [{
+    "general": {
+        "cursusname": "Licence Informatique",
+        "abrevname" : ""
+    },
+
+    "ue": [{
         "ueid": "11",
         "name": " Mathématiques élémentaires",
         "abreviation": "Math. élém.",
@@ -9,7 +14,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "52h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Ensembles de nombres basiques. Intervalles de R. Opérations sur ces ensembles, quantificateurs.<br> 2) Fonctions élémentaires : exp., log., trigonométriques, résolution d’équations<br> 3) Nombres complexes : module, argument ; exponentielle complexe ; puissances complexes ; linéarisation de polynomes trigonométriques, racines de 1, résolution équation du 2nd degré<br> 4) Fonctions composées, réciproques, leurs dérivées (approche calculatoire). Dérivées partielles (approche calculatoire)<br> 5) Géométrie analytique : coordonnées polaires, homothéties, barycentres, calcul vectoriel (rappels de produit scalaire, projections ; produit vectoriel), droites, cercles, leurs intersections.",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "Programme de TS toutes spécialités confondues.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "12",
         "name": "Algèbre 1",
@@ -20,7 +41,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "35h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Calcul matriciel. Systèmes linéaires : pivot de Gauss, matrices échelonnées. Déterminant. Arithmétique dans Z : division euclidienne ; diviseurs communs à deux entiers, pgcd, ppcm ; lemme de Gauss ; théorème de Bézout ; algorithme d’Euclide de calcul de pgcd ; nombres premiers ; existence et unicité de la décomposition en produit de facteurs premiers ; congruences : additions et multiplications ; systèmes de congruences, théorème chinois. Petit théorème de Fermat.",
+            "competenceObj": "Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.",
+            "biblio": "WEISS P., LEROY X., Le langage Caml, Dunod, 1999.<br> DUBOIS C. et MENISSIER-MORAIN V., Apprentissage de la programmation avec O Camel, ed. Hermès Sciences, Paris, 2004.",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "13",
         "name": "Analyse 1",
@@ -31,7 +68,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "26h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Limites de fonctions, DL, applications au tracé de graphe.<br> Fonctions réciproques. Intégration par parties. Equations différentielles linéaires homogènes d’ordre 1 et 2.",
+            "competenceObj": "Résoudre de manière autonome des problèmes liés ou faisant appel aux fonctions numériques.",
+            "biblio": "Analyse 1ère année Liret-Martinais. ed Dunod",
+            "prerequisOblig": "Programme de TS toutes spécialités confondues.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "14",
         "name": "Culture et Pratique de l'Informatique",
@@ -42,7 +95,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "14h",
+                "CI": "",
+                "TD": "",
+                "TP": "14h",
+                "TE": ""
+            },
+            "contenuDesc": "L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est la science des télescopes (phrase attribuée à E. Dijkstra). Peu d'étudiants savent en entrant à l'université ce qu'est réellement l'informatique. La partie cours a pour objectif de dresser un panorama de l'informatique, de l'antiquité (algorithme d'Euclides, machine d'anticythère) à nos jours, en décrivant les applications de l'informatique aux sciences : simulation numérique, bioinformatique, etc. impact de l'informatique sur la société. L'avenir de l'informatique est aussi évoqué, avec le calcul quantique, l'intelligence artificielle, etc. Ensuite, les concepts fondamentaux de l'informatique sont présentés, des Machines de Turing jusqu'aux langages à objets, en passant par les grands concepts système (systèmes d'exploitation, utilisateurs, terminal, processus, temps partagé, mémoire segmentée, ...) et réseau (couches OSI, TCP/IP, paquets, sommes de contrôle, code correcteur, ...).<br><br> Les travaux pratiques se concentrent sur l'utilisation de l'interface utilisateur en ligne de commande permettant d'interagir avec le système d'exploitation de l'ordinateur : le shell. C'est cet outil qui permet de manipuler les fichiers, voir les processus, gérer les périphériques et surtout, de créer des chaînes d'instructions (scripts) permettant de créer des algorithmes au niveau du système d'exploitation.",
+            "competenceObj": "À l'issue de cette UE, l'étudiant aura une meilleure compréhension de ce qu'est l'informatique. Il saura utiliser le système d'exploitation UNIX et rédiger des shell scripts.",
+            "biblio": "Christine DEFAIX REMY, Programmation shell sous UNIX/LINUX - sh, ksh, bash (avec exercices corrigés), ENI",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "15",
         "name": "Algorithmique et Programmation 1",
@@ -53,7 +122,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "38h",
+                "TD": "",
+                "TP": "22h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE est un premier contact avec la programmation informatique.<br><br> Elle commence par introduire les types de données élémentaires, les constantes, les variables, les expressions, et les structures de contrôle (conditionnelles et boucles). Puis sont étudiés les fonctions et les types de données composées (n-uplets et listes).<br><br> Cette UE introduit également la notion d'algorithme, commune à tous les langages informatiques ; algorithmes itératifs et récursifs permettant de créer, interroger, trier, traiter différents types de données.<br><br> Enfin sont abordées les bases de la méthodologie de résolution de problèmes : analyse et représentation d'un problème, décomposition fonctionnelle, les notions de pré-condition et post-condition et élaboration de jeux de tests.<br><br> Le langage utilisé pour mettre en oeuvre ces principes est le python. Cette UE n'a pas pour but l'apprentissage des spécificités de python. À ce titre, ne seront pas abordées les notions de dictionnaire, de classe ou de comprehensive list.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - analyser et représenter un problème simple par des structures de données simples ;<br> - décomposer un problème en sous-problèmes ;<br> - proposer un ou plusieurs algorithmes pour résoudre un problème ;<br> - spécifier les fonctions nécessaires implémentant ces algorithmes ;<br> - tester une fonction pour vérifier qu'elle satisfait les spécifications ;<br> - mettre en oeuvre ces spécifications par des fonctions en python.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "16",
         "name": "Langue",
@@ -64,7 +149,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "17",
         "name": "MTU & C2I",
@@ -75,7 +176,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "18h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "1) C2i (12h). Préparation de la certification C2i.<br> 2.1) Méthodologie du travail : utilisation d'outils (moodle, latex, autres). Rédaction d'un rapport sur texte mathématique/informatique en latex, à déposer sur moodle",
+            "competenceObj": "Le C2i répond à un cahier des charges défini par le Ministère de l'Enseignement Supérieur. Les compétences visées sont détaillées dans le référentiel du C2i publié au B.O. du 9 mai 2002 et repris sur le site national du C2i (cf. http://www2.c2i.education.fr/).<br> Neuf compétences majeures sont validées par la certification :<br> •S’approprier son environnement de travail,<br> •Rechercher l'information,<br> •Sauvegarder, sécuriser, archiver ses données en local et en réseau,<br> •Réaliser des documents destinés à être imprimés,<br> •Réaliser la présentation de ses travaux en présentiel et en ligne,<br> •Echanger et communiquer à distance,<br> •Mener des projets en travail collaboratif à distance,<br> •Tenir compte du caractère évolutif des TIC,<br> •Intégrer la dimension éthique et le respect de la déontologie.<br> MTU : Acquisition de méthodes de travail spécifiques aux études universitaires de mathématiques et d'informatique et d'une capacité de raisonnement essentielle dans les études scientifiques. Travail sur l'apprentissage d'un cours, sur la résolution d'exercices et de problèmes.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "101",
         "name": "Bases de l'archi info",
@@ -86,7 +203,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "8h",
+                "CI": "",
+                "TD": "10h",
+                "TP": "12h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les principes de base du fonctionnement des systèmes informatiques, de la représentation de l'information jusqu'à son traitement automatisé. Le codage des différents types d'information (entiers naturels, entiers relatifs, réels, caractères, etc.) dans un format adapté à leur traitement informatique (arithmétique et traitements associés) y est présenté. L'architecture des ordinateurs (architecture \"von-Neumann\", unité de traitement, unité mémoire, entrées/sorties) et son fonctionnement (instructions, cycle d'exécution, utilisation des adresses mémoire) y sont également étudiés jusque dans leur impact dans l'écriture de logiciels (bugs, défauts de performance). Cette UE fera le lien entre architecture matérielle et programmation à différents niveaux : langage machine, langage assembleur et langage C (étude du processus de compilation, des mécanismes des pointeurs, des tableaux, du passage de paramètres des fonctions, et de l'allocation mémoire).",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br><br> - Coder et décoder l'information (nombres, caractères...)<br> - Choisir et utiliser les types informatiques de base adéquats<br> - Développer des applications simples dans un langage de type assembleur<br> - Suivre l'exécution pas à pas d'un programme<br> - Écrire des programmes simples utilisant des pointeurs et des tableaux<br> - Reconnaître les erreurs de programmation liées à la gestion de la mémoire",
+            "biblio": "Références :<br><br> - A. Tanenbaum, Architecture de l'ordinateur, 5e edition, Dunod, 2005<br> - Y. Patt, S. Pattel, Introduction to Computing Systems: From bits &amp; gates to C &amp; beyond, 2nd edition, McGraw-Hill 2003",
+            "prerequisOblig": "À l'entrée de cette UE, un étudiant devrait savoir :<br><br> - Décrire les principaux ensembles de nombres (entiers naturels, entiers relatifs, nombres rationnels, nombres réels)<br> - Réaliser des calculs en base 10 dans les principaux ensembles de nombres</div>",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "102",
         "name": "Physique S1",
@@ -97,7 +230,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "26h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "<em>(en italiques : notions mathématiques impliquées)</em><br><br> • Révision : cinématique et mécanique du point. Notions de vitesse, accélération. Forces, travail d’une force,<br> RFD, théorème de l’énergie cinétique, lois de conservation : quantité de mouvement, énergie, moment cinétique.<br><em>(Dérivées, vecteurs).</em><br> • Mouvement absolu et relatif. Forces d’inertie dans le cas d’un référentiel en rotation. <em>(Produits vectoriels)</em><br> • Statique des fluides dans le champ de pesanteur : Notion de pression. Fluides incompressibles, et atmosphère<br> isotherme. Théorème d’Archimède. <em>(Équations différentielles)</em>.<br> • Dynamique du fluide parfait incompressible en écoulement stationnaire. lignes de courant, équation de<br> Bernoulli. <em>(Champ vectoriel, lignes de champ).</em>",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "21",
         "name": "Fondements du calcul et du raisonnement",
@@ -108,7 +257,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "26h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "<strong>(A) Fondement du raisonnement (19hCI).</strong><br><br> Théorie des ensembles. Produits d'ensembles. Ensemble des parties P(E) d'un ensemble E, opérations sur les parties. Ensemble vide. Ensemble des applications Appl(E,F)=F^E entre les ensembles E et F ; lien avec le produit. Fonction caractéristique. Composée d'applications. Restriction. Injectivité, surjectivité. Techniques de preuve (directe, contraposée, absurde, récurrence). Logique élémentaire. Calcul propositionnel, tables de vérité.<br> Dénombrement élémentaire. Propriétés fondamentales de N. Principe de récurrence. Cardinal d'un ensemble. Propriétés : cardinal d'un produit, de F^E, de P(E), d'une réunion de parties, de l'ensemble P_p(E) des parties à p éléments.<br> Partie pratique (4hTP) sur logiciel edukera.<br><br><strong>(B) Fondements du calcul. Partie théorique (5hCI) :</strong><br><br> Définitions récursives vs. Définitions itératives (suites, fonctions, structures de données) ; notion d'algorithme (structure, éléments de base, notion complexité) ; numération (base de numération : bases 2 et 10, nombres en machine).",
+            "competenceObj": "- Comprendre la structure d’un discours mathématique (hypothèses, énoncés, démonstrations)<br><br> - Savoir rédiger une démonstration en détaillant toutes les étapes<br><br> - Savoir identifier une erreur de raisonnementComprendre la structure d’un discours mathématique (hypothèses, énoncés, démonstrations).",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "22",
         "name": "Algèbre 2",
@@ -119,7 +284,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "52h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Espaces vectoriels. Applications linéaires. Lien avec matrices. Changement de base.<br> Espaces vectoriels sur un corps (exemples K = Q, R, C). Exemples : K^n, K[X], espaces de suites, de fonctions.<br><br> Sous-espaces vectoriels ; somme, intersection, sommes directes, supplémentaires.<br><br> Dimension : familles génératrices, libres, espaces vectoriels de dimension finie, théorème de la base incomplète, dimension d'un espace vectoriel, d'un sous-espace vectoriel.<br><br> Applications linéaires : somme, composition. Exemples : formes linéaires, endomorphismes, symétries, projecteurs. Noyau, image. Rang d'une application linéaire. Théorème du rang.<br><br> Matrice d'une application linéaire dans une base. Matrices de passage. Matrices équivalentes et semblables.",
+            "competenceObj": "Résoudre de manière autonome des problèmes liés ou faisant appel aux systèmes linéaires et aux espaces vectoriels.",
+            "biblio": "",
+            "prerequisOblig": "Algèbre S1.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "23",
         "name": "Bases de données 1",
@@ -130,7 +311,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "14h",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "L’objectif de ce cours est de donner les bases de la théorie des Bases de Données Relationnelles d’un point de vue le plus pragmatique possible. A la fin de ce cours, l'etudiant doit savoir concevoir et modéliser une base de données relationnelle, prendre conscience des limites de toutes méthodes de modélisation pour savoir s’en affranchir quand cela est nécessaire, implémenter sur la base d’un moteur SQL et d'un environnement libre (Oracle sous windows/linux) une base de données et enfin effectuer des requêtes sur cette base de données.<br><br> Cette UE présente les principes et les outils de base permettant de concevoir et de manipuler des bases de données relationnelles. L’apprentissage du langage de requêtes structuré SQL (Structured Query Language) constitue le noyau central du cours. Celui-ci aborde aussi la théorie de la normalisation, qui permet de définir une base de données relationnelle cohérente et non redondante. Enfin, des éléments d’analyse et de modélisation entités-associations sont introduits, permettant de définir le schéma conceptuel de la base de données.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Utiliser un système de gestion de bases de données relationnel (de type SGBDR Oracle)<br> - Écrire des requêtes SQL permettant de créer et de modifier le schéma de la base de données<br> - Écrire des requêtes SQL permettant de consulter les données de la base<br> - Définir des contraintes d’intégrité des données<br> - Vérifier la cohérence d’un schéma relationnel normalisé<br> - Modéliser un système d’information afin de concevoir le schéma conceptuel d’une base de données",
+            "biblio": "Références :<br><br> - GARDARIN, Georges. Bases de données. Editions Eyrolles, 2003.4<br><br> - HAINAUT, Jean-Luc. Bases de données-2e éd.: Concepts, utilisation et développement. Dunod, 2012.",
+            "prerequisOblig": "Cette UE ne demande pas de pré-requis techniques particuliers, cependant une bonne maîtrise de la langue française est nécessaire afin d’analyser les énoncés décrivant les systèmes d’information à modéliser et de comprendre les requêtes d’interrogation des données.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "24",
         "name": "Algorithmique et Programmation 2",
@@ -141,7 +338,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "38h",
+                "TD": "",
+                "TP": "22h",
+                "TE": ""
+            },
+            "contenuDesc": "À la suite de l’UE d’algorithmique et programmation 1 du premier semestre, l’objectif de cette UE est d’appréhender des concepts plus avancés en algorithmique et en programmation impérative.<br><br> Dans un premier temps, ce cours rappellera les notions de base de la programmation impérative en termes de traitement (instructions, séquences, conditionnelles, boucles, fonctions), de données (types de base, variables, tableaux) et d'entrées/sorties. Ces éléments seront manipulés au travers d'un langage compilé (langage C). On présentera la forme générale des programmes et leur cycle de vie (écriture, compilation, édition de liens, exécution).<br> Dans un second temps, cette UE s'attachera à étudier des données et traitements plus avancés (mettant en jeu pointeurs, types composés, tableaux dynamiques, listes chaînées), ainsi que les mécanismes de gestion mémoire statique (pile d'exécution) et dynamique (allocation et libération explicites). Plusieurs algorithmes classiques seront présentés et comparés, notamment des algorithmes de recherche et de tri itératifs ou récursifs, avec une introduction à la notion de complexité. Une attention particulière sera portée à la résolution de problèmes par des algorithmes adaptés et leur mise en oeuvre robuste (pré- et post- conditions, vérifications de terminaison, tests, bonne utilisation de l’allocation mémoire,...).",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br><br> - représenter des données en choisissant des structures de données appropriées ;<br> - stocker des données selon un modèle d'allocation de la mémoire adapté ;<br> - décomposer un problème en sous-problèmes ;<br> - concevoir des algorithmes itératifs et récursifs ;<br> - implémenter des algorithmes de recherche et de tri ;<br> - proposer plusieurs algorithmes pour résoudre un problème et les comparer ;<br> - s’assurer de la bonne terminaison de l’implémentation des algorithmes ;<br> - implémenter un algorithme avancé en langage C.",
+            "biblio": "Références :<br><br> - CHATY G., VICARD J., Algorithmique, Nathan Université.<br> - VEIGNEAU S., Approches impérative et fonctionnelle de l'algorithmique, Springer.<br> - FIEUX L., Le langage C, Campus Press.<br> - DELANNOY C., Programmer en langage C, Eyrolles.",
+            "prerequisOblig": "- UE Algorithmique et programmation 1 (Semestre S1)<br> - UE Bases de l’architecture informatique (Semestre S1)",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "25",
         "name": "Programmation Fonctionnelle",
@@ -152,7 +365,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "14h",
+                "CI": "",
+                "TD": "14h",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente le paradigme de programmation fonctionnelle, ses principes fondateurs (composition de fonctions, variables au sens mathématique, propriété de transparence référentielle, pureté), les concepts de base permettant d’écrire un programme dans ce mode (équation fonctionnelle, application de fonction, conditionnelle, fonction anonyme, définition temporaire, récursivité), ainsi que des notions plus avancées (fonctionnelles, fonctions d'ordre supérieur (fold, map), curryfication, application partielle). Les types omniprésents dans les langages fonctionnels récents y sont étudiés (constructeurs * et ->, types produit et somme, types récursifs (exemple des listes), filtrage, polymorphisme, calcul ou inférence de types). Les différentes stratégies d’évaluation (évaluation affairée, paresseuse) des expressions fonctionnelles y sont discutées. Les programmes illustratifs sont écrits en utilisant le langage support Haskell.",
+            "competenceObj": "À l'issue de cette UE, un étudiant est capable de :<br><br> - faire la distinction entre l'approche fonctionnelle et l'approche impérative<br> - programmer en utilisant le mode fonctionnel dans tout langage de programmation l’autorisant<br> - utiliser le procédé de programmation par filtrage<br> - reconnaître et réutiliser les principales fonctions d’ordre supérieur (fold,map) sur les listes<br> - se rapprocher des termes du problème en définissant et en utilisant de nouveaux types",
+            "biblio": "Références :<br><br> - Graham Hutton, Programming in Haskell, Cambridge University Press, 2007<br> - Simon Thompson, Haskell: The Craft of Functional Programming, Addison Wesley, 2011<br> - Eric Violard, Mini-manuel de Programmation fonctionnelle, Dunod, 2014",
+            "prerequisOblig": "À l'entrée de cette UE, un étudiant devrait avoir suivi ou être capable de :<br><br> - avoir suivi un enseignement de mathématiques introduisant aux notions suivantes :<br> ensembles, suites récurrentes, fonctions (dérivée, intégrale), équations (résolution d'une équation du premier ou du second degré), preuve par récurrence.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "26",
         "name": "Programmation Web 1",
@@ -163,7 +392,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "",
+                "TP": "15h",
+                "TE": ""
+            },
+            "contenuDesc": "Cours introductif dont l'objectif principal est de découvrir les outils permettant la conception de pages web : structuration (outil: HTML5) et mise en forme (outil: CSS3). Des intéractions événementielles avec l'utilisateur seront programmées avec JavaScript.<br><br> Une courte introduction au réseau Internet est également prévue.",
+            "competenceObj": "À l'issue de l'UE, un étudiant est capable de :<br><br> (1) construire un document correctement structuré et expliquer la notion de \"Document Object Model\"<br><br> (2) développer une mise en forme adaptative pour prendre en compte la variété des media utilisés pour visualiser des pages Web<br><br> (3) définir des comportements dans une page web pour intéragir avec l'utilisateur",
+            "biblio": "* Textbook : Lemay, Laura, Rafe Colburn, and Jennifer Kyrnin<br> \"HTML, CSS &amp; JavaScript Web Publishing in One Hour a Day.\" (2016)<br> * Ressources en ligne: http://www.w3schools.com/",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "27",
         "name": "Langue",
@@ -174,7 +419,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "28",
         "name": "Projet Professionnel Encadré",
@@ -185,7 +446,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "2h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette première UE de préparation du projet professionnel accompagne la réflexion des étudiants de première année dans leurs choix à venir d'études, de stages, d'orientation professionnelle. Elle permet aux étudiants d'échanger leurs points de vue, de les confronter à ceux des professionnels sur leur lieu de travail, et les guider dans une démarche rigoureuse d'analyse des éléments recueillis.",
+            "competenceObj": "À l'issue de cette UE, un étudiant est capable de :<br><br> - réfléchir à son avenir professionnel afin de construire leur parcours de formation.<br> - appliquer une méthode pour définir ou préciser lui-même son projet professionnel.<br> - confronter son projet aux réalités professionnelles.<br> - démarrer un processus continu qui s'affinera au cours de sa formation pour finalement aboutir à un projet professionnel concret",
+            "biblio": "Références :<br><br> - Gilles D., Millaud C., Saulnier-Cazals J., Vuillermet-Cortot M.J. : Projet professionnel de l’étudiant : les nouvelles<br> donnes le livre « Passeurs de futurs » + CD-Rom, Ed. ONISEP (Paris) collection Références, 2002<br> - Gilles D., Saulnier-Cazals J., Vuillermet-Cortot M.J. : SOCRATE, le retour... Pour accompagner la réussite<br> universitaire et professionnelle des étudiants, Ed. Septembre (Québec), 1994. (Prêt possible par Espace Avenir)<br> - autres ressources, FAQ et outils sur le site www.projetpro.com",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "29",
         "name": "Modèles de Calcul",
@@ -196,7 +473,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "10h",
+                "CI": "",
+                "TD": "6h",
+                "TP": "8h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE discute des deux principales formalisations de la notion d’algorithme et de ce qui est calculable par une machine : le lambda-calcul et les machines de Turing. Le formalisme du lambda-calcul (syntaxe, interprétation usuelle en termes de fonctions anonymes, curryfication) y est présenté ainsi que les règles de calcul associées (notion de réduction, substitution, règles de réduction, problème de capture de variable, notion de variable libre et liée, forme normale, résultat de Church-Rosser, stratégies de réduction (NOR et AOR)). Le pouvoir d'expressivité du lambda-calcul (booléens, entiers de Church, n-uplets, récursivité (combinateur de point fixe)) y est discuté. Cette UE inclut une présentation de la machine de Turing (ruban, tête de lecture/écriture, états, fonction de transition, configuration, mode accepteur, mode calculateur, machine universelle) et discute de son équivalence (sans preuve) avec le lambda-calcul et les autres modèles de calcul. La thèse de Church-Turing y est énoncée. Les règles du lambda-calcul et le fonctionnement des machines de Turing sont décrits et mis en œuvre en Haskell.",
+            "competenceObj": "À l'issue de l'UE, un étudiant est capable de :<br><br> - comprendre la notion d'algorithme à travers des exemples classiques de modèles de calcul.<br> - comprendre les fondements des langages fonctionnels et de l’architecture des ordinateurs<br> - comprendre l'abstraction d'un modèle de calcul \"concret\" en structures mathématiques comme le lambda-calcul, les fonctions primitives récursives et les machines de Turing.",
+            "biblio": "- Jean-Louis Krivine; \"Lambda-calcul, types et modèles\", Masson, 1990.<br> - Edmond Bianco, \"Informatique fondamentale : De la machine de Turing aux ordinateurs modernes\", Birkha¨user, 1979.<br> - https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap7-good.pdf",
+            "prerequisOblig": "Quelques notions mathématiques élémentaires : variables muettes, fonctions, ensembles",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "31",
         "name": "Analyse 2",
@@ -207,7 +500,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "14h",
+                "CI": "",
+                "TD": "22h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Construction de Stevin de R (développements décimaux illimités) en tant que corps ordonné. Manipulation d’inégalité et inégalité triangulaire (dans C). Bornes supérieures et inférieures.<br> Suites réelles. Limites. Critères de convergence liés à l’ordre sur R.<br> Limites de fonctions définies sur un intervalle, continuité.<br> Les grands théorèmes : théorème des bornes, des valeurs intermédiaires, de la bijection monotone.<br> Dérivabilité par taux d’accroissement. Dérivation des opérations arithmétiques, de la composition, de la réciproque.<br> Théorèmes de Rolle et des accroissements finis.<br> DL et formule de Taylor-Lagrange.",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "32",
         "name": "Logique et Programmation Logique",
@@ -218,7 +527,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "18h",
+                "CI": "",
+                "TD": "22h",
+                "TP": "6h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE vise trois objectifs, liés à diverses facettes de la logique. Premièrement, étudier les fonctions booléennes, leurs représentations et simplifications, en lien avec la conception logique de circuits. Deuxièmement, introduire les notions de logique mathématique classique (d'ordres 0 et 1) et les appliquer à la déduction par la méthode de résolution. Troisièmement, introduire le paradigme de programmation logique par la pratique du langage Prolog. Programme :<br> Fonctions booléennes: formes normales, diagrammes, simplification ; ensembles dénombrables, ensembles récursifs, récursivement énumérables ; systèmes formels ; calcul propositionnel : axiomatique, déductions, interprétation, tautologies, satisfiabilité ; clauses, résolution sans variable ;. calcul des prédicats : axiomatique, interprétation, mise en forme de formules ; élimination des quantificateurs, unification ; résolution avec variables. Langage Prolog : faits, règles, fonctionnement de l'interprète, coupure, négation.",
+            "competenceObj": "À l'issue de cette UE un étudiant devrait :<br> - savoir manipuler et simplifier des fonctions booléennes ;<br> - comprendre la notion de système formel et savoir formaliser un problème ;<br> - savoir utiliser le calcul des propositions et le calcul des prédicats ;<br> - comprendre la distinction entre syntaxe (déductions formelles) et sémantique (interprétations), en particulier comprendre la notion de modèle ;<br> - savoir traduire des énoncés du langage courant en logique du premier ordre ;<br> - pouvoir faire des déductions par la méthode de résolution (avec ou sans variables) ;<br> - comprendre et savoir résoudre un problème pratique simple en utilisant la programmation en Prolog.",
+            "biblio": "Bibliographie<br> - J.P. Delahaye : Outils logiques pour l'intelligence artificielle, 3e édition, Paris, Eyrolles, 1988.<br> - Serenella Cerrito : Logique pour l'informatique, introduction à la déduction automatique, Vuibert, 2008.<br> - René Cori et Daniel Lascar : Logique mathématique, tome 1, Dunod, 2003.",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée de cette UE, un étudiant devrait :<br> - connaître le codage binaire (cf. Bases de l'architecture informatique en S1) ;<br> - connaître les rudiments de la théorie des ensembles et de la récursion (cf. Fondement du calcul et du raisonnement en S2) ;<br> - avoir des notions de différents paradigmes de programmation."
+        }
+
     }, {
         "ueid": "33",
         "name": "Architecture",
@@ -229,7 +554,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "12h",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Cet enseignement présente les notions d'architecture des ordinateurs nécessaires au développement logiciel effectué dans un souci de correction, d'efficacité énergétique et de performance. Les thèmes traités sont la logique des circuits (combinatoires et séquentiels), l'architecture des processeurs, les jeux d'instructions, l'assembleur, le chemin de données, le pipeline et les architectures superscalaires, la hiérarchie mémoire, les architectures parallèles (multi-coeurs, générales et spécialisées).",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Comprendre les principales interactions logiciel-matériel<br> - Améliorer la performance et l'efficacité de ses programmes grâce à la compréhension de ces interactions<br> - Analyser et comprendre les caractéristiques d'un ordinateur<br> - Comprendre et développer un programme en assembleur",
+            "biblio": "Références :<br> - Architecture des ordinateurs, une approche quantitative, D.A. Patterson, J.L. Hennessy, McGraw-Hill Company<br> - Architecture de l'ordinateur, Nicholas P. Carter, Ediscience, Schaum's<br> - Architecture de l'Ordinateur, Andrew Tanembaum, Interéditions (4ième édition en français)",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée de cette UE, un étudiant devrait savoir :<br> - Pratiquer au moins un langage de programmation"
+        }
+
     }, {
         "ueid": "34",
         "name": "Structures de Données et Algorithmes 1",
@@ -240,7 +581,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "20h",
+                "CI": "",
+                "TD": "22h",
+                "TP": "12h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette unité d'enseignement vise à définir la notion de type abstrait avec une méthode de spécification algébrique dans laquelle on précise une signature contenant des types et des fonctions (encapsulation) et les relations exigées entre ces différentes fonctions (spécification équationnelle). On introduit le formalisme des spécifications algébriques en relation avec le concept de modèle (programmation par contrat). Cet outillage théorique est utilisé pour décrire des types de données de base comme les couples, par exemple, puis les types linéaires simples classiques que sont les piles, les files et les listes. Pour chaque type abstrait, les différentes possibilités d'implantation en langage C sont discutées et comparées suivant des critères d'efficacité en temps et en espace. C'est ainsi qu'on étudie des styles d'implantations statiques/fonctionnels sans effets de bord et des styles d'implantations dynamiques avec des passages d'arguments par adresse. On donne aussi les premiers éléments qui permettent de comprendre la notion de complexité algorithmique et son utilité.",
+            "competenceObj": "A l'issue de cette UE un étudiant devrait avoir les compétences suivantes :<br> - il possédera une certaine capacité à abstraire lui permettant d'analyser un problème ;<br> - il saura spécifier le problème et sa solution en utilisant des types abstraits simples ;<br> - il saura utiliser les types linéaires simples : piles, files, listes et ensembles ;<br> - il saura implanter ces spécifications de plusieurs manières possibles en langage C<br> et en choisir une qui permette de répondre de manière efficace au problème posé ;<br> - il saura calculer la complexité en temps et en espace dans quelques cas simples.",
+            "biblio": "Bibliographie :<br> - T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein. Algorithmique. Dunod, 2010. ou<br> - T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein. Introduction to Algorithms (en anglais), PHI Learning, 2010.<br> - J-F. Dufourd, D. Bechmann, Y. Bertrand, Spécifications algébriques, Algorithmique et Programmation. InterEditions, Octobre 1995.<br> - R. Sedgewick. Algorithmes en langage C. Dunod, 2005.",
+            "prerequisOblig": "Les deux UEs d'algorithmique dispensées en L1, avec une bonne connaissance du langage C",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "35",
         "name": "Programmation Orientée Objets 1",
@@ -251,7 +608,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "12h",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE est une introduction à la programmation orientée objets avec Java comme langage d'application.<br> Les thèmes étudiés sont:<br> - les classes et objets: conception des classes, constructeurs, affectation et comparaison d'objets, champs et méthodes statiques, surdéfinition de méthodes, classes internes, paquetage;<br> - l'héritage: conception des classes dérivées, redéfinition de méthodes, polymorphisme, super classe objet, classes abstraites, interfaces, classes enveloppes, classes anonymes;<br> - les flux texte en lecture et écriture.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Concevoir un programme orienté objects<br> - Maîtriser les concepts \"relation avoir\" (champ) et \"relation être\" (classe dérivée, héritage et polymorphisme)<br> - Structurer un programme avec des champs et méthodes en statique et en objet<br> - Programmer en langage objet Java",
+            "biblio": "",
+            "prerequisOblig": "Structures informatiques de base (types, affectation, condition, itération, etc.).",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "36",
         "name": "Techniques de développement",
@@ -262,7 +635,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "14h",
+                "TD": "",
+                "TP": "16h",
+                "TE": ""
+            },
+            "contenuDesc": "Mécanismes de la compilation (préprocesseur, compilation, assemblage et édition de liens). Utilisation, création et compilation de bibliothèques. Compilation séparée et structuration d'un projet informatique (makefile). Gestionnaire de versions et développement collaboratif (svn, git). Documentation de code (doxygen). Analyse de couverture de code (gcov). Méthodologie de gestion des erreurs et déverminage (gdb et valgrind). Structure mémoire d'un exécutable, pile d'exécution. Approfondissement des mécanismes d'allocation statique et dynamique de mémoire, arithmétique des pointeurs, appels de fonctions. Portée des variables et fonctions. Compléments sur le langage C et ses bibliothèques.",
+            "competenceObj": "À l'issue de cette UE, un étudiant est capable de :<br> - utiliser un compilateur, connaître ses options, utiliser la compilation séparée<br> - écrire un makefile<br> - documenter un code source<br> - contribuer à un projet collaboratif<br> - déboguer un programme<br> - maîtriser la structure en mémoire d'un programme écrit en langage C<br> - développer un projet de taille importante",
+            "biblio": "Références :<br> - Jens Gustedt, \"Modern C\", http://icube-icps.unistra.fr/index.php/File:ModernC.pdf<br> - Documentation linux (man man)",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée de cette UE, un étudiant devrait avoir suivi ou être capable de :<br> - utiliser un shell et un éditeur de texte (UE Culture et Pratique de l'Informatique)<br> - écrire des programmes en langage C (UE Algorithmique et Programmation 2)"
+        }
+
     }, {
         "ueid": "37",
         "name": "Anglais pour l'Informatique",
@@ -273,7 +662,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "8h",
+                "CI": "",
+                "TD": "",
+                "TP": "12h",
+                "TE": ""
+            },
+            "contenuDesc": "L'anglais dont ont besoin les informaticiens est différent de l'anglais littéraire enseigné par les professeurs de langue. Dans leur pratique, les informaticiens sont quotidiennement confrontés à des langues artificielles (Python, C, Java, ...) mises en oeuvre de manière stricte par les interpréteurs et compilateurs des machines avec qui ils tentent de communiquer. Tout comme les langues artificielles, les langues naturelles suivent un certain nombre de règles strictes (dont certaines sont productives : la contraction de high-fidelity se prononce [haïfaï] et pas [haïfi] ni [hifi]) que des informaticiens pourraient suivre si elles leurs étaient présentées de manière scientifique. Cette approche de l'étude des langues naturelles existe : c'est ce qu'on appelle la linguistique. Cette UE comportera des cours de linguistiques expliquant les règles syntaxiques d'écriture et de prononciation de l'anglais. Une mise en pratique sera effecutée sur l'étude de textes anglais informatiques issus de journaux ou d'articles scientifiques.",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura les règles lui permettant d'employer correctement les déterminants, some et any, les déictiques et saura d'un point de vue phonologique où placer l'accent tonique des mots anglais et en déterminer la prononciation. Il aura aussi augmenté son vocabulaire de mots liés à l'informatique.",
+            "biblio": "Lionel Guierre, Règles et exercices de prononciaton anglaise, Longman<br> Janine Bouscaren, Initiation à une grammaire de l'énonciation, Ophrys",
+            "prerequisOblig": "A l'entrée de cette UE, un étudiant devrait être capable de lire et comprendre des textes de base en anglais",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "301",
         "name": "Arithmétique et Cryptographie",
@@ -284,7 +689,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "16h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "- Brève introduction à la cryptographie, d’un point de vue historique<br> - Arithmétique entière et modulaire, et application à la cryptographie à clé publique (exemples de crypto-systèmes : RSA, El Gamal, Rabin)<br> - Anneaux de polynômes à corps de constantes fini, division euclidienne (application aux codes de redondance cyclique)<br> - Corps finis : construction, l’exemple du « corps de Rijndael », application au standard AES de cryptographie à clé privée",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Appliquer des concepts arithmétiques à la résolution de problèmes cryptographiques<br> - Traduire de façon effective les opérations sur les entiers et les polynômes<br> - Distinguer les questions relevant de la cryptographie à clef publique de ceux relevant de la cryptographie à clé privée",
+            "biblio": "Références :<br> - Lindsay N. Childs, A Concrete Introduction to Higher Algebra, Springer<br> - Johannes Buchmann (trad. Jacques Vélu), Introduction à la Cryptographie, Dunod<br> - Bruce Schneier (trad. Laurent Viennot), Cryptographie Appliquée, Vuibert",
+            "prerequisOblig": "Notions élémentaire sur les entiers et les polynômes : le module « Algèbre S1 » couvre largement les pré-requis souhaitables.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "302",
         "name": "Introduction aux Grandes Catégories de Problèmes",
@@ -295,7 +716,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "12h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE vise à initier les étudiantes aux divers niveaux de complexité d'un calcul ou une décision, ainsi qu'aux différentes modalités de décision (décision ou semi-décision, déterministe ou non). Cela se fait de plusieurs manières : d'abord par la distinction entre fonction récursive primitive et fonction mu-récursive (illustrée par la fonction d'Ackermann-Péter et le problème de l'hydre), ensuite par les différents niveaux de généralité de langages (régulier, algébrique, récursif, récursivement énumérable) et les outils correspondants (automate fini, grammaire algébrique, machine de Turing). Enfin on introduira le non-déterminisme et la complexité au sens de la machine de Turing, en particulier la décision non-déterministe, les classes P, NP et EXP.",
+            "competenceObj": "À l'issue de cette UE un étudiant devrait savoir :<br> - distinguer récursion primitive et mu-récursion ;<br> - manipuler les expressions régulières, automates finis, grammaires algébriques et machines de Turing ;<br> - ce que signifie la décision non-déterministe ;<br> - reconnaître des problèmes de classe P, NP ou EXP.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "303",
         "name": "Traitement Signal",
@@ -306,7 +743,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "14h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les bases de la théorie et du traitement du signal, c'est à dire la représentation mathématique et le traitement informatique des signaux physiques (son, lumière, ondes radio, wifi, etc.). L'UE abordera l'ensemble de la chaîne de traitement : acquisition, échantillonnage (théorème de Shannon), analyse (transformée de Fourier discrète), filtrage, convolution, transmission. Elle présentera différents types d'applications et leur mise en oeuvre (traitement et compression d'images et de sons, détection radar).",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - Reconnaître les différents types de signaux<br> - Représenter un signal sous une forme mathématique<br> - Analyser un signal et en extraire de l'information<br> - Appliquer des transformations basiques à des signaux numériques<br> - Composer une chaîne de traitement du signal",
+            "biblio": "",
+            "prerequisOblig": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - manipuler des fonctions mathématiques<br> - évaluer l'intégrale d'une fonction<br> - calculer et raisonner avec les nombres complexes",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "41",
         "name": "Probabilités Statistiques et Combinatoire",
@@ -317,7 +770,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "26h",
+                "CI": "",
+                "TD": "24h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE est un cours d'introduction à la combinatoire et aux probabilités et statistiques.flat Les thèmes étudiés sont:<br> - Combinatoire: Ensembles. Relations. Applications. Opérations sur les ensembles. Dénombrements.<br> - Probabilités: Espace probabilisé (probabilité d'un évènement, probabilité conditionnelle, indépendance d'évènements). Variables aléatoires (fonction de répartition, v.a. discrètes et continues, lois et densité de probabilités, espérance, variance, v.a. indépendantes, fonction génératrice des moments). Lois de probabilités discrètes usuelles (Bernoulli, binomiale, géométrique, binomiale négative, uniforme discrète, de poisson). Lois de probabilités continues usuelles (uniforme continue, exponentielle, normale et normale centrée réduite, Laplace).<br> - Statistiques: Mesures statistiques (tendance centrale, dispersion). Estimation ponctuelle et par intervalle de la moyenne et de la variance, cas des grands échantillons. Tests d'hypothèse pour la comparaison de deux moyennes. Test du chi-deux. Test de Wilcoxon. Ajustement d'une courbe.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura:<br> - Comprendre les concepts de base en combinatoire, probabilités et statistiques.<br> - Comprendre comment un ensemble fini est construit par des opérations élémentaires à partir d'autres ensembles et ainsi déduire sa cardinalité.<br> - Réaliser des calculs simples de probabilités, d'espérance et de variance, comprendre l'utilisation des lois de probabilités pour modéliser.<br> - Mettre en œuvre des analyses statistiques simples: faire des mesures statistiques d'échantillons de données, réaliser des tests paramétriques et non-paramétriques, utiliser des tables statistiques, construire des courbes d'ajustement.<br> L'étudiant aura ainsi les connaissances de base pour être directement opérationnel sur des concepts simples mais également pour poursuivre des développements théoriques et applicatifs dans ces trois domaines au cours de sa formation universitaire et professionnelle.",
+            "biblio": "L. Comtet. \"Analyse combinatoire, tome 1\". Presses universitaires de France (puf). 1970.",
+            "prerequisOblig": "Éléments de base en mathématiques (limites, dérivées, intégrales).",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "42",
         "name": "Programmation Système",
@@ -328,7 +797,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "20h",
+                "CI": "",
+                "TD": "",
+                "TP": "20h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les principaux concepts manipulés par les systèmes d'exploitation sous l'angle de la programmation avec les primitives systèmes : fichiers et répertoires, gestion des périphériques, processus, droits, tubes et signaux. L'accent est mis sur la portabilité des applications au travers de l'utilisation de la norme POSIX. Travaux pratiques : programmation en langage C sous Linux.",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - utiliser les principaux appels système, permettant des interactions entre un programme et le système d'exploitation<br> - écrire des programmes manipulant les objets mis à disposition par le système : processus, fichiers, répertoires, tubes, signaux.<br> - optimiser l'utilisation des ressources système<br> - faire interagir des programmes entre eux",
+            "biblio": "Bibliographie : R.W. Stevens, Advanced Programming in the UNIX Environment, Addison-Wesley",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - manipuler les notions avancées du langage C (structures de données dynamiques, pointeurs, opérateurs binaires, etc.)<br> - transcrire des algorithmes en langage C<br> - écrire des programmes simples en assembleur<br> - lire et écrire des scripts shell"
+        }
+
     }, {
         "ueid": "43",
         "name": "Réseaux IP",
@@ -339,7 +824,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "10h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "8h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE constitue une introduction aux réseaux informatiques. Elle présente la notion de service et de protocole à travers l'étude du modèle OSI et TCP/IP. Les protocoles Ethernet et IP (version 4 et 6) y sont étudiés : principe de commutation et de routage, adressage et traduction d'adresses, découverte de voisins, configuration automatique, équipements d'interconnexion (concentrateur, commutateur, routeur), sécurité. Durant cette UE, les étudiants mettent en oeuvre les différents concepts étudiés lors de travaux pratiques sur des équipements professionnels.",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - définir un plan d'adressage IP<br> - déployer un réseau informatique de petite envergure<br> - configurer son poste de travail et des équipements réseaux professionnels (commutateurs, routeurs)<br> - identifier et résoudre des anomalies réseaux simples",
+            "biblio": "Références<br> - S. Cateloin et al., Mini-Manuel des réseaux informatiques, Dunod<br> - E. Lalitte, Apprenez le fonctionnement des réseaux TCP/IP, Eyrolles<br> - J. Kurose and K. Ross, Computer Networking: A Top-Down Approach, Pearson",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - utiliser un système UNIX (commandes de base, combinaison de commandes, scripts)"
+        }
+
     }, {
         "ueid": "44",
         "name": "Structures de Données et Algorithmes 2",
@@ -350,7 +851,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "20h",
+                "CI": "",
+                "TD": "22h",
+                "TP": "12h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente de nombreuses structures de données classiques :<br> - Tables : avec adressage calculé, associatif, indexé, partagé et haché;<br> - Arbres et forêts : binaires, généraux, préfixés, (auto-)équilibrés, e.g., AVL et B-arbres;<br> - Graphes : non orientés, orientés, acycliques, etc.<br> Au niveau algorithmique, il s’agira principalement d’étudier les algorithmes de parcours classiques (en profondeur et en largeur), la dérécursivation et les algorithmes de tri (interne ou externe). Les algorithmes de tris en particulier seront utilisés pour illustrer et approfondir les notions d’optimalité et de complexité introduites en SDA1. Sur les graphes, seuls quelques exemples seront traités : la fermeture transitive avec l’algorithme de Warshall et le calcul d’une forêt de recouvrement dans le cas orienté (algorithme de Tarjan).<br> Dès lors que la notion de type abstrait des structures étudiées aura été formellement introduite et définie (par exemple avec la méthode de spécification algébrique initiée en SDA1), la seconde étape consistera à rigoureusement spécifier les algorithmes manipulant ces structures. Cette spécification sera essentiellement réalisée sous une forme équationnelle équivalente à une approche fonctionnelle mais, sur certains exemples, on raffinera la spécification pour produire des algorithmes itératifs traduits ensuite dans un pseudo langage impératif. Enfin, il s’agira d’aller au bout de la démarche avec des implantations concrètes en programmation impérative, par exemple en C.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura d'une manière générale spécifier, programmer et implanter de façon efficace des algorithmes et des structures de données les plus pertinentes pour résoudre des problèmes concrets, ou, en détaillant<br> - maîtriser et manipuler une variété de structures de données classiques ;<br> - utiliser et comparer les principaux algorithmes manipulant ces structures de données;<br> - choisir les structures de données les plus adaptées aux problèmes à résoudre;<br> - évaluer la complexité en temps et en espace des solutions retenues.",
+            "biblio": "Bibliographie :<br> - T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein. Algorithmique. Dunod, 2010. ou<br> - T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein. Introduction to Algorithms (en anglais), PHI Learning, 2010.<br> - J-F. Dufourd, D. Bechmann, Y. Bertrand, Spécifications algébriques, Algorithmique et Programmation. InterEditions, Octobre 1995.<br> - R. Sedgewick. Algorithmes en langage C. Dunod, 2005.",
+            "prerequisOblig": "À l'entrée de cette UE, un étudiant devrait savoir manipuler, analyser et comparer des structures de données simples (i.e. linéaires, e.g., listes, files, etc) et concevoir des algorithmes basiques de leur spécification à leur implémentation pour résoudre efficacement des problèmes concrets.<br> En pratique il s’agit des compétences développées en AlgoProg 1 (L1.S1) &amp; 2 (L1.S2) et SDA1 (L2.S3)",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "45",
         "name": "Programmation Orientée Objets 2",
@@ -361,7 +878,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "18h",
+                "CI": "",
+                "TD": "10h",
+                "TP": "8h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE a pour objectif une vue générale de l'ensemble des concepts des langages objets existant, avec un focus sur certains mécanismes sous-jacent essentiels. Sujets abordés:<br> - Famille de langage: Langage à classe vs à prototype, typé (et règles de typage) vs non typé, pur vs type de base, compilé vs interprété<br> - Famille d'héritage: simple, multiple, dynamique, alimentaire, par interface, par trait<br> - Protection par exception vs programmation par contrat<br> - 3 techniques de ramasse-miettes<br> - Technique de résolution de la liaison dynamique: par lookup, par VFT, par DBB<br> - Parallélisme: Thread &amp; problème d'accès concurrent vs SCOOP<br><br> Langages principalement utilisés pour étayer les connaissances:<br> - Java: Langage à classe typé (semi-compilé) ; héritage simple ; interface ; exception ; généricité ; thread<br> - Lisaac: Langage à prototype typé (compilé) ; pur objet (sans type de base) ; héritage multiple, dynamique, alimentaire ou par trait ; programmation par contrat",
+            "competenceObj": "À l'issue de cette UE, un étudiant est capable de :<br> - s'adapter aux diffèrents paradigmes objet<br> - avoir une idée de la complexité en terme de performance de l'utilisation des concepts objet<br> - exploiter la modélisation objet pour travailler sur de gros projet en groupe",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée de cette UE, un étudiant devrait avoir suivi ou être capable de :<br> - Bonne connaissance du C: Appel direct, appel indirect (par pointeur), structure de donnée.<br> - Quelques connaissances en Système d'Exploitation (Zone d'addressage code, global, tas, pile)."
+        }
+
     }, {
         "ueid": "46",
         "name": "Programmation Web 2",
@@ -372,7 +905,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "12h",
+                "TD": "",
+                "TP": "16h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les principes et techniques de développement permettant de réaliser dans les règles de l'art des applications WEB client léger. Les différentes briques nécessaires à cet objectif y seront abordées pour comprendre le développement WEB dans son ensemble : l'infrastructure, le modèle client/serveur, le HTML, le rendu CSS, le Javascript et la méthode AJAX, l'utilisation de librairies telles jQuery pour dynamiser les IHM et de frameworks tels Bootstrap pour répondre aux problématiques du responsive, le langage PHP. Durant cette UE, les étudiants réalisent un mini-développement mettant en oeuvre tout ou partie de ces principes dans le cadre d'un projet.",
+            "competenceObj": "À l'issue de cette UE un étudiant connaîtra :<br> - Le modèle client serveur<br> - Le DOM, les événements et les balises HTML<br> - Le montage et intégration HTML<br> - L'utilisation des formulaires<br> - L'utilisation des CSS<br> - Le langage Javascript et les appels AJAX<br> - Le responsive : principes et framework<br> - Le langage PHP",
+            "biblio": "Références :<br> - Denis MATARAZZO : Apprenez les langages HTML5, CSS3 et JavaScript pour créer votre premier site web, Eni Editions , 2014<br> - Julien Gambelli : Apprendre à développer un site web responsive et dynamique avec PHP, Eni Editions , 2016",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée de cette UE, un étudiant devrait savoir :<br> - développer dans un langage impératif<br> - utiliser des composants fournis par une librairie<br> - développer avec la rigueur inhérente à l'utilisation d'un framework"
+        }
+
     }, {
         "ueid": "47",
         "name": "Langue",
@@ -383,7 +932,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "48",
         "name": "Stage",
@@ -394,7 +959,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "401",
         "name": "Communication",
@@ -405,7 +986,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Théorie de la communication : Les sciences de l'information et de la communication (SIC). Définition du champ d'étude des SIC. Application à la communication. Les nouvelles technologies de l'information et de la communication. Les communications de masse, les communications de type publicitaire, les communications d'entreprise. Les processus de la communication, la transmission de l'information, l'influence.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura communiquer et transmettre de l'information scientifique.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "402",
         "name": "Droit",
@@ -416,7 +1013,24 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Les nouvelles technologies et le droit : la propriété intellectuelle et la protection des créations informatiques, les principes du droit d'auteur et du droit des brevets, le cas du logiciel, des bases de données et de l'oeuvre multimédia. L'exploitation des créations informatiques (contrat de cession et de licence). L'informatique et les libertés (la CNIL, les obligations des détenteurs de fichiers, les droits des personnes fichées). La délinquance informatique (la contrefaçon des logiciels et des bases de données, l'intrusion dans les systèmes informatiques, l'internet et la responsabilité des fournisseurs d'accès). Droit du travail et informatique : les sources du droit du travail et les conventions collectives. L'impact de l'introduction des nouvelles technologies au sein des entreprises sur les relations individuelles de travail (le respect de la vie privée et la rupture du contrat de travail), sur les relations collectives de travail (consultation des représentants du personnel et les pouvoirs de l'employeur).Le télétravail.",
+
+            "competenceObj": "À l'issue de cette UE un étudiant saura appréhender les bases du droit du travail et du droit liés aux nouvelles technologies.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "403",
         "name": "Economie et Gestion",
@@ -427,7 +1041,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Initiation à l'économie : Environnement économique des entreprises dans le secteur des technologies de l'information et de la communication, étude micro-économique, structures de marché qui guident le comportement des firmes. Fondements théoriques de la concurrence, du monopole et de l'oligopole. Implications politiques comme la réglementation et les politiques concurrentielles. Principes de fonctionnement interne des entreprises : Étude des stratégies des entreprises : choix d'une stratégie particulière, analyse de stratégies génériques. Financement des entreprises (trésorerie, gestion de portefeuille, budget, etc.), besoins et sources de financement. Marchés : prospection des marchés, cycle de vie des produits, politique de prix, techniques de communication, marketing, distribution. Compréhension de l'entreprise, négociation de contrats avec les prestataires (achat, maintenance, service), maîtrise d'œuvre. Les flux d'information dans l'entreprise.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura appréhender les concepts de base de l'économie et de la gestion des entreprises.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "51",
         "name": "Analyse Numérique Appliquée",
@@ -438,7 +1068,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "6h",
+                "TP": "6h",
+                "TE": ""
+            },
+            "contenuDesc": "Ce module aborde des notions d’algèbre linéaire et des outils d’analyse numérique sous un angle algorithmique et applicatif. Les sujets abordés sont les suivants.<br> Rappels sur les espaces vectoriels et les matrices. Résolution de systèmes linéaires d'équations (calcul direct, factorisation). Applications linéaires et changements de base.<br> Calcul de valeurs propres, vecteurs propres, diagonalisation.<br> Moindres carrés, régression linéaire, régression polynomiale, et régression avec transformation logarithmique.<br> Applications sur un logiciel de calcul numérique.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> Utiliser des algorithmes pour résoudre des systèmes linéaires et diagonaliser des matrices.<br> Effectuer des changements de bases.<br> Mener des régressions avec transformation des variables.<br> Utiliser un logiciel de calcul numérique.<br> Tester expérimentalement la complexité asymptotique d’un algorithme.<br> Observer numériquement la convergence d’un algorithme itératif.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée de cette UE, un étudiant devrait savoir :<br> Notions d’espaces vectoriels, bases, matrices, systèmes linéaires, applications linéaires."
+        }
+
     }, {
         "ueid": "52",
         "name": "Graphes",
@@ -449,7 +1095,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "20h",
+                "CI": "",
+                "TD": "14h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les propriétés mathématiques fondamentales des graphes, et analyse les principaux algorithmes sur ceux-ci. Programme :<br> Graphes orientés et non-orientés : adjacence, degrés, voisinages ; chaînes, chemins, cycles et circuits ; composantes (fortement) connexes ; graphes eulériens ; arbres et arborescences. Algorithmes sur les graphes : parcours en largeur et en profondeur, tri topologique, composantes fortement connexes ; arbres couvrants minimum ; recherche de plus courts chemins ; réseaux de transports et recherche de flots maximaux. Couplages dans les graphes bipartis, applications.",
+            "competenceObj": "À l'issue de cette UE une étudiante devrait savoir :<br> - les propriétés fondamentales des graphes et des arbres ;<br> - exprimer des problèmes dans le langage des graphes ;<br> - pratiquer les algorithmes sur les graphes.",
+            "biblio": "Références :<br> C. Berge : Graphes, 2e édition, Dunod, 1973.<br> T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein : Introduction to Algorithms, PHI Learning, 2010. Traduction française : Algorithmique. Dunod, 2010.",
+            "prerequisOblig": "À l'entrée de cette UE, une étudiante devrait :<br> - connaître les rudiments de mathématiques discrètes (cf. PSC en S4) ;<br> - pratiquer la programmation impérative, choisir les structures de données appropriées et connaître l'algorithmique de base (cf. SDA1 en S3 et SDA2 en S4).",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "53",
         "name": "Architecture des Systèmes d'Exploitation",
@@ -460,7 +1122,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "26h",
+                "CI": "",
+                "TD": "14h",
+                "TP": "12h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente le fonctionnement des principaux composants architecturaux des systèmes d'exploitation (noyau, gestion mémoire, processus et threads, fichiers et périphériques), l'interface avec le matériel (interruptions, traduction d'adresses, gestion des périphériques) et les mécanismes sous-jacents (pagination, synchronisation, commutation, ordonnancement, etc.). Les mécanismes de synchronisation et les problèmes de concurrence sont abordés à travers la programmation en C avec les threads POSIX et le partage de mémoire entre processus.",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - comment fonctionnent les systèmes d'exploitation<br> - comment le matériel et les systèmes d'exploitation interagissent<br> - identifier précisément les tâches d'administration système<br> - identifier et résoudre les problèmes de concurrence dans les programmes<br> - écrire des programmes partageant des ressources<br> - organiser l'accès à des ressources partagées",
+            "biblio": "Références :<br> - A. Silberschatz, P. B. Galvin, G. Gagne, Operating System Concepts (9th Edition), Wiley<br> - R. Arpaci-Dusseau, A.C. Arpaci-Dusseau, Operating Systems: Three Easy Pieces, http://pages.cs.wisc.edu/~remzi/OSTEP/",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - écrire des programmes complexes en langage C<br> - écrire des programmes utilisant les primitives systèmes POSIX<br> - écrire des programmes simples en assembleur"
+        }
+
     }, {
         "ueid": "54",
         "name": "Algorithmes des Réseaux",
@@ -471,7 +1149,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "10h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les mécanismes utilisés par les protocoles réseaux pour assurer la fiabilité et augmenter l'efficacité des communications : numérotation et accusés de réception, retransmission continue et sélective, anticipation à l'émission et à la réception, contrôle de flux et de congestion. Les éléments constitutifs de la couche transport du modèle TCP/IP sont présentés avec une étude approfondie du protocole TCP. Développement d'applications communicantes via l'API socket en langage C.",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - spécifier un protocole de communication<br> - développer une application communicante<br> - analyser les performances d'une communication",
+            "biblio": "Références<br> - S. Cateloin et al., Mini-Manuel des réseaux informatiques, Dunod<br> - J. Kurose and K. Ross, Computer Networking: A Top-Down Approach, Pearson",
+            "prerequisOblig": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - déployer un réseau IP simple (connexion physique, configuration des postes et des équipements d'interconnexion)<br> - écrire des programmes complexes dans un langage impératif (les séances de TP et le projet sont en C)<br> - écrire des programmes POSIX qui utilisent des objets fondamentaux du système d'exploitation (fichiers, processus)",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "55",
         "name": "Bases de Données 2",
@@ -482,7 +1176,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "12h",
+                "TE": ""
+            },
+            "contenuDesc": "Les principes de fonctionnement des systèmes de gestion de bases (SGBD) de données sont abordés dans cette UE. Les outils de base permettant l'administration et l'optimisation des traitements et accès aux données seront présentés. En particulier, les notions suivantes seront approfondies : Les différentes catégories de transaction, leurs contraintes en terme de performance et de fiabilité, la gestion de la sécurité dans les SGBD et la mise en place de bases de données distribuées.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Ecrire des fonctions définies par l'utilisateur pour les SGBD, des procédures stockées et des déclencheurs<br> - Choisir le bon niveau de transaction en fonction de l'application<br> - Définir des index pour améliorer la performance des accès aux données<br> - Administrer un SGBD<br> - Mettre en place une architecture distribuée simple pour un système d'information<br> - Gérer la sécurité d'un SGBD",
+            "biblio": "Références :<br> - Database Systems: The Complete Book, H. Garcia-Molina, J. D. Ullman, J. Widom, 2008, Pearson<br> - Database System Concepts, A. Silberschatz, H. F. Korth, S. Sudarshan, 2010, McGraw-Hill<br> - Database Administration: The Complete Guide to Practices and Procedures, Craig S. Mullins, 2012, Addison-Wesley Professional",
+            "prerequisOblig": "Bases de données 1",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "56",
         "name": "Interaction Homme-Machine",
@@ -493,7 +1203,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "15h",
+                "CI": "",
+                "TD": "",
+                "TP": "20h",
+                "TE": ""
+            },
+            "contenuDesc": "Historique de l'interaction Homme/Machine. Éléments de psychologie appliqués aux systèmes interactifs. Types et gestion des périphériques d'entrée/sortie, interdépendance avec une interface. Styles d'interaction. Ergonomie : principes et attributs. Design d'interface graphique. Approches de conception, profils d'utilisateurs, traduction du besoin en fonctionnalités. Conception fonctionnelle, conception technique. Vocabulaire, concepts. Techniques d'implémentation. Techniques de validation. Composants d'une IHM : types de choix, types d'actions. Systèmes de fenêtrage, librairies graphiques. Dialogue et interaction homme/système : bonnes pratiques, mauvaises pratiques, études de cas. Adaptive design, responsive design : définitions, mise en oeuvre. Égalité vis à vis du contenu. Accessibilité. Localisation, Internationalisation. Outils de développement, boîtes à outils, générateurs d'interfaces, outils graphiques. Qt, C++, HTML, CSS.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Comprendre l'origine et la raison d'être des designs d'IHM informatiques actuels.<br> - Reconnaître et appliquer les grands principes de l'ergonomie.<br> - Concevoir une interface graphique adaptée à un besoin spécifique.<br> - Implémenter une interface graphique pérenne.",
+            "biblio": "Références :<br> OLSEN D.R., Developing user Interfaces, Morgan Kaufmann Publilshers.<br> PREECE J., Uman Computer Interaction, Addison-Wesley-Longman.<br> SCHNEIDERMAN B., Designing the User Interface, 3rd edition, Addison-Wesley-Longman.",
+            "prerequisOblig": "Programmation orientée objets 2<br> Structure de données, algorithmes 2",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "57",
         "name": "Langue",
@@ -504,7 +1230,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "58",
         "name": "Projet Professionnel Encadré 2",
@@ -515,7 +1257,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "501",
         "name": "Arithmétique et Cryptographie",
@@ -526,7 +1284,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "16h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "- Brève introduction à la cryptographie, d’un point de vue historique<br> - Arithmétique entière et modulaire, et application à la cryptographie à clé publique (exemples de crypto-systèmes : RSA, El Gamal, Rabin)<br> - Anneaux de polynômes à corps de constantes fini, division euclidienne (application aux codes de redondance cyclique)<br> - Corps finis : construction, l’exemple du « corps de Rijndael », application au standard AES de cryptographie à clé privée",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Appliquer des concepts arithmétiques à la résolution de problèmes cryptographiques<br> - Traduire de façon effective les opérations sur les entiers et les polynômes<br> - Distinguer les questions relevant de la cryptographie à clef publique de ceux relevant de la cryptographie à clé privée",
+            "biblio": "Références :<br> - Lindsay N. Childs, A Concrete Introduction to Higher Algebra, Springer<br> - Johannes Buchmann (trad. Jacques Vélu), Introduction à la Cryptographie, Dunod<br> - Bruce Schneier (trad. Laurent Viennot), Cryptographie Appliquée, Vuibert",
+            "prerequisOblig": "Notions élémentaire sur les entiers et les polynômes : le module « Algèbre S1 » couvre largement les pré-requis souhaitables.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "502",
         "name": "Introduction aux Grandes Catégories de Problèmes",
@@ -537,7 +1311,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "12h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE vise à initier les étudiantes aux divers niveaux de complexité d'un calcul ou une décision, ainsi qu'aux différentes modalités de décision (décision ou semi-décision, déterministe ou non). Cela se fait de plusieurs manières : d'abord par la distinction entre fonction récursive primitive et fonction mu-récursive (illustrée par la fonction d'Ackermann-Péter et le problème de l'hydre), ensuite par les différents niveaux de généralité de langages (régulier, algébrique, récursif, récursivement énumérable) et les outils correspondants (automate fini, grammaire algébrique, machine de Turing). Enfin on introduira le non-déterminisme et la complexité au sens de la machine de Turing, en particulier la décision non-déterministe, les classes P, NP et EXP.",
+            "competenceObj": "À l'issue de cette UE un étudiant devrait savoir :<br> - distinguer récursion primitive et mu-récursion ;<br> - manipuler les expressions régulières, automates finis, grammaires algébriques et machines de Turing ;<br> - ce que signifie la décision non-déterministe ;<br> - reconnaître des problèmes de classe P, NP ou EXP.",
+            "biblio": "",
+            "prerequisOblig": "À l'entrée de cette UE, une étudiante devrait comprendre la notion d'algorithme et calcul en informatique, et connaître la machine de Turing comme modèle de base d'un algorithme (cf. UE \"Modèles de calcul\" en S2).",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "503",
         "name": "Traitement Signal",
@@ -548,7 +1338,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "12h",
+                "CI": "",
+                "TD": "14h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les bases de la théorie et du traitement du signal, c'est à dire la représentation mathématique et le traitement informatique des signaux physiques (son, lumière, ondes radio, wifi, etc.). L'UE abordera l'ensemble de la chaîne de traitement : acquisition, échantillonnage (théorème de Shannon), analyse (transformée de Fourier discrète), filtrage, convolution, transmission. Elle présentera différents types d'applications et leur mise en oeuvre (traitement et compression d'images et de sons, détection radar).",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - Reconnaître les différents types de signaux<br> - Représenter un signal sous une forme mathématique<br> - Analyser un signal et en extraire de l'information<br> - Appliquer des transformations basiques à des signaux numériques<br> - Composer une chaîne de traitement du signal",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - manipuler des fonctions mathématiques<br> - évaluer l'intégrale d'une fonction<br> - calculer et raisonner avec les nombres complexes"
+        }
+
     }, {
         "ueid": "61",
         "name": "Théorie des Langages",
@@ -559,7 +1365,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "21h",
+                "CI": "",
+                "TD": "28h",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Cette unité d'enseignement pose les fondements de la théorie des langages. Son objectif premier est la compréhension de certains mécanismes inhérents à la conception des langages de programmation et à une introduction à la théorie de la calculabilité. Ses applications peuvent néanmoins s'étendre à d'autres domaines scientifiques.<br> Le plan du cours est le suivant : après l'introduction d'un certain nombre d'outils formels en relation avec les notions de langage formel, nous présenterons en détails la classe des langages rationnels et la classe des langages algébriques. Nous présenterons ainsi différentes notions correspondant à la classe des langages rationnels : les expressions rationnelles ; les automates d'états finis (déterministes et non déterministes) ; la déterminisation des automates ; des propriétés de stabilité de la classe des langages rationnels ; le lemme de l’Étoile puis la minimisation des automates. Nous présenterons ensuite différentes notions correspondant à la classe des langages algébriques : les grammaires algébriques ; les automates à pile ; les propriétés de stabilité de la classe des langages algébriques ; le lemme de la double Étoile puis les équivalences automates-grammaires.<br> Ce cours se terminera par une introduction aux machines de Turing qui sont des « ultimes » généralisations de la notion d'automate.",
+            "competenceObj": "À l'issue de cette UE un(e) étudiant(e) devrait :<br> - savoir manipuler les expressions rationnelles et les automates déterministes/non-déterministes,<br> - comprendre le lien entre les expressions rationnelles et les automates,<br> - savoir manipuler les grammaires algébriques et les automates à pile,<br> - comprendre le lien entre les grammaires algébriques et les automates à pile,<br> - comprendre plus généralement le lien entre les outils permettant de générer les mots d'un langage et les machines permettant la reconnaissance des mots de ce même langage,<br> - savoir utiliser des outils permettant de classifier les langages et avoir une bonne compréhension de la hiérarchie de différentes classes de langages.",
+            "biblio": "Références :<br> - [L&amp;P 98] Harry R. Lewis &amp; Christos H. Papadimitriou. « Elements of the theory of computation » Prentice Hall, Inc.<br> - [Aut 97] J.-M. Autebert. « Théorie des langages et des automates ». Masson.",
+            "prerequisOblig": "À l'entrée de cette UE, un(e) étudiant(e) devrait :<br> - connaître les rudiments de la théorie des ensembles et de la récursion (cf. Fondement du calcul et du raisonnement en S2),<br> - connaître des notions en algèbre et analyse (cf. Algèbre 2 en S2 et Analyse 2 en S3),<br> - connaître des notions de la logique classique et les différents mode de raisonnement (cf. Logique et Programmation Logique en S3),<br> - connaître des notions sur le graphes (cf. Graphes en S5).",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "62",
         "name": "Génie Logiciel",
@@ -570,7 +1392,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Contexte d'entreprise : acteurs, enjeux, aspects organisationnels. Périmètre, planification et maîtrise de projet informatique. Qualités logicielles. Cycles de vie, modèles de développement. Expression du besoin, outils d'analyse, spécification. Méthodes de conception. Modélisation, analyse et conception orientée objets : UML. Cas d'utilisation, activités, diagrammes de classes et d'objets, de séquence, de communication. Études de cas. Technique de production d'un code de qualité professionnelle. Pratiques agiles, Extreme Programming, Srum. Équipes de développement, rôles, travail collaboratif. Évaluation : revue de code, stratégies de test, types de tests, automatisation, intégration descendante et ascendante et d'un système, validation, déploiement, métriques. Maintenance. Gestion de version, gestion de configuration. Pipeline de documentation. Ateliers de Génie Logiciel, outils automatisés de développement, intégration continue.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - procéder à l’analyse, à la modélisation et au développement de divers types de systèmes logiciels.<br> - s’adapter aux divers types de matériels, de logiciels et d'organisation en usage dans les entreprises.<br> - comprendre l’importance de planifier, d’organiser et de structurer un projet de développement de système, d’en estimer les coûts et les bénéfices et d’en coordonner la réalisation.<br> - communiquer facilement et efficacement, tant de façon orale qu’écrite, les résultats de ses analyses et travaux.<br> - acquérir des méthodes de travail, une capacité de synthèse et un degré d’autonomie, devenir apte à résoudre divers types de problèmes rencontrés dans une pratique professionnelle.",
+            "biblio": "",
+            "prerequisOblig": "Programmation orientée objets 2",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "63",
         "name": "Projet Intégrateur",
@@ -581,7 +1419,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "20h",
+                "TE": ""
+            },
+            "contenuDesc": "Ce projet permet de mettre en évidence, par la pratique, les interactions qui existent entre les connaissances et compétences acquises dans des UE différentes. Ils ont également vocation à impliquer les étudiants dans des projets d’envergure relativement large sur la durée du semestre, et ainsi à mettre progressivement en avant les concepts ou outils de management de projet.",
+            "competenceObj": "À l'issue de cette UE un étudiant sera capable de :<br> - mettre en œuvre et imbriquer des compétences acquises par ailleurs, au service d'une réalisation concrète et aboutie<br> - travailler en équipe<br> - mettre à profit des techniques et outils de gestion de projet<br> - valoriser et communiquer sur une réalisation informatique",
+            "biblio": "",
+            "prerequisOblig": "À l'entrée de cette UE, un étudiant devrait savoir :<br> - (compétences développement)<br> - (compétences techniques de développement)<br> - (compétences bases de données)<br> - (compétences système/réseaux)",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "64",
         "name": "Anglais pour l'Informatique",
@@ -592,7 +1446,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "L'anglais dont ont besoin les informaticiens est différent de l'anglais littéraire enseigné par les professeurs de langue. Dans cette UE d'anglais L3, les enseignants des différentes équipes de recherche sur lesquelles s'adossent les parcours de Master proposés à l'Unistra présenteront aux étudiants leurs thématiques de recherche en anglais, en s'appuyant sur des textes scientifiques.",
+            "competenceObj": "L'étude des textes scientifiques proposés par les différentes équipes de recherche en informatique du laboratoire ICUBE permettra aux étudiants de mieux comprendre ce que font les différentes équipes, tout en améliorant leur niveau d'anglais scientifique. A l'issue de cette UE, les étudiants auront un meilleur niveau en anglais scientifique et seront mieux à même de déterminer quel parcours de Master choisir pour poursuivre leurs études vers le doctorat.",
+            "biblio": "",
+            "prerequisOblig": "A l'entrée de cette UE, un étudiant devrait être capable de lire et comprendre des textes de vulgarisation scientifique.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "65",
         "name": "Stage",
@@ -603,7 +1473,23 @@
         "dependances": [],
         "projet": "false",
         "option": "false",
-        "facultatif" : "true"
+        "facultatif": "true",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "601",
         "name": "Géométrie 3D",
@@ -614,7 +1500,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "14h",
+                "CI": "",
+                "TD": "6h",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Acquérir les bases de la géométrie linéaire dans le plan et dans l'espace. Maîtriser la composition de transformations géométriques pour être capable de développer une application pour la 3D à l’aide d’OpenGL. Introduction à la géométrie algorithmique dans le plan en terme méthodologique et d’algorithmes robustes.<br><br> Présentation des transformations géométriques de base, de leurs propriétés, de leur composition en coordonnées homogènes. Présentation des équations générales et paramétriques des droites et des plans. Rappel sur les vecteurs, produits scalaires et vectoriels, conditions de colinéarité, coplanarité, orthogonalité. Positions relative d’un point et d’une droite, de deux droites, d’une droite et d’un plan ou leurs restrictions à un segment ou un triangle. Présentation des coordonnées barycentriques. Tests et calculs d’intersection des éléments linéaires. Présentation des polygones. Introduction des bases de la géométrie algorithmique à travers quelques algorithmes dans le plan comme le calcul d’aires, le problème de la galerie d’art, l’enveloppe convexe, la triangulation etc. Evocation de Voronoï. Durant cette UE, les étudiants mettent en pratique via une application 3D à l'aide d'OpenGL.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Reconnaître et retrouver les transformations de base comme les translations, homothétie, rotation 2D et 3D.<br> - Décomposer une transformation géométrique complexe en une séquence de transformations géométriques simples.<br> - Ecrire les matrices des transformations géométriques de base en coordonnées homogènes.<br> - Déterminer les diverses équations des droites et des plans à partir des données les décrivant.<br> - Passer des coordonnées cartésiennes aux coordonnées barycentriques et l’inverse.<br> - Ecrire des algorithmes robustes d’intersection des éléments linéaires, droites, segments, plans, triangle etc.<br> - Localiser un point par rapport à une droite par la méthode des aires (orientation).<br> - Localiser un point par rapport à un polygone par la méthode des angles et des indices.<br> - Retrouver les conditions de colinéarité, coplanarité, orthogonalité entre vecteurs.<br> - Ecrire un algorithme géométrique robuste et efficace pour des problèmes simples de géométrie.",
+            "biblio": "Références :<br> - Mark de Berg, Marc van Kreveld, Mark Overmars, Otfried Schwarzkopf, Computational Geometry, Algorithms and Applications, Second, Revised Edition, Springer, 2000 (ISBN 3-540-65620-0)<br> - Joseph O'Rourke, Computational Geometry in C, Second Edition, Cambridge University Press, 1994.<br> - Informatique Graphique, Modélisation Géométrique et Animation, Série Traitement du signal et de l'image (Traité IC2), sous la direction de D. Bechmann, B. Péroche, Hermès ISBN : 978-2-7462-1514-6.<br> - Informatique Graphique et Rendu, Série Traitement du signal et de l'image (Traité IC2), sous la direction de B. Péroche, D. Bechmann, Hermès ISBN : 978-2-7462-1515-3.<br> - Computer graphics : principles and practice, FOLEY J. &amp; al., Addison-Wesley, 1990.",
+            "prerequisOblig": "À l'entrée de cette UE, un étudiant devrait savoir :<br> - compétence avancées en algorithmique et programmation<br> - connaissance des structures de données classiques (listes, arbres, graphes)<br> - des éléments de base en géométrie.",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "602",
         "name": "Intelligence Artificielle",
@@ -625,7 +1527,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "10h",
+                "TE": ""
+            },
+            "contenuDesc": "Ce cours est une introduction à l’IA. Il en passera en revue les techniques fondamentales notamment en matière d’apprentissage machine. On y présentera les premières techniques ayant obtenu de bons résultats comme les systèmes experts, des notions fondamentales comme celle de l’entropie de Shannon puis ses applications dans la construction d’arbres de décision. On poursuivra l’exploration des techniques d’apprentissage en présentant le k-means et les diagrammes de Voronoï, les réseaux bayesiens, suivis d'une présentation des réseaux neuronaux et leur architecture. Pour finir, on présentera des méthodes stochastiques massivement parallèles inspirées de la nature (optimisation par essaim particulaire, optimisation par colonies de fourmis, évolution artificielle).",
+            "competenceObj": "A l'issue de cette UE, un étudiant est capable de pré-traiter les données pour les rendre compatibles avec des algorithmes d'apprentissage, d'identifier le besoin de faire de l'apprentissage supervisé ou non, de mettre en oeuvre un arbre de décision permettant d'aboutir à un système expert, de naviguer dans les hyper-paramètres d'un réseau neuronal pour en comprendre les impacts sur l'apprentissage du réseau. Il aura aussi compris les bases des algorithmes inspirés de la nature massivement parallèles.",
+            "biblio": "Références ; Stuart Russel, Peter Norvig: Artificial Intelligence, a modern approach, Pearson",
+            "prerequisOblig": "A l'entrée dans cette UE, l'étudiant doit savoir programmer dans un paradigme objet (important pour les TPs).",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "603",
         "name": "Réseaux Locaux",
@@ -636,7 +1554,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "10h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "8h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE se focalise sur l'interconnexion de réseaux informatiques au niveau liaison (couche 2) du modèle OSI. La première partie du cours propose d'étudier les protocoles d'accès au support de communication : méthodes probabilistes (CSMA et ses dérivées) et déterministes (TDMA, FDMA, anneau à jeton). L'accent est ensuite porté sur l'interconnexion de réseaux locaux au niveau trame avec l'étude du protocole Spanning Tree et des réseaux locaux virtuels (VLAN). Introduction aux codes détecteurs et correcteurs d'erreurs. Les travaux pratiques permettront de mettre en œuvre les différents protocoles et technologies étudiés.",
+            "competenceObj": "À l'issue de cette UE, un étudiant saura :<br> - déployer des réseaux locaux avancés<br> - choisir une méthode d'accès adaptée à un support de communication<br> - mettre en oeuvre un code FEC pour corriger des erreurs de transmission",
+            "biblio": "Références<br> - S. Cateloin et al., Mini-Manuel des réseaux informatiques, Dunod<br> - J. Kurose and K. Ross, Computer Networking: A Top-Down Approach, Pearson- J. Kurose and K. Ross, Computer Networking: A Top-Down Approach, Pearson",
+            "prerequisOblig": "À l'entrée dans cette UE, un étudiant devrait savoir :<br> - spécifier un protocole de communication<br> - déployer un réseau IP (connexion physique, configuration des postes et des équipements d'interconnexion)<br> - analyser les performances d'une communication",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "604",
         "name": "Programmation Parallèle",
@@ -647,7 +1581,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "10h",
+                "CI": "",
+                "TD": "8h",
+                "TP": "8h",
+                "TE": ""
+            },
+            "contenuDesc": "Cette UE présente les concepts et la mise en oeuvre de la programmation parallèle pour accélérer les traitements sur les architectures informatiques qui en sont capables. Les différentes architectures parallèles (machines vectorielles, multi-coeurs, clusters, accélérateurs matériels) y sont étudiées ainsi que les différents types de parallélisme (parallélisme de tâches, de threads, d'instructions et de données) et leur efficacité (loi d'Amdahl, évaluation de performances). Cette UE abordera les techniques de parallélisation (analyse de dépendances, ordonnancement) et d'optimisation (localité mémoire, minimisation des communications). Les erreurs classiques de la programmation parallèle y sont détaillés (data race, défaut de synchronisation, incohérence des données), ainsi que les moyens de les identifier et les éviter. Les principes fondamentaux seront mis en oeuvre par la programmation multi-thread pour architecture à mémoire partagée (OpenMP), pour accélérateurs matériels (OpenACC) et/ou pour architectures à mémoire distribuée (MPI).",
+            "competenceObj": "À l'issue de cette UE un étudiant saura :<br> - Identifier ou extraire le parallélisme d'une application existante<br> - Écrire des applications parallèles optimisées<br> - Exploiter des architectures parallèles<br> - Évaluer les performances d'une application parallèle<br> - Reconnaître et éviter les erreurs de programmation liées au parallélisme",
+            "biblio": "Références :<br> - B. Chapman, G. Jost et R van der Pas, Using OpenMP, MIT Press, 2008<br> - OpenMP Specifications http://www.openmp.org/specifications/<br> - OpenACC Specification https://www.openacc.org/specification<br> - MPI Standard http://mpi-forum.org/docs/",
+            "prerequisOblig": "À l'entrée de cette UE, un étudiant devrait savoir :<br> - Programmer des applications complexes (UE structures de données et algorithmes 2)<br> - Écrire des applications communiquant ou partageant de l'information entre elles (UE architecture des systèmes d'exploitation)",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "605",
         "name": "Communication",
@@ -658,7 +1608,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Théorie de la communication : Les sciences de l'information et de la communication (SIC). Définition du champ d'étude des SIC. Application à la communication. Les nouvelles technologies de l'information et de la communication. Les communications de masse, les communications de type publicitaire, les communications d'entreprise. Les processus de la communication, la transmission de l'information, l'influence.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura communiquer et transmettre de l'information scientifique.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "606",
         "name": "Droit",
@@ -669,7 +1635,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Les nouvelles technologies et le droit : la propriété intellectuelle et la protection des créations informatiques, les principes du droit d'auteur et du droit des brevets, le cas du logiciel, des bases de données et de l'oeuvre multimédia. L'exploitation des créations informatiques (contrat de cession et de licence). L'informatique et les libertés (la CNIL, les obligations des détenteurs de fichiers, les droits des personnes fichées). La délinquance informatique (la contrefaçon des logiciels et des bases de données, l'intrusion dans les systèmes informatiques, l'internet et la responsabilité des fournisseurs d'accès). Droit du travail et informatique : les sources du droit du travail et les conventions collectives. L'impact de l'introduction des nouvelles technologies au sein des entreprises sur les relations individuelles de travail (le respect de la vie privée et la rupture du contrat de travail), sur les relations collectives de travail (consultation des représentants du personnel et les pouvoirs de l'employeur). Le télétravail.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura appréhender les bases du droit du travail et du droit liés aux nouvelles technologies.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "607",
         "name": "Economie et Gestion",
@@ -680,7 +1662,23 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "Initiation à l'économie : Environnement économique des entreprises dans le secteur des technologies de l'information et de la communication, étude micro-économique, structures de marché qui guident le comportement des firmes. Fondements théoriques de la concurrence, du monopole et de l'oligopole. Implications politiques comme la réglementation et les politiques concurrentielles. Principes de fonctionnement interne des entreprises : Étude des stratégies des entreprises : choix d'une stratégie particulière, analyse de stratégies génériques. Financement des entreprises (trésorerie, gestion de portefeuille, budget, etc.), besoins et sources de financement. Marchés : prospection des marchés, cycle de vie des produits, politique de prix, techniques de communication, marketing, distribution. Compréhension de l'entreprise, négociation de contrats avec les prestataires (achat, maintenance, service), maîtrise d'œuvre. Les flux d'information dans l'entreprise.",
+            "competenceObj": "À l'issue de cette UE un étudiant saura appréhender les concepts de base de l'économie et de la gestion des entreprises.",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }, {
         "ueid": "608",
         "name": "Introduction à la Recherche",
@@ -691,100 +1689,123 @@
         "dependances": [],
         "projet": "false",
         "option": "true",
-        "facultatif" : "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "20h",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "L'informatique enseignée en Licence est de l'informatique \"courante\" (langages, réseaux, bases de données, etc) qui n'a que très peu de rapport avec la recherche informatique au plus haut niveau mondial effectuée par les équipes du laboratoire ICUBE, sur lesquelles s'adossent les parcours du Master d'informatique de l'Université de Strasbourg. Pour que les étudiants puissent mieux comprendre ce que font les équipes (et donc puissent mieux choisir leur parcours de Master) cette UE permettra aux étudiants de visiter les laboratoires et discuter avec les chercheurs, qui seront leurs enseignants en Master. Les enseignants-chercheurs feront des présentations didactiques de leurs recherches et les étudiants seront évalués sur ce qu'ils auront compris de leurs visites, et sur une étude de textes scientifiques qu'il devront présenter devant leurs pairs.",
+            "competenceObj": "A l'issue de cette UE, les étudiants auront une meilleure vision du contenu des parcours de Master proposés, car ils s'adossent sur les activités de recherche des différentes équipes visitées.",
+            "biblio": "",
+            "prerequisOblig": "A l'entrée dans cette UE, les étudiants doivent avoir un niveau suffisant en informatique pour pouvoir comprendre sur quoi les équipes travaillent.",
+            "prerequisRecomm": ""
+        }
+
     }],
 
-    "ueDoublons" : [
-        [301, 501],[302, 502],[303, 503],[401, 605],[402, 606],[403, 607]
+    "ueDoublons": [
+        [301, 501],
+        [302, 502],
+        [303, 503],
+        [401, 605],
+        [402, 606],
+        [403, 607]
     ],
 
-    "options" : [{
-        "semestre" : 1,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [101,102]
+    "options": [{
+        "semestre": 1,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [101, 102]
     }, {
-        "semestre" : 3,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [301,302,303]
+        "semestre": 3,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [301, 302, 303]
     }, {
-        "semestre" : 4,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [401,402,403]
+        "semestre": 4,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [401, 402, 403]
     }, {
-        "semestre" : 5,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [501,502,503]
+        "semestre": 5,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [501, 502, 503]
     }, {
-        "semestre" : 6,
-        "coefficient" : 3,
-        "nbChoix" : 3,
-        "ueList" : [601,602,603,604]
+        "semestre": 6,
+        "coefficient": 3,
+        "nbChoix": 3,
+        "ueList": [601, 602, 603, 604]
     }, {
-        "semestre" : 6,
-        "coefficient" : 3,
-        "nbChoix" : 1,
-        "ueList" : [605,606,607,608]
+        "semestre": 6,
+        "coefficient": 3,
+        "nbChoix": 1,
+        "ueList": [605, 606, 607, 608]
     }],
 
-    "competences" : [{
-        "name" : "Appliquer",
-        "description" : "Ceci est la compétence \"Appliquer\"",
-        "color" : "#ff7f0e"
+    "competences": [{
+        "name": "Appliquer",
+        "description": "Ceci est la compétence \"Appliquer\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Construire",
-        "description" : "Ceci est la compétence \"Construire\"",
-        "color" : "#d62728"
+        "name": "Construire",
+        "description": "Ceci est la compétence \"Construire\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Formaliser",
-        "description" : "Ceci est la compétence \"Formaliser\"",
-        "color" : "#2ca02c"
+        "name": "Formaliser",
+        "description": "Ceci est la compétence \"Formaliser\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Professionnaliser",
-        "description" : "Ceci est la compétence \"Professionnaliser\"",
-        "color" : "#8c564b"
+        "name": "Professionnaliser",
+        "description": "Ceci est la compétence \"Professionnaliser\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Programmer",
-        "description" : "Ceci est la compétence \"Programmer\"",
-        "color" : "#9467bd"
+        "name": "Programmer",
+        "description": "Ceci est la compétence \"Programmer\"",
+        "color": "rgb(192, 16, 63)"
     }, {
-        "name" : "Realiser",
-        "description" : "Ceci est la compétence \"Realiser\"",
-        "color" : "#1f77b4"
+        "name": "Réaliser",
+        "description": "Ceci est la compétence \"Réaliser\"",
+        "color": "rgb(192, 16, 63)"
     }],
 
-    "categories" : [{
-        "name" : "Mathématiques",
-        "description" : "",
-        "color" : "#b3ccff",
-        "sortIndex" : 4
+    "categories": [{
+        "name": "Mathématiques",
+        "description": "",
+        "color": "rgb(89, 64, 153)",
+        "sortIndex": 4
     }, {
-        "name" : "Informatique",
-        "description" : "",
-        "color" : "#ed7676",
-        "sortIndex" : 1
+        "name": "Informatique",
+        "description": "",
+        "color": "rgb(192, 16, 63)",
+        "sortIndex": 1
     }, {
-        "name" : "Informatique théorique",
-        "description" : "",
-        "color" : "#bf79ea",
-        "sortIndex" : 2
+        "name": "Informatique théorique",
+        "description": "",
+        "color": "rgb(116, 2, 51)",
+        "sortIndex": 2
     }, {
-        "name" : "Langues",
-        "description" : "",
-        "color" : "#2aaf33",
-        "sortIndex" : 0
+        "name": "Langues",
+        "description": "",
+        "color": "rgb(255, 130, 77)",
+        "sortIndex": 0
     }, {
-        "name" : "Ouverture",
-        "description" : "",
-        "color" : "lightgrey",
-        "sortIndex" : 5
+        "name": "Ouverture",
+        "description": "",
+        "color": "rgb(252, 54, 107)",
+        "sortIndex": 5
     }, {
-        "name" : "Projet Intégrateur",
-        "description" : "",
-        "color" : "yellow",
-        "sortIndex" : 3
-    }]
+        "name": "Projet Intégrateur",
+        "description": "",
+        "color": "rgb(245, 255, 87)",
+        "sortIndex": 3
+    }],
+
+    "cursus": []
 }

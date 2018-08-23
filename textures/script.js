@@ -1,6 +1,6 @@
 // Marges et dimensions SVG
 var margin = {
-        top: 20,
+        top: 60,
         right: 20,
         bottom: 20,
         left: 20
@@ -16,17 +16,12 @@ var svgPadding = {
     left: 25
 };
 
-var jsonFileName = "flowered_wall_1k.json";
-var imageFolderName = "flowered_wall";
-var imageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
-var clickedImageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
-var startImage = "flowered_wall_1k.png";
-
-
 var defaultLinkColor = "steelblue";
 var parentLinksOnNodeMouseOverColor = "#b200ff";
 var childLinksOnNodeMouseOverColor = "#b200ff";
 
+
+d3.select("body").append("hr");
 // groupe "g" du SVG
 var svg = d3.select("body").append("svg")
     .attr("id", "chart")
@@ -50,15 +45,14 @@ var imageVisualizationBg = imageGroup.append("image")
     .attr("id", "bg-img")
     .attr("height", 275)
     .attr("width", 500)
-    .attr("preserveAspectRatio","xMinYMax meet")
-    .attr("y", height - 275)
-    .attr("xlink:href", imageMasksFolderName + "/" + startImage);
+    .attr("preserveAspectRatio", "xMinYMax meet")
+    .attr("y", height - 275);
 
 var imageVisualization = imageGroup.append("image")
     .attr("id", "over-img")
     .attr("height", 275)
     .attr("width", 500)
-    .attr("preserveAspectRatio","xMinYMax meet")    .attr("y", height - 275);
+    .attr("preserveAspectRatio", "xMinYMax meet").attr("y", height - 275);
 
 var selectedNode;
 var selectedNodeColor = "#ffff00";
@@ -68,8 +62,6 @@ var overNodeColor = "#000000";
 // Si les filtres sont supportés par le navigateur
 var filtersAreOn = ("filter" in document.getElementById("over-img").style);
 if (filtersAreOn) {
-    imageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
-    clickedImageMasksFolderName = "flowered_wall_maps/invert/invertselectedcontourswhite";
     setMasksColorFilters();
     updateMaskColor("selectColorFilter", selectedNodeColor);
     updateMaskColor("overColorFilter", overNodeColor);
@@ -80,23 +72,42 @@ colorPickersHandler(filtersAreOn);
 
 
 
+var defaultNodeInfoRectColor = "#333333";
 
+var nodeInfoBox = d3.select("svg").append("g")
+    .attr("id", "nodeInfo");
 
-var nodeInfoBox = d3.select("svg").append("g");
-var nodeInfoRec = nodeInfoBox.append("rect")
-    .attr("height", 50)
-    .attr("width", 300)
-    .attr("y", height - 275 - 60)
-    .attr("x", 0)
-    .style("opacity", "0.8")
-    .style("fill", "#333333");
+var nodeInfoOutRect = nodeInfoBox.append("rect")
+    .attr("id","nodeInfoOutRect")
+    .attr("height",86)
+    .attr("width", 356)
+    .attr("y", height - 275 - 93)
+    .attr("x", 5)
+    // .style("opacity", "0.8")
+    .style("stroke", defaultNodeInfoRectColor)
+    .style("stroke-width", "3px")
+    .style("fill", "white");
+
+var nodeInfoRect = nodeInfoBox.append("rect")
+    .attr("height", 80)
+    .attr("width", 350)
+    .attr("y", height - 275 - 90)
+    .attr("x", 8)
+    // .style("opacity", "0.8")
+    .style("stroke", defaultNodeInfoRectColor)
+    .style("stroke-width", "3px")
+    .style("fill", "white");
+
 var nodeInfoText = nodeInfoBox.append("text")
     .attr("id", "node-info-text")
     .attr("height", 50)
     .attr("width", 300)
     .attr("y", height - 275 - 30)
-    .attr("x", 20)
-    .style("fill", "white");
+    .append("tspan")
+    .attr("x", 13)
+    .attr("dy", -40)
+    .text("Informations sur le motif sélectionné")
+    .style("font-weight", "bold");
 
 // var currentMasksDisplayed = [];
 
@@ -121,12 +132,23 @@ var graph = {
     "links": []
 };
 
+var jsonFileName = "flowered_wall_1k.json";
+
 // Parsing .json
 d3.json(jsonFileName).then(function(json) {
 
-    var hierarchy = formatHierarchy(d3.hierarchy(json));
-    hierarchy = initTreeValuesFromRoot(hierarchy);
-    hierarchy = addImageMasksToHierarchy(hierarchy);
+    var jsonInfos = json.infos;
+
+    var imageFolderName = jsonInfos.imageFolder;
+    var imageMasksFolderName = jsonInfos.imageMasksFolder;
+    var clickedImageMasksFolderName = jsonInfos.clickedImageMasksFolder;
+    var startImage = jsonInfos.startImage;
+
+    imageVisualizationBg.attr("xlink:href", imageMasksFolderName + "/" + startImage);
+
+    var hierarchy = formatHierarchy(d3.hierarchy(json.tree));
+    hierarchy = initTreeValuesFromRoot(hierarchy); // !!! vérifier si fonction tjr utile
+    hierarchy = addImageMasksToHierarchy(hierarchy, startImage);
 
     var flatHier = flatHierarchy(hierarchy);
     var nodes = hierarchyToNodes(hierarchy);
@@ -153,8 +175,8 @@ d3.json(jsonFileName).then(function(json) {
             return defaultLinkColor;
         })
         .on("mouseover", function(d) {
-            enableTooltip(d.source.id + " → " + d.target.id + "<br/>" +
-                "Valeur : " + (Math.round(d.value * 10000) / 100) + "%");
+            enableTooltip( //d.source.id + " → " + d.target.id + "<br/>" +
+                "Flux : " + (Math.round(d.value * 10000) / 100) + "%");
         })
         .on("mouseout", function(d) {
             disableTooltip();
@@ -178,13 +200,14 @@ d3.json(jsonFileName).then(function(json) {
 
     node.on("mouseover", function(d, i) {
 
-            imageVisualization.attr("xlink:href", imageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png")
-                .style("opacity", "0.8");
+            if (d.depth != 0 && selectedNode !== d) {
+                    imageVisualization.attr("xlink:href", imageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png")
+                        .style("opacity", "0.8");
+            }
 
             if (selectedNode) {
 
-                node.style("opacity", 0.2);
-                link.style("opacity", 0.2);
+                applyReducedOpacity();
 
                 if (selectedNode.depth > d.depth) {
                     valoriseChildren(d, flatHier, true);
@@ -197,7 +220,7 @@ d3.json(jsonFileName).then(function(json) {
                 }
             }
 
-            if(d3.select(this).datum() != selectedNode){
+            if (d3.select(this).datum() != selectedNode) {
                 d3.select(this).select("rect")
                     .style("stroke", overNodeColor)
                     .style("stroke-width", "5px");
@@ -207,41 +230,43 @@ d3.json(jsonFileName).then(function(json) {
             applyDefaultStyle();
             imageVisualization.attr("xlink:href", "");
 
-            if(d3.select(this).datum() != selectedNode){
+            if (d3.select(this).datum() != selectedNode) {
                 d3.select(this).select("rect")
-                    .style("stroke", function(d) {
-                        return "#" + d.color;
-                    })
+                    .style("stroke", "#d9d9d9")
                     .style("stroke-width", "2px");
             }
         })
-        .on("click", function(d) {
+        .on("click", function(d) { // !!! rendre plus fonctionnel
             hideLinks(link);
             computeLinks(hierarchy, d);
             updateLinks();
 
+            imageVisualization.attr("xlink:href", "");
+
             // style noeuds non sélectionnés
             node.classed("selectedNode", false)
                 .selectAll("rect")
-                .style("stroke", function(d) {
-                    return "#" + d.color;
-                })
+                .style("stroke", "#d9d9d9")
                 .style("stroke-width", "2px");
 
-            if(selectedNode && selectedNode.id == d.id) {
+            if (selectedNode && selectedNode.id == d.id) {
                 selectedNode = null;
                 hideLinks(link);
+                applyDefaultStyle();
                 d3.select("#imageGroup").select("#selected-img").remove();
-                d3.select("#node-info-text").text("");
-            }
-            else {
+                d3.select("#node-info-text").selectAll("tspan").remove();
+                d3.select("#node-info-text")
+                    .append("tspan")
+                    .attr("x", 13)
+                    .attr("dy", -40)
+                    .text("Informations sur le motif sélectionné")
+                    .style("font-weight", "bold");
+            } else {
                 selectedNode = d;
                 d3.selectAll(".link").classed("ondisplaylink", false);
                 displayParentLinks(root, d);
                 displayChildrenLinks(d, flatHier);
-
-                link.style("opacity","0.2");
-                node.style("opacity","0.2");
+                applyReducedOpacity();
                 valoriseParents(root, d, false);
                 valoriseChildren(d, flatHier, false);
 
@@ -252,13 +277,32 @@ d3.json(jsonFileName).then(function(json) {
                         .attr("id", "selected-img")
                         .attr("height", 275)
                         .attr("width", 500)
-                        .attr("preserveAspectRatio","xMinYMax meet")
+                        .attr("preserveAspectRatio", "xMinYMax meet")
                         .style("opacity", "1")
                         .attr("y", height - 275)
                         .attr("xlink:href", clickedImageMasksFolderName + "/" + d.imagemask.slice(0, -4) + ".png");
                     if (filtersAreOn) {
                         d3.select("#selected-img").style("filter", "url(#selectColorFilter)")
                     }
+                }
+
+                d3.select("#node-info-text").selectAll("tspan").remove();
+                d3.select("#node-info-text")
+                    .append("tspan")
+                    .attr("x", 13)
+                    .attr("dy", -40)
+                    .text("Informations sur le motif sélectionné")
+                    .style("font-weight", "bold");
+                d3.select("#node-info-text")
+                    .append("tspan")
+                    .attr("x", 13)
+                    .attr("dy", 30)
+                    .text(("Nombre de pixels occupés : " + (sumSize(getAllNodesWithID(flatHier, d.id)))));
+                d3.select("#node-info-text")
+                    .append("tspan")
+                    .attr("x", 13)
+                    .attr("dy", 20)
+                    .text("Proportion dans l'image : " + (Math.round((sumSize(getAllNodesWithID(flatHier, d.id))/sumSize(getAllNodesWithID(flatHier, root.id)))*10000)/100) + "%");
 
                 // style noeuds sélectionnés
                 node.filter(function(di, i) {
@@ -268,19 +312,9 @@ d3.json(jsonFileName).then(function(json) {
                     .selectAll("rect")
                     .style("stroke", selectedNodeColor)
                     .style("stroke-width", "8px");
-                }
-
-                d3.select("#node-info-text").text("");
-                d3.select("#node-info-text")
-                    .append("tspan")
-                    .attr("x", 0)
-                    .attr("dy", -10)
-                    .text(("Pixels : " + (sumSize(getAllNodesWithID(flatHier, d.id)))));
-                d3.select("#node-info-text")
-                    .append("tspan")
-                    .attr("x", 0)
-                    .attr("dy", 20)
-                    .text("Proportion de l'image : " + (Math.round((sumSize(getAllNodesWithID(flatHier, d.id))/sumSize(getAllNodesWithID(flatHier, root.id)))*10000)/100) + "%");
+            }
+            if(filtersAreOn) {
+                InfoBoxFrameColorHandler();
             }
 
         });
@@ -292,12 +326,8 @@ d3.json(jsonFileName).then(function(json) {
         .attr("width", sankey.nodeWidth())
         .attr("rx", 2)
         .attr("ry", 2)
-        .style("fill", function(d) {
-            return "#" + d.color;
-        })
-        .style("stroke", function(d) {
-            return "#" + d.color;
-        });
+        .style("fill", "#e6e6e6")
+        .style("stroke", "#d9d9d9");
 
     var nodeImages = node.append("image")
         .attr("height", function(d) {
@@ -312,7 +342,7 @@ d3.json(jsonFileName).then(function(json) {
 
 
 
-})
+});
 
 
 
@@ -401,7 +431,8 @@ function setChildrenOnDisplay(node, nodes) {
 
 // =========================== INTERACTION MOUSEOVER ===========================
 
-// PARAM : noeud on mouseover [node] et racine de l'arborescence [root]
+// PARAM : noeud on mouseover [node] et racine de l'arborescence [root] et booleén
+// indiquant si un noeud est actuellement sélectionné [nodeSelected]
 // RETURN : void, met en valeur les noeuds et liens parents du noeud [node]
 function valoriseParents(root, node, nodeSelected) {
     var parents = getDisplayedParents(root, node);
@@ -472,7 +503,8 @@ function getDisplayedParents(root, node) {
     return parents;
 }
 
-// PARAM : noeud considéré [node] et liste de noeuds [nodes]
+// PARAM : noeud considéré [node] et liste de noeuds [nodes] et booleén
+// indiquant si un noeud est actuellement sélectionné [nodeSelected]
 // RETURN : void, met en valeur les noeuds et liens enfants du noeud [node]
 function valoriseChildren(node, nodes, nodeSelected) {
     var children = getDisplayedChildren(node, nodes);
@@ -539,11 +571,26 @@ function getDisplayedChildren(node, nodes) {
 // =========================== FONCTIONS UTILITAIRES ===========================
 
 
+// BRIEF : appeler cette fonction lorsqu'il faut mettre à jour la couleur du
+// contour de la boite d'informations sur le noeud sélectionné
+function InfoBoxFrameColorHandler() {
+    if(selectedNode) {
+        var colorPickerColor = document.getElementById("selected-color-picker").value;
+        d3.select("#nodeInfoOutRect").style("stroke", colorPickerColor);
+    } else {
+        d3.select("#nodeInfoOutRect").style("stroke", defaultNodeInfoRectColor);
+    }
+}
+
+// PARAM : booléen indiquant si les filtres sont supportés par le navigateur [filterOn]
+// RETURN : void, gère les événement liés au changement de valeur des selecteurs
+// de couleurs.
 function colorPickersHandler(filterOn) {
 
     if (filterOn) {
         document.getElementById("selected-color-picker").addEventListener("change", function() {
             updateMaskColor("selectColorFilter", this.value);
+            InfoBoxFrameColorHandler();
             selectedNodeColor = this.value;
             d3.selectAll(".selectedNode").select("rect")
                 .style("stroke", selectedNodeColor)
@@ -561,34 +608,42 @@ function colorPickersHandler(filterOn) {
     });
 }
 
+// PARAM : booléen indiquant si les filtres sont supportés par le navigateur [filterOn]
+// RETURN : void, crée les sélecteurs de couleurs pour les filtres et liens
 function createColorPickers(filterOn) {
 
     var colorPickersDiv = document.getElementById("colorPickersDiv");
     var d3colorPickersDiv = d3.select("#colorPickersDiv");
 
+    colorPickersDiv.innerHTML += "<strong>Choix des couleurs : </strong>";
+
+
     if (filterOn) {
 
-        colorPickersDiv.innerHTML += "Filtre région sélectionnée : ";
         d3colorPickersDiv.append("input")
             .attr("type", "color")
             .attr("id", "selected-color-picker")
             .attr("value", selectedNodeColor);
+        colorPickersDiv.innerHTML += " Motif (selection) ";
 
-        colorPickersDiv.innerHTML += " Filtre région survol : ";
+
         d3colorPickersDiv.append("input")
             .attr("type", "color")
             .attr("id", "over-color-picker")
             .attr("value", overNodeColor);
+            colorPickersDiv.innerHTML += " Motif (survol) ";
+
     }
 
-    colorPickersDiv.innerHTML += " Couleur des liens (survol): ";
     d3colorPickersDiv.append("input")
         .attr("type", "color")
         .attr("id", "link-color-picker")
         .attr("value", childLinksOnNodeMouseOverColor);
+        colorPickersDiv.innerHTML += " Liens (survol) ";
 
 }
 
+// BRIEF : initialise les filtres et leurs les matrices de couleurs <feColorMatrix>
 function setMasksColorFilters() {
 
     selectColorFilter = svg.append("filter")
@@ -616,6 +671,9 @@ function setMasksColorFilters() {
 
 }
 
+// PARAM : id du <filter> qui sera appliqué [maskid], valeur
+// de couleur hexadécimale à appliquer au filtre
+// RETURN : void, applique la couleur au filtre apres conversion hexa -> RGB
 function updateMaskColor(maskid, hexValue) {
     var splitedHexValue = hexValue.split("");
     var red = splitedHexValue[1] + splitedHexValue[2];
@@ -628,7 +686,9 @@ function updateMaskColor(maskid, hexValue) {
 
 }
 
-
+// PARAM : id du <filter> qui sera appliqué [maskid], tableu de 3 VALEURS
+// représentant une couleur au format RGB ([R,G,B])
+// RETURN : void, applique la couleur au filtre
 function changeColorFilter(maskid, rgbColorTab, opacity) {
     var red = rgbColorTab[0] / 255;
     var green = rgbColorTab[1] / 255;
@@ -650,6 +710,14 @@ function changeColorFilter(maskid, rgbColorTab, opacity) {
 function applyDefaultStyle() {
     applyDefaultOpacity();
     applyDefaultLinkColor();
+}
+
+// BRIEF : applique l'opacité réduite aux noeuds et liens
+function applyReducedOpacity() {
+    d3.selectAll(".link")
+        .style("opacity", "0.2");
+    d3.selectAll(".node")
+        .style("opacity", "0.2");
 }
 
 // BRIEF : applique l'opacité par défaut aux noeuds et liens
@@ -848,19 +916,18 @@ function mergeLinks(links) {
     return Object.values(linkFlags);
 }
 
-// PARAM : Racine de l'arborescence .json [rot], noeud de reference [reference]
+// PARAM : Racine de l'arborescence .json [root], noeud de reference [reference]
 // RETURN : liste des liens extraits en partant de la racine [root]
 // valeur par rapport à une référence
 function getLinks(root, reference) {
     var links = [];
-    var i = 0;
     var valf = d3.format(".6f");
     getLinksRec(root);
 
     function getLinksRec(node) {
         if (node.children) {
             if (node.depth >= reference.depth) {
-                node.children.forEach(function(d, i) {
+                node.children.forEach(function(d) {
                     links.push({
                         "source": node,
                         "target": d,
@@ -871,7 +938,7 @@ function getLinks(root, reference) {
                     getLinksRec(d);
                 })
             } else {
-                node.children.forEach(function(d, i) {
+                node.children.forEach(function(d) {
                     links.push({
                         "source": node,
                         "target": d,
@@ -908,9 +975,10 @@ function disableTooltip() {
 }
 
 
-// PARAM : hierarchie en arbre [hierarchy]
+// PARAM : hierarchie en arbre [hierarchy], nom image d'origine dont les différents
+// motifs et cartographies ont été extraits [startImage]
 // RETURN : hierarchie avec ajout des masques pour la visualisation de carte
-function addImageMasksToHierarchy(hierarchy) {
+function addImageMasksToHierarchy(hierarchy, startImage) {
     hierarchy.imagemask = startImage;
 
     addImageMasksToHierarchyRec(hierarchy);
@@ -1017,6 +1085,9 @@ function computeProportionFromNodeIn(root, a, b, ancestors) {
     return sizeofB / sizeofA;
 }
 
+// PARAM : racine de la hierarchie tree du json [root]
+// RETURN : ajoute les porportions par rapport à la racine de tous les motifs
+// de l'arborescence
 function initTreeValuesFromRoot(root) {
     root.valueFromRoot = 1;
     initTreeValuesFromRootRec(root);
@@ -1054,8 +1125,10 @@ function getSumByDepth(nodes, links) {
     console.log(depthSums);
 }
 
+// PARAM : nodeA
 // fonction renvoyant un tableau de noeuds de l'arbre correspondant a l'intersection entre les noeuds de graphe A et B,
 // le noeud B etant un descendant du noeud A
+// root = racine de l'arborescence
 function getIntersectBetween2(nodeA, nodeB, root) {
     var res = [];
     getAllNodesWithID(flatHierarchy(root), nodeA.id).forEach(function(node) {
@@ -1078,8 +1151,9 @@ function getIntersectBetween2(nodeA, nodeB, root) {
     }
 }
 
-// fonction renvoyant un tableau de noeuds de l'arbre correspondant a l'intersection entre les noeuds de graphe A et B et Ref,
-// le noeud Ref etant un descendant du noeud B etant lui-meme un descendant du noeud A
+// fonction renvoyant un tableau de noeuds de l'arbre correspondant a l'intersection entre les noeuds de graphe A et B et C,
+// le noeud C etant un descendant du noeud B etant lui-meme un descendant du noeud A
+// root = racine de l'arborescence
 function getIntersectBetween3(nodeA, nodeB, nodeC, root) {
     var intersection = [];
 
@@ -1095,7 +1169,8 @@ function getIntersectBetween3(nodeA, nodeB, nodeC, root) {
 
 }
 
-// renvoie la somme des tailles de chaque noeud d'un tableau de noeud
+// PARAM : tableau de noeuds [nodeTab]
+// RETURN : la somme des tailles (attribut "npixels") de chaque noeud du tableau
 function sumSize(nodeTab) {
     var res = 0;
 
@@ -1106,6 +1181,8 @@ function sumSize(nodeTab) {
     return res;
 }
 
+// PARAM : noeuds sources et cibles d'un lien [nodeA, nodeB], noeud reference [nodeRef], racine de l'arborescence [root]
+// RETURN : Proportion de nodeB dans nodeA (utilisee dans le calcul des liens)
 function getAscendantProportion(root, nodeA, nodeB, nodeRef) {
     var refSize = sumSize(getAllNodesWithID(flatHierarchy(root), nodeRef.id));
 
@@ -1116,6 +1193,8 @@ function getAscendantProportion(root, nodeA, nodeB, nodeRef) {
     }
 }
 
+// PARAM : noeuds sources et cibles d'un lien [nodeA, nodeB], noeud reference [nodeRef], racine de l'arborescence [root]
+// RETURN : Proportion de nodeB dans nodeA (utilisee dans le calcul des liens)
 function getDescendantProportion(root, nodeA, nodeB, nodeRef) {
     var refSize = sumSize(getAllNodesWithID(flatHierarchy(root), nodeRef.id));
 

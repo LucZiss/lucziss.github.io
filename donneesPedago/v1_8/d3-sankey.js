@@ -4,8 +4,7 @@ d3.sankey = function() {
     var sankey = {},
         nodeWidth = 24, // largeur d'un noeud
         nodePadding = 8, // padding entre deux noeuds
-        highestOptionY = null; // option ayant la valeur Y la plus basse, cad l'option la plus haute dans l'affichage
-        lowestUEY = null; // UE ayant la valeur Y la plus haute, cad l'UE la plus basse dans l'affichage
+        highestOptionY = window.innerHeight; // option ayant la valeur Y la plus basse, cad l'option la plus haute dans l'affichage
         size = [1, 1], // taille du sankey
         nodes = [], // tableau des noeuds d'UE du sankey
         options = [], // tableau des noeuds d'option du sankey
@@ -29,12 +28,6 @@ d3.sankey = function() {
     sankey.highestOptionY = function(_) {
         if (!arguments.length) return highestOptionY;
         highestOptionY = +_;
-        return sankey;
-    };
-
-    sankey.lowestUEY = function(_) {
-        if (!arguments.length) return lowestUEY;
-        lowestUEY = +_;
         return sankey;
     };
 
@@ -153,7 +146,7 @@ d3.sankey = function() {
                 target.targetLinks.push(link);
             } catch (e) {
                 throw new Error(e.name + " : " + e.message + ".\n" +
-                    "Peut-être que le fichier json contient une dépendance vers une UE non définie.");
+                "Peut-être que le fichier json contient une dépendance vers une UE non définie.");
             }
         });
     }
@@ -176,7 +169,7 @@ d3.sankey = function() {
 
         // Permet de separer, pour les semestres demandant de choisir plusieurs options, en plusieurs noeuds d'options
         for (var i = 0; i < options.length; i++) {
-            while (options[i].nbChoix > 1) {
+            while(options[i].nbChoix > 1) {
                 options[i].nbChoix--;
                 var copy = Object.assign({}, options[i]);
                 copy.nbChoix = 1;
@@ -209,7 +202,7 @@ d3.sankey = function() {
     // Fonction de calcul de la position Y des noeuds
     // PARAM: [nodesByBreadth]: nest d3 separant les noeuds en fonction de leur semestre
     function initializeNodeDepth(nodesByBreadth) {
-        var ky = 9.2; // coefficient servant a calculer la hauteur des noeuds, des liens, etc...
+        var ky = 9; // coefficient servant a calculer la hauteur des noeuds, des liens, etc...
         var skillList = getSkillList(competences); // liste des competences travaillees par les noeuds
         var lastNode = null;
         var lastNotOptionNode = null;
@@ -222,59 +215,41 @@ d3.sankey = function() {
             lastNotOptionNode = null;
             lastOptionNode = null;
 
-            var sortParameter = "option";
-
-
-            if(containsSpe(_nodes)) {
-                sortParameter = "spe";
-            }
-
             var nodes = [];
-                nodes = sortNodes(nodes, _nodes,sortParameter);
+            nodes = sortNodes(nodes, _nodes);
 
-
-
-            nodes.filter(function (node){
-                return (!node.commun || node.commun === "true");
-            }).forEach(function(node, i) {
+            nodes.forEach(function(node, i) {
                 node.dy = ky * +node.coefficient;
                 if (node.dy <= minNodeHeight)
                     node.dy = minNodeHeight;
 
-                if ((lastNode == null || lastNotOptionNode == null) && node.option == "false") {
-                    node.y = -18;
-                    if (node.y + node.dy > lowestUEY || lowestUEY == null)
-                        lowestUEY = node.y + node.dy;
-                }
-                else if (node.option == "true" && lastOptionNode == null) {
+                if ((!node.commun && (lastNode == null || lastNotOptionNode == null) && node.option == "false") ||
+                (node.option == "false" && (lastNode == null || lastNotOptionNode == null) && node.commun == "true"))
+                    node.y = -48;
+                else if ((!node.commun && node.option == "true" && lastOptionNode == null) ||
+                (node.commun == "false" && lastOptionNode == null)) {
                     node.y = size[1] - node.dy;
-                    if (node.y < highestOptionY || highestOptionY == null)
+                    if (node.y < highestOptionY)
                         highestOptionY = node.y;
-                } else if (node.option == "true") {
+                } else if ((!node.commun && node.option == "true") ||
+                (node.commun == "false")) {
                     node.y = lastOptionNode.y - node.dy;
-                    if (node.y < highestOptionY || highestOptionY == null)
+                    if (node.y < highestOptionY)
                         highestOptionY = node.y;
-                } else if (node.option == "false") {
+                } else if ((!node.commun && node.option == "false") ||
+                (node.commun == "true")) {
                     node.y = lastNotOptionNode.y + lastNotOptionNode.dy + nodePadding;
-                    if (node.y + node.dy > lowestUEY || lowestUEY == null)
-                        lowestUEY = node.y + node.dy;
                 } else {
                     node.y = lastNode.y + lastNode.dy + nodePadding;
                 }
 
-                if (node.option == "false")
+                if ((!node.commun && node.option == "false") || node.commun == "true")
                     lastNotOptionNode = node;
                 else
                     lastOptionNode = node;
 
                 lastNode = node;
-
-                if(node.ueid == "42"){
-                    console.log(node);
-                }
             });
-
-            console.log(lowestUEY);
 
             var firstSlotPlaced = true;
             options.forEach(function(opt, i) {
@@ -294,25 +269,6 @@ d3.sankey = function() {
 
         });
 
-        var lastNotCommonNode = null;
-        nodes.filter(function(node) {
-            return node.commun === "false";
-        }).forEach(function(node, i) {
-            if(lastNotCommonNode != null && lastNotCommonNode.semestre != node.semestre)
-                lastNotCommonNode = null;
-
-            node.dy = ky * +node.coefficient;
-            if (node.dy <= minNodeHeight)
-                node.dy = minNodeHeight;
-
-            if(lastNotCommonNode == null)
-                node.y = lowestUEY + svgPadding.top + 35; //+35 permet d'agrandir la distance entre la barre et les noeuds
-            else
-                node.y = lastNotCommonNode.y + lastNotCommonNode.dy + nodePadding;
-
-            lastNotCommonNode = node;
-        });
-
         links.forEach(function(link) {
             link.dy = ky;
         });
@@ -330,48 +286,38 @@ d3.sankey = function() {
     // PARAM: [nodes]: tableau vide auquel on ajoute les noeuds a trier
     // [entry]: tableau des noeuds a trier
     // RETURN: Tableau des noeuds tries en fonction du bloc auquel ils appartiennent
-    function sortNodes(nodes, entry, sortParameter) {
+    function sortNodes(nodes, entry) {
 
-        var nodesArrayWithParam = d3.nest()
+        var nodesArray = d3.nest()
             .key(function(d) {
-                switch (sortParameter) {
-                    case "spe":
-                    return !d.commun;
-                        break;
-                    default:
-                        return d.option;
-                        break;
-
-                }
+                return d.option;
             })
             .sortKeys(d3.ascending)
             .key(function(d) {
                 return getSortIndexWithCategName(d.categorie);
             })
-            .sortKeys(function(a, b) {
+            .sortKeys(function (a,b) {
                 return a - b;
             })
             .entries(entry);
 
-        nodesArrayWithParam.forEach(function(arr) {
+        nodesArray.forEach(function(arr) {
             arr.values.forEach(function(arr2) {
                 arr2.values.forEach(function(elem) {
-                    nodes.push(elem)
-                });
-            });
-        });
-
-
-        var firstIndiceWithParameter = -1;
+                        nodes.push(elem)
+                })
+            })
+        })
+        var firstOptionIndice = -1;
         nodes.forEach(function(node, i) {
-            if ((node.option === "true" || node.commun === "false") && firstIndiceWithParameter === -1) {
-                firstIndiceWithParameter = i;
+            if (node.option === "true" && firstOptionIndice === -1) {
+                firstOptionIndice = i;
             }
         })
 
-        if (firstIndiceWithParameter >= 0) {
-            var sortedWithParameter = nodes.slice(firstIndiceWithParameter).sort(sortWithParameter);
-            nodes = nodes.slice(0, firstIndiceWithParameter).concat(sortedWithParameter);
+        if (firstOptionIndice >= 0) {
+            var sortedOptions = nodes.slice(firstOptionIndice).sort(sortOptions);
+            nodes = nodes.slice(0, firstOptionIndice).concat(sortedOptions);
         }
 
         return nodes;
@@ -384,8 +330,8 @@ d3.sankey = function() {
 
         for (var i = semesters[0]; i <= semesters[1]; i++) {
             tab[i] = {};
-            categories.forEach(function(categ) {
-                tab[i][categ] = 0;
+            categories.forEach(function (categ) {
+              tab[i][categ] = 0;
             })
         }
 
@@ -397,18 +343,6 @@ d3.sankey = function() {
         return tab;
     }
 
-    function containsSpe(nodes) {
-        var contains = false;
-        if (nodes) {
-            for (var i = 0; i < nodes.length && !contains; i++) {
-                if (nodes[i].commun === "false") {
-                    contains = true;
-                }
-            }
-        }
-        return contains
-    }
-
     // PARAM: [eachBlockUENumber]: tableau contenant, pour chaque semestre, le nombre d'UE dans chaque bloc
     // RETURN: Tableau contenant le nom de chaque bloc ayant le meme nombre d'UEs dans chaque semestre
     // et devant donc etre positionne tout en haut de l'affichage
@@ -417,9 +351,9 @@ d3.sankey = function() {
         var tab = [];
         var refNumbers = {};
         var booleans = {};
-        categories.forEach(function(categ) {
-            refNumbers[categ] = eachBlockUENumber[semesters[0]][categ];
-            booleans[categ] = true;
+        categories.forEach(function (categ) {
+          refNumbers[categ] = eachBlockUENumber[semesters[0]][categ];
+          booleans[categ] = true;
         })
 
         eachBlockUENumber.forEach(function(sem) {
@@ -451,30 +385,28 @@ d3.sankey = function() {
     function getSortIndexWithCategName(name) {
         var index = null;
         if (categories) {
-            categories.forEach(function(d) {
-                if (d.name === name && index === null) {
-                    index = d.sortIndex;
-                }
+            categories.forEach(function (d) {
+               if(d.name === name && index === null) {
+                   index = d.sortIndex;
+               }
             });
         }
         return index;
     }
 
-    function sortWithParameter(a, b) {
+    function sortOptions(a,b) {
         var alpha = a.name.toLowerCase();
         var beta = b.name.toLowerCase();
 
         var aIdx = getSortIndexWithCategName(a.categorie);
         var bIdx = getSortIndexWithCategName(b.categorie);
 
-        if (aIdx !== bIdx) {
+        if(aIdx !== bIdx) {
             return bIdx - aIdx;
         } else {
             return beta.localeCompare(alpha.toLowerCase());
         }
     }
-
-
 
     // Fonction de calcul des positions de depart et d'arrivee des liens sur chaque noeud
     function computeLinkDepths() {

@@ -8,7 +8,7 @@
 var margin = {
         top: 20,
         right: 300,
-        bottom: 20,
+        bottom: 50,
         left: 20
     },
     width = window.innerWidth - margin.left - margin.right,
@@ -26,8 +26,6 @@ var svgPadding = {
     left: 15
 };
 
-
-// gestion touche échap
 escapeEvents();
 
 // Création de la selection clic droit et du
@@ -68,15 +66,12 @@ var skillDescriptions = {};
 
 
 // =========================== Gestion des couleurs ===========================
-
-// Couleurs attribuées à chaque compétence
 var skillColors = {};
 
 
 // Couleurs attribuées à chaque bloc
 var groupColors = {};
 
-// couleur de fond
 var defaultBackgroundColor = "#eeeeee"; // "#cce6ff"
 
 var defaultSkillDisplayColor = "#cccccc"; // "#b3ccff"
@@ -86,7 +81,6 @@ var optionNodeColor = "white";
 var optionNodeMouseOverColor = d3.rgb(optionNodeColor).darker(1);
 var optionBorderColor = "black";
 
-// couleurs des dropdown
 var defaultBackgroundDropdownColor = "#eeeeee";
 var dropdownMouseOverColor = "#aaaaaa";
 var dropdownItemBorderColor = "#cccccc";
@@ -96,25 +90,23 @@ var dropdownItemBorderColor = "#cccccc";
 
 
 
-// creation du conteneur des svg
-var svgDiv = d3.select("body")
-    .style("background-color", defaultBackgroundColor)
-    .append("div")
-    .attr("id", "svgDiv")
-    .style("display", "inline-block");
 
-//svg principal
-svgDiv.append("svg")
+//creation du svg
+d3.select("body")
+    .style("background-color", defaultBackgroundColor)
+    .append("svg")
     .attr("id", "chart")
-    .style("display", "block")
     .attr("width", width)
     .attr("height", height);
 
-// Test adaptation de taille
+
+// Test responsive
 height = Math.max(height, parseInt(d3.select("#chart").style("min-height")));
 width = Math.max(width, parseInt(d3.select("#chart").style("min-width")));
 //
 d3.select("body").style("min-width", width + margin.right + "px");
+
+
 
 
 //creation du g pour la zone d'option
@@ -129,14 +121,7 @@ var svg = d3.select("#chart")
     .attr("transform",
         "translate(" + svgPadding.left + "," + svgPadding.top + ")");
 
-var semesterLayout = svg.append("g")
-    .attr("id", "semesterLayout")
-    .attr("width", width)
-    .attr("height", 30)
-    .attr("transform",
-        "translate(" + (-15) + "," + -35 + ")")
-    .style("background-color", defaultBackgroundColor)
-    .append("g");
+
 
 
 initInfoWindow();
@@ -157,6 +142,13 @@ var sankey = d3.sankey()
 // Paths svg pour les liens entre noeuds
 var path = sankey.link();
 
+// SVG représentant l'axe des semestres sous le graphe (Semestre 1,Semestre 2,etc...)
+var semesterLayout = d3.select("body").append("svg")
+    .attr("id", "semesterLayout")
+    .attr("width", d3.select("#chart").attr("width"))
+    .attr("height", 45)
+    .style("background-color", defaultBackgroundColor)
+    .append("g");
 
 // création de la tooltip (infobulle)
 var tip = d3.select("body").append("div")
@@ -178,17 +170,16 @@ d3.select("html").on("click", function() {
     backgroundClick = true;
 });
 
-// Parsing du fichier json de formation si l'on a cliqué sur un des parcours
-// dans le panneau de droite, ou d'un fichier json par défaut sinon.
+
 if (!sessionStorage.getItem("json"))
-    sessionStorage.setItem("json", "pedagoLicenceInfo18.json")
+    sessionStorage.setItem("json", "pedagoLicenceInfo17.json")
 
 parseJson(sessionStorage.getItem("json"));
 
 
 // -------------------------------- FONCTIONS -------------------------------- //
 
-// PARAM : données .json  d'options en doublons [dataueDoublons], sélections d3 de noeuds-UE [nodes] et de noeuds
+// PARAM : données .json [data], sélections d3 de noeuds-UE [nodes] et de noeuds
 // option [options]
 // RETURN : void, initialise les mécaniques  et l'apparence des boutons de
 // suppression d'option préalablement choisie
@@ -245,7 +236,7 @@ function hideCircleAndMoveToInitPos(node) {
     node.select("text").style("display", "none");
 }
 
-// PARAM : données .json  d'options en doulons [dataueDoublons], id du noeud à afficher [id]
+// PARAM : données .json [data], id du noeud à afficher [id]
 // RETURN : void, affiche le noeud d'id [id] ainsi que ses doublons
 function showUEAndDuplicates(dataueDoublons, id) {
     var showUEAndDuplicates = getDuplicatesOfUE(dataueDoublons, +id);
@@ -355,7 +346,7 @@ function initDropdown(UEArray, optionNode, data) {
 }
 
 
-// PARAM : données .json d'options doublons [dataueDoublons], tableau d'UE [UEArray] et UE-option choisie
+// PARAM : données .json [data], tableau d'UE [UEArray] et UE-option choisie
 // [UEChoice]
 // RETURN : void, ajoute l'option choisie à la sélection (currentSelectedOptions)
 // et fait disparaitre les doublons (comme Droit S4 doublon de Droit S6) ainsi
@@ -398,12 +389,12 @@ function dropdownManager(nodeopt) {
 
 // RETURN : renvoie une chaine de caractere representant la taille de police
 // adaptee de sorte que le label tienne dans la largeur du noeud
-function adaptLabelFontSize(labelAvailableWidth, _this) {
+function adaptLabelFontSize() {
 
     var xPadding, labelAvailableWidth, labelWidth;
     xPadding = 8;
-    labelAvailableWidth = labelAvailableWidth - xPadding;
-    labelWidth = _this.getComputedTextLength();
+    labelAvailableWidth = sankey.nodeWidth() - xPadding;
+    labelWidth = this.getComputedTextLength();
 
     if (labelWidth < labelAvailableWidth) {
         return null;
@@ -474,8 +465,8 @@ function getMinMaxSemester(UEArray) {
 }
 
 // PARAM : element considéré pour le zoom [tagToTransform1][tagToTransform2],
-// multiplicateur max du zoom [maxZoom] et argument facultatif à indiquer
-// si l'on souhaite réinitialiser l'échelle [reset]
+// multiplicateur max du zoom [maxZoom] et argument à indiquer
+// si l'on souhaite réinitialiser l'échelle
 function zoomHandler(tagToTransform1, tagToTransform2, maxZoom, reset) {
 
     d3.select("#chart")
@@ -621,9 +612,8 @@ function valoriseAdjacentLinks(node) {
     });
 }
 
-// PARAM : noeud [node] servant à mettre en valeur et filtre de compétences actuel
-// [currentFilters]
-// RETURN : void, gere les noeuds à afficher en fonction du filtrage
+// PARAM : noeud [node] servant à mettre en valeur
+// RETURN : void, gere l'affichage en fonction du filtrage
 function valoriseAdjacentNodes(node, currentFilters) {
     var links = d3.selectAll(".link");
     var nodes = d3.selectAll(".node");
@@ -687,8 +677,6 @@ function applyColours(mode) {
     applyBorderColours(mode);
 }
 
-// PARAM : mode d'affichage actuel [mode] (string)
-// RETURN : Applique une couleur de bordure aux noeuds
 function applyBorderColours(mode) {
     d3.selectAll(".node").each(function(d, i) {
         var ondisplay = d3.select(this).classed("ondisplaynodes");
@@ -705,7 +693,7 @@ function applyBorderColours(mode) {
 }
 
 // PARAM : tableau d'UEs [UEArray]
-// RETURN : void, met en place l'affichage des semestres sous le graphe
+// Met en place l'affichage des semestres sous le graphe
 function displaySemesters(UEArray) {
     var tab = getMinMaxSemester(UEArray);
 
@@ -716,7 +704,7 @@ function displaySemesters(UEArray) {
     for (var i = tab[0]; i <= tab[1]; i++) {
         d3.select("#semesterLayout g").append("text")
             .style("text-anchor", "middle")
-            .attr("y", 0)
+            .attr("y", 15)
             .attr("x", semesterScale(i))
             .text("Semestre " + i);
     }
@@ -737,13 +725,11 @@ function getSkillList(competences) {
 // RETURN : void, gère les filtres en fonction des checkbox générées par
 // cette fonction ainsi que les boutons d'interaction
 // Doit être appelée une seule fois
-function filterDisplayManager(data, SkillList, graph, jsonName) {
+function filterDisplayManager(data, SkillList, graph) {
 
-    setupCursusDisplay(data.cursus, jsonName);
+    setupCursusDisplay(data.cursus);
 
     radioDisplaySetup();
-    buttonsSetup(data.ueDoublons, graph);
-
 
     var skillDiv = filterDiv.append("div");
     skillDiv.append("h2")
@@ -757,13 +743,12 @@ function filterDisplayManager(data, SkillList, graph, jsonName) {
 
     // selectAllSetup(SkillList);
 
+    buttonsSetup(data.ueDoublons, data.general, graph);
 
     changeMode(graph, skillDiv, displayLegendDiv);
 }
 
-// PARAM : donnes du .json sur les cursus [cursus]
-// Initialise l'affichage des cursus similaires dans le menu
-function setupCursusDisplay(cursus, jsonName) {
+function setupCursusDisplay(cursus) {
     if (cursus == [])
         return;
 
@@ -780,65 +765,53 @@ function setupCursusDisplay(cursus, jsonName) {
         });
 
 
-        if (licenceCursusData.length != 0) {
-            var licenceCursusDiv = filterDiv.append("div");
-            licenceCursusDiv.append("h2")
-                .text("Licence Mention Informatique");
+        var licenceCursusDiv = filterDiv.append("div");
+        licenceCursusDiv.append("h2")
+            .text("Parcours Licence");
 
-            var licenceButtons = licenceCursusDiv.selectAll("div").data(licenceCursusData).enter()
-                .append("input")
-                .classed("clickable cursusInput", true)
-                .sort(function(a, b) {
-                    return a.sortIndex - b.sortIndex;
-                })
-                .attr("id", function(d, i) {
-                    return "licenceCursusDisplay" + i;
-                })
-                .attr("type", "button")
-                .attr("name", function(d) {
-                    return d.name;
-                })
-                .attr("path", function(d) {
-                    return d.path;
-                })
-                .attr("value", function(d) {
-                    return d.name;
-                });
+        licenceCursusDiv.selectAll("div").data(licenceCursusData).enter()
+            .append("input")
+            .classed("clickable cursusInput", true)
+            .sort(function(a, b) {
+                return a.sortIndex - b.sortIndex;
+            })
+            .attr("id", function(d, i) {
+                return "licenceCursusDisplay" + i;
+            })
+            .attr("type", "button")
+            .attr("name", function(d) {
+                return d.name;
+            })
+            .attr("path", function(d) {
+                return d.path;
+            })
+            .attr("value", function(d) {
+                return d.name;
+            });
 
-            licenceButtons.filter(function(d) {
-                return d.path === jsonName;
-            }).classed("currentCursusInput", true);
+        var masterCursusDiv = filterDiv.append("div");
+        masterCursusDiv.append("h2")
+            .text("Parcours Master");
 
-        }
-
-        if (masterCursusData.length != 0) {
-            var masterCursusDiv = filterDiv.append("div");
-            masterCursusDiv.append("h2")
-                .text("Master Mention Informatique");
-
-            var masterButtons = masterCursusDiv.selectAll("div").data(masterCursusData).enter()
-                .append("input")
-                .classed("clickable cursusInput", true)
-                .sort(function(a, b) {
-                    return a.sortIndex - b.sortIndex;
-                })
-                .attr("id", function(d, i) {
-                    return "licenceCursusDisplay" + i;
-                })
-                .attr("type", "button")
-                .attr("name", function(d) {
-                    return d.name;
-                })
-                .attr("path", function(d) {
-                    return d.path;
-                })
-                .attr("value", function(d) {
-                    return d.name;
-                });
-            masterButtons.filter(function(d) {
-                return d.path === jsonName;
-            }).classed("currentCursusInput", true);
-        }
+        masterCursusDiv.selectAll("div").data(masterCursusData).enter()
+            .append("input")
+            .classed("clickable cursusInput", true)
+            .sort(function(a, b) {
+                return a.sortIndex - b.sortIndex;
+            })
+            .attr("id", function(d, i) {
+                return "licenceCursusDisplay" + i;
+            })
+            .attr("type", "button")
+            .attr("name", function(d) {
+                return d.name;
+            })
+            .attr("path", function(d) {
+                return d.path;
+            })
+            .attr("value", function(d) {
+                return d.name;
+            });
     }
 
     d3.selectAll(".cursusInput")
@@ -953,8 +926,7 @@ function initDefaultRadio(skillDiv) {
         .append("p")
         .classed("clickable", true)
         .style("display", "inline")
-        .html("Aucune");
-    checkDivDef.append("hr");
+        .html("Défaut");
 
     document.getElementById("radiodef").addEventListener("change", function() {
         document.getElementById("description-area").innerHTML = "Aucune compétence sélectionnée";
@@ -992,10 +964,10 @@ function displayBlocks(displayLegendDiv, categories) {
         });
 }
 
-// PARAM : Tableau des donnees des noeuds et des liens [graph], donnees
-// d'options doublons du fichier .json [dataueDoublons]
-// RETURN : void, gere l'affichage du bouton de reinitialisation  et ses évenements
-function buttonsSetup(dataueDoublons, graph) {
+// PARAM : Tableau des donnees des noeuds et des liens [graph], donnees du fichier .json [data]
+// RETURN : void, gere l'affichage du bouton de reinitialisation ainsi
+// que la legende (UE en option)
+function buttonsSetup(dataueDoublons, generalInfos, graph) {
     var svg = d3.select("#chart").select("g");
     var semesterLayout = d3.select("#semesterLayout").select("g");
 
@@ -1005,7 +977,22 @@ function buttonsSetup(dataueDoublons, graph) {
 
     var resetViewButton = filterDiv.append("button")
         .classed("selectionButtons clickable", true)
-        .text("Réinitialiser l'affichage");
+        .text("Réinitialiser tout");
+
+    if (generalInfos.affichagelegendeUEfacultative === "true") {
+        var optionLegend = filterDiv.append("div")
+            .style("width", "100%");
+        optionLegend.append("div")
+            .attr("id", "optionImage")
+            .style("border", function() {
+                return "2px dashed " + defaultSkillDisplayColor + "";
+            });
+
+        optionLegend.append("p")
+            .style("font-style", "italic")
+            .text("UE facultative")
+            .attr("id", "optionText");
+    }
 
     resetViewButton.on("click", function(d) {
         sankey
@@ -1060,7 +1047,6 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
                     applyColours(this.value);
                     skillDiv.style("display", "block");
                     displayLegendDiv.style("display", "none");
-                    d3.select("#description-div").style("display", "block");
                     displayLinks(links);
                     colorRects.style("display", "none");
                     break;
@@ -1070,7 +1056,6 @@ function changeMode(graph, skillDiv, displayLegendDiv) {
                     applyColours(this.value);
                     skillDiv.style("display", "none");
                     displayLegendDiv.style("display", "block");
-                    d3.select("#description-div").style("display", "none");
                     hideLinks(links);
                     colorRects.style("display", "block");
                     break;
@@ -1134,17 +1119,11 @@ function resetSelection() {
     applyDefaultOpacity(nodes, links);
 }
 
-// PARAM : longueur tableau de compétences [SkillListLength] et leurs descriptions [descriptions]
+// PARAM : tableau de compétences [SkillList] et leurs descriptions [descriptions]
 // RETURN : void, gère l'affichage des descriptions
 // de chaque compétence onmouseover dans la zone prévue à cet effet
 function setSkillDescription(SkillListLength, descriptions) {
-    var descriptionDiv = filterDiv.append("div")
-        .attr("id", "description-div");
-
-
-    if (getDisplayMode() !== "skillDisplay") {
-        descriptionDiv.style("display", "none");
-    }
+    var descriptionDiv = filterDiv.append("div");
     var descriptionTitle = descriptionDiv.append("h2").text("Description de compétence");
     var descriptionContent = descriptionDiv.append("p")
         .attr("id", "description-area");
@@ -1160,7 +1139,7 @@ function setSkillDescription(SkillListLength, descriptions) {
     }
 }
 
-// PARAM : longueur tableau de compétences [SkillListLength]
+// PARAM : tableau de compétences [SkillList]
 // RETURN : void, applique la couleur de fond de
 // chaque compétence au niveau des radios
 function RadioLabelColor(SkillListLength) {
@@ -1172,7 +1151,7 @@ function RadioLabelColor(SkillListLength) {
     }
 }
 
-// PARAM : Nombre d'ECTS d'une UE [ects]
+// PARAM : Nombre d'ECTS d'une UE
 // RETURN : void, applique la mise en forme ci-dessous pour affichage
 function printECTS(ects) {
     return "ECTS : " + ects;
@@ -1383,8 +1362,6 @@ function filterUESelection(data, selectionArray) {
     return filteredArray;
 }
 
-
-// BRIEF: fonction de tri des items de dropdown pour la fonction js sort
 function sortDropDown(a, b) {
     var alpha = a.name.toLowerCase();
     var beta = b.name.toLowerCase();
@@ -1399,8 +1376,8 @@ function sortDropDown(a, b) {
     }
 }
 
-// PARAM : nom de categorie [name]
-// RETURN : sort index de la categorie avec le nom [name]
+
+// recupere le sort index de la categorie avec le nom [name]
 function getSortIndexWithCategName(name) {
     var index = null;
     if (categories) {
@@ -1421,7 +1398,7 @@ function arrayInter(arrA, arrB) {
     });
 }
 
-// PARAM : données json d'options doublons [dataueDoublons], ID d'ue [id]
+// PARAM : données json [data], ID d'ue [id]
 // RETURN : tableau comportant l'ue avec l'id [id] ainsi que ses doublons
 //dans les autres semestres
 function getDuplicatesOfUE(dataueDoublons, id) {
@@ -1440,7 +1417,7 @@ function getDuplicatesOfUE(dataueDoublons, id) {
     return duplicatesOfUE;
 }
 
-// PARAM : données json d'options doublons [dataueDoublons], ID d'ue [id]
+// PARAM : données json [data], ID d'ue [id]
 // RETURN : tableau comportant les doublons de l'UE d'id [id] sans l'ue elle
 // même. Cela sert à cacher les doublons une fois l'UE sélectionnée
 function hideDuplicatesOfUE(dataueDoublons, id) {
@@ -1485,9 +1462,7 @@ function getOptionById(data, id) {
     });
     return d;
 }
-// PARAM : tableau d'UEs [UEArray], infos sur la formation
-// décrite par le json (champ general) [generalInfos],
-// position en y de la ligne de separation [yPos]
+
 // RETURN : void, gere l'affichage de la ligne de separation entre
 // la zone d'options et celle des UEs
 function setupAreaSeparator(UEArray, generalInfos, yPos) {
@@ -1501,10 +1476,11 @@ function setupAreaSeparator(UEArray, generalInfos, yPos) {
     d3.select("#chart")
         .append("g")
         .attr("id", "areaSeparator")
-        .attr("transform", "translate(0," + yPos + ")")
         .append("line")
         .attr("x1", 0)
-        .attr("x2", margin.left + svgPadding.left + width);
+        .attr("x2", margin.left + svgPadding.left + width)
+        .attr("y1", yPos)
+        .attr("y2", yPos);
 
     d3.select("#optionZone")
         .attr("transform", "translate(0," + yPos + ")")
@@ -1512,43 +1488,53 @@ function setupAreaSeparator(UEArray, generalInfos, yPos) {
         .attr("width", margin.left + svgPadding.left + width)
         .attr("height", height);
 
-    var text = "";
-    var size = 0;
     if (checkTypeParcours(UEArray) == "licence") {
-        size = sankey.nodeWidth();
-        text = "Choix des options";
+        for (var i = tab[0]; i <= tab[1]; i++) {
+            d3.select("#areaSeparator")
+                .append("g")
+                .attr("id", "separator" + i)
+                .attr("class", "separator")
+                .attr("transform", "translate(" + optionScale(i) + "," + yPos + ")")
+                .attr("width", sankey.nodeWidth())
+                .append("rect")
+                .attr("height", 25)
+                .attr("width", sankey.nodeWidth())
+                .attr("rx", 2)
+                .attr("ry", 2);
+
+            d3.select("#separator" + i)
+                .append("text")
+                .attr("y", 13)
+                .attr("dy", ".35em")
+                .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
+                .style("text-anchor", "middle")
+                .text("Options S" + i)
+                .style("font-size", adaptLabelFontSize);
+        }
     } else {
-        size = width / 3;
-        text = "Spécialité " + generalInfos.cursusname + " (" + generalInfos.abrevname + ")";
+        d3.select("#areaSeparator")
+            .append("g")
+            .attr("id", "separator")
+            .attr("class", "separator")
+            .attr("transform", "translate(" + (chartCenter - sankey.nodeWidth() / 2) + "," + yPos + ")")
+            .attr("width", sankey.nodeWidth())
+            .append("rect")
+            .attr("height", 25)
+            .attr("width", sankey.nodeWidth())
+            .attr("rx", 2)
+            .attr("ry", 2);
+
+        d3.select("#separator")
+            .append("text")
+            .attr("y", 13)
+            .attr("dy", ".35em")
+            .attr("transform", "translate(" + (sankey.nodeWidth() / 2) + "," + 0 + ")")
+            .style("text-anchor", "middle")
+            .text("Spécialité " + generalInfos.cursusname)
+            .style("font-size", adaptLabelFontSize);
     }
-
-    d3.select("#areaSeparator")
-        .append("g")
-        .attr("id", "separator")
-        .attr("class", "separator")
-        .attr("transform", "translate(" + (chartCenter - size / 2) + "," + 0 + ")")
-        .attr("width", size / 2)
-        .append("rect")
-        .attr("height", 25)
-        .attr("width", size)
-        .attr("rx", 2)
-        .attr("ry", 2);
-
-    d3.select("#separator")
-        .append("text")
-        .attr("y", 13)
-        .attr("dy", ".35em")
-        .attr("transform", "translate(" + size / 2 + "," + 0 + ")")
-        .style("text-anchor", "middle")
-        .text(text)
-        .style("font-size", function() {
-            return adaptLabelFontSize(size, this);
-        });
 }
 
-
-// PARAM : tableau d'UEs [UEArray]
-// RETURN : renvoie le type de parcours (licence/master) sous forme de string
 function checkTypeParcours(UEArray) {
     var res = "licence";
     UEArray.forEach(function(ue) {
@@ -1559,12 +1545,10 @@ function checkTypeParcours(UEArray) {
     return res;
 }
 
-// RETURN : void, initialisation de la fenetre d'info d'UE
+// RETURN : void, la fenetre d'info d'UE
 function initInfoWindow() {
 
     var infoWindow = d3.select("body").append("div")
-        .style("overflow-y", "scroll")
-        .style("overflow-x", "hidden")
         .style("width", width + "px")
         .style("height", height + "px")
         .style("position", "absolute")
@@ -1589,123 +1573,12 @@ function initInfoWindow() {
         }).append("p")
         .html("X");
 
-    infoWindow.append("div")
+    var infoWindowText = infoWindow.append("p")
         .style("color", "white")
-        .style("padding", "50px 100px")
+        .style("padding", "150px")
         .style("text-align", "justify")
-        .attr("id", "infoWindowContent");
-
+        .html("<u>Pré-requis</u><br/><br/> Programme de TS toutes spécialités confondues. <br/><br/><u>Contenu</u><br/><br/> Arithmétique dans Z. Division euclidienne. Diviseurs communs à deux entiers, pgcd, ppcm, lemme de Gauss. Théorème de Bézout. Algorithme dEuclide de calcul de pgcd. Nombres premiers. Existence et unicité de la décomposition en produit de facteurs premiers. Congruences : additions et multiplications. Systèmes de congruences, théorème chinois. Polynômes, somme, produit, fonctions polynômiales. Annulation en un point et factorisation par X -a.<br/><br/>Algèbre linéaire. Systèmes linéaires dans R^n, résolution par méthode du pivot. Matrices, produit de matrices, traduction des opérations de lignes et de colonnes. Calculs de noyaux et d'images. <br/><br/><u>Objectifs : savoir-faire et compétences</u><br/><br/> Résoudre de manière autonome des problèmes liés ou faisant appel à l'arithmétique élémentaire et à l'algèbre linéaire.");
 }
-
-
-// PARAM : contenu à afficher dans la fenetre d'infos d'UE lorsque l'on
-// clique sur un noeud [content]
-// RETURN : void, gère l'ajout du contenu [content] à la fenetre d'infos
-function setInfoWindowInformations(content) {
-    var infoWindowContent = d3.select("#infoWindowContent");
-    d3.select("#infoWindowContent").selectAll("*").remove();
-
-    infoWindowContent.append("h3").text(content.name);
-
-    if (content.informations) {
-        var isInfoAvailable = false;
-
-        if (content.informations.horaires && !timeTableEmpty(content.informations.horaires)) {
-            infoWindowContent.append("h4").html("Volume Horaire");
-            var planTable = infoWindowContent.append("table")
-                .attr("id", "planTable")
-                .style("margin-left", "20px")
-                .style("border-collapse", "collapse")
-                .style("width", "300px")
-                .style("border", "1px solid #ddd");
-            Object.keys(content.informations.horaires).forEach(function(d, i) {
-                var tr = planTable.append("tr");
-                tr.append("td").text(function() {
-                        switch (d) {
-                            case "CM":
-                                return "Cours magistral (" + d + ")";
-                                break;
-                            case "CI":
-                                return "Cours integré (" + d + ")";
-                                break;
-                            case "TD":
-                                return "Travaux dirigés (" + d + ")";
-                                break;
-                            case "TP":
-                                return "Travaux pratiques (" + d + ")";
-                                break;
-                            case "TE":
-                                return "Travail étudiant (" + d + ")";
-                                break;
-                            default:
-                                console.error("Format horaire invalide");
-                                break;
-                        }
-                    })
-                    .style("padding-left", "5px")
-                    .style("border-bottom", "1px solid #ddd")
-                    .style("border-right", "1px solid #ddd");
-                tr.append("td").text(function() {
-                        if (content.informations.horaires[d] == "")
-                            return "-";
-                        else
-                            return content.informations.horaires[d];
-                    })
-                    .style("border-bottom", "1px solid #ddd")
-                    .style("text-align", "center");
-
-            });
-            isInfoAvailable = true;
-        }
-
-        if (content.informations.contenuDesc) {
-            infoWindowContent.append("h4").html("Description du contenu de l'enseignement");
-            infoWindowContent.append("p").html(content.informations.contenuDesc);
-            isInfoAvailable = true;
-        }
-
-        if (content.informations.competenceObj) {
-            infoWindowContent.append("h4").html("Compétences à acquérir");
-            infoWindowContent.append("p").html(content.informations.competenceObj);
-            isInfoAvailable = true;
-        }
-
-        if (content.informations.biblio) {
-            infoWindowContent.append("h4").html("Bibliographie, lectures recommandées");
-            infoWindowContent.append("p").html(content.informations.biblio);
-            isInfoAvailable = true;
-        }
-
-        if (content.informations.prerequisOblig) {
-            infoWindowContent.append("h4").html("Pré-requis obligatoires");
-            infoWindowContent.append("p").html(content.informations.prerequisOblig);
-            isInfoAvailable = true;
-        }
-
-        if (content.informations.prerequisRecomm) {
-            infoWindowContent.append("h4").html("Pré-requis recommandés");
-            infoWindowContent.append("p").html(content.informations.prerequisRecomm);
-            isInfoAvailable = true;
-        }
-
-        if (!isInfoAvailable) {
-            infoWindowContent.append("p").html("Aucune information n'a été renseignée pour cette UE.");
-        }
-    }
-}
-
-// PARAM : informations de volume horaire d'une UE [horaires]
-// RETURN : true s'il n'y a pas d'information d'horaire renseignée, false sinon
-function timeTableEmpty(horaires) {
-    var bool = true;
-    Object.keys(horaires).forEach(function(d) {
-        if (horaires[d] !== "") {
-            bool = false;
-        }
-    });
-    return bool;
-}
-
 
 // RETURN : void, gère la taille du svg au redimensionnement de fenetre
 function resize() {
@@ -1730,17 +1603,17 @@ function resize() {
     });
 }
 
-// PARAM : contenu de la tooltip [content], donnes du noeud survole [nodeData]
+// PARAM : contenu de la tooltip [content]
 // RETURN : void, gère l'apparition et le contenu de tooltip
-function enableTooltip(content, nodeData) {
+function enableTooltip(content) {
     tip.transition()
         .delay(500)
         .duration(200)
         .style("opacity", .8);
 
     tip.html(content)
-        .style("left", (nodeData.x + nodeData.dx + margin.left) + "px")
-        .style("top", (nodeData.y + margin.top + parseFloat(tip.style("height")) + "px"));
+        .style("left", (d3.event.pageX + 10) + "px")
+        .style("top", (d3.event.pageY - 10) + "px");
 }
 
 // RETURN : void, gère la disparition de tooltip
@@ -1763,9 +1636,6 @@ function escapeEvents() {
 
 }
 
-// PARAM : nom du fichier json à parser [jsonName]
-// RETURN : void, traite les informations du fichier json [jsonName] et gère
-// l'affichage à l'écran
 function parseJson(jsonName) {
     sessionStorage.removeItem("json");
 
@@ -1803,7 +1673,6 @@ function parseJson(jsonName) {
         });
 
         // Initialisation des filtres (= toutes les compétences existantes ici)
-        // (utilisé dans le cas d'une selection de plusieurs compétences à la fois)
         // currentFilters = getSkillList(graph.nodes);
 
         // Calcul de la dispoition des noeuds et liens du diagramme de sankey
@@ -1827,16 +1696,12 @@ function parseJson(jsonName) {
             .layout();
 
         // Setup ligne de separation zone d'option
-        var separatorYPos;
-        if ((checkTypeParcours(graph.nodes) == "licence" && data.options.length != 0)) {
-            separatorYPos = sankey.highestOptionY() + 20;
-            setupAreaSeparator(graph.nodes, data.general, separatorYPos);
-        } else if (checkTypeParcours(graph.nodes) == "master") {
-            separatorYPos = sankey.lowestUEY() + svgPadding.top + 20;
+        if ((checkTypeParcours(graph.nodes) == "licence" && data.options.length != 0) || checkTypeParcours(graph.nodes) == "master") {
+            var separatorYPos = sankey.highestOptionY() + 20;
             setupAreaSeparator(graph.nodes, data.general, separatorYPos);
         }
 
-        // Mise en place de l'affichage des semestres sous le SVG du graphe
+        //Mise en place de l'affichage des semestres sous le SVG du graphe
         displaySemesters(graph.nodes);
 
         // selection d3 des liens avec les données du sankey bindées
@@ -1877,17 +1742,17 @@ function parseJson(jsonName) {
             })
             .attr("width", sankey.nodeWidth());
 
-        // interactions noeuds d'options
+
         option.on("click", function(d) {
             backgroundClick = false;
             initDropdown(graph.nodes, d, data);
             disableTooltip();
 
         }).on("mouseover", function(d) {
-            d3.select(this).select("rect").style("fill", optionNodeMouseOverColor);
+            d3.select(this).select("rect").style("fill", optionNodeMouseOverColor); //option node mouseover color
             if (lastClickedOptionNode !== d || d3.select("#dropdown").empty()) {
                 enableTooltip("Cliquer pour choisir une option" + "<br/>" +
-                    printECTS(d.coefficient), d);
+                    printECTS(d.coefficient));
             }
 
         }).on("mouseout", function(d, i) {
@@ -1903,7 +1768,7 @@ function parseJson(jsonName) {
 
 
         // selection d3 des rects du svg (= les rectangles de chaque noeud avec
-        // couleur d'arrière plan/countours )
+        // couleur d'arrière plan )
         var nodeRects = node.append("rect")
             .attr("height", function(d) {
                 return d.dy;
@@ -1921,12 +1786,10 @@ function parseJson(jsonName) {
             .style("stroke", function(d) {
                 return applyBorderColours(getDisplayMode());
             })
-            .on("click", function(d) {
-                setInfoWindowInformations(d);
+            .on("click", function() {
                 d3.select("#infoWindow").style("display", "block");
             });
 
-        // selection d3 des rects gerant le liseret de couleur sur la bordure gauche des UEs
         var nodeColors = node.append("rect")
             .attr("class", "colorRect")
             .attr("height", function(d) {
@@ -1943,9 +1806,7 @@ function parseJson(jsonName) {
                 return applyBorderColours(getDisplayMode());
             });
 
-        // selection d3 des rects des noeuds d'options
         var optionRects = option.append("rect")
-            .attr("class", "optRect")
             .attr("height", function(d) {
                 return d.dy;
             })
@@ -1974,14 +1835,14 @@ function parseJson(jsonName) {
             .text(function(d) {
                 return d.abreviation;
             })
-            .style("font-size", function() {
-                return adaptLabelFontSize(sankey.nodeWidth(), this);
+            .style("font-style", function(d) {
+                return (d.facultatif === "true") ? "italic" : "normal";
             })
+            .style("font-size", adaptLabelFontSize)
             .filter(function(d) {
                 return d.x < width / 2;
             });
 
-        // sélection d3 des textes au niveau des noeuds options
         var optionTexts = option.append("text")
             .attr("y", function(d) {
                 return d.dy / 2;
@@ -1992,9 +1853,7 @@ function parseJson(jsonName) {
             .text(function(d) {
                 return "Option S" + d.semestre;
             })
-            .style("font-size", function() {
-                return adaptLabelFontSize(sankey.nodeWidth(), this);
-            })
+            .style("font-size", adaptLabelFontSize)
             .filter(function(d) {
                 return d.x < width / 2;
             });
@@ -2013,7 +1872,7 @@ function parseJson(jsonName) {
                 enableTooltip(d.name + "<br/>" +
                     printECTS(d.coefficient) + "<br/>" +
                     facultatifText +
-                    projetDescription, d);
+                    projetDescription);
             })
             .on("mouseout", function(d, i) {
                 // Disparition de l'infobulle
@@ -2059,17 +1918,10 @@ function parseJson(jsonName) {
 
             });
 
-        // récuperation de la liste des noms de competences
         var SkillList = getSkillList(graph.competences);
-
-        // gestion des filtres de compétences
         filterSkill(currentFilters);
-
-        filterDisplayManager(data, SkillList, graph, jsonName);
-        // Gere la zone de description de compétence
+        filterDisplayManager(data, SkillList, graph);
         setSkillDescription(SkillList.length, skillDescriptions);
-
-        // Couleur des compétences qui s'affiche sur leur bouton radio respectif
         // RadioLabelColor(SkillList.length);
 
         // fonction gérant le drag

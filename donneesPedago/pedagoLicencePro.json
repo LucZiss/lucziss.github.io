@@ -1,4 +1,9 @@
 {
+    "general" : {
+      "cursusname" : "Licence Professionnelle",
+      "abrevname" : ""
+    },
+
     "ue": [{
         "ueid": "11",
         "name": "Administration système et internet",
@@ -11,7 +16,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "12",
         "name": "Réseaux locaux",
@@ -24,7 +45,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "13",
         "name": "Virtualisation et stockage",
@@ -37,7 +74,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "14",
         "name": "Sécurité des systèmes",
@@ -50,7 +103,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "15",
         "name": "Sécurité des réseaux",
@@ -63,7 +132,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "16",
         "name": "Développement Web",
@@ -76,7 +161,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "17",
         "name": "Services réseaux",
@@ -89,7 +190,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "18",
         "name": "Projet",
@@ -102,7 +219,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "21",
         "name": "Langue",
@@ -115,7 +248,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "22",
         "name": "Communication en entreprise",
@@ -128,7 +277,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "23",
         "name": "Gestion de projets",
@@ -141,7 +306,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "24",
         "name": "Formation en entreprise",
@@ -154,7 +335,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     },{
         "ueid": "25",
         "name": "Stage",
@@ -167,7 +364,23 @@
         ],
         "projet": "false",
         "option": "false",
-        "facultatif": "false"
+        "facultatif": "false",
+
+        "informations": {
+            "horaires": {
+                "CM": "",
+                "CI": "",
+                "TD": "",
+                "TP": "",
+                "TE": ""
+            },
+            "contenuDesc": "",
+            "competenceObj": "",
+            "biblio": "",
+            "prerequisOblig": "",
+            "prerequisRecomm": ""
+        }
+
     }],
 
     "ueDoublons": [],
@@ -202,35 +415,5 @@
         "sortIndex" : 3
     }],
 
-    "cursus" : [{
-        "name" : "Licence Informatique",
-        "path" : "pedagoLicenceInfo17.json",
-        "class" : "licence",
-        "sortIndex" : 0
-    }, {
-        "name" : "Licence Professionnelle",
-        "path" : "pedagoLicencePro.json",
-        "class" : "licence",
-        "sortIndex" : 1
-    }, {
-        "name" : "Parcours I3D",
-        "path" : "pedagoMasterI3D.json",
-        "class" : "master",
-        "sortIndex" : 0
-    }, {
-        "name" : "Parcours SIL",
-        "path" : "pedagoMasterSIL.json",
-        "class" : "master",
-        "sortIndex" : 3
-    }, {
-        "name" : "Parcours SDSC",
-        "path" : "pedagoMasterSDSC.json",
-        "class" : "master",
-        "sortIndex" : 2
-    }, {
-        "name" : "Parcours SIRIS",
-        "path" : "pedagoMasterSIRIS.json",
-        "class" : "master",
-        "sortIndex" : 1
-    }]
+    "cursus" : []
 }

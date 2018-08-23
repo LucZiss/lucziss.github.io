@@ -1,0 +1,963 @@
+{
+    "general" : {
+      "cursusname" : "Licence Informatique",
+      "affichagelegendeUEfacultative" : "true"  
+    },
+
+    "ue" : [{
+        "ueid": "11",
+        "name": "Algèbre S1",
+        "abreviation": "Algèbre S1",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer", 21, 301, 41, 401]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "12",
+        "name": "Algorithmique et programmation S1",
+        "abreviation": "AlgoProg S1",
+        "categorie":"Informatique",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [
+            ["Formaliser", 22, 35],
+            ["Programmer", 22, 35],
+            ["Construire", 22]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "13",
+        "name": "Analyse S1",
+        "abreviation": "Analyse S1",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "1",
+        "dependances": [
+            ["Appliquer", 23, 24]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "14",
+        "name": "Calcul formel",
+        "abreviation": "Calcul formel",
+        "categorie": "Mathématiques",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "15",
+        "name": "Mécanique",
+        "abreviation": "Mécanique",
+        "categorie": "Mathématiques",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Formaliser"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "16",
+        "name": "Méthodologie du travail universitaire",
+        "abreviation": "MTU",
+        "categorie": "Ouverture",
+        "coefficient": "2",
+        "semestre": "1",
+        "dependances": [
+            ["Programmer", 22],
+            ["Appliquer"],
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "17",
+        "name": "Certificat informatique et internet",
+        "abreviation": "C2I",
+        "categorie": "Ouverture",
+        "coefficient": "1",
+        "semestre": "1",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "18",
+        "name": "Langue S1",
+        "abreviation": "Langue S1",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "1",
+        "dependances": [
+            ["Professionnaliser", 26]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "21",
+        "name": "Algèbre S2",
+        "abreviation": "Algèbre S2",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "22",
+        "name": "Algorithmique et programmation S2",
+        "abreviation": "AlgoProg S2",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [
+            ["Formaliser", 37, 45, 56, 64],
+            ["Programmer", 37, 38, 45, 51, 601],
+            ["Construire", 37, 38, 51, 55]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "23",
+        "name": "Analyse Réelle S2",
+        "abreviation": "Analyse Réelle S2",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "24",
+        "name": "Modélisation",
+        "abreviation": "Modélisation",
+        "categorie": "Mathématiques",
+        "coefficient": "2",
+        "semestre": "2",
+        "dependances": [
+            ["Formaliser"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "25",
+        "name": "Projet professionnel personnel",
+        "abreviation": "PPP",
+        "categorie": "Ouverture",
+        "coefficient": "1",
+        "semestre": "2",
+        "dependances": [
+            ["Professionnaliser", 36]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "26",
+        "name": "Langue S2",
+        "abreviation": "Langue S2",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Professionnaliser", 43]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "201",
+        "name": "Culture et pratique de l'informatique",
+        "abreviation": "CPI",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"],
+            ["Construire", 34],
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "202",
+        "name": "Introduction a la programmation Web",
+        "abreviation": "Intro. PW",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "true",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "203",
+        "name": "Modèles de calcul",
+        "abreviation": "Modèles de calcul",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "2",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }, {
+        "ueid": "31",
+        "name": "Anglais pour l'informatique S3",
+        "abreviation": "API S3",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "32",
+        "name": "Architecture des ordinateurs",
+        "abreviation": "ADO",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer"],
+            ["Construire", 47, 55]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "33",
+        "name": "Bases de données 1",
+        "abreviation": "BDD 1",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer", 51],
+            ["Construire", 51]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "34",
+        "name": "Pratique des systèmes d'exploitation",
+        "abreviation": "PSE",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer", 47],
+            ["Construire", 47]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "35",
+        "name": "Programmation Fonctionnelle",
+        "abreviation": "PF",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "36",
+        "name": "Projet personnel professionnalisé",
+        "abreviation": "PPP",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "37",
+        "name": "Structures de données, algorithmes 1",
+        "abreviation": "SDA 1",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "3",
+        "dependances": [
+            ["Formaliser", 46],
+            ["Programmer", 46, 47],
+            ["Construire", 46, 47],
+            ["Realiser", 407, 501, 608]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "38",
+        "name": "Techniques de développement",
+        "abreviation": "TDD",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Programmer", 47, 62],
+            ["Construire", 62],
+            ["Realiser", 407, 501, 62, 608]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "301",
+        "name": "Arithmétique et cryptographie S3",
+        "abreviation": "Ari&Cry S3",
+        "categorie": "Mathématiques",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "302",
+        "name": "Introduction aux grandes catégories de problèmes S3",
+        "abreviation": "IGCP S3",
+        "categorie": "Informatique théorique",
+        "coefficient": "3",
+        "semestre": "3",
+        "dependances": [
+            ["Formaliser"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "41",
+        "name": "Algèbre linéaire appliquée",
+        "abreviation": "ALINEA",
+        "categorie": "Informatique théorique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "42",
+        "name": "Théorie des Graphes",
+        "abreviation": "Graphes",
+        "categorie": "Informatique théorique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "43",
+        "name": "Langue S4",
+        "abreviation": "Langue S4",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Professionnaliser", 52]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "44",
+        "name": "Logique et programmation logique",
+        "abreviation": "LPL",
+        "categorie": "Informatique théorique",
+        "coefficient": "6",
+        "semestre": "4",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "45",
+        "name": "Programmation orientée objets 1",
+        "abreviation": "POO 1",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Formaliser", 54],
+            ["Programmer", 54, 64]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "46",
+        "name": "Structures de données, algorithmes 2",
+        "abreviation": "SDA 2",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "4",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer", 601],
+            ["Construire"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "47",
+        "name": "Systèmes d'Exploitation",
+        "abreviation": "SE",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Programmer", 55, 56, 64],
+            ["Construire", 55, 56]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "401",
+        "name": "Arithmétique et cryptographie S4",
+        "abreviation": "Ari&Cry S4",
+        "categorie": "Mathématiques",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "402",
+        "name": "Introduction aux grandes catégories de problèmes S4",
+        "abreviation": "IGCP S4",
+        "categorie": "Informatique théorique",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Formaliser"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "403",
+        "name": "Communication S4",
+        "abreviation": "Communication S4",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "404",
+        "name": "Droit S4",
+        "abreviation": "Droit S4",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "405",
+        "name": "Economie et gestion S4",
+        "abreviation": "Eco gestion S4",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "406",
+        "name": "UE Unistra libre",
+        "abreviation": "UE Unistra libre",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "407",
+        "name": "Stage S4",
+        "abreviation": "Stage S4",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "4",
+        "dependances": [
+            ["Formaliser"],
+            ["Realiser"],
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }, {
+        "ueid": "51",
+        "name": "Bases de données 2 et programmation Web",
+        "abreviation": "BDD2PW",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "5",
+        "dependances": [
+            ["Programmer"],
+            ["Construire"]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "52",
+        "name": "Langue S5",
+        "abreviation": "Langue S5",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "53",
+        "name": "Probabilités et statistiques",
+        "abreviation": "Proba. Stat.",
+        "categorie": "Mathématiques",
+        "coefficient": "6",
+        "semestre": "5",
+        "dependances": [
+            ["Formaliser"],
+            ["Appliquer", 65]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "54",
+        "name": "Programmation orientée objets 2",
+        "abreviation": "POO 2",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "5",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer", 63]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "55",
+        "name": "Réseaux et protocoles",
+        "abreviation": "RP",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "5",
+        "dependances": [
+            ["Programmer"],
+            ["Construire", 64, 603]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "56",
+        "name": "Systèmes concurrents",
+        "abreviation": "SC",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer"],
+            ["Construire", 64]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "501",
+        "name": "Stage S5",
+        "abreviation": "Stage S5",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "5",
+        "dependances": [
+            ["Formaliser"],
+            ["Realiser"],
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }, {
+        "ueid": "61",
+        "name": "Anglais pour l'informatique S6",
+        "abreviation": "API S6",
+        "categorie": "Langues",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "62",
+        "name": "Génie logiciel",
+        "abreviation": "GL",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Programmer"],
+            ["Construire"],
+            ["Realiser", 608]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "63",
+        "name": "Interface homme-machine",
+        "abreviation": "IHM",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Programmer"]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "64",
+        "name": "Systèmes distribués",
+        "abreviation": "SD",
+        "categorie": "Informatique",
+        "coefficient": "6",
+        "semestre": "6",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer"],
+            ["Construire"]
+        ],
+        "projet": "true",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "65",
+        "name": "Théorie des langages",
+        "abreviation": "TDL",
+        "categorie": "Informatique théorique",
+        "coefficient": "6",
+        "semestre": "6",
+        "dependances": [
+            ["Formaliser"],
+            ["Appliquer"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "false"
+    }, {
+        "ueid": "601",
+        "name": "Géométrie pour la 3D",
+        "abreviation": "G3D",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Appliquer"],
+            ["Programmer"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "602",
+        "name": "Intelligence artificielle",
+        "abreviation": "IA",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Formaliser"],
+            ["Programmer"]
+        ],
+        "projet": "true",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "603",
+        "name": "Réseaux locaux et interconnexions",
+        "abreviation": "RLI",
+        "categorie": "Informatique",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Construire"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "604",
+        "name": "Introduction à la recherche",
+        "abreviation": "IR",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "605",
+        "name": "Communication S6",
+        "abreviation": "Communication S6",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "606",
+        "name": "Droit S6",
+        "abreviation": "Droit S6",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "607",
+        "name": "Economie et gestion S6",
+        "abreviation": "Eco gestion S6",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "true",
+        "facultatif" : "false"
+    }, {
+        "ueid": "608",
+        "name": "Stage S6",
+        "abreviation": "Stage S6",
+        "categorie": "Ouverture",
+        "coefficient": "3",
+        "semestre": "6",
+        "dependances": [
+            ["Formaliser"],
+            ["Realiser"],
+            ["Professionnaliser"]
+        ],
+        "projet": "false",
+        "option": "false",
+        "facultatif" : "true"
+    }],
+
+    "ueDoublons" : [
+        [301,401],[302,402],[403,605],[404,606],[405,607]
+    ],
+
+    "options" : [{
+        "semestre" : 2,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [201,202]
+    }, {
+        "semestre" : 3,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [301,302]
+    }, {
+        "semestre" : 4,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [401,402,403,404,405,406]
+    }, {
+        "semestre" : 6,
+        "coefficient" : 3,
+        "nbChoix" : 2,
+        "ueList" : [601,602,603]
+    }, {
+        "semestre" : 6,
+        "coefficient" : 3,
+        "nbChoix" : 1,
+        "ueList" : [604,605,606,607]
+    }],
+
+    "competences" : [{
+        "name" : "Appliquer",
+        "description" : "Ceci est la compétence \"Appliquer\"",
+        "color" : "rgb(192, 16, 63)"
+    }, {
+        "name" : "Construire",
+        "description" : "Ceci est la compétence \"Construire\"",
+        "color" : "rgb(192, 16, 63)"
+    }, {
+        "name" : "Formaliser",
+        "description" : "Ceci est la compétence \"Formaliser\"",
+        "color" : "rgb(192, 16, 63)"
+    }, {
+        "name" : "Professionnaliser",
+        "description" : "Ceci est la compétence \"Professionnaliser\"",
+        "color" : "rgb(192, 16, 63)"
+    }, {
+        "name" : "Programmer",
+        "description" : "Ceci est la compétence \"Programmer\"",
+        "color" : "rgb(192, 16, 63)"
+    }, {
+        "name" : "Realiser",
+        "description" : "Ceci est la compétence \"Realiser\"",
+        "color" : "rgb(192, 16, 63)"
+    }],
+
+    "categories" : [{
+        "name" : "Mathématiques",
+        "description" : "",
+        "color" : "rgb(252, 54, 107)",
+        "sortIndex" : 3
+    }, {
+        "name" : "Informatique",
+        "description" : "",
+        "color" : "rgb(192, 16, 63)",
+        "sortIndex" : 1
+    }, {
+        "name" : "Informatique théorique",
+        "description" : "",
+        "color" : "rgb(116, 2, 51)",
+        "sortIndex" : 2
+    }, {
+        "name" : "Langues",
+        "description" : "",
+        "color" : "rgb(255, 130, 77)",
+        "sortIndex" : 0
+    }, {
+        "name" : "Ouverture",
+        "description" : "",
+        "color" : "rgb(245, 255, 87)",
+        "sortIndex" : 4
+    }],
+
+    "cursus" : [{
+        "name" : "Licence Informatique",
+        "path" : "pedagoLicenceInfo17.json",
+        "class" : "licence",
+        "sortIndex" : 0
+    }, {
+        "name" : "Parcours I3D",
+        "path" : "pedagoMasterI3D.json",
+        "class" : "master",
+        "sortIndex" : 0
+    }, {
+        "name" : "Parcours SIL",
+        "path" : "pedagoMasterSIL.json",
+        "class" : "master",
+        "sortIndex" : 3
+    }, {
+        "name" : "Parcours SDSC",
+        "path" : "pedagoMasterSDSC.json",
+        "class" : "master",
+        "sortIndex" : 2
+    }, {
+        "name" : "Parcours SIRIS",
+        "path" : "pedagoMasterSIRIS.json",
+        "class" : "master",
+        "sortIndex" : 1
+    }]
+}
