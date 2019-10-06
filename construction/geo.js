@@ -1,42 +1,25 @@
 'use strict';
 
+// Start tool : line mode
 let currentTool = 'l';
-let uptCanvas = new Event('updateCanvas');
+
+// canvas HTML ID
 let canvasId = 'geometry-canvas';
-let canvas = document.getElementById(canvasId);
 
-let itemsToDraw = [];
-let itemIndex = 0;
-let lastDraw;
+// Canvas JS object
+let canvas = new Canvas(canvasId);
 
+// Last mousedown position by user
 let lastDownX = 0, lastDownY = 0;
+
+// Define if user has left mouse button down and if he's dragging
 let isLMBDown = false, hasDragged = false;
 let currentOperation;
 
-let toolsnames = ['l','t','c','p'];
-let tools = {};
-/* 
-toolsnames.forEach(function(d) {
-    tools[d] = new Tool(d);
-}); */
+// Resize canvas when window is resized
+window.onresize = canvas.resize();
 
-
-window.onresize = resizeCanvas;
-resizeCanvas();
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth - 20;
-    canvas.height = window.innerHeight - 20;
-}
-
-function updateCanvas(event) {
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-
-    itemsToDraw.forEach(function(d) {
-       d.drawSteps(d.maxSteps); 
-    });
-}
-
+// Manage user keyboard input
 function keyManager(key) {
     console.log(key.code);
     switch(key.code) {
@@ -49,45 +32,52 @@ function keyManager(key) {
             currentTool = 'l';
             currentOperation = undefined;
             break;
+
+        case 'KeyP' : // 'p'
+            currentTool = 'p';
+            currentOperation = undefined;
+            break;
     }
-    document.dispatchEvent(uptCanvas);
+    canvas.draw();
 }
 
 
 function drawMDown(event) {
-    lastDownX = event.clientX - canvas.offsetLeft;
-    lastDownY = event.clientY - canvas.offsetTop;
+    lastDownX = event.clientX - canvas.HTMLObject.offsetLeft;
+    lastDownY = event.clientY - canvas.HTMLObject.offsetTop;
     isLMBDown = true;
     hasDragged = false;
-    console.log(currentTool);
 }
 
 function drawMMove(event) {
-    let deltaX = Math.abs(event.clientX - canvas.offsetLeft - lastDownX);
-    let deltaY = Math.abs(event.clientY - canvas.offsetTop - lastDownY);
 
+    // dragging distance
+    let deltaX = Math.abs(event.clientX - canvas.HTMLObject.offsetLeft - lastDownX);
+    let deltaY = Math.abs(event.clientY - canvas.HTMLObject.offsetTop - lastDownY);
+
+    // if (user is dragging)
     if (isLMBDown && (deltaX > 8 || deltaY > 8)) {
-        // user is dragging
+
+        // beginning of drag trigger
         if(!hasDragged) {
-            // beginning of drag trigger
             hasDragged = true;
 
             // create new operation
             if(currentOperation === undefined) {
                 currentOperation = new Tool(currentTool);
-                currentOperation.addPoint(new Point(lastDownX, lastDownY, canvasId));
+                currentOperation.addPoint(new Point(lastDownX, lastDownY, canvas));
             }
         }
 
+        // during dragging
+        canvas.draw();
+        currentOperation.drawOnDrag(currentOperation.step, new Point(event.clientX - canvas.HTMLObject.offsetLeft, event.clientY - canvas.HTMLObject.offsetTop, canvas));
 
-        document.dispatchEvent(uptCanvas);
-        currentOperation.drawOnDrag(currentOperation.step, new Point(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop, canvasId));
-
-
+    // mouse moves without clicking
     } else {
         if(currentOperation !== undefined && currentOperation.step != currentOperation.maxSteps) {
-            document.dispatchEvent(uptCanvas);
-            currentOperation.drawOnDrag(currentOperation.step, new Point(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop, canvasId));
+            canvas.draw();
+            currentOperation.drawOnDrag(currentOperation.step, new Point(event.clientX - canvas.HTMLObject.offsetLeft, event.clientY - canvas.HTMLObject.offsetTop, canvas));
         } 
     }
 }
@@ -95,10 +85,8 @@ function drawMMove(event) {
 function drawMUp(event) {
     isLMBDown = false;
 
-
+    // user has clicked without dragging
     if(!hasDragged) {
-        // user has clicked without dragging
-        console.log("click");
 
         // create new operation if not started
         if(typeof(currentOperation) === 'undefined') {
@@ -106,33 +94,25 @@ function drawMUp(event) {
         }
 
         // continue existing operation
-        currentOperation.addPoint(new Point(lastDownX, lastDownY, canvasId));
+        currentOperation.addPoint(new Point(lastDownX, lastDownY, canvas));
 
     } else {
         // user stopped dragging
-        currentOperation.addPoint(new Point(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop, canvasId));
+        currentOperation.addPoint(new Point(event.clientX - canvas.HTMLObject.offsetLeft, event.clientY - canvas.HTMLObject.offsetTop, canvas));
     }
 
-    
-
-    //document.dispatchEvent(uptCanvas);
-    //currentOperation.drawSteps(currentOperation.step);
-
-
-
+    // if tool use is complete, add geometric item to canvas items to draw
     if(currentOperation.step == currentOperation.maxSteps) {
-        itemsToDraw.push(currentOperation);
+        canvas.items.push(currentOperation);
         currentOperation = undefined;
     }
 
-    document.dispatchEvent(uptCanvas);
-
-
+    canvas.draw();
 
 }
 
-document.addEventListener('keypress', keyManager);
-document.addEventListener('updateCanvas', updateCanvas);   
+// Event listeners
+document.addEventListener('keypress', keyManager); 
 document.addEventListener('mousedown',drawMDown);
 document.addEventListener('mousemove',drawMMove);
 document.addEventListener('mouseup',drawMUp);
